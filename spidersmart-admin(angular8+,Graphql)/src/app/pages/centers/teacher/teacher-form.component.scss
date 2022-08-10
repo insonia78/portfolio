@@ -1,0 +1,25 @@
+@import './theme.scss';
+
+.password-toggle{
+    position: absolute; 
+    right: 0; 
+    top: 0.25em;
+    color: $color-lightgray;
+    cursor: pointer;
+
+    &.activated{
+        color: $color-mediumgreen;
+    }
+}
+
+.contact-list,
+.enrollment-list,
+.address-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+    > li {
+        display: flex;
+    }
+}

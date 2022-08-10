@@ -1,0 +1,1015 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="100">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <logicalFolder name="HeaderFiles"
+                   displayName="Header Files"
+                   projectFiles="true">
+      <itemPath>AlternativeAnalysisMultiYearNoESS.h</itemPath>
+      <itemPath>AlternativeAnalysisMultiYearThread.h</itemPath>
+      <itemPath>AlternativeAnalysisNoESS.h</itemPath>
+      <itemPath>AlternativeAnalysisThread.h</itemPath>
+      <itemPath>Application.h</itemPath>
+      <itemPath>CreateToken.h</itemPath>
+      <itemPath>DbConnector.h</itemPath>
+      <itemPath>EmulatorThread.h</itemPath>
+      <itemPath>MessagesType.h</itemPath>
+      <itemPath>ObjectDefinition.h</itemPath>
+      <itemPath>ProcessRequest.h</itemPath>
+      <itemPath>ProductionCostNoESS.h</itemPath>
+      <itemPath>ProductionCostThread.h</itemPath>
+      <itemPath>ProductionCostThreadNoEss.h</itemPath>
+      <itemPath>ProductionCostThread_1.h</itemPath>
+      <itemPath>SessionHandler.h</itemPath>
+      <itemPath>SessionsDb.h</itemPath>
+      <itemPath>StorageBenefitsThread.h</itemPath>
+      <itemPath>TcpConnection.h</itemPath>
+      <itemPath>TcpConnections.h</itemPath>
+      <itemPath>TcpServer.h</itemPath>
+      <itemPath>glpkLock.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="ResourceFiles"
+                   displayName="Resource Files"
+                   projectFiles="true">
+      <itemPath>setup.ini</itemPath>
+    </logicalFolder>
+    <logicalFolder name="SourceFiles"
+                   displayName="Source Files"
+                   projectFiles="true">
+      <itemPath>AlternativeAnalysisMultiYearNoESS.cpp</itemPath>
+      <itemPath>AlternativeAnalysisMultiYearThread.cpp</itemPath>
+      <itemPath>AlternativeAnalysisNoESS.cpp</itemPath>
+      <itemPath>AlternativeAnalysisThread_1.cpp</itemPath>
+      <itemPath>Application.cpp</itemPath>
+      <itemPath>CreateToken.cpp</itemPath>
+      <itemPath>DbConnector.cpp</itemPath>
+      <itemPath>EmulatorThread.cpp</itemPath>
+      <itemPath>ProcessRequest.cpp</itemPath>
+      <itemPath>ProductionCostNoESS.cpp</itemPath>
+      <itemPath>ProductionCostThread.cpp</itemPath>
+      <itemPath>ProductionCostThreadNoEss.cpp</itemPath>
+      <itemPath>ProductionCostThread_1.cpp</itemPath>
+      <itemPath>SessionHandler.cpp</itemPath>
+      <itemPath>SessionsDb.cpp</itemPath>
+      <itemPath>StorageBenefitsThread.cpp</itemPath>
+      <itemPath>TcpConnection.cpp</itemPath>
+      <itemPath>TcpConnections.cpp</itemPath>
+      <itemPath>TcpServer.cpp</itemPath>
+      <itemPath>glpkLock.cpp</itemPath>
+      <itemPath>main.cpp</itemPath>
+      <itemPath>processMessage.cpp</itemPath>
+    </logicalFolder>
+    <logicalFolder name="TestFiles"
+                   displayName="Test Files"
+                   projectFiles="false"
+                   kind="TEST_LOGICAL_FOLDER">
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+    <logicalFolder name="TestFiles"
+                   displayName="Test Files"
+                   projectFiles="false"
+                   kind="TEST_LOGICAL_FOLDER">
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+    <logicalFolder name="TestFiles"
+                   displayName="Test Files"
+                   projectFiles="false"
+                   kind="TEST_LOGICAL_FOLDER">
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+    <logicalFolder name="TestFiles"
+                   displayName="Test Files"
+                   projectFiles="false"
+                   kind="TEST_LOGICAL_FOLDER">
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+    <logicalFolder name="TestFiles"
+                   displayName="Test Files"
+                   projectFiles="false"
+                   kind="TEST_LOGICAL_FOLDER">
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+    <logicalFolder name="TestFiles"
+                   displayName="Test Files"
+                   projectFiles="false"
+                   kind="TEST_LOGICAL_FOLDER">
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+    <logicalFolder name="TestFiles"
+                   displayName="Test Files"
+                   projectFiles="false"
+                   kind="TEST_LOGICAL_FOLDER">
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+    <logicalFolder name="TestFiles"
+                   displayName="Test Files"
+                   projectFiles="false"
+                   kind="TEST_LOGICAL_FOLDER">
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+    <logicalFolder name="TestFiles"
+                   displayName="Test Files"
+                   projectFiles="false"
+                   kind="TEST_LOGICAL_FOLDER">
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+    <logicalFolder name="TestFiles"
+                   displayName="Test Files"
+                   projectFiles="false"
+                   kind="TEST_LOGICAL_FOLDER">
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+    <logicalFolder name="TestFiles"
+                   displayName="Test Files"
+                   projectFiles="false"
+                   kind="TEST_LOGICAL_FOLDER">
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+    <logicalFolder name="TestFiles"
+                   displayName="Test Files"
+                   projectFiles="false"
+                   kind="TEST_LOGICAL_FOLDER">
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+    <logicalFolder name="TestFiles"
+                   displayName="Test Files"
+                   projectFiles="false"
+                   kind="TEST_LOGICAL_FOLDER">
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+    <logicalFolder name="TestFiles"
+                   displayName="Test Files"
+                   projectFiles="false"
+                   kind="TEST_LOGICAL_FOLDER">
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+    <logicalFolder name="TestFiles"
+                   displayName="Test Files"
+                   projectFiles="false"
+                   kind="TEST_LOGICAL_FOLDER">
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+    <logicalFolder name="TestFiles"
+                   displayName="Test Files"
+                   projectFiles="false"
+                   kind="TEST_LOGICAL_FOLDER">
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+    <itemPath>newfile</itemPath>
+    <itemPath>somefile.txt</itemPath>
+  </logicalFolder>
+  <sourceRootList>
+    <Elem>glpk</Elem>
+    <Elem>glpk</Elem>
+    <Elem>glpk</Elem>
+    <Elem>glpk</Elem>
+    <Elem>glpk</Elem>
+    <Elem>glpk</Elem>
+    <Elem>glpk</Elem>
+    <Elem>glpk</Elem>
+    <Elem>glpk</Elem>
+    <Elem>glpk</Elem>
+    <Elem>glpk</Elem>
+    <Elem>glpk</Elem>
+    <Elem>glpk</Elem>
+    <Elem>glpk</Elem>
+    <Elem>glpk</Elem>
+    <Elem>glpk</Elem>
+  </sourceRootList>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="Debug" type="4">
+      <toolsSet>
+        <compilerSet>GNU|GNU</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <qt>
+        <modules>core gui widgets network opengl sql</modules>
+        <defs>
+          <Elem>MYSQL_CXXFLAGS=-stdlib=libc++</Elem>
+          <Elem>-Wl,--stack=1000000000000</Elem>
+          <Elem>-Wl,--heap=1000000000000</Elem>
+        </defs>
+      </qt>
+      <compileType>
+        <ccTool>
+          <standard>8</standard>
+          <incDir>
+            <pElem>/usr/local/include</pElem>
+            <pElem>/usr/include</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <linkerDynSerch>
+            <pElem>/usr/lib</pElem>
+            <pElem>/usr/local/include</pElem>
+          </linkerDynSerch>
+          <linkerLibItems>
+            <linkerLibLibItem>glpk</linkerLibLibItem>
+            <linkerLibLibItem>glpk</linkerLibLibItem>
+            <linkerLibLibItem>mysqlcppconn</linkerLibLibItem>
+            <linkerLibLibItem>mysqlcppconn</linkerLibLibItem>
+            <linkerOptionItem>-dynamic</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
+      </compileType>
+      <packaging>
+        <packType>Zip</packType>
+        <packFileList>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}"
+                            from="${OUTPUT_PATH}"
+                            perm="755"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}"
+                            from="${OUTPUT_PATH}"
+                            perm="755"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}"
+                            from="${OUTPUT_PATH}"
+                            perm="755"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}"
+                            from="${OUTPUT_PATH}"
+                            perm="755"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}"
+                            from="${OUTPUT_PATH}"
+                            perm="755"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}"
+                            from="${OUTPUT_PATH}"
+                            perm="755"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}"
+                            from="${OUTPUT_PATH}"
+                            perm="755"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}"
+                            from="${OUTPUT_PATH}"
+                            perm="755"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}"
+                            from="${OUTPUT_PATH}"
+                            perm="755"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}"
+                            from="${OUTPUT_PATH}"
+                            perm="755"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}"
+                            from="${OUTPUT_PATH}"
+                            perm="755"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}"
+                            from="${OUTPUT_PATH}"
+                            perm="755"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}"
+                            from="${OUTPUT_PATH}"
+                            perm="755"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}"
+                            from="${OUTPUT_PATH}"
+                            perm="755"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}"
+                            from="${OUTPUT_PATH}"
+                            perm="755"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}"
+                            from="${OUTPUT_PATH}"
+                            perm="755"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}"
+                            from="${OUTPUT_PATH}"
+                            perm="755"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}"
+                            from="${OUTPUT_PATH}"
+                            perm="755"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}"
+                            from="${OUTPUT_PATH}"
+                            perm="755"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}"
+                            from="${OUTPUT_PATH}"
+                            perm="755"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}"
+                            from="${OUTPUT_PATH}"
+                            perm="755"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}"
+                            from="${OUTPUT_PATH}"
+                            perm="755"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}"
+                            from="${OUTPUT_PATH}"
+                            perm="755"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}"
+                            from="${OUTPUT_PATH}"
+                            perm="755"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}"
+                            from="${OUTPUT_PATH}"
+                            perm="755"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}"
+                            from="${OUTPUT_PATH}"
+                            perm="755"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}"
+                            from="${OUTPUT_PATH}"
+                            perm="755"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}"
+                            from="${OUTPUT_PATH}"
+                            perm="755"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}"
+                            from="${OUTPUT_PATH}"
+                            perm="755"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}"
+                            from="${OUTPUT_PATH}"
+                            perm="755"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}"
+                            from="${OUTPUT_PATH}"
+                            perm="755"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}"
+                            from="${OUTPUT_PATH}"
+                            perm="755"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}"
+                            from="${OUTPUT_PATH}"
+                            perm="755"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}"
+                            from="${OUTPUT_PATH}"
+                            perm="755"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}"
+                            from="${OUTPUT_PATH}"
+                            perm="755"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}"
+                            from="${OUTPUT_PATH}"
+                            perm="755"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}"
+                            from="${OUTPUT_PATH}"
+                            perm="755"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}"
+                            from="${OUTPUT_PATH}"
+                            perm="755"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}"
+                            from="${OUTPUT_PATH}"
+                            perm="755"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}"
+                            from="${OUTPUT_PATH}"
+                            perm="755"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}"
+                            from="${OUTPUT_PATH}"
+                            perm="755"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}"
+                            from="${OUTPUT_PATH}"
+                            perm="755"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}"
+                            from="${OUTPUT_PATH}"
+                            perm="755"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}"
+                            from="${OUTPUT_PATH}"
+                            perm="755"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}"
+                            from="${OUTPUT_PATH}"
+                            perm="755"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}"
+                            from="${OUTPUT_PATH}"
+                            perm="755"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}"
+                            from="${OUTPUT_PATH}"
+                            perm="755"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}"
+                            from="${OUTPUT_PATH}"
+                            perm="755"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}"
+                            from="${OUTPUT_PATH}"
+                            perm="755"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}"
+                            from="${OUTPUT_PATH}"
+                            perm="755"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}"
+                            from="${OUTPUT_PATH}"
+                            perm="755"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}"
+                            from="${OUTPUT_PATH}"
+                            perm="755"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}"
+                            from="${OUTPUT_PATH}"
+                            perm="755"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}"
+                            from="${OUTPUT_PATH}"
+                            perm="755"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}"
+                            from="${OUTPUT_PATH}"
+                            perm="755"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}"
+                            from="${OUTPUT_PATH}"
+                            perm="755"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}"
+                            from="${OUTPUT_PATH}"
+                            perm="755"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}"
+                            from="${OUTPUT_PATH}"
+                            perm="755"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}"
+                            from="${OUTPUT_PATH}"
+                            perm="755"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}"
+                            from="${OUTPUT_PATH}"
+                            perm="755"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}"
+                            from="${OUTPUT_PATH}"
+                            perm="755"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}"
+                            from="${OUTPUT_PATH}"
+                            perm="755"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}"
+                            from="${OUTPUT_PATH}"
+                            perm="755"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}"
+                            from="${OUTPUT_PATH}"
+                            perm="755"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}"
+                            from="${OUTPUT_PATH}"
+                            perm="755"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}"
+                            from="${OUTPUT_PATH}"
+                            perm="755"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}"
+                            from="${OUTPUT_PATH}"
+                            perm="755"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}"
+                            from="${OUTPUT_PATH}"
+                            perm="755"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}"
+                            from="${OUTPUT_PATH}"
+                            perm="755"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}"
+                            from="${OUTPUT_PATH}"
+                            perm="755"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}"
+                            from="${OUTPUT_PATH}"
+                            perm="755"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}"
+                            from="${OUTPUT_PATH}"
+                            perm="755"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}"
+                            from="${OUTPUT_PATH}"
+                            perm="755"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}"
+                            from="${OUTPUT_PATH}"
+                            perm="755"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}"
+                            from="${OUTPUT_PATH}"
+                            perm="755"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}"
+                            from="${OUTPUT_PATH}"
+                            perm="755"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}"
+                            from="${OUTPUT_PATH}"
+                            perm="755"
+                            owner="root"
+                            group="bin"/>
+        </packFileList>
+      </packaging>
+      <item path="AlternativeAnalysisMultiYearNoESS.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="AlternativeAnalysisMultiYearNoESS.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="AlternativeAnalysisMultiYearThread.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="AlternativeAnalysisMultiYearThread.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="AlternativeAnalysisNoESS.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="AlternativeAnalysisNoESS.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Application.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Application.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CreateToken.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="CreateToken.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="DbConnector.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="DbConnector.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="EmulatorThread.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="EmulatorThread.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="MessagesType.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ObjectDefinition.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ProcessRequest.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="ProcessRequest.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ProductionCostNoESS.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="ProductionCostNoESS.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ProductionCostThread.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="ProductionCostThread.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ProductionCostThreadNoEss.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="ProductionCostThreadNoEss.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ProductionCostThread_1.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="ProductionCostThread_1.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SessionHandler.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="SessionHandler.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SessionsDb.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="SessionsDb.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="StorageBenefitsThread.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="StorageBenefitsThread.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="TcpConnection.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="TcpConnection.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="TcpConnections.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="TcpConnections.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="TcpServer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="TcpServer.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="glpkLock.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="glpkLock.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="newfile" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="processMessage.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="setup.ini" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="somefile.txt" ex="false" tool="3" flavor2="0">
+      </item>
+    </conf>
+    <conf name="Release" type="4">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <qt>
+        <modules>core gui widgets network opengl</modules>
+        <qmakeSpec>LIBS        += -lGL
+LIBS        += -L/usr/local/lib -L/usr/lib -lmysqlcppconn
+INCLUDEPATH += -I/usr/include -I/usr/local/include
+               -I/usr/local/include/cppconn</qmakeSpec>
+      </qt>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+          <standard>8</standard>
+          <incDir>
+            <pElem>/home/gonzales1609/IRENA/DbConnector</pElem>
+          </incDir>
+        </ccTool>
+        <fortranCompilerTool>
+          <developmentMode>5</developmentMode>
+        </fortranCompilerTool>
+        <asmTool>
+          <developmentMode>5</developmentMode>
+        </asmTool>
+        <linkerTool>
+          <linkerDynSerch>
+            <pElem>/home/gonzales1609/IRENA/DbConnector/dist</pElem>
+          </linkerDynSerch>
+          <linkerCopySharedLibs>true</linkerCopySharedLibs>
+          <linkerLibItems>
+            <linkerLibFileItem>../DbConnector/dist/Release/GNU-Linux/libdbconnector.a</linkerLibFileItem>
+            <linkerLibFileItem>../DbConnector/dist/Debug/GNU-Linux/libdbconnector.a</linkerLibFileItem>
+          </linkerLibItems>
+        </linkerTool>
+      </compileType>
+      <item path="AlternativeAnalysisMultiYearNoESS.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="AlternativeAnalysisMultiYearNoESS.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="AlternativeAnalysisMultiYearThread.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="AlternativeAnalysisMultiYearThread.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="AlternativeAnalysisNoESS.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="AlternativeAnalysisNoESS.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="AlternativeAnalysisThread.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="AlternativeAnalysisThread_1.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Application.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Application.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CreateToken.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="CreateToken.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="DbConnector.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="DbConnector.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="EmulatorThread.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="EmulatorThread.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="MessagesType.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ObjectDefinition.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ProcessRequest.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="ProcessRequest.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ProductionCostNoESS.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="ProductionCostNoESS.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ProductionCostThread.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="ProductionCostThread.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ProductionCostThreadNoEss.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="ProductionCostThreadNoEss.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ProductionCostThread_1.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="ProductionCostThread_1.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SessionHandler.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="SessionHandler.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SessionsDb.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="SessionsDb.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="StorageBenefitsThread.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="StorageBenefitsThread.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="TcpConnection.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="TcpConnection.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="TcpConnections.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="TcpConnections.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="TcpServer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="TcpServer.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="glpkLock.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="glpkLock.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="newfile" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="processMessage.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="setup.ini" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="somefile.txt" ex="false" tool="3" flavor2="0">
+      </item>
+    </conf>
+  </confs>
+</configurationDescriptor>

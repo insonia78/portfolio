@@ -1,0 +1,143 @@
+"""
+something
+"""
+type Book implements Resource {
+  id: Int!
+  title: String!
+  description: String
+  isbn: String!
+  coverImage: String
+  active: Boolean
+  level: Level
+  assignment: Assignment
+  authors: [Author]
+  genres: [Genre]
+  publishers: [Publisher]
+  dateFrom: DateTime
+  dateTo: DateTime
+  __typename: String
+}
+type CenterBook implements RelateableResource {
+  id: Int!
+  title: String!
+  description: String
+  isbn: String!
+  coverImage: String
+  active: Boolean
+  level: Level
+  assignment: Assignment
+  authors: [Author]
+  genres: [Genre]
+  publishers: [Publisher]
+  dateFrom: DateTime
+  dateTo: DateTime
+  quantity: Int
+  relatedFrom: DateTime
+  relatedTo: DateTime
+  __typename: String
+}
+
+type BookCheckout implements RelateableResource {
+  id: Int!
+  relatedFrom: DateTime
+  relatedTo: DateTime
+  book: Book
+  center: Center
+  user: Student
+  __typename: String
+}
+
+input BookInput {
+  id: Int
+  title: String
+  description: String
+  isbn: String
+  coverImage: Upload
+  assignment: AssignmentInput
+  authors: [AuthorInput]
+  genres: [GenreInput]
+  publishers: [PublisherInput]
+  quantity: Int
+  __typename: String
+}
+
+type BookResponse implements ResponsePayload {
+  success: Boolean
+  data: Book
+  errors: [String]
+}
+
+type CenterBookResponse implements ResponsePayload {
+  success: Boolean
+  data: CenterBook
+  errors: [String]
+}
+
+type BookCheckoutResponse implements ResponsePayload {
+  success: Boolean
+  data: BookCheckout
+  errors: [String]
+}
+
+type BookCollectionResponse implements CollectionResponsePayload {
+  data: [Book]
+  errors: [String]
+  metadata: QueryMetaData
+}
+
+type CenterBookCollectionResponse implements CollectionResponsePayload {
+  data: [CenterBook]
+  errors: [String]
+  metadata: QueryMetaData
+}
+
+type BookCheckoutCollectionResponse implements CollectionResponsePayload {
+  data: [BookCheckout]
+  errors: [String]
+  metadata: QueryMetaData
+}
+
+extend type Query {
+  books(queryOptions: QueryOptionsInput): BookCollectionResponse! @route(resolver: "Book@getAll", operation: "retrieveCollection")
+  book(id: Int!): Book! @route(resolver: "Book@get", operation: "retrieve")
+  checkouts(enrollments: [EnrollmentInput], centers: [CenterInput], students: [StudentInput], books: [BookInput], queryOptions: QueryOptionsInput): BookCheckoutCollectionResponse! @route(resolver: "Book@getCheckouts", operation: "retrieveCollection")
+}
+
+extend type Mutation {
+  createBook(
+    title: String!
+    description: String
+    isbn: String!
+    coverImage: Upload
+    active: Boolean
+    assignment: AssignmentInput
+    authors: [AuthorInput]
+    genres: [GenreInput]
+    publishers: [PublisherInput]
+  ):BookResponse @route(resolver: "Book@create", operation: "create")
+
+  updateBook(
+    id: Int!
+    title: String
+    description: String
+    isbn: String
+    coverImage: Upload
+    active: Boolean
+    assignment: AssignmentInput
+    authors: [AuthorInput]
+    genres: [GenreInput]
+    publishers: [PublisherInput]
+  ): BookResponse @route(resolver: "Book@update", operation: "update")
+
+  deleteBook(id: Int!): BookResponse
+    @route(resolver: "Book@delete", operation: "delete")
+
+  checkoutBook(
+    book: BookInput!
+    enrollment: EnrollmentInput!
+  ):BookCheckoutResponse @route(resolver: "Book@checkout", operation: "relate")
+
+  returnBook(
+    id: Int!
+  ):BookCheckoutResponse @route(resolver: "Book@return", operation: "dissociate")
+}

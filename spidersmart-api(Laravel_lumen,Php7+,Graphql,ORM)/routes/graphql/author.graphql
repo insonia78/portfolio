@@ -1,0 +1,45 @@
+type Author implements RelateableResource {
+  id: Int!
+  name: String!
+  active: Boolean!
+  books: [Book]
+  dateFrom: DateTime
+  dateTo: DateTime
+  relatedFrom: DateTime
+  relatedTo: DateTime
+  __typename: String
+}
+
+input AuthorInput {
+  id: Int
+  name: String!
+  __typename: String
+}
+
+type AuthorResponse implements ResponsePayload {
+  success: Boolean
+  data: Author
+  errors: [String]
+}
+
+type AuthorCollectionResponse implements CollectionResponsePayload {
+  data: [Author]
+  errors: [String]
+  metadata: QueryMetaData
+}
+
+extend type Query {
+  authors(queryOptions: QueryOptionsInput): AuthorCollectionResponse! @route(resolver: "Author@getAll", operation: "retrieveCollection")
+  author(id: Int!): Author @route(resolver: "Author@get", operation: "retrieve")
+}
+
+extend type Mutation{
+  createAuthor(name: String!, active: Boolean): AuthorResponse
+    @route(resolver: "Author@create", operation: "create")
+
+  updateAuthor(id: Int!, name: String, active: Boolean): AuthorResponse
+    @route(resolver: "Author@update", operation: "update")
+
+  deleteAuthor(id: Int!): AuthorResponse
+    @route(resolver: "Author@delete", operation: "delete")
+}

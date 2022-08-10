@@ -1,0 +1,104 @@
+enum AssignmentSubmissionStatus {
+  new
+  draft
+  submitted
+  review_draft
+  pending_revision
+  revision_draft
+  revised
+  complete
+}
+
+type AssignmentSubmissionView implements Resource {
+  id: Int!
+  status: AssignmentSubmissionStatus!
+  comments: String
+  answers: [AssignmentSubmissionAnswer]
+  dateFrom: DateTime
+  dateTo: DateTime
+  __typename: String
+}
+
+type AssignmentSubmission implements Resource {
+  id: Int!
+  enrollment: Enrollment!
+  assignment: Assignment!
+  book: Book
+  status: AssignmentSubmissionStatus!
+  comments: String
+  answers: [AssignmentSubmissionAnswer]
+  lastNonDraft: AssignmentSubmissionView
+  dateFrom: DateTime
+  dateTo: DateTime
+  active: Boolean
+  __typename: String
+}
+
+input AssignmentSubmissionInput {
+  id: Int
+  assignment: Assignment
+  book: Book
+  status: AssignmentSubmissionStatus
+  comments: String
+  answers: [AssignmentSubmissionAnswerInput]
+  __typename: String
+}
+
+type AssignmentSubmissionAnswer implements Resource {
+  id: Int!
+  question: Question!
+  answer: String
+  correction: String
+  comments: String
+  correct: Boolean
+  dateFrom: DateTime
+  dateTo: DateTime
+  __typename: String
+}
+
+input AssignmentSubmissionAnswerInput {
+  id: Int
+  question: QuestionInput
+  answer: String
+  correction: String
+  comments: String
+  correct: Boolean
+  __typename: String
+}
+
+type AssignmentSubmissionResponse implements ResponsePayload {
+  success: Boolean
+  data: AssignmentSubmission
+  errors: [String]
+}
+
+type AssignmentSubmissionCollectionResponse implements CollectionResponsePayload {
+  data: [AssignmentSubmission]
+  errors: [String]
+  metadata: QueryMetaData
+}
+
+extend type Query {
+  submissions(queryOptions: QueryOptionsInput, enrollments: [EnrollmentInput], centers: [CenterInput], students: [StudentInput], teacher: TeacherInput, showComplete: Boolean): AssignmentSubmissionCollectionResponse!
+  @route(resolver: "AssignmentSubmission@getAll", operation: "retrieveCollection")
+  submission(id: Int!): AssignmentSubmission!
+  @route(resolver: "AssignmentSubmission@get", operation: "retrieve")
+}
+extend type Mutation {
+  createSubmission(
+    enrollment: EnrollmentInput!
+    assignment: AssignmentInput!
+    bookCheckoutId: Int
+    book: BookInput
+    status: AssignmentSubmissionStatus
+    comments: String
+    answers: [AssignmentSubmissionAnswerInput]
+  ): AssignmentSubmissionResponse @route(resolver: "AssignmentSubmission@create", operation: "create")
+
+  saveSubmission(
+    id: Int!
+    status: AssignmentSubmissionStatus
+    comments: String
+    answers: [AssignmentSubmissionAnswerInput]
+  ): AssignmentSubmissionResponse @route(resolver: "AssignmentSubmission@save", operation: "update")
+}

@@ -1,0 +1,931 @@
+/*
+   It holds the layout and style of the content in the grid
+*/
+/****************************************************/
+
+input[type='text']:disabled
+{
+    color: rgb(235,235,228);
+}
+
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+/* For mobile phones: */
+[class*="col-"] {
+    width: 100%;
+}
+@media only screen and (min-width: 768px) {
+    /* For desktop: */
+    .col-1 {width: 8.33%;}
+    .col-2 {width: 16.66%;}
+    .col-3 {width: 25%;}
+    .col-4 {width: 33.33%;}
+    .col-5 {width: 41.66%;}
+    .col-6 {width: 50%;}
+    .col-7 {width: 58.33%;}
+    .col-8 {width: 66.66%;}
+    .col-9 {width: 75%;}
+    .col-10 {width: 83.33%;}
+    .col-11 {width: 91.66%;}
+    .col-12 {width: 100%;}
+}
+
+select{
+    display:inline-block;
+    overflow:auto;
+    height:1px;
+    vertical-align: middle;
+}
+option{
+    text-align:center;
+    font-size:10px;
+}
+div.section-header
+{
+    position:relative;
+    height:70px;
+    background-color:#000033;
+    width:100%;
+    top:0px;
+    left:1px;
+    right:1px;
+    bottom:0px;
+    margin-bottom:20px;
+}
+.btn-field{
+  width: 30px;
+  height:auto;
+}
+
+p.section-header-text
+{
+    color:white;
+    font-size:30px;
+    text-align:center;
+}
+text.data-header-text
+{
+    position:relative;
+    display: inline-block;
+    font-size:25px;
+    font-weight: bolder;
+    color:#40668C;
+    text-align:center;
+    border-bottom: 3px solid #40668C;
+}
+
+/*Wrapper to simplify evaluation of page-wrapper height */
+.header-wrapper{
+  height:auto;
+}
+/*************************************************************/
+/*
+     table rules
+*/
+
+#thermal_table, #enerstortable{
+  width: 100%;
+  margin: 10px 0px;
+  overflow-x: auto;
+}
+
+/************************************************************/
+/*
+    table container
+*/
+table:hover
+{
+    background-color:#cccccc
+}
+table
+{
+    width:100%;
+    height:100%;
+    min-width:inherit;
+    border-collapse: separate;
+    background-color:white;
+    border:1px ridge #bdbdbd;
+    table-layout:fixed;
+    margin: 20px 0px;
+}
+
+table th.table-header{
+    background-color:white;
+    margin:5px 5px 5px 5px;
+}
+th.table-header-text{
+    font-size:15px;
+    font-weight: bolder;
+    margin:5px 5px 5px 5px;
+    color:black;
+    text-align:center;
+}
+/******************************************************/
+/*
+   thead
+*/
+table th.table-header-field-empty{
+    min-height:10px;
+    background-color:#28b1d6;
+}
+table th.table-header-field{
+    background-color:#28b1d6;
+}
+table th.table-header-field-title{
+    margin:7px 7px 7px 7px;
+    color:white;
+    text-align:center;
+    font-size:15px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    font-weight: normal;
+    font-size: 1em;
+}
+
+@media only screen and (max-width: 480px) {
+table th.table-header-field-title
+{
+    font-size: 1.3vw;
+}
+}
+/*****************************************************/
+/*
+       tbody
+*/
+th.table-items-description{
+    padding:5px 5px 5px 5px;
+    margin:35px 35px 35px 35px;
+    background-color:white;
+}
+table td.table-items-description-content{
+    padding:5px 5px 5px 5px;
+    background-color:white;
+    margin:35px 35px 35px 35px;
+    min-width:50px;
+}
+
+th.table-items-description-text{
+    font-size:10px;
+    font-weight: bolder;
+    color:black;
+}
+@media only screen and (max-width: 480px) {
+th.table-items-description-text
+{
+    font-size: 1.3vw;
+}
+}
+
+/***************************************************************************************/
+/*
+ rules for grid-layout inputs element
+*/
+ .grid-layout-textboxes
+{
+    width:100%;
+    height:25px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    text-align:center;
+    text-align-last: center;
+    font-size: 1vw;
+    /*padding: 2px 12px;*/
+
+}
+
+@media only screen and (max-width: 480px) {
+.grid-layout-textboxes
+{
+    font-size: 2vw;
+}
+}
+
+/****************************************************************/
+/*
+   grid Inputs items container tables
+*/
+div.io-container
+{
+    width:100%;
+    height:auto;
+    background-color:white;
+    display:block;
+    margin-top:10px;
+    position: relative;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+div.programs-container
+{
+    position:relative;
+    min-width:350px;
+    margin:30px auto 30px auto;
+    width:81%;
+    height:auto;
+    display: block;
+    background-color: #faf9f9;
+    text-align: justify;
+}
+table.programs-demand-side-table
+{
+    margin:10px 5px;
+    position:relative;
+    min-width:350px;
+    width:100%;
+    height:auto;
+    display: inline-table;
+
+}
+
+table.programs-renewables-table
+{
+    margin:10px 5px;
+    position:relative;
+    min-width:350px;
+    width:48%;
+    height:auto;
+    display: inline-table;
+}
+
+table.programs-planning-criteria-table{
+  position: relative;
+  height: auto;
+  display: inline-table;
+  margin: 10px 5px;
+  width: 48%;
+  min-width: 350px;
+}
+/************************************/
+/*
+   Demand Container
+*/
+div.demand-container
+{
+    position:relative;
+    min-width:350px;
+    margin:30px auto 30px auto;
+    width:81%;
+    height:auto;
+    display: block;
+    background-color: #faf9f9;
+    text-align: justify;
+}
+.inline{
+    display:inline-table;
+}
+table.demand-table{
+    position:relative;
+    margin: 10px 5px;
+    width:100%;
+    display: inline-table;
+}
+table.demand-profile-graph-table
+{
+   width:100%;
+   margin-top:10px;
+   position:relative;
+   background-color:white;
+   display: inline-block;
+}
+
+p.data-header-text{
+    font-size:25px;
+    font-weight: bolder;
+    color:#40668c;
+    text-align:left;
+    width: auto;
+    border-bottom: 2px solid #40668c;
+}
+p.data-sub-header-text{
+    font-size:18px;
+    font-weight: bolder;
+    color:#40668c;
+    text-align:left;
+    width: auto;
+    border-bottom: 1px solid #40668c;
+    margin-top:30px;
+}
+/*****************************************/
+/*
+   Generation Container
+*/
+div.generation-conventional-container
+{
+    margin-top:30px;
+    margin-bottom: 30px;
+    position:relative;
+    min-width:350px;
+    width:81%;
+    height:auto;
+    display: inline-block;
+    background-color: #faf9f9;
+    text-align: justify;
+}
+
+.generation-conventional-table{
+  width: 100%;
+}
+.generation-conventional-container > *{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+div.generation-renewables-container
+{
+    position:relative;
+    min-width:450px;
+    margin:30px auto 30px auto;
+    width:81%;
+    height:auto;
+    display:block;
+    background-color: #faf9f9;
+}
+.stacked-benefits-container
+{
+    position:relative;
+    min-width:450px;
+    margin:30px auto 30px auto;
+    width:81%;
+    height:auto;
+    display:block;
+    background-color: #faf9f9;
+}
+table.generation-renewables-table
+{
+    position:relative;
+    margin-top:10px;
+    width:100%;
+
+}
+table.renewables-profile-graph-table
+{
+   width:100%;
+   margin-top:10px;
+
+   position:relative;
+   background-color:white;
+   display: inline-block;
+}
+/*********************************************/
+/*
+   Hydro
+*/
+div.generation-hydro-container
+{
+    margin-top:30px;
+    margin-left:auto;
+    margin-bottom: 30px;
+    position:relative;
+    min-width:600px;
+    width:81%;
+    height:auto;
+    display: inline-block;
+    overflow-x:auto;
+    background-color: #faf9f9;
+
+}
+table.generation-hydro-table
+{
+    position:relative;
+    min-width:350px;
+    margin-top:10px;
+    width:100%;
+    margin-left:auto;
+    margin-right:auto;
+}
+table.hydro-profile-graph-table
+{
+    position:relative;
+    min-width:350px;
+    margin-top:10px;
+    width:100%;
+    background-color:white;
+}
+
+td.hydro-profile-graph{
+  width: 100%;
+}
+
+table.hydro-monthly-energy-table
+{
+    position:relative;
+    min-width:350px;
+    margin-top:10px;
+    width:100%;
+    table-layout: fixed;
+}
+/***********************************************/
+/*
+  other-elemnts
+*/
+div.other-elements-container
+{
+    position:relative;
+    margin:30px 5px 30px 5px;
+    width:81%;
+    height:auto;
+    display: inline-block;
+    background-color: #faf9f9;
+}
+
+ table.reserves-table
+ {
+    position:relative;
+    min-width:350px;
+    margin: 5px 5px 5px 5px;
+    width:25%;
+    display: inline-block;
+ }
+ /**************************************************/
+ table.existing-storage-dynamic-table
+ {
+    position:relative;
+    min-width:350px;
+    margin: 5px 5px 5px 5px;
+    margin-right:10px;
+    width:40%;
+    display: inline-block;
+    table-layout: fixed;
+ }
+ /*******************************************/
+ table.energy-storage-table
+ {
+    position:relative;
+    min-width:350px;
+    margin: 5px 5px 5px 5px;
+    margin-right:10px;
+    width:40%;
+    display: inline-block;
+    table-layout: fixed;
+ }
+ table.energy-storage-dynamic-table{
+   width: 100%;
+ }
+ table.blended-cost-table
+ {
+    position:relative;
+    min-width:350px;
+    margin: 5px 5px 5px 5px;
+    width:15%;
+    display: inline-block;
+ }
+ table.macro-economic-table
+ {
+    position:relative;
+    min-width:350px;
+    margin: 5px 5px 5px 5px;
+    width:30%;
+    display: inline-block;
+ }
+
+table.alternative-analysis-table
+{
+    position:relative;
+    min-width:350px;
+    margin:5px 5px 5px 5px;
+    margin-right:10px;
+    width:40%;
+    height:auto;
+    display: inline-block;
+}
+
+table.pc-metrics-table
+{
+    margin:10px 5px;
+    position:relative;
+    min-width:350px;
+    width:100%;
+    height:auto;
+    display: inline-table;
+
+}
+
+/************************************************************/
+/*
+    OUTPUTS
+*/
+
+table.output-table
+{
+    background-color:white;
+}
+th.output-fields-title{
+    background-color:#40668C;
+    color:white;
+    border-bottom:2px solid black;
+}
+th.total-answer
+{
+     background-color:#40668C;
+     color:white;
+}
+td.output-field-total
+{
+  background-color:#DCDCDC;
+  border-top:2px solid black;
+}
+td.output-field-text
+{
+    background-color:#DCDCDC;
+}
+/**********************************************/
+
+div.output-installed-capacity-container
+{
+  position:relative;
+  min-width:350px;
+  margin:30px auto 30px auto;
+  width:81%;
+  height:auto;
+  display: block;
+  background-color: #faf9f9;
+  text-align: justify;
+}
+
+
+
+
+.output-energy-storage-container{
+position:relative;
+min-width:450px;
+margin:30px auto 30px auto;
+width:81%;
+height:auto;
+display: block;
+background-color: #faf9f9;
+text-align: justify;
+}
+
+.output-es-buckets-table{
+  position: relative;
+  margin: 10px 5px;
+  width: 100%;
+  display: inline-table;
+}
+
+/*******************************************/
+table.benefit-buckets-table
+{
+    background-color:white;
+}
+.row-color-gray
+{
+    background-color:#DCDCDC;
+}
+/**********************************************/
+.output-fuel-usage-container{
+  position:relative;
+  min-width:350px;
+  margin:30px auto 30px auto;
+  width:81%;
+  height:auto;
+  display: block;
+  background-color: #faf9f9;
+  text-align: justify;
+}
+div.fuel-usage-output-table
+{
+    position:relative;
+    min-width:350px;
+    margin-left:10px;
+    margin-top:10px;
+    width:90%;
+    display: inline-block;
+}
+.download-link-container{
+  position:relative;
+  min-width:350px;
+  margin:30px auto 30px auto;
+  width:81%;
+  height:auto;
+  display: block;
+  background-color: #faf9f9;
+  text-align: center;
+}
+a.download-link
+{
+    position:relative;
+    display: inline-block;
+    min-width:100px;
+    border:2px ridge #40668C;
+    margin: 10px 20px;
+    width: 40%;
+    vertical-align: middle;
+}
+/****************************************/
+div.output-charts-container
+{
+  height:auto;
+  background-color:white;
+  display:block;
+  margin-top:10px;
+  border-top:2px ridge black;
+  text-align: center;
+}
+
+table.output-charts-table
+{
+    background-color: white;
+    width:inherit;
+    margin-top:10px;
+    margin-left: 10px;
+}
+div.alternative-analysis-container
+{
+    position:relative;
+    margin-top:10px;
+    margin-left:10px;
+    width:40%;
+    height:auto;
+    display: inline-block;
+}
+
+form.form-horizontal{
+  text-align: center;
+  overflow-x: hidden;
+  overflow-y:hidden;
+}
+
+.pc-metrics-container
+{
+  position:relative;
+  min-width:350px;
+  margin:30px auto 30px auto;
+  width:81%;
+  height:auto;
+  display: inline-block;
+  text-align: center;
+}
+
+/***************************************************************************/
+/*Containers for individual charts*/
+
+.gen-per-tech-container{
+  position:relative;
+  min-width:350px;
+  margin:30px auto 30px auto;
+  width:81%;
+  height:auto;
+  display: inline-block;
+  text-align: center;
+}
+.input-chart-container
+{
+  position:relative;
+  min-width:350px;
+  margin:30px auto 30px auto;
+  width:100%;
+  height:auto;
+  display: inline-block;
+  text-align: center;
+}
+.chart-container
+{
+  position:relative;
+  min-width:350px;
+  margin:30px auto 30px auto;
+  width:81%;
+  height:auto;
+  display: inline-block;
+  text-align: center;
+}
+.cap-per-tech-container{
+  position:relative;
+  min-width:350px;
+  margin:30px auto 30px auto;
+  width:81%;
+  height:auto;
+  display: inline-block;
+  text-align: center;
+}
+#capgenheading{
+    width:81%; 
+    margin:20px auto;
+}
+
+.ener-price-profile-container{
+  position:relative;
+  min-width:350px;
+  margin:30px auto 30px auto;
+  width:81%;
+  height:auto;
+  display: inline-block;
+  text-align: center;
+}
+.gen-profile-container{
+  position:relative;
+  min-width:350px;
+  margin:30px auto 30px auto;
+  width:81%;
+  height:auto;
+  display: inline-block;
+  text-align: center;
+}
+.prim-res-profile-container{
+  position:relative;
+  min-width:350px;
+  margin:30px auto 30px auto;
+  width:81%;
+  height:auto;
+  display: inline-block;
+  text-align: center;
+}
+.sec-res-profile-container{
+  position:relative;
+  min-width:350px;
+  margin:30px auto 30px auto;
+  width:81%;
+  height:auto;
+  display: inline-block;
+  text-align: center;
+}
+.ter-res-profile-container{
+  position:relative;
+  min-width:350px;
+  margin:30px auto 30px auto;
+  width:81%;
+  height:auto;
+  display: inline-block;
+  text-align: center;
+}
+.res-prices-container{
+  position:relative;
+  min-width:350px;
+  margin:30px auto 30px auto;
+  width:81%;
+  height:auto;
+  display: inline-block;
+  text-align: center;
+}
+
+.inactivelink
+{
+    pointer-events:null;
+    cursor: default;
+}
+
+.select-years
+{
+    height: 20px;
+    border-radius: 5px;
+    text-align: center;
+    text-align-last: center;
+    width: 15%;
+}
+
+.select-years option
+{
+    font-size: 15px;
+}
+
+/******************************************************************/
+
+.alt-analysis-setting-container
+{
+    position:relative;
+    min-width:450px;
+    margin:30px auto 30px auto;
+    width:81%;
+    height:auto;
+    display: block;
+    background-color: #faf9f9;
+    text-align: justify;
+    padding: 20px;
+}
+
+.production-cost-setting-container
+{
+    position:relative;
+    min-width:450px;
+    margin:30px auto 30px auto;
+    width:81%;
+    height:auto;
+    display: block;
+    background-color: #faf9f9;
+    text-align: justify;
+    padding: 20px;
+}
+
+.stacked-benefits-setting-container
+{
+    position:relative;
+    min-width:450px;
+    margin:30px auto 30px auto;
+    width:81%;
+    height:auto;
+    display: block;
+    background-color: #faf9f9;
+    text-align: justify;
+    padding: 20px;
+}
+
+.emulator-setting-container
+{
+    position:relative;
+    min-width:450px;
+    margin:30px auto 30px auto;
+    width:81%;
+    height:auto;
+    display: block;
+    background-color: #faf9f9;
+    text-align: justify;
+    padding: 20px;
+}
+
+.settings-table
+{
+    border:0;
+    border-collapse: separate;
+    border-spacing: 20px;   
+}
+
+.settings-table:hover
+{
+    background-color: white;
+}
+
+.settings-table .grid-layout-textboxes
+{
+    width: 20%;
+}
+.settings-table .grid-layout-textboxes:focus
+{
+    outline: none;
+}
+
+.emulator-generation-container
+{
+    position:relative;
+  min-width:350px;
+  margin:30px auto 30px auto;
+  width:81%;
+  height:auto;
+  display: inline-block;
+  text-align: center;
+}
+
+.emulator-primres-container
+{
+    position:relative;
+  min-width:350px;
+  margin:30px auto 30px auto;
+  width:81%;
+  height:auto;
+  display: inline-block;
+  text-align: center;
+}
+
+.emulator-secres-container
+{
+    position:relative;
+  min-width:350px;
+  margin:30px auto 30px auto;
+  width:81%;
+  height:auto;
+  display: inline-block;
+  text-align: center;
+}
+
+.emulator-tertres-container
+{
+  position:relative;
+  min-width:350px;
+  margin:30px auto 30px auto;
+  width:81%;
+  height:auto;
+  display: inline-block;
+  text-align: center;
+}
+
+
+.tables-container
+{
+    position:relative;
+    min-width:350px;
+    margin:30px auto 30px auto;
+    width:81%;
+    height:auto;
+    display: block;
+    background-color: #faf9f9;
+    text-align: justify;
+}
+
+/***************************************************************/
+.sub-row th
+{
+    padding-left: 20px;
+}
+
+.heading-row-color
+{
+    background-color: #dff8ff;
+}
+
+.heading-row-color th
+{
+    background-color: #dff8ff;
+}

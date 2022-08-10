@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-DatingSiteApplication<final-project-back-end>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "com.example.datingSite.DatingSiteApplication",
+            "projectName": "final-project-back-end",
+            "args": ""
+        }
+    ]
+}

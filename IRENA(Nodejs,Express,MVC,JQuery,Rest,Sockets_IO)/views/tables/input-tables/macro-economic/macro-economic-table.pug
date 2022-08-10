@@ -1,0 +1,132 @@
+table(id='valuationInputTable-Cap' class='macro-economic-table inline')
+      thead
+        tr
+          th(colspan="3" class='table-header table-header-text') - MACRO ECONOMIC -  
+        tr
+          th(class ='table-header-field table-header-field-title')
+          |
+          th(class ='table-header-field table-header-field-title') Unit
+          |
+          th(class ='table-header-field table-header-field-title') Value
+
+      tbody
+      tr
+        th(class ='table-items-description table-items-description-text') Population
+        |
+        td(class ='table-items-description-content')
+        |
+        td(class ='table-items-description-content')
+          input.grid-layout-textboxes.form-control#popul(type='text' name='popul')
+        | 
+      tr
+        th(class ='table-items-description table-items-description-text') Carbon Cost
+        | 
+        td(class ='table-items-description-content') $/Metric Ton
+        |
+        td(class ='table-items-description-content')
+          input.grid-layout-textboxes.form-control#carboncost(type='text' name='carboncost')
+        |                   
+      // /tr
+      tr
+        th(class ='table-items-description table-items-description-text') Length of Transmission Lines
+        | 
+        td(class ='table-items-description-content') Km
+        |
+        td(class ='table-items-description-content')
+          input.grid-layout-textboxes.form-control#translength(type='text' name='translength')
+        |          
+      // /tr
+      tr
+        th(class ='table-items-description table-items-description-text') Length of Distribution Lines
+        |
+        td(class ='table-items-description-content') Km
+        |
+        td(class ='table-items-description-content')
+          input.grid-layout-textboxes.form-control#distlength(type='text' name='distlength')     
+        tr
+          th(class ='table-items-description table-items-description-text') Planning Reserve Margin
+          |          
+          td(class ='table-items-description-content') % (0 - 100)
+          |
+          td(class ='table-items-description-content')
+            input.grid-layout-textboxes.form-control#planresmargin(type='text' name='planresmargin')
+
+        // /tr
+        tr
+          th(class ='table-items-description table-items-description-text') Transmission Congestion Indicator
+          |
+          td(class ='table-items-description-content') % (0 - 100)
+          |          
+          td(class ='table-items-description-content')
+            input.grid-layout-textboxes.form-control#transcongind(type='text' name='transcongind')
+
+        // /tr
+        tr
+          th(class ='table-items-description table-items-description-text') Demand Forecast Risk
+          |
+          td(class ='table-items-description-content') % (0 - 100)
+          |          
+          td(class ='table-items-description-content')
+            input.grid-layout-textboxes.form-control#demforrisk(type='text' name='demforrisk')
+
+        // /tr
+        tr
+          th(class ='table-items-description table-items-description-text') Geo Diversity Indicator
+          |
+          td(class ='table-items-description-content') % (0 - 100)
+          |          
+          td(class ='table-items-description-content')
+            input.grid-layout-textboxes.form-control#geodivind(type='text' name='geodivind')
+
+        // /tr
+        tr
+          th(class ='table-items-description table-items-description-text') Outage Indices
+          |
+          td(class ='table-items-description-content') Hours
+          |          
+          td(class ='table-items-description-content')
+            input.grid-layout-textboxes.form-control#outageIndices(type='text' name='outageIndices')
+
+        // /tr
+        tr
+          th(class ='table-items-description table-items-description-text') Value of Loss Load
+          |
+          td(class ='table-items-description-content') $/MWh
+          |          
+          td(class ='table-items-description-content')
+            input.grid-layout-textboxes.form-control#vallossload(type='text' name='vallossload')
+
+        // /tr
+        tr
+          th(class ='table-items-description table-items-description-text') Renewables Output Forecast Risk
+          |
+          td(class ='table-items-description-content') % (0 - 100)
+          |          
+          td(class ='table-items-description-content')
+            input.grid-layout-textboxes.form-control#renoutforrisk(type='text' name='renoutforrisk' value='10')
+
+        // /tr
+        tr
+          th(class ='table-items-description table-items-description-text') Frequency Regulation Market Payment or Value
+          | 
+          td(class ='table-items-description-content') $/MW
+          |         
+          td(class ='table-items-description-content')
+            input.grid-layout-textboxes.form-control#freregvalue(type='text' name='freregvalue' value='250000')
+
+        // /tr
+        tr
+          th(class ='table-items-description table-items-description-text') Value of Avoided Generation Cost
+          |
+          td(class ='table-items-description-content') $/kW
+          |          
+          td(class ='table-items-description-content')
+            input.grid-layout-textboxes.form-control#peakcapital(type='text' name='peakcapital' value='1200')
+        tr
+          th(class ='table-items-description table-items-description-text') US Dollar to Local Currency Conversion Factor
+          |
+          td(class ='table-items-description-content') N/A
+          |          
+          td(class ='table-items-description-content')
+            input.grid-layout-textboxes.form-control#convfactor(type='text' name='convfactor' value='6.5')
+

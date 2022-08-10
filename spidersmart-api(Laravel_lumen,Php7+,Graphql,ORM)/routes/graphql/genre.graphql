@@ -1,0 +1,47 @@
+# Primary entity type
+type Genre implements RelateableResource {
+  id: Int!
+  name: String!
+  active: Boolean!
+  books: [Book]
+  dateFrom: DateTime
+  dateTo: DateTime
+  relatedFrom: DateTime
+  relatedTo: DateTime
+  __typename: String
+}
+
+input GenreInput {
+  id: Int
+  name: String
+  books: [BookInput]
+  __typename: String
+}
+
+type GenreResponse implements ResponsePayload {
+  success: Boolean
+  data: Genre
+  errors: [String]
+}
+
+type GenreCollectionResponse implements CollectionResponsePayload {
+  data: [Genre]
+  errors: [String]
+  metadata: QueryMetaData
+}
+
+extend type Query {
+  genres(queryOptions: QueryOptionsInput): GenreCollectionResponse! @route(resolver: "Genre@getAll", operation: "retrieveCollection")
+  genre(id: Int!): Genre! @route(resolver: "Genre@get", operation: "retrieve")
+}
+
+extend type Mutation {
+  createGenre(name: String!, active: Boolean): GenreResponse
+    @route(resolver: "Genre@create", operation: "create")
+
+  updateGenre(id: Int!, name: String, active: Boolean): GenreResponse
+    @route(resolver: "Genre@update", operation: "update")
+
+  deleteGenre(id: Int!): GenreResponse
+    @route(resolver: "Genre@delete", operation: "delete")
+}

@@ -1,0 +1,81 @@
+$(document).ready(function() {
+
+  //Change this, the user should come 
+  username = "alevo";
+
+
+  var project
+  var run
+
+  var reqProject=
+  	{
+        "action"  : "RETRIEVE_PROJECTS",
+        "username": username
+	}
+ var reqRun=
+  	{
+        "action"  : "RETRIEVE_RUNS",
+        "username": username,
+	}
+
+	var $projects = $("#project-options");
+	var $runs = $('#run-options');
+
+	//Load list of projects to options when page is loaded
+	console.log('Calling SLT API')
+	$.post('get-projects',reqProject,
+		function(msg){
+			res=$.parseJSON(msg);
+			updateSelection1($projects,res['projects'],'Project');
+
+	})
+
+	$projects.change(function(){
+		//define the project 
+		project = $(this).val();		
+		reqRun['project']=project;
+
+		//Update the run options
+		
+		console.log('Calling SLT API')
+		if (typeof reqRun['project'] == 'undefined'){
+			console.log('project is undefined')
+		}
+		else{
+			$.post('get-projects',reqRun,
+				function(msg){
+					res=$.parseJSON(msg);
+					updateSelection1($runs,res['runs'],'Run');
+
+			})
+		}
+	
+		
+	});
+
+
+	$runs.on('focus',function(){
+		console.log('Calling SLT API')
+		if (typeof reqRun['project'] == 'undefined'){
+			console.log('project is undefined')
+		}
+	})
+	.change(function(){
+		console.log('On Run: ' + $(this).val())
+	});
+  
+
+
+})
+
+
+function updateSelection1(element,opts,type){
+    var list='<option value=add>Add '+type+'</option>';
+    //console.log(element);
+    console.log(opts);
+    for (var k=0; k<opts.length;k++){
+        list+='<option value='+opts[k]+'>'+opts[k]+'</option>';       
+    }
+    element.html(list);
+    element.trigger("chosen:updated");
+}

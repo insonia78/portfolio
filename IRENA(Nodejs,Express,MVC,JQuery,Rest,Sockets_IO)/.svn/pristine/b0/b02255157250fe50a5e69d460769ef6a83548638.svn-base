@@ -1,0 +1,71 @@
+table#hydro-monthly-energy.table.table-striped.table-bordered.table-hover
+  thead
+    tr
+      th.col-lg-2 
+      |
+      th Jan
+      |      
+      th Feb
+      |         
+      th Mar
+      |         
+      th Apr
+      |         
+      th May
+      |         
+      th Jun
+      |
+      th Jul
+      |      
+      th Aug
+      |         
+      th Sep
+      |         
+      th Oct
+      |         
+      th Nov
+      |         
+      th Dec
+
+    // /tr
+  // thead
+  tbody
+  
+    tr
+      th Montly Energy (GWh)
+      |              
+      td 
+        input.form-control#HydroM1(type='text' name='HydroM1' value=120000)
+      |
+      td 
+        input.form-control#HydroM2(type='text' name='HydroM2' value=130000)
+      |
+      td 
+        input.form-control#HydroM3(type='text' name='HydroM3' value=150000)
+      |
+      td 
+        input.form-control#HydroM4(type='text' name='HydroM4' value=160000)
+      |
+      td 
+        input.form-control#HydroM5(type='text' name='HydroM5' value=190000)
+      |
+      td 
+        input.form-control#HydroM6(type='text' name='HydroM6' value=125000)
+      |              
+      td 
+        input.form-control#HydroM7(type='text' name='HydroM7' value=136000)
+      |
+      td 
+        input.form-control#HydroM8(type='text' name='HydroM8' value=114000)
+      |
+      td 
+        input.form-control#HydroM9(type='text' name='HydroM9' value=120000)
+      |
+      td 
+        input.form-control#HydroM10(type='text' name='HydroM10' value=178000)
+      |
+      td 
+        input.form-control#HydroM11(type='text' name='HydroM11' value=170000)
+      |
+      td 
+        input.form-control#HydroM12(type='text' name='HydroM12' value=120000)

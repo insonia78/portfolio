@@ -1,0 +1,31 @@
+<div [formGroup]="form" class="form">
+    <mat-form-field>
+        <mat-label>Center</mat-label>
+        <mat-select formControlName="center" *ngIf="form.disabled" [compareWith]="compareWith">
+            <mat-option [value]="this.form.get('center').value">{{this.form.get('center')?.value?.name}}</mat-option>
+        </mat-select>
+        <mat-select *ngIf="form.enabled" formControlName="center" required placeholder="Choose the center" [compareWith]="compareWith">
+            <mat-option *ngFor="let center of availableCenters" [value]="center">{{center?.name}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <ng-container *ngIf="showSubjects && form.get('center').value !== null">
+        <mat-form-field>
+            <mat-label>Subject</mat-label>
+            <mat-select formControlName="subject" required placeholder="Choose the subject" [compareWith]="compareWith">
+                <mat-option *ngFor="let subject of availableSubjects" [value]="subject">{{subject?.name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field *ngIf="showLevels && form.get('subject').value !== null">
+            <mat-label>Level</mat-label>
+            <mat-select formControlName="level" required placeholder="Choose the level" [compareWith]="compareWith">
+                <mat-option *ngFor="let level of availableLevels" [value]="level">{{level?.name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </ng-container>
+    <button mat-icon-button *ngIf="showRemoveIcon && form.enabled" (click)="remove.emit()" matTooltip="Remove Enrollment" matTooltipPosition="after"><mat-icon>clear</mat-icon></button>
+</div>
+<div>
+    <mat-error *ngIf="form.touched && form?.get('center')?.hasError('required')">You must select an enrollment center</mat-error>
+    <mat-error *ngIf="showSubjects && !form?.get('center')?.hasError('required') && form?.get('subject')?.hasError('required')">You must select an enrollment subject</mat-error>
+    <mat-error *ngIf="showLevels && !form?.get('subject')?.hasError('required') && form?.get('level')?.hasError('required')">You must select an enrollment level</mat-error>
+</div>

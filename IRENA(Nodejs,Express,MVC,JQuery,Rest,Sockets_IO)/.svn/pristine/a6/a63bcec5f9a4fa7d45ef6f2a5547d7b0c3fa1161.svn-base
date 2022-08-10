@@ -1,0 +1,60 @@
+var csv = require("fast-csv");
+var fs = require("fs");
+var HOURS_PER_YEAR = 8760;
+
+function readCsvFilePromise(filePath) {
+    return function (resolve, reject) {
+        console.log('inside readCsvFilePromise')
+
+
+
+
+        var i = 0;
+        var dataArray = new Array(HOURS_PER_YEAR);
+
+        fs.createReadStream(filePath)
+            .pipe(csv())
+            .on(
+            "data",
+            function (data) {
+                dataArray[i] = data[0];
+                ++i;
+            }
+            ).on(
+            "end",
+            function () {
+                resolve(dataArray);
+            }
+            );
+
+    }
+}
+
+
+exports.readProfiles = function (jsonRequest, callback) {
+
+
+    console.log('Inside readProfiles');
+    var profilePromises = jsonRequest.map(function(pathToFile){
+        return new Promise(readCsvFilePromise(pathToFile));
+    });
+
+    Promise.all(profilePromises)
+        .then(
+        function (results) {
+            
+            callback(results);
+            //console.log(results);
+        }
+        )
+        .catch(
+        function (err) {
+            // Will catch failure of first failed promise
+            console.log("Failed:", err);
+        }
+        );
+
+}
+
+
+

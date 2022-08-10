@@ -1,0 +1,47 @@
+#show_database
+{
+  position:absolute;
+  top:350px;
+  left: 70px;
+  z-index:1;
+
+}
+#add_db
+{
+  z-index:1;
+  position:absolute;
+  top:350px;
+  left: 400px;
+
+
+}
+#functionality_workbenck
+{
+  z-index:0;
+  position:absolute;
+  top:370px;
+  background-color:#c9e3fc;
+  width:1500px;
+  height:1300px;
+  
+}
+#db_buttons
+{
+  position:relative;
+  display:inline;
+  
+  top:-450px;
+  left:15px;
+
+}
+#add_functionality
+{
+
+   position:absolute;
+   top:40px;
+   left: 180px;
+
+
+
+
+}

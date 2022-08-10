@@ -1,0 +1,23 @@
+
+
+    .file-list {
+        list-style-type: none;
+        margin: 0 0 1rem;
+        padding: 0;
+    
+        > li {
+            list-style-type: none;
+            display: flex;
+            align-content: center;
+            justify-content: flex-start;
+            align-items: center;
+            justify-items: center;
+    
+            .delete-file {
+                margin-left: 1rem;
+                color: #c00;
+                font-size: 20px;
+                cursor: pointer;
+            }
+        }
+    }

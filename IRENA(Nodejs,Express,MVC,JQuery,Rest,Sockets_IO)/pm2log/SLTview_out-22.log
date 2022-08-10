@@ -1,0 +1,751 @@
+02-05-2018 17:04 +00:00: { wiki: 
+   { url: 'https://35.185.103.150:4000/STORAGE-BENEFITS-TOOL',
+     port: 4000 },
+  api: { hostname: 'localhost', port: 3333 },
+  datafiles: 
+   { path: '/opt/slt_data',
+     inpath: '/home/gonzales1609/IRENA/SLTview' } }
+02-05-2018 17:05 +00:00: [0mGET / [32m200 [0m362.083 ms - 3470[0m
+02-05-2018 17:05 +00:00: [0mGET /stylesheets/layout-newLook.css [32m200 [0m3.694 ms - 2303[0m
+02-05-2018 17:05 +00:00: [0mGET /stylesheets/circle-timer/circle.css [32m200 [0m1.475 ms - 1888[0m
+02-05-2018 17:05 +00:00: [0mGET /stylesheets/pop-up-boxes/pop-up-box-list.css [32m200 [0m1.514 ms - 2956[0m
+02-05-2018 17:05 +00:00: [0mGET /stylesheets/welcome-page/welcome-page.css [32m200 [0m0.695 ms - 1242[0m
+02-05-2018 17:05 +00:00: [0mGET /js/pop-up-boxes/error-message-pop-up.js [32m200 [0m0.715 ms - 359[0m
+02-05-2018 17:05 +00:00: [0mGET /js/circle-timer/circle-timer.js [32m200 [0m3.454 ms - 6520[0m
+02-05-2018 17:05 +00:00: [0mGET /js/pop-up-boxes/log-in-pop-up.js [32m200 [0m1.254 ms - 3644[0m
+02-05-2018 17:05 +00:00: [0mGET /js/log-in/log-in.js [32m200 [0m0.596 ms - 451[0m
+02-05-2018 17:05 +00:00: [0mGET /images/acelerex-logo.png [32m200 [0m1.528 ms - 28837[0m
+02-05-2018 17:05 +00:00: [0mGET /images/_wind.PNG [32m200 [0m1.313 ms - 397445[0m
+02-05-2018 17:05 +00:00: - REQ_CREDENTIAL_VALIDATION ::ffff:204.9.220.50
+02-05-2018 17:05 +00:00: - ProcessRequest  ::ffff:204.9.220.50
+- REQ_CREDENTIAL_VALIDATION >> REQUESTING FTP CALL ::ffff:204.9.220.50
+02-05-2018 17:05 +00:00: - TCP >> makeHttpsRequest
+02-05-2018 17:05 +00:00: - TCP >> Waiting for Data
+02-05-2018 17:05 +00:00:  - TCP CALL REQUESTED >> ::ffff:204.9.220.50
+02-05-2018 17:05 +00:00:  - End
+02-05-2018 17:05 +00:00: - TCP >> Connected
+02-05-2018 17:05 +00:00: {"request":"8001:REQ_CREDENTIAL_VALIDATION","username":"a","password":"a","reqIp":"::ffff:204.9.220.50"}
+02-05-2018 17:05 +00:00: - TCP >> Received: {
+    "reqIp": "::ffff:204.9.220.50",
+    "response": "7000:CREDENTIAL_ACCEPTED",
+    "token": "uiv%eWHhnHc9xcCXR@NV",
+    "username": "a"
+}
+
+02-05-2018 17:05 +00:00: - TCP >> Connection closed
+02-05-2018 17:05 +00:00: Tcp console {
+    "reqIp": "::ffff:204.9.220.50",
+    "response": "7000:CREDENTIAL_ACCEPTED",
+    "token": "uiv%eWHhnHc9xcCXR@NV",
+    "username": "a"
+}
+
+02-05-2018 17:05 +00:00: - Process response for ::ffff:204.9.220.50
+response {
+    "reqIp": "::ffff:204.9.220.50",
+    "response": "7000:CREDENTIAL_ACCEPTED",
+    "token": "uiv%eWHhnHc9xcCXR@NV",
+    "username": "a"
+}
+
+02-05-2018 17:05 +00:00: - Accepted >> a
+02-05-2018 17:05 +00:00: - SetUpInstance ::ffff:204.9.220.50
+02-05-2018 17:05 +00:00: ports:0
+02-05-2018 17:05 +00:00: port:8015:-1
+- Appending Session to File ::ffff:204.9.220.50
+02-05-2018 17:05 +00:00: - Starting Session for::ffff:204.9.220.50 on port 8015
+02-05-2018 17:05 +00:00: - sending response
+02-05-2018 17:05 +00:00: - Activating server on port 8015
+02-05-2018 17:05 +00:00: [0mPOST /REQ_CREDENTIAL_VALIDATION [32m200 [0m233.463 ms - 89[0m
+02-05-2018 17:05 +00:00: - Making executable
+02-05-2018 17:05 +00:00: launching the file
+stderr: 
+02-05-2018 17:07 +00:00: [0mGET / [32m200 [0m113.981 ms - 3470[0m
+02-05-2018 17:07 +00:00: [0mGET /stylesheets/layout-newLook.css [32m200 [0m0.828 ms - 2303[0m
+02-05-2018 17:07 +00:00: [0mGET /stylesheets/circle-timer/circle.css [32m200 [0m0.961 ms - 1888[0m
+02-05-2018 17:07 +00:00: [0mGET /stylesheets/pop-up-boxes/pop-up-box-list.css [32m200 [0m1.046 ms - 2956[0m
+02-05-2018 17:07 +00:00: [0mGET /stylesheets/welcome-page/welcome-page.css [32m200 [0m1.328 ms - 1242[0m
+02-05-2018 17:07 +00:00: [0mGET /js/pop-up-boxes/error-message-pop-up.js [32m200 [0m0.630 ms - 359[0m
+02-05-2018 17:07 +00:00: [0mGET /js/pop-up-boxes/log-in-pop-up.js [32m200 [0m0.836 ms - 3644[0m
+02-05-2018 17:07 +00:00: [0mGET /js/circle-timer/circle-timer.js [32m200 [0m0.664 ms - 6520[0m
+02-05-2018 17:07 +00:00: [0mGET /js/log-in/log-in.js [32m200 [0m0.765 ms - 451[0m
+02-05-2018 17:07 +00:00: [0mGET /images/acelerex-logo.png [32m200 [0m0.610 ms - 28837[0m
+02-05-2018 17:07 +00:00: [0mGET /images/_wind.PNG [32m200 [0m1.323 ms - 397445[0m
+02-05-2018 17:07 +00:00: - REQ_CREDENTIAL_VALIDATION ::ffff:204.9.220.50
+02-05-2018 17:07 +00:00: - ProcessRequest  ::ffff:204.9.220.50
+- REQ_CREDENTIAL_VALIDATION >> REQUESTING FTP CALL ::ffff:204.9.220.50
+- TCP >> makeHttpsRequest
+- TCP >> Waiting for Data
+ - TCP CALL REQUESTED >> ::ffff:204.9.220.50
+ - End
+- TCP >> Connected
+{"request":"8001:REQ_CREDENTIAL_VALIDATION","username":"a","password":"a","reqIp":"::ffff:204.9.220.50"}
+02-05-2018 17:07 +00:00: - TCP >> Received: {
+    "reqIp": "::ffff:204.9.220.50",
+    "response": "7000:CREDENTIAL_ACCEPTED",
+    "token": "pXy1Wof&KxZ1poNxqN2F",
+    "username": "a"
+}
+
+02-05-2018 17:07 +00:00: - TCP >> Connection closed
+02-05-2018 17:07 +00:00: Tcp console {
+    "reqIp": "::ffff:204.9.220.50",
+    "response": "7000:CREDENTIAL_ACCEPTED",
+    "token": "pXy1Wof&KxZ1poNxqN2F",
+    "username": "a"
+}
+
+02-05-2018 17:07 +00:00: - Process response for ::ffff:204.9.220.50
+response {
+    "reqIp": "::ffff:204.9.220.50",
+    "response": "7000:CREDENTIAL_ACCEPTED",
+    "token": "pXy1Wof&KxZ1poNxqN2F",
+    "username": "a"
+}
+
+- Accepted >> a
+02-05-2018 17:07 +00:00: a:a
+- Reactivating Session for username >> a
+ - Reading Session File
+a:a
+ - Writting To Session File
+02-05-2018 17:07 +00:00: - sending response
+02-05-2018 17:07 +00:00: [0mPOST /REQ_CREDENTIAL_VALIDATION [32m200 [0m191.215 ms - 74[0m
+02-05-2018 17:08 +00:00: [0mGET / [32m200 [0m79.142 ms - 3470[0m
+02-05-2018 17:08 +00:00: [0mGET /stylesheets/layout-newLook.css [32m200 [0m0.773 ms - 2303[0m
+02-05-2018 17:08 +00:00: [0mGET /stylesheets/circle-timer/circle.css [32m200 [0m0.682 ms - 1888[0m
+02-05-2018 17:08 +00:00: [0mGET /stylesheets/welcome-page/welcome-page.css [32m200 [0m0.756 ms - 1242[0m
+02-05-2018 17:08 +00:00: [0mGET /stylesheets/pop-up-boxes/pop-up-box-list.css [32m200 [0m0.730 ms - 2956[0m
+02-05-2018 17:08 +00:00: [0mGET /js/pop-up-boxes/error-message-pop-up.js [32m200 [0m0.595 ms - 359[0m
+02-05-2018 17:08 +00:00: [0mGET /js/pop-up-boxes/log-in-pop-up.js [32m200 [0m0.693 ms - 3644[0m
+02-05-2018 17:08 +00:00: [0mGET /js/circle-timer/circle-timer.js [32m200 [0m0.621 ms - 6520[0m
+02-05-2018 17:08 +00:00: [0mGET /js/log-in/log-in.js [32m200 [0m2.274 ms - 451[0m
+02-05-2018 17:08 +00:00: [0mGET /images/acelerex-logo.png [32m200 [0m1.304 ms - 28837[0m
+02-05-2018 17:08 +00:00: [0mGET /images/_wind.PNG [32m200 [0m0.873 ms - 397445[0m
+02-05-2018 17:08 +00:00: - REQ_CREDENTIAL_VALIDATION ::ffff:204.9.220.50
+- ProcessRequest  ::ffff:204.9.220.50
+02-05-2018 17:08 +00:00: - REQ_CREDENTIAL_VALIDATION >> REQUESTING FTP CALL ::ffff:204.9.220.50
+- TCP >> makeHttpsRequest
+- TCP >> Waiting for Data
+02-05-2018 17:08 +00:00:  - TCP CALL REQUESTED >> ::ffff:204.9.220.50
+ - End
+02-05-2018 17:08 +00:00: - TCP >> Connected
+{"request":"8001:REQ_CREDENTIAL_VALIDATION","username":"c","password":"c","reqIp":"::ffff:204.9.220.50"}
+02-05-2018 17:08 +00:00: - TCP >> Received: {
+    "reqIp": "::ffff:204.9.220.50",
+    "response": "7000:CREDENTIAL_ACCEPTED",
+    "token": "H&A%Q#p8K3dJ0Qxwu9uL",
+    "username": "c"
+}
+
+02-05-2018 17:08 +00:00: - TCP >> Connection closed
+02-05-2018 17:08 +00:00: Tcp console {
+    "reqIp": "::ffff:204.9.220.50",
+    "response": "7000:CREDENTIAL_ACCEPTED",
+    "token": "H&A%Q#p8K3dJ0Qxwu9uL",
+    "username": "c"
+}
+
+02-05-2018 17:08 +00:00: - Process response for ::ffff:204.9.220.50
+response {
+    "reqIp": "::ffff:204.9.220.50",
+    "response": "7000:CREDENTIAL_ACCEPTED",
+    "token": "H&A%Q#p8K3dJ0Qxwu9uL",
+    "username": "c"
+}
+
+- Accepted >> c
+a:c
+- SetUpInstance ::ffff:204.9.220.50
+02-05-2018 17:08 +00:00: ports:1
+02-05-2018 17:08 +00:00: port:8016:-1
+- Appending Session to File ::ffff:204.9.220.50
+02-05-2018 17:08 +00:00: - Starting Session for::ffff:204.9.220.50 on port 8016
+02-05-2018 17:08 +00:00: - sending response
+02-05-2018 17:08 +00:00: - Activating server on port 8016
+02-05-2018 17:08 +00:00: [0mPOST /REQ_CREDENTIAL_VALIDATION [32m200 [0m182.643 ms - 89[0m
+02-05-2018 17:08 +00:00: - Making executable
+02-05-2018 17:08 +00:00: launching the file
+02-05-2018 17:08 +00:00: stderr: 
+02-05-2018 18:18 +00:00: [0mGET / [32m200 [0m75.925 ms - 3470[0m
+02-05-2018 18:18 +00:00: [0mGET /stylesheets/layout-newLook.css [32m200 [0m0.727 ms - 2303[0m
+02-05-2018 18:18 +00:00: [0mGET /stylesheets/circle-timer/circle.css [32m200 [0m0.610 ms - 1888[0m
+02-05-2018 18:18 +00:00: [0mGET /images/acelerex-logo.png [32m200 [0m1.097 ms - 28837[0m
+02-05-2018 18:18 +00:00: [0mGET /js/circle-timer/circle-timer.js [32m200 [0m0.768 ms - 6520[0m
+02-05-2018 20:03 +00:00: - REQ_CREDENTIAL_VALIDATION ::ffff:127.0.0.1
+02-05-2018 20:03 +00:00: - ProcessRequest  ::ffff:127.0.0.1
+- REQ_CREDENTIAL_VALIDATION >> REQUESTING FTP CALL ::ffff:127.0.0.1
+- TCP >> makeHttpsRequest
+- TCP >> Waiting for Data
+ - TCP CALL REQUESTED >> ::ffff:127.0.0.1
+ - End
+02-05-2018 20:03 +00:00: - TCP >> Connected
+{"request":"8001:REQ_CREDENTIAL_VALIDATION","username":"a","password":"a","reqIp":"::ffff:127.0.0.1"}
+02-05-2018 20:03 +00:00: - REQ_CREDENTIAL_VALIDATION ::ffff:127.0.0.1
+02-05-2018 20:03 +00:00: - ProcessRequest  ::ffff:127.0.0.1
+02-05-2018 20:03 +00:00: - REQ_CREDENTIAL_VALIDATION >> REQUESTING FTP CALL ::ffff:127.0.0.1
+- TCP >> makeHttpsRequest
+02-05-2018 20:03 +00:00: - TCP >> Waiting for Data
+02-05-2018 20:03 +00:00:  - TCP CALL REQUESTED >> ::ffff:127.0.0.1
+ - End
+02-05-2018 20:03 +00:00: - TCP >> Connected
+{"request":"8001:REQ_CREDENTIAL_VALIDATION","username":"c","password":"c","reqIp":"::ffff:127.0.0.1"}
+02-05-2018 20:03 +00:00: - REQ_CREDENTIAL_VALIDATION ::ffff:127.0.0.1
+02-05-2018 20:03 +00:00: - ProcessRequest  ::ffff:127.0.0.1
+- REQ_CREDENTIAL_VALIDATION >> REQUESTING FTP CALL ::ffff:127.0.0.1
+- TCP >> makeHttpsRequest
+- TCP >> Waiting for Data
+ - TCP CALL REQUESTED >> ::ffff:127.0.0.1
+ - End
+02-05-2018 20:03 +00:00: - TCP >> Connected
+{"request":"8001:REQ_CREDENTIAL_VALIDATION","username":"b","password":"b","reqIp":"::ffff:127.0.0.1"}
+02-05-2018 20:03 +00:00: - REQ_CREDENTIAL_VALIDATION ::ffff:127.0.0.1
+02-05-2018 20:03 +00:00: - ProcessRequest  ::ffff:127.0.0.1
+02-05-2018 20:03 +00:00: - REQ_CREDENTIAL_VALIDATION >> REQUESTING FTP CALL ::ffff:127.0.0.1
+02-05-2018 20:03 +00:00: - TCP >> makeHttpsRequest
+02-05-2018 20:03 +00:00: - TCP >> Waiting for Data
+02-05-2018 20:03 +00:00:  - TCP CALL REQUESTED >> ::ffff:127.0.0.1
+02-05-2018 20:03 +00:00:  - End
+02-05-2018 20:03 +00:00: - TCP >> Connected
+{"request":"8001:REQ_CREDENTIAL_VALIDATION","username":"d","password":"d","reqIp":"::ffff:127.0.0.1"}
+02-05-2018 20:03 +00:00: - TCP >> Received: {
+    "reqIp": "::ffff:127.0.0.1",
+    "response": "7000:CREDENTIAL_ACCEPTED",
+    "token": "D*4pxz)XBbKQ4HUC)Q(9",
+    "username": "a"
+}
+
+02-05-2018 20:03 +00:00: - TCP >> Connection closed
+02-05-2018 20:03 +00:00: - REQ_CREDENTIAL_VALIDATION ::ffff:127.0.0.1
+02-05-2018 20:03 +00:00: - ProcessRequest  ::ffff:127.0.0.1
+- REQ_CREDENTIAL_VALIDATION >> REQUESTING FTP CALL ::ffff:127.0.0.1
+- TCP >> makeHttpsRequest
+- TCP >> Waiting for Data
+ - TCP CALL REQUESTED >> ::ffff:127.0.0.1
+ - End
+02-05-2018 20:03 +00:00: - TCP >> Connected
+{"request":"8001:REQ_CREDENTIAL_VALIDATION","username":"n","password":"n","reqIp":"::ffff:127.0.0.1"}
+02-05-2018 20:03 +00:00: - TCP >> Received: {
+    "reqIp": "::ffff:127.0.0.1",
+    "response": "7000:CREDENTIAL_ACCEPTED",
+    "token": "FnMc%P#f7s@lCbgUr)R*",
+    "username": "d"
+}
+
+- TCP >> Connection closed
+02-05-2018 20:03 +00:00: - REQ_CREDENTIAL_VALIDATION ::ffff:127.0.0.1
+02-05-2018 20:03 +00:00: - ProcessRequest  ::ffff:127.0.0.1
+02-05-2018 20:03 +00:00: - REQ_CREDENTIAL_VALIDATION >> REQUESTING FTP CALL ::ffff:127.0.0.1
+02-05-2018 20:03 +00:00: - TCP >> makeHttpsRequest
+02-05-2018 20:03 +00:00: - TCP >> Waiting for Data
+02-05-2018 20:03 +00:00:  - TCP CALL REQUESTED >> ::ffff:127.0.0.1
+02-05-2018 20:03 +00:00:  - End
+02-05-2018 20:03 +00:00: - TCP >> Connected
+02-05-2018 20:03 +00:00: {"request":"8001:REQ_CREDENTIAL_VALIDATION","username":"m","password":"m","reqIp":"::ffff:127.0.0.1"}
+02-05-2018 20:03 +00:00: - TCP >> Received: {
+    "reqIp": "::ffff:127.0.0.1",
+    "response": "7000:CREDENTIAL_ACCEPTED",
+    "token": "&17KDtnd78M&PxThHGns",
+    "username": "b"
+}
+
+02-05-2018 20:03 +00:00: - TCP >> Connection closed
+02-05-2018 20:03 +00:00: - TCP >> Received: {
+    "reqIp": "::ffff:127.0.0.1",
+    "response": "7000:CREDENTIAL_ACCEPTED",
+    "token": "#yw%zISK2WAlF3BvjEUi",
+    "username": "c"
+}
+
+02-05-2018 20:03 +00:00: - TCP >> Connection closed
+02-05-2018 20:03 +00:00: - TCP >> Received: {
+    "reqIp": "::ffff:127.0.0.1",
+    "response": "7000:CREDENTIAL_ACCEPTED",
+    "token": "%)8*Z26jBhw#pnqRB0(6",
+    "username": "m"
+}
+
+02-05-2018 20:03 +00:00: - TCP >> Connection closed
+02-05-2018 20:03 +00:00: Tcp console {
+    "reqIp": "::ffff:127.0.0.1",
+    "response": "7000:CREDENTIAL_ACCEPTED",
+    "token": "%)8*Z26jBhw#pnqRB0(6",
+    "username": "m"
+}
+
+- Process response for ::ffff:127.0.0.1
+response {
+    "reqIp": "::ffff:127.0.0.1",
+    "response": "7000:CREDENTIAL_ACCEPTED",
+    "token": "%)8*Z26jBhw#pnqRB0(6",
+    "username": "m"
+}
+
+- Accepted >> m
+a:m
+c:m
+- SetUpInstance ::ffff:127.0.0.1
+02-05-2018 20:03 +00:00: ports:2
+port:8017:-1
+- Appending Session to File ::ffff:127.0.0.1
+- Starting Session for::ffff:127.0.0.1 on port 8017
+02-05-2018 20:03 +00:00: Tcp console {
+    "reqIp": "::ffff:127.0.0.1",
+    "response": "7000:CREDENTIAL_ACCEPTED",
+    "token": "%)8*Z26jBhw#pnqRB0(6",
+    "username": "m"
+}
+
+02-05-2018 20:03 +00:00: - Process response for ::ffff:127.0.0.1
+response {
+    "reqIp": "::ffff:127.0.0.1",
+    "response": "7000:CREDENTIAL_ACCEPTED",
+    "token": "%)8*Z26jBhw#pnqRB0(6",
+    "username": "m"
+}
+
+- Accepted >> m
+c:m
+m:m
+- Reactivating Session for username >> m
+02-05-2018 20:03 +00:00:  - Reading Session File
+02-05-2018 20:03 +00:00: c:m
+m:m
+02-05-2018 20:03 +00:00:  - Writting To Session File
+02-05-2018 20:03 +00:00: - TCP >> Received: {
+    "reqIp": "::ffff:127.0.0.1",
+    "response": "7000:CREDENTIAL_ACCEPTED",
+    "token": "nrDuErAF3(cS*P8m&Tag",
+    "username": "n"
+}
+
+02-05-2018 20:03 +00:00: - TCP >> Connection closed
+02-05-2018 20:03 +00:00: Tcp console {
+    "reqIp": "::ffff:127.0.0.1",
+    "response": "7000:CREDENTIAL_ACCEPTED",
+    "token": "nrDuErAF3(cS*P8m&Tag",
+    "username": "n"
+}
+
+02-05-2018 20:03 +00:00: - Process response for ::ffff:127.0.0.1
+response {
+    "reqIp": "::ffff:127.0.0.1",
+    "response": "7000:CREDENTIAL_ACCEPTED",
+    "token": "nrDuErAF3(cS*P8m&Tag",
+    "username": "n"
+}
+
+- Accepted >> n
+c:n
+m:n
+- SetUpInstance ::ffff:127.0.0.1
+02-05-2018 20:03 +00:00: ports:2
+port:8017:1
+Busy port:8017
+ports:2
+02-05-2018 20:03 +00:00: port:8018:-1
+- Appending Session to File ::ffff:127.0.0.1
+- Starting Session for::ffff:127.0.0.1 on port 8018
+02-05-2018 20:03 +00:00: Tcp console {
+    "reqIp": "::ffff:127.0.0.1",
+    "response": "7000:CREDENTIAL_ACCEPTED",
+    "token": "nrDuErAF3(cS*P8m&Tag",
+    "username": "n"
+}
+
+02-05-2018 20:03 +00:00: - Process response for ::ffff:127.0.0.1
+02-05-2018 20:03 +00:00: response {
+    "reqIp": "::ffff:127.0.0.1",
+    "response": "7000:CREDENTIAL_ACCEPTED",
+    "token": "nrDuErAF3(cS*P8m&Tag",
+    "username": "n"
+}
+
+02-05-2018 20:03 +00:00: - Accepted >> n
+m:n
+n:n
+- Reactivating Session for username >> n
+ - Reading Session File
+02-05-2018 20:03 +00:00: m:n
+02-05-2018 20:03 +00:00: n:n
+ - Writting To Session File
+02-05-2018 20:03 +00:00: Tcp console {
+    "reqIp": "::ffff:127.0.0.1",
+    "response": "7000:CREDENTIAL_ACCEPTED",
+    "token": "nrDuErAF3(cS*P8m&Tag",
+    "username": "n"
+}
+
+02-05-2018 20:03 +00:00: - Process response for ::ffff:127.0.0.1
+response {
+    "reqIp": "::ffff:127.0.0.1",
+    "response": "7000:CREDENTIAL_ACCEPTED",
+    "token": "nrDuErAF3(cS*P8m&Tag",
+    "username": "n"
+}
+
+- Accepted >> n
+m:n
+n:n
+- Reactivating Session for username >> n
+ - Reading Session File
+02-05-2018 20:03 +00:00: m:n
+n:n
+ - Writting To Session File
+02-05-2018 20:03 +00:00: Tcp console {
+    "reqIp": "::ffff:127.0.0.1",
+    "response": "7000:CREDENTIAL_ACCEPTED",
+    "token": "nrDuErAF3(cS*P8m&Tag",
+    "username": "n"
+}
+
+- Process response for ::ffff:127.0.0.1
+response {
+    "reqIp": "::ffff:127.0.0.1",
+    "response": "7000:CREDENTIAL_ACCEPTED",
+    "token": "nrDuErAF3(cS*P8m&Tag",
+    "username": "n"
+}
+
+- Accepted >> n
+m:n
+n:n
+- Reactivating Session for username >> n
+ - Reading Session File
+02-05-2018 20:03 +00:00: m:n
+n:n
+ - Writting To Session File
+02-05-2018 20:03 +00:00: - sending response
+02-05-2018 20:03 +00:00: - Activating server on port 8017
+02-05-2018 20:03 +00:00: [0mPOST /REQ_CREDENTIAL_VALIDATION/ [32m200 [0m190.801 ms - 89[0m
+02-05-2018 20:03 +00:00: - sending response
+02-05-2018 20:03 +00:00: [0mPOST /REQ_CREDENTIAL_VALIDATION/ [32m200 [0m197.987 ms - 74[0m
+02-05-2018 20:03 +00:00: - sending response
+- Activating server on port 8018
+02-05-2018 20:03 +00:00: [0mPOST /REQ_CREDENTIAL_VALIDATION/ [32m200 [0m187.645 ms - 89[0m
+02-05-2018 20:03 +00:00: - sending response
+02-05-2018 20:03 +00:00: [0mPOST /REQ_CREDENTIAL_VALIDATION/ [32m200 [0m205.708 ms - 74[0m
+02-05-2018 20:03 +00:00: - Making executable
+02-05-2018 20:03 +00:00: - sending response
+02-05-2018 20:03 +00:00: [0mPOST /REQ_CREDENTIAL_VALIDATION/ [32m200 [0m196.701 ms - 74[0m
+02-05-2018 20:03 +00:00: - sending response
+02-05-2018 20:03 +00:00: [0mPOST /REQ_CREDENTIAL_VALIDATION/ [32m200 [0m186.227 ms - 74[0m
+02-05-2018 20:03 +00:00: - Making executable
+02-05-2018 20:03 +00:00: launching the file
+stderr: 
+02-05-2018 20:03 +00:00: launching the file
+02-05-2018 20:03 +00:00: stderr: 
+02-05-2018 20:04 +00:00: [0mGET / [32m200 [0m105.520 ms - 3470[0m
+02-05-2018 20:04 +00:00: [0mGET /stylesheets/layout-newLook.css [32m200 [0m0.596 ms - 2303[0m
+02-05-2018 20:04 +00:00: [0mGET /stylesheets/circle-timer/circle.css [32m200 [0m0.831 ms - 1888[0m
+02-05-2018 20:04 +00:00: [0mGET /stylesheets/pop-up-boxes/pop-up-box-list.css [32m200 [0m0.532 ms - 2956[0m
+02-05-2018 20:04 +00:00: [0mGET /stylesheets/welcome-page/welcome-page.css [32m200 [0m1.136 ms - 1242[0m
+02-05-2018 20:04 +00:00: [0mGET /js/pop-up-boxes/error-message-pop-up.js [32m200 [0m1.033 ms - 359[0m
+02-05-2018 20:04 +00:00: [0mGET /js/circle-timer/circle-timer.js [32m200 [0m1.876 ms - 6520[0m
+02-05-2018 20:04 +00:00: [0mGET /js/pop-up-boxes/log-in-pop-up.js [32m200 [0m1.689 ms - 3644[0m
+[0mGET /js/log-in/log-in.js [32m200 [0m3.257 ms - 451[0m
+02-05-2018 20:04 +00:00: [0mGET /images/acelerex-logo.png [32m200 [0m1.296 ms - 28837[0m
+02-05-2018 20:04 +00:00: [0mGET /images/_wind.PNG [32m200 [0m1.106 ms - 397445[0m
+02-05-2018 20:04 +00:00: - REQ_CREDENTIAL_VALIDATION ::ffff:204.9.220.50
+02-05-2018 20:04 +00:00: - ProcessRequest  ::ffff:204.9.220.50
+- REQ_CREDENTIAL_VALIDATION >> REQUESTING FTP CALL ::ffff:204.9.220.50
+- TCP >> makeHttpsRequest
+- TCP >> Waiting for Data
+02-05-2018 20:04 +00:00:  - TCP CALL REQUESTED >> ::ffff:204.9.220.50
+ - End
+02-05-2018 20:04 +00:00: - TCP >> Connected
+{"request":"8001:REQ_CREDENTIAL_VALIDATION","username":"a","password":"a","reqIp":"::ffff:204.9.220.50"}
+02-05-2018 20:04 +00:00: - TCP >> Received: {
+    "reqIp": "::ffff:204.9.220.50",
+    "response": "7000:CREDENTIAL_ACCEPTED",
+    "token": "(Cy5MlVtMJxd5oeTGeZV",
+    "username": "a"
+}
+
+02-05-2018 20:04 +00:00: - TCP >> Connection closed
+02-05-2018 20:04 +00:00: Tcp console {
+    "reqIp": "::ffff:204.9.220.50",
+    "response": "7000:CREDENTIAL_ACCEPTED",
+    "token": "(Cy5MlVtMJxd5oeTGeZV",
+    "username": "a"
+}
+
+- Process response for ::ffff:204.9.220.50
+02-05-2018 20:04 +00:00: response {
+    "reqIp": "::ffff:204.9.220.50",
+    "response": "7000:CREDENTIAL_ACCEPTED",
+    "token": "(Cy5MlVtMJxd5oeTGeZV",
+    "username": "a"
+}
+
+- Accepted >> a
+m:a
+c:a
+- SetUpInstance ::ffff:204.9.220.50
+02-05-2018 20:04 +00:00: ports:3
+02-05-2018 20:04 +00:00: port:8019:-1
+- Appending Session to File ::ffff:204.9.220.50
+02-05-2018 20:04 +00:00: - Starting Session for::ffff:204.9.220.50 on port 8019
+02-05-2018 20:04 +00:00: - sending response
+02-05-2018 20:04 +00:00: - Activating server on port 8019
+02-05-2018 20:04 +00:00: [0mPOST /REQ_CREDENTIAL_VALIDATION [32m200 [0m214.340 ms - 89[0m
+02-05-2018 20:04 +00:00: - Making executable
+02-05-2018 20:04 +00:00: launching the file
+stderr: 
+02-05-2018 20:04 +00:00: [0mGET / [32m200 [0m77.309 ms - 3470[0m
+02-05-2018 20:04 +00:00: [0mGET /stylesheets/layout-newLook.css [32m200 [0m0.712 ms - 2303[0m
+02-05-2018 20:04 +00:00: [0mGET /stylesheets/circle-timer/circle.css [32m200 [0m1.844 ms - 1888[0m
+02-05-2018 20:04 +00:00: [0mGET /stylesheets/welcome-page/welcome-page.css [32m200 [0m1.985 ms - 1242[0m
+02-05-2018 20:04 +00:00: [0mGET /stylesheets/pop-up-boxes/pop-up-box-list.css [32m200 [0m0.560 ms - 2956[0m
+02-05-2018 20:04 +00:00: [0mGET /js/pop-up-boxes/error-message-pop-up.js [36m304 [0m1.343 ms - -[0m
+02-05-2018 20:04 +00:00: [0mGET /js/pop-up-boxes/log-in-pop-up.js [36m304 [0m2.279 ms - -[0m
+02-05-2018 20:04 +00:00: [0mGET /images/acelerex-logo.png [36m304 [0m0.406 ms - -[0m
+02-05-2018 20:04 +00:00: [0mGET /js/circle-timer/circle-timer.js [36m304 [0m0.466 ms - -[0m
+02-05-2018 20:04 +00:00: [0mGET /js/log-in/log-in.js [36m304 [0m0.393 ms - -[0m
+02-05-2018 20:04 +00:00: [0mGET /images/_wind.PNG [36m304 [0m0.339 ms - -[0m
+02-05-2018 20:04 +00:00: - REQ_CREDENTIAL_VALIDATION ::ffff:127.0.0.1
+- ProcessRequest  ::ffff:127.0.0.1
+- REQ_CREDENTIAL_VALIDATION >> REQUESTING FTP CALL ::ffff:127.0.0.1
+- TCP >> makeHttpsRequest
+- TCP >> Waiting for Data
+ - TCP CALL REQUESTED >> ::ffff:127.0.0.1
+ - End
+02-05-2018 20:04 +00:00: - TCP >> Connected
+{"request":"8001:REQ_CREDENTIAL_VALIDATION","username":"b","password":"b","reqIp":"::ffff:127.0.0.1"}
+02-05-2018 20:04 +00:00: - REQ_CREDENTIAL_VALIDATION ::ffff:127.0.0.1
+- ProcessRequest  ::ffff:127.0.0.1
+- REQ_CREDENTIAL_VALIDATION >> REQUESTING FTP CALL ::ffff:127.0.0.1
+- TCP >> makeHttpsRequest
+- TCP >> Waiting for Data
+ - TCP CALL REQUESTED >> ::ffff:127.0.0.1
+ - End
+02-05-2018 20:04 +00:00: - TCP >> Connected
+{"request":"8001:REQ_CREDENTIAL_VALIDATION","username":"c","password":"c","reqIp":"::ffff:127.0.0.1"}
+02-05-2018 20:04 +00:00: - TCP >> Received: {
+    "reqIp": "::ffff:127.0.0.1",
+    "response": "7000:CREDENTIAL_ACCEPTED",
+    "token": "(UW*8iEaeQLX($WAQmw7",
+    "username": "b"
+}
+
+- TCP >> Connection closed
+02-05-2018 20:04 +00:00: - TCP >> Received: {
+    "reqIp": "::ffff:127.0.0.1",
+    "response": "7000:CREDENTIAL_ACCEPTED",
+    "token": "9$3BFyY9AGz)*eRU)YHy",
+    "username": "c"
+}
+
+- TCP >> Connection closed
+02-05-2018 20:04 +00:00: Tcp console {
+    "reqIp": "::ffff:127.0.0.1",
+    "response": "7000:CREDENTIAL_ACCEPTED",
+    "token": "9$3BFyY9AGz)*eRU)YHy",
+    "username": "c"
+}
+
+02-05-2018 20:04 +00:00: - Process response for ::ffff:127.0.0.1
+response {
+    "reqIp": "::ffff:127.0.0.1",
+    "response": "7000:CREDENTIAL_ACCEPTED",
+    "token": "9$3BFyY9AGz)*eRU)YHy",
+    "username": "c"
+}
+
+- Accepted >> c
+c:c
+- Reactivating Session for username >> c
+ - Reading Session File
+02-05-2018 20:04 +00:00: c:c
+02-05-2018 20:04 +00:00:  - Writting To Session File
+02-05-2018 20:04 +00:00: - REQ_CREDENTIAL_VALIDATION ::ffff:127.0.0.1
+02-05-2018 20:04 +00:00: - ProcessRequest  ::ffff:127.0.0.1
+- REQ_CREDENTIAL_VALIDATION >> REQUESTING FTP CALL ::ffff:127.0.0.1
+- TCP >> makeHttpsRequest
+- TCP >> Waiting for Data
+ - TCP CALL REQUESTED >> ::ffff:127.0.0.1
+02-05-2018 20:04 +00:00:  - End
+02-05-2018 20:04 +00:00: - TCP >> Connected
+02-05-2018 20:04 +00:00: {"request":"8001:REQ_CREDENTIAL_VALIDATION","username":"m","password":"m","reqIp":"::ffff:127.0.0.1"}
+02-05-2018 20:04 +00:00: Tcp console {
+    "reqIp": "::ffff:127.0.0.1",
+    "response": "7000:CREDENTIAL_ACCEPTED",
+    "token": "9$3BFyY9AGz)*eRU)YHy",
+    "username": "c"
+}
+
+02-05-2018 20:04 +00:00: - Process response for ::ffff:127.0.0.1
+02-05-2018 20:04 +00:00: response {
+    "reqIp": "::ffff:127.0.0.1",
+    "response": "7000:CREDENTIAL_ACCEPTED",
+    "token": "9$3BFyY9AGz)*eRU)YHy",
+    "username": "c"
+}
+
+02-05-2018 20:04 +00:00: - Accepted >> c
+02-05-2018 20:04 +00:00: c:c
+- Reactivating Session for username >> c
+02-05-2018 20:04 +00:00:  - Reading Session File
+c:c
+ - Writting To Session File
+02-05-2018 20:04 +00:00: - REQ_CREDENTIAL_VALIDATION ::ffff:127.0.0.1
+02-05-2018 20:04 +00:00: - ProcessRequest  ::ffff:127.0.0.1
+- REQ_CREDENTIAL_VALIDATION >> REQUESTING FTP CALL ::ffff:127.0.0.1
+- TCP >> makeHttpsRequest
+- TCP >> Waiting for Data
+02-05-2018 20:04 +00:00:  - TCP CALL REQUESTED >> ::ffff:127.0.0.1
+02-05-2018 20:04 +00:00:  - End
+02-05-2018 20:04 +00:00: - TCP >> Connected
+{"request":"8001:REQ_CREDENTIAL_VALIDATION","username":"n","password":"n","reqIp":"::ffff:127.0.0.1"}
+02-05-2018 20:04 +00:00: - TCP >> Received: {
+    "reqIp": "::ffff:127.0.0.1",
+    "response": "7000:CREDENTIAL_ACCEPTED",
+    "token": "5C)L0PN3Eybl1tc5&xlL",
+    "username": "m"
+}
+
+02-05-2018 20:04 +00:00: - TCP >> Connection closed
+02-05-2018 20:04 +00:00: - REQ_CREDENTIAL_VALIDATION ::ffff:127.0.0.1
+02-05-2018 20:04 +00:00: - ProcessRequest  ::ffff:127.0.0.1
+02-05-2018 20:04 +00:00: - REQ_CREDENTIAL_VALIDATION >> REQUESTING FTP CALL ::ffff:127.0.0.1
+02-05-2018 20:04 +00:00: - TCP >> makeHttpsRequest
+02-05-2018 20:04 +00:00: - TCP >> Waiting for Data
+02-05-2018 20:04 +00:00:  - TCP CALL REQUESTED >> ::ffff:127.0.0.1
+02-05-2018 20:04 +00:00:  - End
+02-05-2018 20:04 +00:00: - TCP >> Connected
+02-05-2018 20:04 +00:00: {"request":"8001:REQ_CREDENTIAL_VALIDATION","username":"a","password":"a","reqIp":"::ffff:127.0.0.1"}
+02-05-2018 20:04 +00:00: - REQ_CREDENTIAL_VALIDATION ::ffff:127.0.0.1
+02-05-2018 20:04 +00:00: - ProcessRequest  ::ffff:127.0.0.1
+02-05-2018 20:04 +00:00: - REQ_CREDENTIAL_VALIDATION >> REQUESTING FTP CALL ::ffff:127.0.0.1
+02-05-2018 20:04 +00:00: - TCP >> makeHttpsRequest
+02-05-2018 20:04 +00:00: - TCP >> Waiting for Data
+02-05-2018 20:04 +00:00:  - TCP CALL REQUESTED >> ::ffff:127.0.0.1
+02-05-2018 20:04 +00:00:  - End
+02-05-2018 20:04 +00:00: - TCP >> Received: {
+    "reqIp": "::ffff:127.0.0.1",
+    "response": "7000:CREDENTIAL_ACCEPTED",
+    "token": "BU(mRa9mAN4NBFaT*)9I",
+    "username": "n"
+}
+
+02-05-2018 20:04 +00:00: - TCP >> Connection closed
+02-05-2018 20:04 +00:00: - TCP >> Connected
+02-05-2018 20:04 +00:00: {"request":"8001:REQ_CREDENTIAL_VALIDATION","username":"d","password":"d","reqIp":"::ffff:127.0.0.1"}
+02-05-2018 20:04 +00:00: - TCP >> Received: {
+    "reqIp": "::ffff:127.0.0.1",
+    "response": "7000:CREDENTIAL_ACCEPTED",
+    "token": "Nx0rbz#L(1GUzt3fA7vM",
+    "username": "a"
+}
+
+02-05-2018 20:04 +00:00: - TCP >> Connection closed
+02-05-2018 20:04 +00:00: - TCP >> Received: {
+    "reqIp": "::ffff:127.0.0.1",
+    "response": "7000:CREDENTIAL_ACCEPTED",
+    "token": "G2X(*%cXZ33otSq@o@ju",
+    "username": "d"
+}
+
+02-05-2018 20:04 +00:00: - TCP >> Connection closed
+02-05-2018 20:04 +00:00: - sending response
+02-05-2018 20:04 +00:00: [0mPOST /REQ_CREDENTIAL_VALIDATION/ [32m200 [0m182.161 ms - 74[0m
+02-05-2018 20:04 +00:00: - sending response
+02-05-2018 20:04 +00:00: [0mPOST /REQ_CREDENTIAL_VALIDATION/ [32m200 [0m186.961 ms - 74[0m
+02-05-2018 20:04 +00:00: Tcp console {
+    "reqIp": "::ffff:127.0.0.1",
+    "response": "7000:CREDENTIAL_ACCEPTED",
+    "token": "G2X(*%cXZ33otSq@o@ju",
+    "username": "d"
+}
+
+02-05-2018 20:04 +00:00: - Process response for ::ffff:127.0.0.1
+02-05-2018 20:04 +00:00: response {
+    "reqIp": "::ffff:127.0.0.1",
+    "response": "7000:CREDENTIAL_ACCEPTED",
+    "token": "G2X(*%cXZ33otSq@o@ju",
+    "username": "d"
+}
+
+02-05-2018 20:04 +00:00: - Accepted >> d
+02-05-2018 20:04 +00:00: c:d
+02-05-2018 20:04 +00:00: m:d
+02-05-2018 20:04 +00:00: - SetUpInstance ::ffff:127.0.0.1
+02-05-2018 20:04 +00:00: ports:4
+port:8020:-1
+02-05-2018 20:04 +00:00: - Appending Session to File ::ffff:127.0.0.1
+- Starting Session for::ffff:127.0.0.1 on port 8020
+02-05-2018 20:04 +00:00: Tcp console {
+    "reqIp": "::ffff:127.0.0.1",
+    "response": "7000:CREDENTIAL_ACCEPTED",
+    "token": "G2X(*%cXZ33otSq@o@ju",
+    "username": "d"
+}
+
+02-05-2018 20:04 +00:00: - Process response for ::ffff:127.0.0.1
+response {
+    "reqIp": "::ffff:127.0.0.1",
+    "response": "7000:CREDENTIAL_ACCEPTED",
+    "token": "G2X(*%cXZ33otSq@o@ju",
+    "username": "d"
+}
+
+- Accepted >> d
+d:d
+- Reactivating Session for username >> d
+ - Reading Session File
+02-05-2018 20:04 +00:00: d:d
+ - Writting To Session File
+02-05-2018 20:04 +00:00: Tcp console {
+    "reqIp": "::ffff:127.0.0.1",
+    "response": "7000:CREDENTIAL_ACCEPTED",
+    "token": "G2X(*%cXZ33otSq@o@ju",
+    "username": "d"
+}
+
+02-05-2018 20:04 +00:00: - Process response for ::ffff:127.0.0.1
+response {
+    "reqIp": "::ffff:127.0.0.1",
+    "response": "7000:CREDENTIAL_ACCEPTED",
+    "token": "G2X(*%cXZ33otSq@o@ju",
+    "username": "d"
+}
+
+- Accepted >> d
+d:d
+- Reactivating Session for username >> d
+ - Reading Session File
+d:d
+ - Writting To Session File
+02-05-2018 20:04 +00:00: Tcp console {
+    "reqIp": "::ffff:127.0.0.1",
+    "response": "7000:CREDENTIAL_ACCEPTED",
+    "token": "G2X(*%cXZ33otSq@o@ju",
+    "username": "d"
+}
+
+02-05-2018 20:04 +00:00: - Process response for ::ffff:127.0.0.1
+response {
+    "reqIp": "::ffff:127.0.0.1",
+    "response": "7000:CREDENTIAL_ACCEPTED",
+    "token": "G2X(*%cXZ33otSq@o@ju",
+    "username": "d"
+}
+
+- Accepted >> d
+d:d
+- Reactivating Session for username >> d
+ - Reading Session File
+d:d
+ - Writting To Session File
+02-05-2018 20:04 +00:00: - sending response
+02-05-2018 20:04 +00:00: - Activating server on port 8020
+02-05-2018 20:04 +00:00: [0mPOST /REQ_CREDENTIAL_VALIDATION/ [32m200 [0m185.951 ms - 89[0m
+- sending response
+[0mPOST /REQ_CREDENTIAL_VALIDATION/ [32m200 [0m189.962 ms - 74[0m
+02-05-2018 20:04 +00:00: - sending response
+02-05-2018 20:04 +00:00: [0mPOST /REQ_CREDENTIAL_VALIDATION/ [32m200 [0m183.723 ms - 74[0m
+- Making executable
+02-05-2018 20:04 +00:00: - sending response
+[0mPOST /REQ_CREDENTIAL_VALIDATION/ [32m200 [0m182.188 ms - 74[0m
+02-05-2018 20:04 +00:00: launching the file
+stderr: 

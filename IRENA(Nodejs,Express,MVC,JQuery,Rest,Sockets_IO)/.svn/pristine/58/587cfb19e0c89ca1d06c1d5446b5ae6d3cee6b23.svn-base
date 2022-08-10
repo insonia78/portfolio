@@ -1,0 +1,519 @@
+var express   = require('express');
+var router    = express.Router();
+var mysql     = require('mysql');
+var https     = require ('https');
+var fs        = require('fs');
+var APIconfig = require('./config');
+var utils     = require('./utils')
+
+console.log(APIconfig)
+
+var con = mysql.createConnection({
+  host: "localhost",
+  user: "alevo",
+  password: "alevo4Irena",
+  database: "IRENA"
+});
+
+var username;
+var project;
+var run;
+//CHANGE, this is only a test
+//username = "alevo2projects";
+
+/* GET home page. */
+router.get(
+    '/',
+    function(req, res, next)
+   {
+    	username = req.query.username;
+      console.log(username);
+      res.render('index', { title: 'Alevo Analytics',
+                            username: req.query.username
+   });
+     
+    }
+);
+
+/* GET test page. */
+router.get(
+    '/test',
+    function(req, res, next)
+   {
+      res.render('test', { title: 'Alevo Analytics',
+                          
+    })
+   } 
+);
+   
+
+/* GET index page. */
+router.get(
+    '/inputs',
+    function(req, res, next)
+    {
+    res.render('index', { title: 'Alevo Analytics' });
+    }
+);
+
+
+/* GET Data Dictionary Page. */
+router.get('/data-dictionary', function(req, res, next) {
+  res.render('sub-forms/data-dictionary', { title: 'Express' });
+});
+
+
+router.post(
+    '/save_slt_input',
+    function(req, res)
+    {
+    console.log("save_slt_inout");
+    var response = es_save_to_db(req)
+
+    }
+);
+
+
+router.post(
+    '/calculate-valuation',
+    function(req, res)
+    {
+    console.log("calculate button");
+	  //console.log(req.body);
+         
+    //var response = es_save_to_db(req)
+            
+    var systemType = parseFloat(req.body.systemType);
+	  var response = es_calculator(peakCapacity, systemType);
+
+  	res.setHeader("Content-Type", "application/json");
+	  res.write(JSON.stringify(response));
+	  res.end();
+    }
+);
+
+//Check this function
+router.post(
+    '/get-info',
+    function(req,res)
+    {
+      //'10.8.26.56',
+      var options = {
+        hostname: APIconfig.api['hostname'],
+        port: APIconfig.api['port'],
+        path: '/api/v1',
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        ca: fs.readFileSync('/etc/ssl/certs/nginx-selfsigned.crt', 'utf8'),
+        rejectUnauthorized: false
+      }
+
+      console.log('Ready to make POST Request to API, body: ' + JSON.stringify(req.body));
+
+      //CALL API
+      var reqAPI = https.request(options, function(resAPI) {
+        console.log('Status: ' + resAPI.statusCode);
+        console.log('Headers: ' + JSON.stringify(resAPI.headers));
+        resAPI.setEncoding('utf8');
+        resAPI.on('data', function (body) {
+          console.log('Res Body: ' + body);
+          
+          res.setHeader("Content-Type", "application/json");
+          res.write(JSON.stringify(body));
+          res.end();
+        });
+      });
+      reqAPI.on('error', function(e) {
+        console.log('problem with request: ' + e.message);
+      });
+      // write data to request body
+
+
+      req.body.username = username;
+      reqAPI.write(JSON.stringify(req.body));
+      reqAPI.end();
+
+      project = req.body.project;
+      run     = req.body.run;
+      console.log('user: '+username);
+      console.log('project: '+ project);
+      console.log('run: ' +run);
+      //END OF API CALL
+     }
+);
+
+router.post(
+          '/get-output-files',
+          function(req,res){
+            
+            var paths =['/opt/SLT_data/alevo/proj_irena/run_1/year_1/demand.csv',
+                        '/opt/SLT_data/alevo/proj_irena/run_1/year_1/base/energy_price.csv',
+                        '/opt/SLT_data/alevo/proj_irena/run_1/year_1/es/energy_price.csv'];
+
+            console.log('reading files')
+            utils.readProfiles(paths,function(results){
+
+              results[0].shift();
+              results[0].map(Date);
+              
+              var newArray = results[0].map(function (col, i) {
+                return results.map(function (row) {
+                    return row[i];
+                }).toString();
+             });
+                
+              newArray.unshift("Datetime, Base, With Storage");
+              res.setHeader("Content-Type", "application/json");
+              res.write(JSON.stringify(newArray));
+              res.end();
+
+            })
+
+            
+          }
+)
+
+
+function es_save_to_db(req) {
+  try {
+   console.log('Starting Save to DB');
+   console.log('Validating Data');
+   console.log(req.body);
+   var db_username = req.body.username;
+   var db_project = req.body.project;
+   var db_run = req.body.run;
+   var db_country = req.body.country;
+   var db_eneffpower = 0;
+   var db_eneffeng = 0;
+   var db_eneffcost = 0;
+   var db_demrespower = 0;
+   var db_demreseng = 0;
+   var db_demrescost = 0;
+   var db_distpvpower = 0;
+   var db_distpveng = 0;
+   var db_distpvcost = 0;
+   var db_windcost = 0;
+   var db_solarcost = 0;
+   var db_basewind =  req.body.basewind;
+   var db_windpeakcap = 0;
+   var db_basesolar = req.body.basesolar;
+   var db_solarpeakcap = 0;
+   var db_hydrores1 = 0;
+   var db_hydrores2 = 0;
+   var db_hydrores3 = 0;
+   var db_p_reserves = 0;   var db_s_reserves = 0;
+   var db_t_reserves = 0;
+   var db_esrt2c = 0;
+   var db_esrt1c = 0;
+   var db_esrt5c = 0;
+   var db_esrt25c = 0;
+   var db_escost2c = 0;
+   var db_escost1c = 0;
+   var db_escost5c = 0;
+   var db_escost25c = 0;
+   var db_carboncost = 0;
+   var db_translength = 0;
+   var db_distlength = 0;
+   var db_planresmargin = 0;
+   var db_transcongind = 0;
+   var db_demforrisk = 0;
+   var db_geodivind = 0;
+   var db_outageIndices = 0;
+   var db_vallossload = 0;
+   var db_renoutforrisk = 0;
+   var db_freregvalue = 0;
+   var db_peakcapital = 0;
+   var db_convfactor = 0;
+   var db_demandprofile_yr1 = req.body.demandprofile_yr1;;
+   var db_demandprofile_yr2 = req.body.demandprofile_yr2;;
+   var db_inputpeak_yr1 = 0;
+   var db_inputpeak_yr2 = 0;
+   var db_inputenergy_yr1 = 0;
+   var db_inputenergy_yr2 = 0;
+   var db_peakdemgrowrt_yr1 = 0;
+   var db_peakdemgrowrt_yr2 = 0;
+   var db_windcap1 = 0;
+   var db_windcap2 = 0;
+   var db_solarcap1 = 0;
+   var db_solarcap2 = 0;
+   var db_hypmax1 = 0;
+   var db_hypmax2 = 0;
+   var db_hydroEng0101 = 0; 
+   var db_hydroEng0102 = 0; 
+   var db_hydroEng0103 = 0; 
+   var db_hydroEng0104 = 0; 
+   var db_hydroEng0105 = 0; 
+   var db_hydroEng0106 = 0; 
+   var db_hydroEng0107 = 0; 
+   var db_hydroEng0108 = 0; 
+   var db_hydroEng0109 = 0; 
+   var db_hydroEng0110 = 0; 
+   var db_hydroEng0111 = 0; 
+   var db_hydroEng0112 = 0; 
+   var db_hydroEng0201 = 0; 
+   var db_hydroEng0202 = 0; 
+   var db_hydroEng0203 = 0; 
+   var db_hydroEng0204 = 0; 
+   var db_hydroEng0205 = 0; 
+   var db_hydroEng0206 = 0; 
+   var db_hydroEng0207 = 0; 
+   var db_hydroEng0208 = 0; 
+   var db_hydroEng0209 = 0; 
+   var db_hydroEng0210 = 0; 
+   var db_hydroEng0211 = 0; 
+   var db_hydroEng0212 = 0; 
+
+   // everything is passed in as a string, so if empty set to 0 if not empty verify ot's a number 
+   if (req.body.eneffpower == "") { db_eneffpower = 0;} else {if (isNaN(req.body.eneffpower)) {db_eneffpower = 0;} else {db_eneffpower = req.body.eneffpower;}} 
+   if (req.body.eneffeng == "") { db_eneffeng = 0;} else {if (isNaN(req.body.eneffeng)) {db_eneffeng = 0;} else {db_eneffeng = req.body.eneffeng;}} 
+   if (req.body.eneffcost == "") { db_eneffcost = 0;} else {if (isNaN(req.body.eneffcost)) {db_eneffcost = 0;} else {db_eneffcost = req.body.eneffcost;}} 
+   if (req.body.demrespower == "") { db_demrespower = 0;} else {if (isNaN(req.body.demrespower)) {db_demrespower = 0;} else {db_demrespower = req.body.demrespower;}} 
+   if (req.body.demreseng == "") { db_demreseng = 0;} else {if (isNaN(req.body.demreseng)) {db_demreseng = 0;} else {db_demreseng = req.body.demreseng;}} 
+   if (req.body.demrescost == "") { db_demrescost = 0;} else {if (isNaN(req.body.demrescost)) {db_demrescost = 0;} else {db_demrescost = req.body.demrescost;}} 
+   if (req.body.distpvpower == "") { db_distpvpower = 0;} else {if (isNaN(req.body.distpvpower)) {db_distpvpower = 0;} else {db_distpvpower = req.body.distpvpower;}} 
+   if (req.body.distpveng == "") { db_distpveng = 0;} else {if (isNaN(req.body.distpveng)) {db_distpveng = 0;} else {db_distpveng = req.body.distpveng;}} 
+   if (req.body.distpvcost == "") { db_distpvcost = 0;} else {if (isNaN(req.body.distpvcost)) {db_distpvcost = 0;} else {db_distpvcost = req.body.distpvcost;}} 
+   if (req.body.windcost == "") { db_windcost = 0;} else {if (isNaN(req.body.windcost)) {db_windcost = 0;} else {db_windcost = req.body.windcost;}} 
+   if (req.body.solarcost == "") { db_solarcost = 0;} else {if (isNaN(req.body.solarcost)) {db_solarcost = 0;} else {db_solarcost = req.body.solarcost;}} 
+   if (req.body.windpeakcap == "") { db_windpeakcap = 0;} else {if (isNaN(req.body.windpeakcap)) {db_windpeakcap = 0;} else {db_windpeakcap = req.body.windpeakcap;}} 
+   if (req.body.solarpeakcap == "") { db_solarpeakcap = 0;} else {if (isNaN(req.body.solarpeakcap)) {db_solarpeakcap = 0;} else {db_solarpeakcap = req.body.solarpeakcap;}} 
+   if (req.body.hydrores1 == "") { db_hydrores1 = 0;} else {if (isNaN(req.body.hydrores1)) {db_hydrores1 = 0;} else {db_hydrores1 = req.body.hydrores1;}} 
+   if (req.body.hydrores2 == "") { db_hydrores2 = 0;} else {if (isNaN(req.body.hydrores2)) {db_hydrores2 = 0;} else {db_hydrores2 = req.body.hydrores2;}} 
+   if (req.body.hydrores3 == "") { db_hydrores3 = 0;} else {if (isNaN(req.body.hydrores3)) {db_hydrores3 = 0;} else {db_hydrores3 = req.body.hydrores3;}} 
+   if (req.body.p_reserves == "") { db_p_reserves = 0;} else {if (isNaN(req.body.p_reserves)) {db_p_reserves = 0;} else {db_p_reserves = req.body.p_reserves;}} 
+   if (req.body.s_reserves == "") { db_s_reserves = 0;} else {if (isNaN(req.body.s_reserves)) {db_s_reserves = 0;} else {db_s_reserves = req.body.s_reserves;}} 
+   if (req.body.t_reserves == "") { db_t_reserves = 0;} else {if (isNaN(req.body.t_reserves)) {db_t_reserves = 0;} else {db_t_reserves = req.body.t_reserves;}} 
+   if (req.body.esrt2c == "") { db_esrt2c = 0;} else {if (isNaN(req.body.esrt2c)) {db_esrt2c = 0;} else {db_esrt2c = req.body.esrt2c;}} 
+   if (req.body.esrt1c == "") { db_esrt1c = 0;} else {if (isNaN(req.body.esrt1c)) {db_esrt1c = 0;} else {db_esrt1c = req.body.esrt1c;}} 
+   if (req.body.esrt5c == "") { db_esrt5c = 0;} else {if (isNaN(req.body.esrt5c)) {db_esrt5c = 0;} else {db_esrt5c = req.body.esrt5c;}} 
+   if (req.body.esrt25c == "") { db_esrt25c = 0;} else {if (isNaN(req.body.esrt25c)) {db_esrt25c = 0;} else {db_esrt25c = req.body.esrt25c;}} 
+   if (req.body.escost2c == "") { db_escost2c = 0;} else {if (isNaN(req.body.escost2c)) {db_escost2c = 0;} else {db_escost2c = req.body.escost2c;}} 
+   if (req.body.escost1c == "") { db_escost1c = 0;} else {if (isNaN(req.body.escost1c)) {db_escost1c = 0;} else {db_escost1c = req.body.escost1c;}} 
+   if (req.body.escost5c == "") { db_escost5c = 0;} else {if (isNaN(req.body.escost5c)) {db_escost5c = 0;} else {db_escost5c = req.body.escost5c;}} 
+   if (req.body.escost25c == "") { db_escost25c = 0;} else {if (isNaN(req.body.escost25c)) {db_escost25c = 0;} else {db_escost25c = req.body.escost25c;}} 
+   if (req.body.carboncost == "") { db_carboncost = 0;} else {if (isNaN(req.body.carboncost)) {db_carboncost = 0;} else {db_carboncost = req.body.carboncost;}} 
+   if (req.body.translength == "") { db_translength = 0;} else {if (isNaN(req.body.translength)) {db_translength = 0;} else {db_translength = req.body.translength;}} 
+   if (req.body.distlength == "") { db_distlength = 0;} else {if (isNaN(req.body.distlength)) {db_distlength = 0;} else {db_distlength = req.body.distlength;}} 
+   if (req.body.planresmargin == "") { db_planresmargin = 0;} else {if (isNaN(req.body.planresmargin)) {db_planresmargin = 0;} else {db_planresmargin = req.body.planresmargin;}} 
+   if (req.body.transcongind == "") { db_transcongind = 0;} else {if (isNaN(req.body.transcongind)) {db_transcongind = 0;} else {db_transcongind = req.body.transcongind;}} 
+   if (req.body.demforrisk == "") { db_demforrisk = 0;} else {if (isNaN(req.body.demforrisk)) {db_demforrisk = 0;} else {db_demforrisk = req.body.demforrisk;}} 
+   if (req.body.geodivind == "") { db_geodivind = 0;} else {if (isNaN(req.body.geodivind)) {db_geodivind = 0;} else {db_geodivind = req.body.geodivind;}} 
+   if (req.body.outageIndices == "") { db_outageIndices = 0;} else {if (isNaN(req.body.outageIndices)) {db_outageIndices = 0;} else {db_outageIndices = req.body.outageIndices;}} 
+   if (req.body.vallossload == "") { db_vallossload = 0;} else {if (isNaN(req.body.vallossload)) {db_vallossload = 0;} else {db_vallossload = req.body.vallossload;}} 
+   if (req.body.renoutforrisk == "") { db_renoutforrisk = 0;} else {if (isNaN(req.body.renoutforrisk)) {db_renoutforrisk = 0;} else {db_renoutforrisk = req.body.renoutforrisk;}} 
+   if (req.body.freregvalue == "") { db_freregvalue = 0;} else {if (isNaN(req.body.freregvalue)) {db_freregvalue = 0;} else {db_freregvalue = req.body.freregvalue;}} 
+   if (req.body.peakcapital == "") { db_peakcapital = 0;} else {if (isNaN(req.body.peakcapital)) {db_peakcapital = 0;} else {db_peakcapital = req.body.peakcapital;}} 
+   if (req.body.convfactor == "") { db_convfactor = 0;} else {if (isNaN(req.body.convfactor)) {db_convfactor = 0;} else {db_convfactor = req.body.convfactor;}} 
+   if (req.body.inputpeak_yr1 == "") { db_inputpeak_yr1 = 0;} else {if (isNaN(req.body.inputpeak_yr1)) {db_inputpeak_yr1 = 0;} else {db_inputpeak_yr1 = req.body.inputpeak_yr1;}} 
+   if (req.body.inputpeak_yr2 == "") { db_inputpeak_yr2 = 0;} else {if (isNaN(req.body.inputpeak_yr2)) {db_inputpeak_yr2 = 0;} else {db_inputpeak_yr2 = req.body.inputpeak_yr2;}} 
+   if (req.body.inputenergy_yr1 == "") { db_inputenergy_yr1 = 0;} else {if (isNaN(req.body.inputenergy_yr1)) {db_inputenergy_yr1 = 0;} else {db_inputenergy_yr1 = req.body.inputenergy_yr1;}} 
+   if (req.body.inputenergy_yr2 == "") { db_inputenergy_yr2 = 0;} else {if (isNaN(req.body.inputenergy_yr2)) {db_inputenergy_yr2 = 0;} else {db_inputenergy_yr2 = req.body.inputenergy_yr2;}} 
+   if (req.body.peakdemgrowrt_yr1 == "") { db_peakdemgrowrt_yr1 = 0;} else {if (isNaN(req.body.peakdemgrowrt_yr1)) {db_peakdemgrowrt_yr1 = 0;} else {db_peakdemgrowrt_yr1 = req.body.peakdemgrowrt_yr1;}} 
+   if (req.body.peakdemgrowrt_yr2 == "") { db_peakdemgrowrt_yr2 = 0;} else {if (isNaN(req.body.peakdemgrowrt_yr2)) {db_peakdemgrowrt_yr2 = 0;} else {db_peakdemgrowrt_yr2 = req.body.peakdemgrowrt_yr2;}} 
+   if (req.body.windcap1 == "") { db_windcap1 = 0;} else {if (isNaN(req.body.windcap1)) {db_windcap1 = 0;} else {db_windcap1 = req.body.windcap1;}} 
+   if (req.body.windcap2 == "") { db_windcap2 = 0;} else {if (isNaN(req.body.windcap2)) {db_windcap2 = 0;} else {db_windcap2 = req.body.windcap2;}} 
+   if (req.body.solarcap1 == "") { db_solarcap1 = 0;} else {if (isNaN(req.body.solarcap1)) {db_solarcap1 = 0;} else {db_solarcap1 = req.body.solarcap1;}} 
+   if (req.body.solarcap2 == "") { db_solarcap2 = 0;} else {if (isNaN(req.body.solarcap2)) {db_solarcap2 = 0;} else {db_solarcap2 = req.body.solarcap2;}} 
+   if (req.body.hypmax1 == "") { db_hypmax1 = 0;} else {if (isNaN(req.body.hypmax1)) {db_hypmax1 = 0;} else {db_hypmax1 = req.body.hypmax1;}} 
+   if (req.body.hypmax2 == "") { db_hypmax2 = 0;} else {if (isNaN(req.body.hypmax2)) {db_hypmax2 = 0;} else {db_hypmax2 = req.body.hypmax2;}} 
+   if (req.body.hydroEng0101 == "") { db_hydroEng0101 = 0;} else {if (isNaN(req.body.hydroEng0101)) {db_hydroEng0101 = 0;} else {db_hydroEng0101 = req.body.hydroEng0101;}} 
+   if (req.body.hydroEng0102 == "") { db_hydroEng0102 = 0;} else {if (isNaN(req.body.hydroEng0102)) {db_hydroEng0102 = 0;} else {db_hydroEng0102 = req.body.hydroEng0102;}} 
+   if (req.body.hydroEng0103 == "") { db_hydroEng0103 = 0;} else {if (isNaN(req.body.hydroEng0103)) {db_hydroEng0103 = 0;} else {db_hydroEng0103 = req.body.hydroEng0103;}} 
+   if (req.body.hydroEng0104 == "") { db_hydroEng0104 = 0;} else {if (isNaN(req.body.hydroEng0104)) {db_hydroEng0104 = 0;} else {db_hydroEng0104 = req.body.hydroEng0104;}} 
+   if (req.body.hydroEng0105 == "") { db_hydroEng0105 = 0;} else {if (isNaN(req.body.hydroEng0105)) {db_hydroEng0105 = 0;} else {db_hydroEng0105 = req.body.hydroEng0105;}} 
+   if (req.body.hydroEng0106 == "") { db_hydroEng0106 = 0;} else {if (isNaN(req.body.hydroEng0106)) {db_hydroEng0106 = 0;} else {db_hydroEng0106 = req.body.hydroEng0106;}} 
+   if (req.body.hydroEng0107 == "") { db_hydroEng0107 = 0;} else {if (isNaN(req.body.hydroEng0107)) {db_hydroEng0107 = 0;} else {db_hydroEng0107 = req.body.hydroEng0107;}} 
+   if (req.body.hydroEng0108 == "") { db_hydroEng0108 = 0;} else {if (isNaN(req.body.hydroEng0108)) {db_hydroEng0108 = 0;} else {db_hydroEng0108 = req.body.hydroEng0108;}} 
+   if (req.body.hydroEng0109 == "") { db_hydroEng0109 = 0;} else {if (isNaN(req.body.hydroEng0109)) {db_hydroEng0109 = 0;} else {db_hydroEng0109 = req.body.hydroEng0109;}} 
+   if (req.body.hydroEng0110 == "") { db_hydroEng0110 = 0;} else {if (isNaN(req.body.hydroEng0110)) {db_hydroEng0110 = 0;} else {db_hydroEng0110 = req.body.hydroEng0110;}} 
+   if (req.body.hydroEng0111 == "") { db_hydroEng0111 = 0;} else {if (isNaN(req.body.hydroEng0111)) {db_hydroEng0111 = 0;} else {db_hydroEng0111 = req.body.hydroEng0111;}} 
+   if (req.body.hydroEng0112 == "") { db_hydroEng0112 = 0;} else {if (isNaN(req.body.hydroEng0112)) {db_hydroEng0112 = 0;} else {db_hydroEng0112 = req.body.hydroEng0112;}} 
+   if (req.body.hydroEng0201 == "") { db_hydroEng0201 = 0;} else {if (isNaN(req.body.hydroEng0201)) {db_hydroEng0201 = 0;} else {db_hydroEng0201 = req.body.hydroEng0201;}} 
+   if (req.body.hydroEng0202 == "") { db_hydroEng0202 = 0;} else {if (isNaN(req.body.hydroEng0202)) {db_hydroEng0202 = 0;} else {db_hydroEng0202 = req.body.hydroEng0202;}} 
+   if (req.body.hydroEng0203 == "") { db_hydroEng0203 = 0;} else {if (isNaN(req.body.hydroEng0203)) {db_hydroEng0203 = 0;} else {db_hydroEng0203 = req.body.hydroEng0203;}} 
+   if (req.body.hydroEng0204 == "") { db_hydroEng0204 = 0;} else {if (isNaN(req.body.hydroEng0204)) {db_hydroEng0204 = 0;} else {db_hydroEng0204 = req.body.hydroEng0204;}} 
+   if (req.body.hydroEng0205 == "") { db_hydroEng0205 = 0;} else {if (isNaN(req.body.hydroEng0205)) {db_hydroEng0205 = 0;} else {db_hydroEng0205 = req.body.hydroEng0205;}} 
+   if (req.body.hydroEng0206 == "") { db_hydroEng0206 = 0;} else {if (isNaN(req.body.hydroEng0206)) {db_hydroEng0206 = 0;} else {db_hydroEng0206 = req.body.hydroEng0206;}} 
+   if (req.body.hydroEng0207 == "") { db_hydroEng0207 = 0;} else {if (isNaN(req.body.hydroEng0207)) {db_hydroEng0207 = 0;} else {db_hydroEng0207 = req.body.hydroEng0207;}} 
+   if (req.body.hydroEng0208 == "") { db_hydroEng0208 = 0;} else {if (isNaN(req.body.hydroEng0208)) {db_hydroEng0208 = 0;} else {db_hydroEng0208 = req.body.hydroEng0208;}} 
+   if (req.body.hydroEng0209 == "") { db_hydroEng0209 = 0;} else {if (isNaN(req.body.hydroEng0209)) {db_hydroEng0209 = 0;} else {db_hydroEng0209 = req.body.hydroEng0209;}} 
+   if (req.body.hydroEng0210 == "") { db_hydroEng0210 = 0;} else {if (isNaN(req.body.hydroEng0210)) {db_hydroEng0210 = 0;} else {db_hydroEng0210 = req.body.hydroEng0210;}} 
+   if (req.body.hydroEng0211 == "") { db_hydroEng0211 = 0;} else {if (isNaN(req.body.hydroEng0211)) {db_hydroEng0211 = 0;} else {db_hydroEng0211 = req.body.hydroEng0211;}} 
+   if (req.body.hydroEng0212 == "") { db_hydroEng0212 = 0;} else {if (isNaN(req.body.hydroEng0212)) {db_hydroEng0212 = 0;} else {db_hydroEng0212 = req.body.hydroEng0212;}} 
+
+    //   if (req.body.? == "") { db_? = 0;} else {if (isNaN(req.body.?)) {db_? = 0;} else {db_? = req.body.?;}} 
+
+    var slt_input = '{ ';
+    slt_input += ' "action": "STORE", ';
+    slt_input += ' "username": "' + db_username + '", ';
+    slt_input += ' "project": "' + db_project + '", ';
+    slt_input += ' "run": "' + db_run + '", ';
+    slt_input += ' "inputs": ';
+    slt_input += '  { ';
+    slt_input += '   "country": "' + db_country + '", ';
+    slt_input += '   "eneffpower":' + db_eneffpower + ', ';
+    slt_input += '   "eneffeng":' + db_eneffeng +  ', ';
+    slt_input += '   "eneffcost":' + db_eneffcost + ', ';
+    slt_input += '   "demrespower":' + db_demrespower + ', ';
+    slt_input += '   "demreseng":' + db_demreseng + ', ';
+    slt_input += '   "demrescost":' + db_demrescost + ', ';
+    slt_input += '   "distpvpower":' + db_distpvpower + ', ';
+    slt_input += '   "distpveng":' + db_distpveng + ', ';
+    slt_input += '   "distpvcost":' + db_distpvcost + ', ';
+    slt_input += '   "windcost":' + db_windcost + ', ';
+    slt_input += '   "solarcost":' + db_solarcost + ', ';
+    slt_input += '   "basewind": "' + db_basewind + '", ';
+    slt_input += '   "windpeakcap":' + db_windpeakcap + ', ';
+    slt_input += '   "basesolar": "' + db_basesolar + '", ';
+    slt_input += '   "solarpeakcap":' + db_solarpeakcap + ', ';
+    slt_input += '   "hydrores": [' + db_hydrores1 + ',' + db_hydrores2  + ',' + db_hydrores3 + ']' + ', ';
+    slt_input += '   "p_reserves":' + db_p_reserves + ', ';
+    slt_input += '   "s_reserves":' + db_s_reserves + ', ';
+    slt_input += '   "t_reserves":' + db_t_reserves + ', ';
+    slt_input += '   "esrt2c":' + db_esrt2c + ', ';
+    slt_input += '   "esrt1c":' + db_esrt1c + ', ';
+    slt_input += '   "esrt5c":' + db_esrt5c + ', ';
+    slt_input += '   "esrt25c":' + db_esrt25c + ', ';
+    slt_input += '   "escost2c":' + db_escost2c + ', ';
+    slt_input += '   "escost1c":' + db_escost1c + ', ';
+    slt_input += '   "escost5c":' + db_escost5c + ', ';
+    slt_input += '   "escost25c":' + db_escost25c + ', ';
+    slt_input += '   "carboncost":' + db_carboncost + ', ';
+    slt_input += '   "translength":' + db_translength + ', ';
+    slt_input += '   "distlength":' + db_distlength + ', ';
+    slt_input += '   "planresmargin":' + db_planresmargin + ', ';
+    slt_input += '   "transcongind":' + db_transcongind + ', ';
+    slt_input += '   "demforrisk":' + db_demforrisk + ', ';
+    slt_input += '   "geodivind":' + db_geodivind + ', ';
+    slt_input += '   "outageIndices":' + db_outageIndices + ', ';
+    slt_input += '   "vallossload":' + db_vallossload + ', ';
+    slt_input += '   "renoutforrisk":' + db_renoutforrisk + ', ';
+    slt_input += '   "freregvalue":' + db_freregvalue + ', ';
+    slt_input += '   "peakcapital":' + db_peakcapital + ', ';
+    slt_input += '   "convfactor":' + db_convfactor + ', ';
+    slt_input += '   "yearly": ';
+    slt_input += '    [ ';
+    slt_input += '     { ';
+    slt_input += '      "year": 1, ';
+    slt_input += '      "demandprofile": "' + db_demandprofile_yr1 + '", ';
+    slt_input += '      "inputpeak":' + db_inputpeak_yr1 + ', ';
+    slt_input += '      "inputenergy":' + db_inputenergy_yr1 + ', ';
+    slt_input += '      "peakdemgrowrt":' + db_peakdemgrowrt_yr1 + ', ';
+    slt_input += '      "windcap":' + db_windcap1 + ', ';
+    slt_input += '      "solarcap":' + db_solarcap1 + ', ';
+    slt_input += '      "hydroEng": [' + db_hydroEng0101 + ',' + db_hydroEng0102  + ',' + db_hydroEng0103 + ','
+    slt_input += db_hydroEng0104 + ',' + db_hydroEng0105 + ',' + db_hydroEng0106 + ',' 
+    slt_input += db_hydroEng0107 + ',' + db_hydroEng0108 + ',' + db_hydroEng0109 + ',' 
+    slt_input += db_hydroEng0110 + ',' + db_hydroEng0111 + ',' + db_hydroEng0112 + ']' + ', ';
+    slt_input += '      "hypmax":' + db_hypmax1 + '  ';
+    slt_input += '     }, ';
+    slt_input += '     { ';
+    slt_input += '      "year": 2, ';
+    slt_input += '      "demandprofile": "' + db_demandprofile_yr2 + '", ';
+    slt_input += '      "inputpeak":' + db_inputpeak_yr2 + ', ';
+    slt_input += '      "inputenergy":' + db_inputenergy_yr2 + ', ';
+    slt_input += '      "windcap":' + db_windcap2 + ', ';
+    slt_input += '      "solarcap":' + db_solarcap2 + ', ';
+    slt_input += '      "hydroEng": [' + db_hydroEng0201 + ',' + db_hydroEng0202  + ',' + db_hydroEng0203 + ','
+    slt_input += db_hydroEng0204 + ',' + db_hydroEng0205 + ',' + db_hydroEng0206 + ',' 
+    slt_input += db_hydroEng0207 + ',' + db_hydroEng0208 + ',' + db_hydroEng0209 + ',' 
+    slt_input += db_hydroEng0210 + ',' + db_hydroEng0211 + ',' + db_hydroEng0212 + ']' + ', ';
+    slt_input += '      "hypmax":' + db_hypmax2 + ' ';
+    slt_input += '     } ';
+    slt_input += '    ], ';
+
+    slt_input += '   "slt_conventional_generation":  ';
+    slt_input += '    [ ';
+    var i = 0;
+    var db_fuel_type = "";
+    var db_pconcap1 = 0;
+    var db_pconcap2 = 0;
+    var db_fuelprice1 = 0;
+    var db_fuelprice2 = 0;
+    var db_heatrate = 0;
+    var db_vom = 0;
+    var db_p_reserve = 0;
+    var db_s_reserve = 0;
+    var db_t_reserve = 0;
+    var db_carbon_rate = 0;
+
+    
+    conventional = req.body['Conventional['+i+'][]'];
+    do {
+        if (i > 0) { slt_input += '     }, ';}
+        db_fuel_type = conventional[0];
+        if (conventional[1] == "") { db_pconcap1 = 0;} else {if (isNaN(conventional[1])) {db_pconcap1 = 0;} else {db_pconcap1 = conventional[1];}} 
+        if (conventional[2] == "") { db_pconcap2 = 0;} else {if (isNaN(conventional[2])) {db_pconcap2 = 0;} else {db_pconcap2 = conventional[2];}} 
+        if (conventional[3] == "") { db_fuelprice1 = 0;} else {if (isNaN(conventional[3])) {db_fuelprice1 = 0;} else {db_fuelprice1 = conventional[3];}} 
+        if (conventional[4] == "") { db_fuelprice2 = 0;} else {if (isNaN(conventional[4])) {db_fuelprice2 = 0;} else {db_fuelprice2 = conventional[4];}} 
+        if (conventional[5] == "") { db_heatrate = 0;} else {if (isNaN(conventional[5])) {db_heatrate = 0;} else {db_heatrate = conventional[5];}} 
+        if (conventional[6] == "") { db_vom = 0;} else {if (isNaN(conventional[6])) {db_vom = 0;} else {db_vom = conventional[6];}} 
+        if (conventional[7] == "") { db_p_reserve = 0;} else {if (isNaN(conventional[7])) {db_p_reserve = 0;} else {db_p_reserve = conventional[7];}} 
+        if (conventional[8] == "") { db_s_reserve = 0;} else {if (isNaN(conventional[8])) {db_s_reserve = 0;} else {db_s_reserve = conventional[8];}} 
+        if (conventional[9] == "") { db_t_reserve = 0;} else {if (isNaN(conventional[9])) {db_t_reserve = 0;} else {db_t_reserve = conventional[9];}} 
+        if (conventional[10] == "") { db_carbon_rate = 0;} else {if (isNaN(conventional[10])) {db_carbon_rate = 0;} else {db_carbon_rate = conventional[10];}} 
+ 
+        slt_input += '     { ';
+        slt_input += '      "gen_type":"' + db_fuel_type + '",';
+        slt_input += '      "heatrate":' + db_heatrate + ',';
+        slt_input += '      "carbon_rate":' + db_carbon_rate + ',';
+        slt_input += '      "vom":' + db_vom + ',';
+        slt_input += '      "p_reserve":' + db_p_reserve + ',';
+        slt_input += '      "s_reserve":' + db_s_reserve + ',';
+        slt_input += '      "t_reserve":' + db_t_reserve + ',';
+        slt_input += '      "yearly": ';
+        slt_input += '       [ ';
+        slt_input += '        { ';
+        slt_input += '         "year": 1,';
+        slt_input += '         "pconcap":' + db_pconcap1 + ',';
+        slt_input += '         "fuelprice":' + db_fuelprice1 + ' ';
+        slt_input += '        }, ';
+        slt_input += '        { ';
+        slt_input += '         "year":2,';
+        slt_input += '         "pconcap":' + db_pconcap2 + ',';
+        slt_input += '         "fuelprice":' + db_fuelprice2 + ' ';
+        slt_input += '        } ';
+        slt_input += '       ] ';
+        conventional = req.body['Conventional['+i+'][]'];      
+        i += 1;
+      } while (conventional != undefined);
+
+    slt_input += '     } ';
+    slt_input += '    ] ';
+    slt_input += '  } ';
+    slt_input += '} ';
+
+    console.log(slt_input);
+
+    console.log("ready to call API");
+    
+    var options = {
+     hostname: '10.8.26.47',
+     port: 3333,
+     path: '/api/v1',
+     method: 'POST',
+     headers: { 'Content-Type': 'application/json', },
+     ca: fs.readFileSync('/etc/ssl/certs/nginx-selfsigned.crt', 'utf8'),
+     rejectUnauthorized: false
+    };
+    var reqAPI = https.request(options, function(resAPI) 
+     {
+      console.log('Status: ' + resAPI.statusCode);
+      resAPI.setEncoding('utf8');
+      resAPI.on('data', function (slt_input) 
+       {
+//         console.log('Body: ' + body);
+       });
+     });
+    reqAPI.on('error', function(e) {console.log('problem with request: ' + e.message);});
+    reqAPI.write(slt_input);
+    reqAPI.end();    
+  }
+  catch(e){
+    console.log(e);
+  }    
+}
+
+module.exports = router;

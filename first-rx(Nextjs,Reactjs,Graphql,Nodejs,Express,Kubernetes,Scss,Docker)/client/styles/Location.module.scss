@@ -1,0 +1,121 @@
+@import './FindPrescriptionHome.module.scss';
+
+.desktop_main_left_location_caption{
+    position:relative;
+    top:2.11vh;
+    left:1.46vw;
+    margin-top:1vh;
+    margin-bottom:1vh;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1.8rem;
+    line-height: 2.1rem;
+    /* identical to box height */
+
+
+    color: #000000;
+}
+.desktop_main_location_detect_location{
+    position:relative;
+    left:1.46vw;
+    margin-top:3vh;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 3rem;
+    line-height: 3.5rem;
+    cursor:pointer;
+
+}
+.desktop_button_location{
+    
+    margin-top:19.89vh;
+    margin-bottom:1vh;
+
+}
+.desktop_location_back_button{
+
+    // position:relative;
+    // top:22.89vh;    
+    // left:2.34vw;
+    margin-top:19.89vh;
+    margin-left:2.34vw;
+    margin-bottom:1vh;
+    float:left;
+    cursor:pointer;
+
+    font-style: normal;
+    font-weight: normal;
+    font-size: 2.4rem;
+    line-height: 2.8rem;   
+
+    color: #333333;
+}
+@media only screen and (max-width: 550px) {
+    .desktop_main_left_location_caption{
+        position:relative;
+        top:2.11vh;
+        left:1.46vw;
+        margin-top:1vh;
+        margin-bottom:2vh;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 1.5rem;
+        line-height: 1.5rem;
+        /* identical to box height */
+    
+    
+        color: #000000;
+    } 
+    .desktop_main_location_detect_location{
+        position:relative;
+        left:1.46vw;
+        margin-top:4vh;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 2.4rem;
+        line-height: 1.6rem;
+        cursor:pointer;
+    
+    }
+    .desktop_location_back_button{
+
+        position:absolute;
+        top:52.23vh;    
+        left:5.34vw;
+        margin-top:0;
+        margin-left:0;
+        margin-bottom:.2vh;
+        float:left;
+        cursor:pointer;
+    
+        font-style: normal;
+        font-weight: normal;
+        font-size: 1.7rem;
+        line-height: 1.4rem;   
+    
+        color: #333333;
+    }
+    .desktop_button_location{
+        
+        position:absolute;
+        top:50.73vh;
+        left:46.725vw;
+        margin-top:0;
+        margin-bottom:.2vh;
+    
+    }
+    .desktop_location_clear{
+
+        margin-top:7.28vh;
+        margin-left:2.34vw;
+ 
+        font-style: normal;
+        font-weight: normal;
+        font-size: 2.8rem;
+        line-height: 2.1rem;
+
+
+    }
+  
+  
+  }

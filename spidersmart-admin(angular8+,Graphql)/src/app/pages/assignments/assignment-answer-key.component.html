@@ -1,0 +1,44 @@
+<ng-container *ngIf="assignment">
+    <div class="mat-typography">
+        <ng-container *ngIf="assignment?.sections.length > 0">
+            <mat-tab-group animationDuration="0ms" [dynamicHeight]="true">
+                <mat-tab *ngFor="let section of assignment.sections">
+                    <ng-template mat-tab-label>{{section.title}}</ng-template>
+
+                    <section *ngIf="section?.instructions" [innerHTML]="section?.instructions" class="section-instructions"></section>
+
+                    <section class="question question {{question.type}}" *ngFor="let question of section.questions; let i = index">
+                        <h2>Question {{i+1}} <span class="question-type">{{question.type|questionType}}</span></h2>
+                        <div [innerHTML]="question.question"></div>
+
+                        <ng-container *ngIf="question?.answers?.length > 0">
+                            <ng-container *ngIf="['short_answer', 'vocab'].includes(question.type)">
+                                <div class="answer" *ngFor="let answer of question.answers">
+                                    <h3>{{question.answers.length > 1 ? 'Possible ' : ''}}Answer</h3>
+                                    <div [innerHTML]="answer?.answer"></div>
+                                </div>
+                            </ng-container>
+                            <ng-container *ngIf="['multiple_choice', 'multiple_answer'].includes(question.type)">
+                                <div class="answer">
+                                    <h3>Answer Options</h3>
+                                    <ol class="answer-list" *ngIf="question?.answers?.length > 0">
+                                        <li *ngFor="let answer of question.answers">
+                                            <mat-icon *ngIf="answer.correct">check</mat-icon>
+                                            <div [innerHTML]="answer.answer"></div>
+                                        </li>
+                                    </ol>
+                                </div>
+                            </ng-container>
+                            <ng-container *ngIf="['essay'].includes(question.type)">
+                                <div class="answer">
+                                    <h3>Answer Notes</h3>
+                                    <div [innerHTML]="question?.answers[0]?.answer"></div>
+                                </div>
+                            </ng-container>
+                        </ng-container>
+                    </section>
+               </mat-tab>
+            </mat-tab-group>
+        </ng-container>
+    </div>
+</ng-container>

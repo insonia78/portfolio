@@ -1,0 +1,76 @@
+@import '~src/theme';
+@import '~@angular/material/theming';
+
+:host {
+  position: relative;
+
+  > .marker {
+    height: 0;
+    left: 0;
+    position: absolute;
+    width: 0;
+  }
+
+  > .form-actions {
+    width: 100%;
+    position: sticky;
+    overflow: hidden;
+    left: 0;
+    z-index: 10;
+
+    > .form-actions-content {
+      align-items: center;
+      display: flex;
+      justify-content: center;
+      padding: 1rem 0;
+      background: #fff;
+      box-shadow: none;
+    }
+  }
+
+  &.bottom {
+    > .marker {
+      bottom: -1px;
+    }
+
+    > .form-actions {
+      bottom: 0;
+      padding: 10px 0 0;
+      margin: 1rem 0 0;
+
+      > .form-actions-content {
+        border-top: 1px #eee solid;
+      }
+    }
+  }
+
+  &.top {
+    > .marker {
+      top: -1px;
+    }
+
+    > .form-actions {
+      top: 0;
+      padding: 0 0 10px;
+      margin: 0 0 1rem;
+
+      > .form-actions-content {
+        border-bottom: 1px #eee solid;
+      }
+    }
+  }
+  
+  &.stuck {
+    > .form-actions > .form-actions-content {
+      border-top: none;
+    }
+
+    &.bottom > .form-actions > .form-actions-content {
+      box-shadow: 0 0 4px rgba(0,0,0,.18),0 -1px 4px rgba(0,0,0,.12), 0 -2px 4px rgba(0,0,0,.1);
+    }
+
+    &.top > .form-actions > .form-actions-content {
+      box-shadow: 0 0 4px rgba(0,0,0,.18),0 1px 4px rgba(0,0,0,.12), 0 2px 4px rgba(0,0,0,.1);
+    }
+  }
+}

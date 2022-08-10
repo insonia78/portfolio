@@ -1,0 +1,25 @@
+table(id='existing-storage-dynamic' class='existing-storage-dynamic-table inline')
+    thead
+      tr
+       th(colspan="4" class='table-header table-header-text') - EXISTING ENERGY STORAGE -
+      tr
+        th(class ='table-header-field table-header-field-title') Type of Storage
+        |
+        th(class ='table-header-field table-header-field-title') Power Capacity (MW)
+        |
+        th(class ='table-header-field table-header-field-title') Energy Capacity (MWh)    
+
+      // /tr
+    // thead
+    tbody
+      tr.entry
+        th(class ='table-items-description table-items-description-text') 
+          select.grid-layout-textboxes.storage-options.form-control.required(name='storage')
+        td(class ='table-items-description-content') 
+          input.grid-layout-textboxes.form-control.espcap(type='text' value='' name = "power")
+        td(class ='table-items-description-content') 
+          input.grid-layout-textboxes.form-control.esecap(type='text' value='' name = "energy")     
+        td(class ='table-items-description-content')
+          span.input-group-btn
+            a.btn.btn-primary.btn-add(type='button')
+              span.glyphicon.glyphicon-plus

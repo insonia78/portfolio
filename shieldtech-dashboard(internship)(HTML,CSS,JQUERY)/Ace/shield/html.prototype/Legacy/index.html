@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <link rel="stylesheet" href="dp/bs/css/bootstrap.min.css">
+  </head>
+
+
+  <body>
+    <div class="container">
+      <h1>Testing Comet</h1>
+      <hr />
+      <p>This page is implementing an ajax call to a server script file which runs a loop until a change in the database.</p>
+      <hr />
+
+
+      <div class="progress text-center">
+        <div class="progress-bar progress-bar-striped progress-bar-success active ajax-response"  role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">Server request sent. Waiting for response...
+        </div>
+      </div>
+
+      <script src="dp/jq/jquery.min.js"></script>
+      <script src="dp/bs/js/bootstrap.min.js"></script>
+      <script type="text/javascript">
+        $(document).ready(function ($) {
+          $.get('comet.php', function (data) {
+            $('div.ajax-response').replaceWith(data);
+          });
+        });
+      </script>
+    </div>
+  </body>
+</html>

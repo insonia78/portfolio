@@ -1,0 +1,1418 @@
+<html xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=Generator content="Microsoft Word 15 (filtered)">
+<title>Strategic Tool Disaster Recovery Plan</title>
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:Tahoma;
+	panose-1:2 11 6 4 3 5 4 4 2 4;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:10.0pt;
+	margin-left:0in;
+	line-height:115%;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";}
+h1
+	{mso-style-link:"Heading 1 Char";
+	margin-top:24.0pt;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:0in;
+	margin-bottom:.0001pt;
+	line-height:115%;
+	page-break-after:avoid;
+	font-size:14.0pt;
+	font-family:"Cambria","serif";
+	color:#365F91;
+	font-weight:bold;}
+h2
+	{mso-style-link:"Heading 2 Char";
+	margin-top:10.0pt;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:0in;
+	margin-bottom:.0001pt;
+	line-height:115%;
+	page-break-after:avoid;
+	font-size:13.0pt;
+	font-family:"Cambria","serif";
+	color:#4F81BD;
+	font-weight:bold;}
+h3
+	{mso-style-link:"Heading 3 Char";
+	margin-top:10.0pt;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:0in;
+	margin-bottom:.0001pt;
+	line-height:115%;
+	page-break-after:avoid;
+	font-size:11.0pt;
+	font-family:"Cambria","serif";
+	color:#4F81BD;
+	font-weight:bold;}
+p.MsoToc1, li.MsoToc1, div.MsoToc1
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:5.0pt;
+	margin-left:0in;
+	line-height:115%;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";}
+p.MsoToc2, li.MsoToc2, div.MsoToc2
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:5.0pt;
+	margin-left:11.0pt;
+	line-height:115%;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";}
+p.MsoToc3, li.MsoToc3, div.MsoToc3
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:5.0pt;
+	margin-left:22.0pt;
+	line-height:115%;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";}
+p.MsoHeader, li.MsoHeader, div.MsoHeader
+	{mso-style-link:"Header Char";
+	margin:0in;
+	margin-bottom:.0001pt;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";}
+p.MsoFooter, li.MsoFooter, div.MsoFooter
+	{mso-style-link:"Footer Char";
+	margin:0in;
+	margin-bottom:.0001pt;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:purple;
+	text-decoration:underline;}
+p
+	{margin-right:0in;
+	margin-left:0in;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+p.MsoAcetate, li.MsoAcetate, div.MsoAcetate
+	{mso-style-link:"Balloon Text Char";
+	margin:0in;
+	margin-bottom:.0001pt;
+	font-size:8.0pt;
+	font-family:"Tahoma","sans-serif";}
+p.MsoNoSpacing, li.MsoNoSpacing, div.MsoNoSpacing
+	{mso-style-link:"No Spacing Char";
+	margin:0in;
+	margin-bottom:.0001pt;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";}
+p.MsoListParagraph, li.MsoListParagraph, div.MsoListParagraph
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:10.0pt;
+	margin-left:.5in;
+	line-height:115%;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";}
+p.MsoListParagraphCxSpFirst, li.MsoListParagraphCxSpFirst, div.MsoListParagraphCxSpFirst
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	line-height:115%;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";}
+p.MsoListParagraphCxSpMiddle, li.MsoListParagraphCxSpMiddle, div.MsoListParagraphCxSpMiddle
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	line-height:115%;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";}
+p.MsoListParagraphCxSpLast, li.MsoListParagraphCxSpLast, div.MsoListParagraphCxSpLast
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:10.0pt;
+	margin-left:.5in;
+	line-height:115%;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";}
+p.MsoTocHeading, li.MsoTocHeading, div.MsoTocHeading
+	{margin-top:24.0pt;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:0in;
+	margin-bottom:.0001pt;
+	line-height:115%;
+	page-break-after:avoid;
+	font-size:14.0pt;
+	font-family:"Cambria","serif";
+	color:#365F91;
+	font-weight:bold;}
+span.NoSpacingChar
+	{mso-style-name:"No Spacing Char";
+	mso-style-link:"No Spacing";
+	font-family:"Times New Roman","serif";}
+span.BalloonTextChar
+	{mso-style-name:"Balloon Text Char";
+	mso-style-link:"Balloon Text";
+	font-family:"Tahoma","sans-serif";}
+span.HeaderChar
+	{mso-style-name:"Header Char";
+	mso-style-link:Header;}
+span.FooterChar
+	{mso-style-name:"Footer Char";
+	mso-style-link:Footer;}
+span.Heading1Char
+	{mso-style-name:"Heading 1 Char";
+	mso-style-link:"Heading 1";
+	font-family:"Cambria","serif";
+	color:#365F91;
+	font-weight:bold;}
+span.Heading2Char
+	{mso-style-name:"Heading 2 Char";
+	mso-style-link:"Heading 2";
+	font-family:"Cambria","serif";
+	color:#4F81BD;
+	font-weight:bold;}
+span.Heading3Char
+	{mso-style-name:"Heading 3 Char";
+	mso-style-link:"Heading 3";
+	font-family:"Cambria","serif";
+	color:#4F81BD;
+	font-weight:bold;}
+span.apple-converted-space
+	{mso-style-name:apple-converted-space;}
+.MsoChpDefault
+	{font-family:"Calibri","sans-serif";}
+.MsoPapDefault
+	{margin-bottom:10.0pt;
+	line-height:115%;}
+ /* Page Definitions */
+ @page WordSection1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.0in 1.0in 1.0in;}
+div.WordSection1
+	{page:WordSection1;}
+ /* List Definitions */
+ ol
+	{margin-bottom:0in;}
+ul
+	{margin-bottom:0in;}
+-->
+</style>
+
+
+<!--[if gte mso 9]><xml>
+<mso:CustomDocumentProperties>
+<mso:med9f743392a4fddbf4ccc2b27cc76de msdt:dt="string">Draft|54bb13bf-84cf-4f8f-8a1d-666b6f097094</mso:med9f743392a4fddbf4ccc2b27cc76de>
+<mso:IsMyDocuments msdt:dt="string">1</mso:IsMyDocuments>
+<mso:b165e3218c9b48188c793ea09bd74850 msdt:dt="string">Internal Use Only-Confidential|ee5e89b1-84d8-4770-b6a0-819611b62087</mso:b165e3218c9b48188c793ea09bd74850>
+<mso:TaxCatchAll msdt:dt="string">2;#Draft;#1;#Internal Use Only-Confidential</mso:TaxCatchAll>
+</mso:CustomDocumentProperties>
+</xml><![endif]-->
+</head>
+
+<body lang=EN-US link=blue vlink=purple>
+
+<div class=WordSection1>
+
+<table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0 align=left
+ width="100%" style='width:100.0%;border-collapse:collapse;margin-left:7.1pt;
+ margin-right:7.1pt'>
+ <tr>
+  <td width=235 style='width:176.25pt;border-top:none;border-left:none;
+  border-bottom:solid gray 2.25pt;border-right:solid gray 2.25pt;padding:.15in .15in .15in .15in'>
+  <p class=MsoNoSpacing><span style='font-size:38.0pt;font-family:"Arial","sans-serif"'>Strategic
+  Tool Disaster Recovery Plan</span></p>
+  </td>
+  <td width=418 colspan=2 style='width:313.35pt;border:none;border-bottom:solid gray 2.25pt;
+  padding:.15in .15in .15in .15in'>
+  <p class=MsoNoSpacing><span style='font-size:18.0pt;font-family:"Arial","sans-serif"'>May
+  19</span></p>
+  <p class=MsoNoSpacing><span style='font-size:100.0pt;font-family:"Arial","sans-serif";
+  color:#4F81BD'>2014</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=470 colspan=2 style='width:352.7pt;border:none;padding:.15in .15in .15in .15in'>
+  <p class=MsoNoSpacing><span style='font-family:"Arial","sans-serif"'>This
+  document contains disaster recovery information GTECH’s strategic tool JIRA.</span></p>
+  </td>
+  <td width=183 style='width:136.9pt;border:none;padding:.15in .15in .15in .15in'>
+  <p class=MsoNoSpacing><span style='font-size:18.0pt;font-family:"Arial","sans-serif"'>JIRA</span></p>
+  </td>
+ </tr>
+ <tr height=0>
+  <td width=262 style='border:none'></td>
+  <td width=251 style='border:none'></td>
+  <td width=195 style='border:none'></td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span style='font-family:"Arial","sans-serif"'>&nbsp;</span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span
+style='font-family:"Arial","sans-serif"'><img width=343 height=161
+id="Picture 3"
+src="RIJIRA%20Disaster%20Recovery%20Plan%20V1.1_files/image001.png"></span><span
+style='font-family:"Arial","sans-serif"'><br clear=all style='page-break-before:
+always'>
+</span></p>
+
+<p class=MsoNormal><strong><span style='font-size:18.0pt;line-height:115%;
+font-family:"Arial","sans-serif"'>Revision History</span></strong></p>
+
+<table class=MsoTableMediumShading2Accent1 border=1 cellspacing=0
+ cellpadding=0 style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=213 valign=top style='width:159.6pt;border-top:solid windowtext 2.25pt;
+  border-left:none;border-bottom:solid windowtext 2.25pt;border-right:none;
+  background:#4F81BD;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:normal'><strong><span style='font-size:12.0pt;
+  font-family:"Arial","sans-serif";color:white;font-weight:normal'>Version</span></strong></p>
+  </td>
+  <td width=213 valign=top style='width:159.6pt;border-top:solid windowtext 2.25pt;
+  border-left:none;border-bottom:solid windowtext 2.25pt;border-right:none;
+  background:#4F81BD;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:normal'><strong><span style='font-size:12.0pt;
+  font-family:"Arial","sans-serif";color:white;font-weight:normal'>Date</span></strong></p>
+  </td>
+  <td width=213 valign=top style='width:159.6pt;border-top:solid windowtext 2.25pt;
+  border-left:none;border-bottom:solid windowtext 2.25pt;border-right:none;
+  background:#4F81BD;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:normal'><strong><span style='font-size:12.0pt;
+  font-family:"Arial","sans-serif";color:white;font-weight:normal'>Revisions</span></strong></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=213 valign=top style='width:159.6pt;border:none;background:#4F81BD;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:normal'><strong><span style='font-size:12.0pt;
+  font-family:"Arial","sans-serif";color:white;font-weight:normal'>V1.0</span></strong></p>
+  </td>
+  <td width=213 valign=top style='width:159.6pt;border:none;background:#D8D8D8;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:normal'><strong><span style='font-size:12.0pt;
+  font-family:"Arial","sans-serif";font-weight:normal'>5/16/14</span></strong></p>
+  </td>
+  <td width=213 valign=top style='width:159.6pt;border:none;background:#D8D8D8;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:normal'><strong><span style='font-size:12.0pt;
+  font-family:"Arial","sans-serif";font-weight:normal'>None</span></strong></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=213 valign=top style='width:159.6pt;border:none;border-bottom:solid windowtext 2.25pt;
+  background:#4F81BD;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:normal'><strong><span style='font-size:12.0pt;
+  font-family:"Arial","sans-serif";color:white;font-weight:normal'>&nbsp;</span></strong></p>
+  <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:normal'><strong><span style='font-size:12.0pt;
+  font-family:"Arial","sans-serif";color:white;font-weight:normal'>&nbsp;</span></strong></p>
+  <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:normal'><strong><span style='font-size:12.0pt;
+  font-family:"Arial","sans-serif";color:white;font-weight:normal'>V1.1</span></strong></p>
+  </td>
+  <td width=213 valign=top style='width:159.6pt;border:none;border-bottom:solid windowtext 2.25pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:normal'><strong><span style='font-size:12.0pt;
+  font-family:"Arial","sans-serif";font-weight:normal'>&nbsp;</span></strong></p>
+  <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:normal'><strong><span style='font-size:12.0pt;
+  font-family:"Arial","sans-serif";font-weight:normal'>&nbsp;</span></strong></p>
+  <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:normal'><strong><span style='font-size:12.0pt;
+  font-family:"Arial","sans-serif";font-weight:normal'>5/19/14</span></strong></p>
+  </td>
+  <td width=213 valign=top style='width:159.6pt;border:none;border-bottom:solid windowtext 2.25pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoListParagraphCxSpFirst style='margin-bottom:0in;margin-bottom:
+  .0001pt;text-indent:-.25in;line-height:normal'><strong><span
+  style='font-size:12.0pt;font-family:Symbol;font-weight:normal'>·<span
+  style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </span></span></strong><strong><span style='font-size:12.0pt;font-family:
+  "Arial","sans-serif";font-weight:normal'>Sections renamed</span></strong></p>
+  <p class=MsoListParagraphCxSpMiddle style='margin-bottom:0in;margin-bottom:
+  .0001pt;text-indent:-.25in;line-height:normal'><strong><span
+  style='font-size:12.0pt;font-family:Symbol;font-weight:normal'>·<span
+  style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </span></span></strong><strong><span style='font-size:12.0pt;font-family:
+  "Arial","sans-serif";font-weight:normal'>Statement of purpose moved into
+  introduction</span></strong></p>
+  <p class=MsoListParagraphCxSpMiddle style='margin-bottom:0in;margin-bottom:
+  .0001pt;text-indent:-.25in;line-height:normal'><strong><span
+  style='font-size:12.0pt;font-family:Symbol;font-weight:normal'>·<span
+  style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </span></span></strong><strong><span style='font-size:12.0pt;font-family:
+  "Arial","sans-serif";font-weight:normal'>Contact section updated</span></strong></p>
+  <p class=MsoListParagraphCxSpLast style='margin-bottom:0in;margin-bottom:
+  .0001pt;line-height:normal'><strong><span style='font-size:12.0pt;font-family:
+  "Arial","sans-serif";font-weight:normal'>&nbsp;</span></strong></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><strong><span style='font-size:12.0pt;line-height:115%;
+font-family:"Arial","sans-serif";font-weight:normal'>&nbsp;</span></strong></p>
+
+<span style='font-size:11.0pt;line-height:115%;font-family:"Arial","sans-serif"'><br
+clear=all style='page-break-before:always'>
+</span>
+
+<p class=MsoNormal><span style='font-family:"Arial","sans-serif"'>&nbsp;</span></p>
+
+<p class=MsoTocHeading><span style='font-family:"Arial","sans-serif"'>Table of Contents</span></p>
+
+<p class=MsoToc1><a
+href="#_Toc388270510"><b><span style='font-family:"Arial","sans-serif"'>Introduction:</span></b><span
+style='color:windowtext;display:none;text-decoration:none'>. </span><span
+style='color:windowtext;display:none;text-decoration:none'>3</span></a></p>
+
+<p class=MsoToc2><a href="#_Toc388270511"><span style='font-family:"Arial","sans-serif"'>Overview:</span><span
+style='color:windowtext;display:none;text-decoration:none'> </span><span
+style='color:windowtext;display:none;text-decoration:none'>3</span></a></p>
+
+<p class=MsoToc2><a href="#_Toc388270512"><span style='font-family:"Arial","sans-serif"'>Purpose
+of JIRA:</span><span style='color:windowtext;display:none;text-decoration:none'> </span><span
+style='color:windowtext;display:none;text-decoration:none'>3</span></a></p>
+
+<p class=MsoToc2><a href="#_Toc388270513"><span style='font-family:"Arial","sans-serif"'>Purpose
+of Document:</span><span style='color:windowtext;display:none;text-decoration:
+none'> </span><span
+style='color:windowtext;display:none;text-decoration:none'>3</span></a></p>
+
+<p class=MsoToc2><a href="#_Toc388270514"><span style='font-family:"Arial","sans-serif"'>Current
+Version:</span><span style='color:windowtext;display:none;text-decoration:none'> </span><span
+style='color:windowtext;display:none;text-decoration:none'>3</span></a></p>
+
+<p class=MsoToc2><a href="#_Toc388270515"><span style='font-family:"Arial","sans-serif"'>Most
+Recent Version Released:</span><span style='color:windowtext;display:none;
+text-decoration:none'> </span><span
+style='color:windowtext;display:none;text-decoration:none'>3</span></a></p>
+
+<p class=MsoToc1><a href="#_Toc388270516"><b><span style='font-family:"Arial","sans-serif"'>Notifications:</span></b><span
+style='color:windowtext;display:none;text-decoration:none'>. </span><span
+style='color:windowtext;display:none;text-decoration:none'>4</span></a></p>
+
+<p class=MsoToc2><a href="#_Toc388270517"><span style='font-family:"Arial","sans-serif"'>Emergency
+Contacts:</span><span style='color:windowtext;display:none;text-decoration:
+none'> </span><span
+style='color:windowtext;display:none;text-decoration:none'>4</span></a></p>
+
+<p class=MsoToc2><a href="#_Toc388270518"><span style='font-family:"Arial","sans-serif"'>Non-Emergency
+Contacts:</span><span style='color:windowtext;display:none;text-decoration:
+none'> </span><span
+style='color:windowtext;display:none;text-decoration:none'>5</span></a></p>
+
+<p class=MsoToc2><a href="#_Toc388270519"><span style='font-family:"Arial","sans-serif"'>Roles
+and Responsibilities:</span><span style='color:windowtext;display:none;
+text-decoration:none'> </span><span
+style='color:windowtext;display:none;text-decoration:none'>5</span></a></p>
+
+<p class=MsoToc1><a href="#_Toc388270520"><b><span style='font-family:"Arial","sans-serif"'>Backup
+Procedures:</span></b><span style='color:windowtext;display:none;text-decoration:
+none'>. </span><span
+style='color:windowtext;display:none;text-decoration:none'>6</span></a></p>
+
+<p class=MsoToc1><a href="#_Toc388270521"><b><span style='font-family:"Arial","sans-serif"'>Restore
+Procedures:</span></b><span style='color:windowtext;display:none;text-decoration:
+none'>. </span><span
+style='color:windowtext;display:none;text-decoration:none'>6</span></a></p>
+
+<p class=MsoToc2><a href="#_Toc388270522"><span style='font-family:"Arial","sans-serif"'>Database
+Recovery:</span><span style='color:windowtext;display:none;text-decoration:
+none'> </span><span
+style='color:windowtext;display:none;text-decoration:none'>6</span></a></p>
+
+<p class=MsoToc2><a href="#_Toc388270523"><span style='font-family:"Arial","sans-serif"'>Application
+Recovery:</span><span style='color:windowtext;display:none;text-decoration:
+none'> </span><span
+style='color:windowtext;display:none;text-decoration:none'>6</span></a></p>
+
+<p class=MsoToc2><a href="#_Toc388270524"><b><span style='font-family:"Arial","sans-serif"'>Server
+Recovery:</span></b><span style='color:windowtext;display:none;text-decoration:
+none'>. </span><span
+style='color:windowtext;display:none;text-decoration:none'>7</span></a></p>
+
+<p class=MsoNormal><span style='font-family:"Arial","sans-serif"'>&nbsp;</span></p>
+
+<b><span style='font-size:12.0pt;line-height:115%;font-family:"Arial","sans-serif"'><br
+clear=all style='page-break-before:always'>
+</span></b>
+
+<p class=MsoNormal><b><span style='font-size:12.0pt;line-height:115%;
+font-family:"Arial","sans-serif"'>&nbsp;</span></b></p>
+
+<p class=MsoNoSpacing><a name="_Toc388270510"><b><span style='font-size:18.0pt;
+font-family:"Arial","sans-serif"'>Introduction:</span></b></a></p>
+
+<h2 style='margin-bottom:6.0pt'><a name="_Toc388270511"><span style='font-size:
+12.0pt;line-height:115%;font-family:"Arial","sans-serif";color:#003366'>Scope:</span></a></h2>
+
+<p class=MsoNoSpacing><span style='font-size:12.0pt;font-family:"Arial","sans-serif"'>The
+purpose of this document is to give an overview of what JIRA is, list all
+contacts that are related to the JIRA application, and explain in detail the
+exact backup and restore procedures for RIJIRA’s database, application, and
+server.</span></p>
+
+<h2><span style='font-size:12.0pt;line-height:115%;font-family:"Arial","sans-serif";
+color:#003366'>Overview:</span></h2>
+
+<p style='margin-top:7.5pt;margin-right:0in;margin-bottom:0in;margin-left:0in;
+margin-bottom:.0001pt;line-height:15.0pt;background:white'><span
+style='font-family:"Arial","sans-serif";color:black'>JIRA, built by Atlassian,
+is an issue tracking tool that allows a company to track issues, assign work,
+and complete tasks within the company. &nbsp;It uses a graphical user interface
+and can be used on Windows, Linux, or Mac operation systems.</span></p>
+
+<p style='margin-top:7.5pt;margin-right:0in;margin-bottom:0in;margin-left:0in;
+margin-bottom:.0001pt;line-height:15.0pt;background:white'><span
+style='font-family:"Arial","sans-serif";color:black'>JIRA's allows the client
+to create projects, issues, custom workflows to meet their business needs.
+&nbsp;A user is able to create a project, and within this project, issues can
+be created. &nbsp;Issues can follow a certain workflow and can be assigned to a
+user or group. &nbsp;In addition, JIRA is able to keep track of users, and
+assign permissions to each user to control what is available to each user.
+&nbsp;</span></p>
+
+<p style='margin-top:7.5pt;margin-right:0in;margin-bottom:0in;margin-left:0in;
+margin-bottom:.0001pt;line-height:15.0pt;background:white'><span
+style='font-family:"Arial","sans-serif";color:black'>By putting all the
+company's issues into one place, it allows a company to be much more organized,
+and allow issues within the company to be fixed faster.&nbsp;&nbsp;</span></p>
+
+<h2><a name="_Toc388270512"><span style='font-size:12.0pt;line-height:115%;
+font-family:"Arial","sans-serif";color:#003366'>Purpose of JIRA:</span></a></h2>
+
+<p style='margin-top:7.5pt;margin-right:0in;margin-bottom:0in;margin-left:0in;
+margin-bottom:.0001pt;line-height:15.0pt;background:white'><span
+style='font-family:"Arial","sans-serif";color:black'>Atlassian's JIRA is used
+by GTECH as a defect tracking issue tool. &nbsp;It allows GTECH to post issues
+about its products and services, and assign these issues to be fixed by other
+users. &nbsp;JIRA is used by most employees, especially GTECH's software
+developers, and is currently installed on a server named<span
+class=apple-converted-space>&nbsp;</span></span><a
+href="https://wiki.gtech.com/display/TPST/Jira+-+System+Configuration"><span
+style='font-family:"Arial","sans-serif";color:black'>RIJIRA</span></a><span
+style='font-family:"Arial","sans-serif";color:black'>. </span></p>
+
+<h2><a name="_Toc388270514"><span style='font-size:12.0pt;line-height:115%;
+font-family:"Arial","sans-serif";color:#003366'>Current Version:</span></a></h2>
+
+<p style='margin-top:7.5pt;margin-right:0in;margin-bottom:0in;margin-left:0in;
+margin-bottom:.0001pt;line-height:15.0pt;background:white'><span
+style='font-family:"Arial","sans-serif";color:black'>GTECH currently uses JIRA
+5.2.11</span><span style='font-family:"Arial","sans-serif";color:#333333'>.</span></p>
+
+<h2><a name="_Toc388270515"><span style='font-size:12.0pt;line-height:115%;
+font-family:"Arial","sans-serif";color:#003366'>Most Recent Version Released:</span></a><span
+style='font-size:12.0pt;line-height:115%;font-family:"Arial","sans-serif";
+color:#003366'>&nbsp;</span></h2>
+
+<p style='margin-top:7.5pt;margin-right:0in;margin-bottom:0in;margin-left:0in;
+margin-bottom:.0001pt;line-height:15.0pt;background:white'><span
+style='font-family:"Arial","sans-serif";color:black'>Atlassian's latest version
+of JIRA is 6.2.</span></p>
+
+<p class=MsoNoSpacing><b><span style='font-size:18.0pt;font-family:"Arial","sans-serif"'>&nbsp;</span></b></p>
+
+<p class=MsoNoSpacing><b><span style='font-size:18.0pt;font-family:"Arial","sans-serif"'>&nbsp;</span></b></p>
+
+<p class=MsoNoSpacing><b><span style='font-size:18.0pt;font-family:"Arial","sans-serif"'>&nbsp;</span></b></p>
+
+<p class=MsoNoSpacing><b><span style='font-size:18.0pt;font-family:"Arial","sans-serif"'>&nbsp;</span></b></p>
+
+<p class=MsoNoSpacing><b><span style='font-size:18.0pt;font-family:"Arial","sans-serif"'>&nbsp;</span></b></p>
+
+<p class=MsoNoSpacing><b><span style='font-size:18.0pt;font-family:"Arial","sans-serif"'>&nbsp;</span></b></p>
+
+<p class=MsoNoSpacing><b><span style='font-size:18.0pt;font-family:"Arial","sans-serif"'>&nbsp;</span></b></p>
+
+<p class=MsoNoSpacing><a name="_Toc388270516"><b><span style='font-size:18.0pt;
+font-family:"Arial","sans-serif"'>Notifications:</span></b></a></p>
+
+<p class=MsoNoSpacing><span style='font-size:12.0pt;font-family:"Arial","sans-serif"'>&nbsp;</span></p>
+
+<p class=MsoNoSpacing><span style='font-size:12.0pt;font-family:"Arial","sans-serif"'>The
+GTECH Help Desk will notify the following people when this system becomes
+unavailable. </span></p>
+
+<h2><a name="_Toc388270517"><span style='font-size:12.0pt;line-height:115%;
+font-family:"Arial","sans-serif";color:#003366'>Emergency Contacts:</span></a></h2>
+
+<div align=center>
+
+<table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0 width=648
+ style='width:485.95pt;background:white;border-collapse:collapse'>
+ <thead>
+  <tr style='height:29.6pt'>
+   <td valign=top style='border:solid #DDDDDD 1.0pt;background:#F0F0F0;
+   padding:5.25pt 11.25pt 5.25pt 7.5pt;height:29.6pt'>
+   <p class=MsoNormal align=center style='margin-top:.15pt;margin-right:0in;
+   margin-bottom:0in;margin-left:0in;margin-bottom:.0001pt;text-align:center;
+   line-height:15.0pt'><b><span style='font-size:10.5pt;font-family:"Arial","sans-serif";
+   color:#003366'>Contact Name</span></b></p>
+   </td>
+   <td valign=top style='border:solid #DDDDDD 1.0pt;border-left:none;
+   background:#F0F0F0;padding:5.25pt 11.25pt 5.25pt 7.5pt;height:29.6pt'>
+   <p class=MsoNormal align=center style='margin-top:.15pt;margin-right:0in;
+   margin-bottom:0in;margin-left:0in;margin-bottom:.0001pt;text-align:center;
+   line-height:15.0pt'><b><span style='font-size:10.5pt;font-family:"Arial","sans-serif";
+   color:#003366'>Work Number</span></b></p>
+   </td>
+   <td valign=top style='border:solid #DDDDDD 1.0pt;border-left:none;
+   background:#F0F0F0;padding:5.25pt 11.25pt 5.25pt 7.5pt;height:29.6pt'>
+   <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+   text-align:center;line-height:15.0pt'><b><span style='font-size:10.5pt;
+   font-family:"Arial","sans-serif";color:#003366'>Cell Number</span></b></p>
+   </td>
+   <td valign=top style='border:solid #DDDDDD 1.0pt;border-left:none;
+   background:#F0F0F0;padding:5.25pt 11.25pt 5.25pt 7.5pt;height:29.6pt'>
+   <p class=MsoNormal align=center style='margin-top:.15pt;margin-right:0in;
+   margin-bottom:0in;margin-left:0in;margin-bottom:.0001pt;text-align:center;
+   line-height:15.0pt'><b><span style='font-size:10.5pt;font-family:"Arial","sans-serif";
+   color:#003366'>Location</span></b></p>
+   </td>
+   <td valign=top style='border:solid #DDDDDD 1.0pt;border-left:none;
+   background:#F0F0F0;padding:5.25pt 11.25pt 5.25pt 7.5pt;height:29.6pt'>
+   <p class=MsoNormal align=center style='margin-top:.15pt;margin-right:0in;
+   margin-bottom:0in;margin-left:0in;margin-bottom:.0001pt;text-align:center;
+   line-height:15.0pt'><b><span style='font-size:10.5pt;font-family:"Arial","sans-serif";
+   color:#003366'>Business Role</span></b></p>
+   </td>
+   <td valign=top style='border:solid #DDDDDD 1.0pt;border-left:none;
+   background:#F0F0F0;padding:5.25pt 11.25pt 5.25pt 7.5pt;height:29.6pt'>
+   <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+   text-align:center;line-height:15.0pt'><b><span style='font-size:10.5pt;
+   font-family:"Arial","sans-serif";color:#003366'>Situation</span></b></p>
+   </td>
+  </tr>
+ </thead>
+ <tr style='height:74.0pt'>
+  <td valign=top style='border:solid #DDDDDD 1.0pt;border-top:none;padding:
+  5.25pt 7.5pt 5.25pt 7.5pt;height:74.0pt'>
+  <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:15.0pt'><span style='font-family:"Arial","sans-serif";
+  color:black'>Jon Sundquist</span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid #DDDDDD 1.0pt;
+  border-right:solid #DDDDDD 1.0pt;padding:5.25pt 7.5pt 5.25pt 7.5pt;
+  height:74.0pt'>
+  <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:15.0pt'><span style='font-family:"Arial","sans-serif";
+  color:black'>512-963-2597</span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid #DDDDDD 1.0pt;
+  border-right:solid #DDDDDD 1.0pt;padding:5.25pt 7.5pt 5.25pt 7.5pt;
+  height:74.0pt'>
+  <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:15.0pt'><span style='font-family:"Arial","sans-serif";
+  color:black'>512-963-2597</span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid #DDDDDD 1.0pt;
+  border-right:solid #DDDDDD 1.0pt;padding:5.25pt 7.5pt 5.25pt 7.5pt;
+  height:74.0pt'>
+  <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:15.0pt'><span style='font-family:"Arial","sans-serif";
+  color:black'>Austin</span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid #DDDDDD 1.0pt;
+  border-right:solid #DDDDDD 1.0pt;padding:5.25pt 7.5pt 5.25pt 7.5pt;
+  height:74.0pt'>
+  <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:15.0pt'><span style='font-family:"Arial","sans-serif";
+  color:black'>STG Manager</span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid #DDDDDD 1.0pt;
+  border-right:solid #DDDDDD 1.0pt;padding:5.25pt 7.5pt 5.25pt 7.5pt;
+  height:74.0pt'>
+  <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:15.0pt'><span style='font-family:"Arial","sans-serif";
+  color:black'>Initial Contact for any system outage.&nbsp; This person becomes
+  the Incident Owner</span></p>
+  </td>
+ </tr>
+ <tr style='height:170.25pt'>
+  <td valign=top style='border:solid #DDDDDD 1.0pt;border-top:none;padding:
+  5.25pt 7.5pt 5.25pt 7.5pt;height:170.25pt'>
+  <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:15.0pt'><span style='font-family:"Arial","sans-serif";
+  color:black'>Brian Shilale</span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid #DDDDDD 1.0pt;
+  border-right:solid #DDDDDD 1.0pt;padding:5.25pt 7.5pt 5.25pt 7.5pt;
+  height:170.25pt'>
+  <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:15.0pt'><span style='font-family:"Arial","sans-serif";
+  color:black'>401-392-7136</span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid #DDDDDD 1.0pt;
+  border-right:solid #DDDDDD 1.0pt;padding:5.25pt 7.5pt 5.25pt 7.5pt;
+  height:170.25pt'>
+  <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:15.0pt'><span style='font-family:"Arial","sans-serif";
+  color:black'>401-497-4378</span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid #DDDDDD 1.0pt;
+  border-right:solid #DDDDDD 1.0pt;padding:5.25pt 7.5pt 5.25pt 7.5pt;
+  height:170.25pt'>
+  <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:15.0pt'><span style='font-family:"Arial","sans-serif";
+  color:black'>West Greenwich</span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid #DDDDDD 1.0pt;
+  border-right:solid #DDDDDD 1.0pt;padding:5.25pt 7.5pt 5.25pt 7.5pt;
+  height:170.25pt'>
+  <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:15.0pt'><span style='font-family:"Arial","sans-serif";
+  color:black'>Director, TP&amp;ST</span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid #DDDDDD 1.0pt;
+  border-right:solid #DDDDDD 1.0pt;padding:5.25pt 7.5pt 5.25pt 7.5pt;
+  height:170.25pt'>
+  <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:15.0pt'><span style='font-family:"Arial","sans-serif";
+  color:black'>Called immediately by Help Desk when&nbsp;STG Manager is not
+  available to find alternate contact</span></p>
+  <p class=MsoNormal align=center style='margin-top:7.5pt;margin-right:0in;
+  margin-bottom:0in;margin-left:0in;margin-bottom:.0001pt;text-align:center;
+  line-height:15.0pt'><span style='font-family:"Arial","sans-serif";color:black'>Called
+  by STG Manager when system cannot be recovered within 30 minutes</span></p>
+  </td>
+ </tr>
+ <tr style='height:74.0pt'>
+  <td valign=top style='border:solid #DDDDDD 1.0pt;border-top:none;padding:
+  5.25pt 7.5pt 5.25pt 7.5pt;height:74.0pt'>
+  <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:15.0pt'><span style='font-family:"Arial","sans-serif";
+  color:black'>Robert Beauparlant</span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid #DDDDDD 1.0pt;
+  border-right:solid #DDDDDD 1.0pt;padding:5.25pt 7.5pt 5.25pt 7.5pt;
+  height:74.0pt'>
+  <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:15.0pt'><span style='font-family:"Arial","sans-serif";
+  color:black'>&nbsp;</span></p>
+  <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:15.0pt'><span style='font-family:"Arial","sans-serif";
+  color:black'>Unknown</span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid #DDDDDD 1.0pt;
+  border-right:solid #DDDDDD 1.0pt;padding:5.25pt 7.5pt 5.25pt 7.5pt;
+  height:74.0pt'>
+  <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:15.0pt'><span style='font-family:"Arial","sans-serif";
+  color:black'>&nbsp;</span></p>
+  <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:15.0pt'><span style='font-family:"Arial","sans-serif";
+  color:black'>Unknown</span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid #DDDDDD 1.0pt;
+  border-right:solid #DDDDDD 1.0pt;padding:5.25pt 7.5pt 5.25pt 7.5pt;
+  height:74.0pt'>
+  <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:15.0pt'><span style='font-family:"Arial","sans-serif";
+  color:black'>Providence</span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid #DDDDDD 1.0pt;
+  border-right:solid #DDDDDD 1.0pt;padding:5.25pt 7.5pt 5.25pt 7.5pt;
+  height:74.0pt'>
+  <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:15.0pt'><span style='font-family:"Arial","sans-serif";
+  color:black'>VP Engineering Technology</span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid #DDDDDD 1.0pt;
+  border-right:solid #DDDDDD 1.0pt;padding:5.25pt 7.5pt 5.25pt 7.5pt;
+  height:74.0pt'>
+  <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:15.0pt'><span style='font-family:"Arial","sans-serif";
+  color:black'>Informed&nbsp;by Director, TP&amp;ST when system cannot be
+  restored within 2 hours</span></p>
+  </td>
+ </tr>
+ <tr style='height:103.6pt'>
+  <td valign=top style='border:solid #DDDDDD 1.0pt;border-top:none;padding:
+  5.25pt 7.5pt 5.25pt 7.5pt;height:103.6pt'>
+  <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:15.0pt'><span style='font-family:"Arial","sans-serif";
+  color:black'>Atlassian</span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid #DDDDDD 1.0pt;
+  border-right:solid #DDDDDD 1.0pt;padding:5.25pt 7.5pt 5.25pt 7.5pt;
+  height:103.6pt'>
+  <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:15.0pt'><span style='font-family:"Arial","sans-serif";
+  color:black'>415-701-1110</span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid #DDDDDD 1.0pt;
+  border-right:solid #DDDDDD 1.0pt;padding:5.25pt 7.5pt 5.25pt 7.5pt;
+  height:103.6pt'>
+  <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:15.0pt'><span style='font-family:"Arial","sans-serif";
+  color:black'>None</span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid #DDDDDD 1.0pt;
+  border-right:solid #DDDDDD 1.0pt;padding:5.25pt 7.5pt 5.25pt 7.5pt;
+  height:103.6pt'>
+  <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:15.0pt'><span style='font-family:"Arial","sans-serif";
+  color:black'>CA</span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid #DDDDDD 1.0pt;
+  border-right:solid #DDDDDD 1.0pt;padding:5.25pt 7.5pt 5.25pt 7.5pt;
+  height:103.6pt'>
+  <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:15.0pt'><span style='font-family:"Arial","sans-serif";
+  color:black'>Vendor</span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid #DDDDDD 1.0pt;
+  border-right:solid #DDDDDD 1.0pt;padding:5.25pt 7.5pt 5.25pt 7.5pt;
+  height:103.6pt'>
+  <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:15.0pt'><span style='font-family:"Arial","sans-serif";
+  color:black'>Contacted when there is a problem with the JIRA application that
+  cannot be fixed by the Non-Emergency Contacts.</span></p>
+  </td>
+ </tr>
+</table>
+
+</div>
+
+<p class=MsoNoSpacing><span style='font-family:"Arial","sans-serif"'>&nbsp;</span></p>
+
+<p class=MsoNoSpacing><span style='font-family:"Arial","sans-serif"'>&nbsp;</span></p>
+
+<p class=MsoNoSpacing><span style='font-family:"Arial","sans-serif"'>&nbsp;</span></p>
+
+<p class=MsoNoSpacing><span style='font-size:12.0pt;font-family:"Arial","sans-serif"'>Based
+on the nature of the outage, the following people will be called.</span></p>
+
+<h2><a name="_Toc388270518"><span style='font-size:12.0pt;line-height:115%;
+font-family:"Arial","sans-serif";color:#003366'>Non-Emergency Contacts:</span></a></h2>
+
+<div align=center>
+
+<table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0 width=647
+ style='width:485.5pt;border-collapse:collapse'>
+ <thead>
+  <tr style='height:32.0pt'>
+   <td valign=top style='border:solid #DDDDDD 1.0pt;background:#F0F0F0;
+   padding:5.25pt 11.25pt 5.25pt 7.5pt;height:32.0pt'>
+   <p align=center style='margin-top:.15pt;margin-right:0in;margin-bottom:0in;
+   margin-left:0in;margin-bottom:.0001pt;text-align:center'><b><span
+   style='font-family:"Arial","sans-serif";color:#003366'>Contact Name</span></b></p>
+   </td>
+   <td valign=top style='border:solid #DDDDDD 1.0pt;border-left:none;
+   background:#F0F0F0;padding:5.25pt 11.25pt 5.25pt 7.5pt;height:32.0pt'>
+   <p style='margin-top:.15pt;margin-right:0in;margin-bottom:0in;margin-left:
+   0in;margin-bottom:.0001pt'><b><span style='font-family:"Arial","sans-serif";
+   color:#003366'>Work Number</span></b></p>
+   </td>
+   <td valign=top style='border:solid #DDDDDD 1.0pt;border-left:none;
+   background:#F0F0F0;padding:5.25pt 11.25pt 5.25pt 7.5pt;height:32.0pt'>
+   <p style='margin-top:.15pt;margin-right:0in;margin-bottom:0in;margin-left:
+   0in;margin-bottom:.0001pt'><b><span style='font-family:"Arial","sans-serif";
+   color:#003366'>Location</span></b></p>
+   </td>
+   <td valign=top style='border:solid #DDDDDD 1.0pt;border-left:none;
+   background:#F0F0F0;padding:5.25pt 11.25pt 5.25pt 7.5pt;height:32.0pt'>
+   <p style='margin-top:.15pt;margin-right:0in;margin-bottom:0in;margin-left:
+   0in;margin-bottom:.0001pt'><b><span style='font-family:"Arial","sans-serif";
+   color:#003366'>Business Role</span></b></p>
+   </td>
+   <td valign=top style='border:solid #DDDDDD 1.0pt;border-left:none;
+   background:#F0F0F0;padding:5.25pt 11.25pt 5.25pt 7.5pt;height:32.0pt'>
+   <p class=MsoNormal><b><span style='font-family:"Arial","sans-serif";
+   color:#003366'>System Role</span></b></p>
+   </td>
+  </tr>
+ </thead>
+ <tr style='height:21.25pt'>
+  <td valign=top style='border:solid #DDDDDD 1.0pt;border-top:none;padding:
+  5.25pt 7.5pt 5.25pt 7.5pt;height:21.25pt'>
+  <p align=center style='margin:0in;margin-bottom:.0001pt;text-align:center'><span
+  style='font-size:11.0pt;font-family:"Arial","sans-serif";color:black'>Mateusz
+  Adamowski</span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid #DDDDDD 1.0pt;
+  border-right:solid #DDDDDD 1.0pt;padding:5.25pt 7.5pt 5.25pt 7.5pt;
+  height:21.25pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='line-height:115%;font-family:"Arial","sans-serif";color:black'>+48-601-364218</span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid #DDDDDD 1.0pt;
+  border-right:solid #DDDDDD 1.0pt;padding:5.25pt 7.5pt 5.25pt 7.5pt;
+  height:21.25pt'>
+  <p align=center style='margin:0in;margin-bottom:.0001pt;text-align:center'><span
+  style='font-size:11.0pt;font-family:"Arial","sans-serif";color:black'>Warsaw</span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid #DDDDDD 1.0pt;
+  border-right:solid #DDDDDD 1.0pt;padding:5.25pt 7.5pt 5.25pt 7.5pt;
+  height:21.25pt'>
+  <p align=center style='margin:0in;margin-bottom:.0001pt;text-align:center'><span
+  style='font-size:11.0pt;font-family:"Arial","sans-serif";color:black'>Engineer</span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid #DDDDDD 1.0pt;
+  border-right:solid #DDDDDD 1.0pt;padding:5.25pt 7.5pt 5.25pt 7.5pt;
+  height:21.25pt'>
+  <p align=center style='margin:0in;margin-bottom:.0001pt;text-align:center'><span
+  style='font-size:11.0pt;font-family:"Arial","sans-serif";color:black'>Administrator</span></p>
+  </td>
+ </tr>
+ <tr style='height:26.35pt'>
+  <td valign=top style='border:solid #DDDDDD 1.0pt;border-top:none;padding:
+  5.25pt 7.5pt 5.25pt 7.5pt;height:26.35pt'>
+  <p align=center style='margin:0in;margin-bottom:.0001pt;text-align:center'><span
+  style='font-size:11.0pt;font-family:"Arial","sans-serif";color:black'>Sean
+  Dorsey</span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid #DDDDDD 1.0pt;
+  border-right:solid #DDDDDD 1.0pt;padding:5.25pt 7.5pt 5.25pt 7.5pt;
+  height:26.35pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='line-height:115%;font-family:"Arial","sans-serif";color:black'>401-392-7590</span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid #DDDDDD 1.0pt;
+  border-right:solid #DDDDDD 1.0pt;padding:5.25pt 7.5pt 5.25pt 7.5pt;
+  height:26.35pt'>
+  <p align=center style='margin:0in;margin-bottom:.0001pt;text-align:center'><span
+  style='font-size:11.0pt;font-family:"Arial","sans-serif";color:black'>West
+  Greenwich</span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid #DDDDDD 1.0pt;
+  border-right:solid #DDDDDD 1.0pt;padding:5.25pt 7.5pt 5.25pt 7.5pt;
+  height:26.35pt'>
+  <p align=center style='margin:0in;margin-bottom:.0001pt;text-align:center'><span
+  style='font-size:11.0pt;font-family:"Arial","sans-serif";color:black'>Engineer</span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid #DDDDDD 1.0pt;
+  border-right:solid #DDDDDD 1.0pt;padding:5.25pt 7.5pt 5.25pt 7.5pt;
+  height:26.35pt'>
+  <p align=center style='margin:0in;margin-bottom:.0001pt;text-align:center'><span
+  style='font-size:11.0pt;font-family:"Arial","sans-serif";color:black'>Administrator</span></p>
+  </td>
+ </tr>
+ <tr style='height:19.05pt'>
+  <td valign=top style='border:solid #DDDDDD 1.0pt;border-top:none;padding:
+  5.25pt 7.5pt 5.25pt 7.5pt;height:19.05pt'>
+  <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:15.0pt'><span style='font-family:"Arial","sans-serif";
+  color:black'>Atlassian</span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid #DDDDDD 1.0pt;
+  border-right:solid #DDDDDD 1.0pt;padding:5.25pt 7.5pt 5.25pt 7.5pt;
+  height:19.05pt'>
+  <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:15.0pt'><span style='font-family:"Arial","sans-serif";
+  color:black'>415-701-1110</span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid #DDDDDD 1.0pt;
+  border-right:solid #DDDDDD 1.0pt;padding:5.25pt 7.5pt 5.25pt 7.5pt;
+  height:19.05pt'>
+  <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:15.0pt'><span style='font-family:"Arial","sans-serif";
+  color:black'>CA</span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid #DDDDDD 1.0pt;
+  border-right:solid #DDDDDD 1.0pt;padding:5.25pt 7.5pt 5.25pt 7.5pt;
+  height:19.05pt'>
+  <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:15.0pt'><span style='font-family:"Arial","sans-serif";
+  color:black'>Software Vendor</span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid #DDDDDD 1.0pt;
+  border-right:solid #DDDDDD 1.0pt;padding:5.25pt 7.5pt 5.25pt 7.5pt;
+  height:19.05pt'>
+  <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:15.0pt'><span style='font-family:"Arial","sans-serif";
+  color:black'>Support</span></p>
+  </td>
+  <td valign=top style='padding:.75pt .75pt .75pt .75pt;height:19.05pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  15.0pt'><span style='font-family:"Arial","sans-serif";color:black'>.</span></p>
+  </td>
+ </tr>
+ <tr style='height:19.05pt'>
+  <td valign=top style='border:solid #DDDDDD 1.0pt;border-top:none;padding:
+  5.25pt 7.5pt 5.25pt 7.5pt;height:19.05pt'>
+  <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:15.0pt'><span style='font-family:"Arial","sans-serif";
+  color:black'>IBM</span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid #DDDDDD 1.0pt;
+  border-right:solid #DDDDDD 1.0pt;padding:5.25pt 7.5pt 5.25pt 7.5pt;
+  height:19.05pt'>
+  <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:15.0pt'><span style='font-size:10.5pt;
+  font-family:"Arial","sans-serif";color:black;background:white'>1-888-839-9289</span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid #DDDDDD 1.0pt;
+  border-right:solid #DDDDDD 1.0pt;padding:5.25pt 7.5pt 5.25pt 7.5pt;
+  height:19.05pt'>
+  <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:15.0pt'><span style='font-family:"Arial","sans-serif";
+  color:black'>NY</span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid #DDDDDD 1.0pt;
+  border-right:solid #DDDDDD 1.0pt;padding:5.25pt 7.5pt 5.25pt 7.5pt;
+  height:19.05pt'>
+  <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:15.0pt'><span style='font-family:"Arial","sans-serif";
+  color:black'>Hardware Vendor</span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid #DDDDDD 1.0pt;
+  border-right:solid #DDDDDD 1.0pt;padding:5.25pt 7.5pt 5.25pt 7.5pt;
+  height:19.05pt'>
+  <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:15.0pt'><span style='font-family:"Arial","sans-serif";
+  color:black'>Support</span></p>
+  </td>
+  <td valign=top style='padding:.75pt .75pt .75pt .75pt;height:19.05pt'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  15.0pt'><span style='font-family:"Arial","sans-serif";color:black'>&nbsp;</span></p>
+  </td>
+ </tr>
+ <tr style='height:29.35pt'>
+  <td valign=top style='border:solid #DDDDDD 1.0pt;border-top:none;padding:
+  5.25pt 7.5pt 5.25pt 7.5pt;height:29.35pt'>
+  <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:15.0pt'><span style='font-family:"Arial","sans-serif";
+  color:black'>GTECH Help Desk</span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid #DDDDDD 1.0pt;
+  border-right:solid #DDDDDD 1.0pt;padding:5.25pt 7.5pt 5.25pt 7.5pt;
+  height:29.35pt'>
+  <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:15.0pt'><span style='font-family:"Arial","sans-serif";
+  color:black'>401-392-7999</span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid #DDDDDD 1.0pt;
+  border-right:solid #DDDDDD 1.0pt;padding:5.25pt 7.5pt 5.25pt 7.5pt;
+  height:29.35pt'>
+  <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:15.0pt'><span style='font-family:"Arial","sans-serif";
+  color:black'>RI</span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid #DDDDDD 1.0pt;
+  border-right:solid #DDDDDD 1.0pt;padding:5.25pt 7.5pt 5.25pt 7.5pt;
+  height:29.35pt'>
+  <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:15.0pt'><span style='font-family:"Arial","sans-serif";
+  color:black'>Help Desk</span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid #DDDDDD 1.0pt;
+  border-right:solid #DDDDDD 1.0pt;padding:5.25pt 7.5pt 5.25pt 7.5pt;
+  height:29.35pt'>
+  <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:15.0pt'><span style='font-family:"Arial","sans-serif";
+  color:black'>Support</span></p>
+  </td>
+  <td valign=top style='padding:.75pt .75pt .75pt .75pt;height:29.35pt'>
+  <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:15.0pt'><span style='font-family:"Arial","sans-serif";
+  color:black'>&nbsp;</span></p>
+  </td>
+ </tr>
+ <tr style='height:22.05pt'>
+  <td valign=top style='border:solid #DDDDDD 1.0pt;border-top:none;padding:
+  5.25pt 7.5pt 5.25pt 7.5pt;height:22.05pt'>
+  <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:15.0pt'><span style='font-family:"Arial","sans-serif";
+  color:black'>Platforms</span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid #DDDDDD 1.0pt;
+  border-right:solid #DDDDDD 1.0pt;padding:5.25pt 7.5pt 5.25pt 7.5pt;
+  height:22.05pt'>
+  <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:15.0pt'><span style='font-family:"Arial","sans-serif";
+  color:black'>N/A</span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid #DDDDDD 1.0pt;
+  border-right:solid #DDDDDD 1.0pt;padding:5.25pt 7.5pt 5.25pt 7.5pt;
+  height:22.05pt'>
+  <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:15.0pt'><span style='font-family:"Arial","sans-serif";
+  color:black'>RI</span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid #DDDDDD 1.0pt;
+  border-right:solid #DDDDDD 1.0pt;padding:5.25pt 7.5pt 5.25pt 7.5pt;
+  height:22.05pt'>
+  <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:15.0pt'><span style='font-family:"Arial","sans-serif";
+  color:black'>System Administrator</span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid #DDDDDD 1.0pt;
+  border-right:solid #DDDDDD 1.0pt;padding:5.25pt 7.5pt 5.25pt 7.5pt;
+  height:22.05pt'>
+  <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:15.0pt'><span style='font-family:"Arial","sans-serif";
+  color:black'>Support</span></p>
+  </td>
+  <td valign=top style='padding:.75pt .75pt .75pt .75pt;height:22.05pt'>
+  <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:15.0pt'><span style='font-family:"Arial","sans-serif";
+  color:black'>&nbsp;</span></p>
+  </td>
+ </tr>
+</table>
+
+</div>
+
+<p class=MsoNoSpacing><span style='font-size:12.0pt;font-family:"Arial","sans-serif"'>&nbsp;</span></p>
+
+<h2><span style='font-size:12.0pt;line-height:115%;font-family:"Arial","sans-serif";
+color:#003366'>Roles and Responsibilities:</span></h2>
+
+<p class=MsoNoSpacing><span style='font-size:12.0pt;font-family:"Arial","sans-serif"'>&nbsp;</span></p>
+
+<div align=center>
+
+<table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0 width=640
+ style='width:480.1pt;border-collapse:collapse'>
+ <thead>
+  <tr style='height:18.75pt'>
+   <td valign=top style='border:solid #DDDDDD 1.0pt;background:#F0F0F0;
+   padding:5.25pt 11.25pt 5.25pt 7.5pt;height:18.75pt'>
+   <p align=center style='margin-top:.15pt;margin-right:0in;margin-bottom:0in;
+   margin-left:0in;margin-bottom:.0001pt;text-align:center'><b><span
+   style='font-family:"Arial","sans-serif";color:#003366'>Role</span></b></p>
+   </td>
+   <td valign=top style='border:solid #DDDDDD 1.0pt;border-left:none;
+   background:#F0F0F0;padding:5.25pt 11.25pt 5.25pt 7.5pt;height:18.75pt'>
+   <p align=center style='margin-top:.15pt;margin-right:0in;margin-bottom:0in;
+   margin-left:0in;margin-bottom:.0001pt;text-align:center'><b><span
+   style='font-family:"Arial","sans-serif";color:#003366'>Responsibilities</span></b></p>
+   </td>
+  </tr>
+ </thead>
+ <tr style='height:26.4pt'>
+  <td valign=top style='border:solid #DDDDDD 1.0pt;border-top:none;padding:
+  5.25pt 7.5pt 5.25pt 7.5pt;height:26.4pt'>
+  <p align=center style='margin:0in;margin-bottom:.0001pt;text-align:center'><span
+  style='font-size:11.0pt;font-family:"Arial","sans-serif";color:black'>STG
+  Manager</span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid #DDDDDD 1.0pt;
+  border-right:solid #DDDDDD 1.0pt;padding:5.25pt 7.5pt 5.25pt 7.5pt;
+  height:26.4pt'>
+  <p class=MsoListParagraphCxSpFirst style='text-indent:-.25in'><span
+  style='line-height:115%;font-family:Symbol;color:black'>·<span
+  style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </span></span><span style='line-height:115%;font-family:"Arial","sans-serif";
+  color:black'>Incident owner.</span></p>
+  <p class=MsoListParagraphCxSpMiddle style='text-indent:-.25in'><span
+  style='line-height:115%;font-family:Symbol;color:black'>·<span
+  style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </span></span><span style='line-height:115%;font-family:"Arial","sans-serif";
+  color:black'>Respond to initial disaster and formulate an initial plan of
+  recovery with Director, Administrators, and Support.</span></p>
+  <p class=MsoListParagraphCxSpMiddle style='text-indent:-.25in'><span
+  style='line-height:115%;font-family:Symbol;color:black'>·<span
+  style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </span></span><span style='line-height:115%;font-family:"Arial","sans-serif";
+  color:black'>Check on status and recovery of tool and ensure all team members
+  are familiar with their responsibilities. </span></p>
+  <p class=MsoListParagraphCxSpLast style='text-indent:-.25in'><span
+  style='line-height:115%;font-family:Symbol;color:black'>·<span
+  style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </span></span><span style='line-height:115%;font-family:"Arial","sans-serif";
+  color:black'>Help execute plan with Administrators and Support</span></p>
+  </td>
+ </tr>
+ <tr style='height:20.1pt'>
+  <td valign=top style='border:solid #DDDDDD 1.0pt;border-top:none;padding:
+  5.25pt 7.5pt 5.25pt 7.5pt;height:20.1pt'>
+  <p align=center style='margin:0in;margin-bottom:.0001pt;text-align:center'><span
+  style='font-family:"Arial","sans-serif";color:black'>Director, TP&amp;ST</span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid #DDDDDD 1.0pt;
+  border-right:solid #DDDDDD 1.0pt;padding:5.25pt 7.5pt 5.25pt 7.5pt;
+  height:20.1pt'>
+  <p class=MsoListParagraph style='text-indent:-.25in'><span style='line-height:
+  115%;font-family:Symbol;color:black'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </span></span><span style='line-height:115%;font-family:"Arial","sans-serif";
+  color:black'>Respond to initial disaster and help formulate an initial plan
+  recovery with STG Manager, Administrators, and Support</span></p>
+  </td>
+ </tr>
+ <tr style='height:20.1pt'>
+  <td valign=top style='border:solid #DDDDDD 1.0pt;border-top:none;padding:
+  5.25pt 7.5pt 5.25pt 7.5pt;height:20.1pt'>
+  <p align=center style='margin:0in;margin-bottom:.0001pt;text-align:center'><span
+  style='font-family:"Arial","sans-serif";color:black'>Administrator </span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid #DDDDDD 1.0pt;
+  border-right:solid #DDDDDD 1.0pt;padding:5.25pt 7.5pt 5.25pt 7.5pt;
+  height:20.1pt'>
+  <p class=MsoListParagraphCxSpFirst style='text-indent:-.25in'><span
+  style='line-height:115%;font-family:Symbol;color:black'>·<span
+  style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </span></span><span style='line-height:115%;font-family:"Arial","sans-serif";
+  color:black'>Help formulate an initial plan of action with STG Manager,
+  Director, and Support. </span></p>
+  <p class=MsoListParagraphCxSpLast style='text-indent:-.25in'><span
+  style='line-height:115%;font-family:Symbol;color:black'>·<span
+  style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </span></span><span style='line-height:115%;font-family:"Arial","sans-serif";
+  color:black'>Execute plan with help from STG Manager and Support</span></p>
+  </td>
+ </tr>
+ <tr style='height:24.15pt'>
+  <td valign=top style='border:solid #DDDDDD 1.0pt;border-top:none;padding:
+  5.25pt 7.5pt 5.25pt 7.5pt;height:24.15pt'>
+  <p align=center style='margin:0in;margin-bottom:.0001pt;text-align:center'><span
+  style='font-family:"Arial","sans-serif";color:black'>Support</span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid #DDDDDD 1.0pt;
+  border-right:solid #DDDDDD 1.0pt;padding:5.25pt 7.5pt 5.25pt 7.5pt;
+  height:24.15pt'>
+  <p class=MsoListParagraphCxSpFirst style='text-indent:-.25in'><span
+  style='line-height:115%;font-family:Symbol;color:black'>·<span
+  style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </span></span><span style='line-height:115%;font-family:"Arial","sans-serif";
+  color:black'>Help formulate an initial plan of action with STG Manager,
+  Director, and Administrators. </span></p>
+  <p class=MsoListParagraphCxSpLast style='text-indent:-.25in'><span
+  style='line-height:115%;font-family:Symbol;color:black'>·<span
+  style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </span></span><span style='line-height:115%;font-family:"Arial","sans-serif";
+  color:black'>Help execute plan with help from STG Manager, and Administrators
+  by providing information or hardware necessary to complete plan. </span></p>
+  </td>
+ </tr>
+</table>
+
+</div>
+
+<p class=MsoNoSpacing><b><span style='font-size:18.0pt;font-family:"Arial","sans-serif"'>&nbsp;</span></b></p>
+
+<p class=MsoNoSpacing><a name="_Toc388270520"><b><span style='font-size:18.0pt;
+font-family:"Arial","sans-serif"'>Backup Procedures:</span></b></a></p>
+
+<p class=MsoNormal style='margin-top:7.5pt;margin-right:0in;margin-bottom:0in;
+margin-left:0in;margin-bottom:.0001pt;line-height:15.0pt;background:white'><b><span
+style='font-family:"Arial","sans-serif";color:black'>Database Backup: </span></b></p>
+
+<p class=MsoListParagraphCxSpFirst style='margin-top:7.5pt;margin-right:0in;
+margin-bottom:0in;margin-left:.5in;margin-bottom:.0001pt;text-indent:-.25in;
+line-height:15.0pt;background:white'><span style='font-family:Symbol;
+color:black'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Arial","sans-serif";color:black'>An xml
+backup file gets created every 12 hours on RIJira.&nbsp; This backups both the
+application and the database within Jira.&nbsp; However, this does not back up
+the attachments.</span></p>
+
+<p class=MsoListParagraphCxSpLast style='margin-top:7.5pt;margin-right:0in;
+margin-bottom:0in;margin-left:.5in;margin-bottom:.0001pt;text-indent:-.25in;
+line-height:15.0pt;background:white'><span style='font-family:Symbol;
+color:black'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Arial","sans-serif";color:black;
+background:white'>Every night around 9:00pm E.T, the latest xml file is automatically
+copied over to what is now RIJira01.&nbsp; A little while after that all of the
+attachments on RIJira are copied over to RIJira01.</span></p>
+
+<p class=MsoNoSpacing><b><span style='font-size:18.0pt;font-family:"Arial","sans-serif"'>&nbsp;</span></b></p>
+
+<p class=MsoNoSpacing><a name="_Toc388270521"><b><span style='font-size:18.0pt;
+font-family:"Arial","sans-serif"'>Restore Procedures:</span></b></a></p>
+
+<p class=MsoNoSpacing><b><span style='font-size:12.0pt;font-family:"Arial","sans-serif"'>&nbsp;</span></b></p>
+
+<p style='margin:0in;margin-bottom:.0001pt;line-height:15.0pt;background:white;
+vertical-align:top'><b><span style='font-size:11.0pt;font-family:"Arial","sans-serif";
+color:black'>*Important:</span></b><span style='font-size:11.0pt;font-family:
+"Arial","sans-serif";color:black'> Currently, the only servers for JIRA are
+located at the Data Center in Rhode Island. &nbsp;There is talk about creating
+additional backup servers in a different location in case the Data Center in
+Rhode Island becomes unavailable.<span class=apple-converted-space>&nbsp;</span></span></p>
+
+<h2><a name="_Toc388270522"><span style='line-height:115%;font-family:"Arial","sans-serif";
+color:black'>Database Recovery:</span></a></h2>
+
+<p class=MsoNoSpacing><span style='color:black'>&nbsp;</span></p>
+
+<p class=MsoNoSpacing><span style='font-family:"Arial","sans-serif";color:black'>If
+the data becomes corrupted, follow these steps to restore the data.</span></p>
+
+<p class=MsoNormal style='margin-left:.5in;text-indent:-.25in;line-height:15.0pt;
+background:white'><span style='font-size:10.0pt;font-family:Symbol;color:black'><span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Arial","sans-serif";color:black'>Retrieve
+the most recent backup from the G:\Home\Jira52\export folder.</span></p>
+
+<p class=MsoNormal style='margin-left:.5in;text-indent:-.25in;line-height:15.0pt;
+background:white'><span style='font-size:10.0pt;font-family:Symbol;color:black'><span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Arial","sans-serif";color:black'>Log
+into Jira 5.2 as a System Administrator.</span></p>
+
+<p class=MsoNormal style='margin-left:.5in;text-indent:-.25in;line-height:15.0pt;
+background:white'><span style='font-size:10.0pt;font-family:Symbol;color:black'><span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Arial","sans-serif";color:black'>In the
+Jira dashboard, click on the Import &amp; Export link in system tools, and
+click on Restore System.</span></p>
+
+<p class=MsoNormal style='margin-left:.5in;text-indent:-.25in;line-height:15.0pt;
+background:white'><span style='font-size:10.0pt;font-family:Symbol;color:black'><span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Arial","sans-serif";color:black'>Enter
+the file name in the File Name text area, and click Restore.</span></p>
+
+<h2><a name="_Toc388270523"><span style='line-height:115%;font-family:"Arial","sans-serif";
+color:black'>&nbsp;</span></a></h2>
+
+<h2><span style='line-height:115%;font-family:"Arial","sans-serif";color:black'>&nbsp;</span></h2>
+
+<p class=MsoNoSpacing>&nbsp;</p>
+
+<p class=MsoNoSpacing><b><span style='font-size:12.0pt;font-family:"Arial","sans-serif"'>Application
+Recovery:</span></b></p>
+
+<p class=MsoNoSpacing>&nbsp;</p>
+
+<p class=MsoNoSpacing><span style='font-family:"Arial","sans-serif"'>If only
+the Jira application is corrupted, and not the data, follow these steps to
+restore the Jira application.&nbsp; These steps will re-install the current 5.2
+Jira system.</span></p>
+
+<p class=MsoNormal style='margin-top:7.5pt;margin-right:0in;margin-bottom:0in;
+margin-left:0in;margin-bottom:.0001pt;line-height:15.0pt;background:white'><span
+style='font-family:"Arial","sans-serif";color:black'>*Note:  &lt;DTOM&gt; =
+D:\Program File\Apache\Tomcat 6.0\ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span></p>
+
+<p class=MsoNormal style='margin-left:.5in;text-indent:-.25in;line-height:15.0pt;
+background:white'><span style='font-size:10.0pt;font-family:Symbol;color:black'><span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Arial","sans-serif";color:black'>Stop
+the service Tomcat</span></p>
+
+<p class=MsoNormal style='margin-left:.5in;text-indent:-.25in;line-height:15.0pt;
+background:white'><span style='font-size:10.0pt;font-family:Symbol;color:black'><span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Arial","sans-serif";color:black'>Delete
+(or move) the current Jira folder out of &lt;DTOM&gt;webapps and also erase the
+Jira directory under &lt;DTOM&gt;work\Catalina\localhost.</span></p>
+
+<p class=MsoNormal style='margin-left:.5in;text-indent:-.25in;line-height:15.0pt;
+background:white'><span style='font-size:10.0pt;font-family:Symbol;color:black'><span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Arial","sans-serif";color:black'>Reset
+logs in Tomcat</span></p>
+
+<p class=MsoNormal style='margin-left:.5in;text-indent:-.25in;line-height:15.0pt;
+background:white'><span style='font-size:10.0pt;font-family:Symbol;color:black'><span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Arial","sans-serif";color:black'>Replace
+&lt;DTOM&gt;lib with G:\Backups\6-19-13\tomcat jars</span></p>
+
+<p class=MsoNormal style='margin-left:.5in;text-indent:-.25in;line-height:15.0pt;
+background:white'><span style='font-size:10.0pt;font-family:Symbol;color:black'><span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Arial","sans-serif";color:black'>In the
+WAR file in webapps\jira\WEB-INF\lib delete slf4j-log4j12-1.6.4 and
+slf4j-api-1.6.4 (Already in &lt;DTOM&gt;lib)</span></p>
+
+<p class=MsoNormal style='margin-left:.5in;text-indent:-.25in;line-height:15.0pt;
+background:white'><span style='font-size:10.0pt;font-family:Symbol;color:black'><span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Arial","sans-serif";color:black'>[Recompile,]
+rename and copy the 5.2 WAR file from G:\Downloads\Working WAR
+Files\atlassian-jira-5.2.11-war\dist-tomcat\tomcat6\atlassian-jira-5.2.11.war&nbsp;<br>
+to G:\Atlassian\JIRA\deploy-war\atlassian-jira.war.</span></p>
+
+<p class=MsoNormal style='margin-left:.5in;text-indent:-.25in;line-height:15.0pt;
+background:white'><span style='font-size:10.0pt;font-family:Symbol;color:black'><span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Arial","sans-serif";color:black'>Start
+Tomcat, check logs, etc. for any errors.</span></p>
+
+<p class=MsoNoSpacing><a name="_Toc388270524"><b><span style='font-size:13.0pt;
+font-family:"Arial","sans-serif"'>Server Recovery:</span></b></a></p>
+
+<p class=MsoNormal style='margin-top:7.5pt;margin-right:0in;margin-bottom:0in;
+margin-left:0in;margin-bottom:.0001pt;line-height:15.0pt;background:white'><b><span
+style='font-family:"Arial","sans-serif";color:black'>Important:</span></b><span
+style='font-family:"Arial","sans-serif";color:black'> Currently, the only
+servers for JIRA are located at the Data Center in Rhode Island. &nbsp;There is
+talk about creating additional backup servers in a different location in case
+the Data Center in Rhode Island becomes unavailable. &nbsp;</span></p>
+
+<p class=MsoNormal style='margin-top:7.5pt;margin-right:0in;margin-bottom:0in;
+margin-left:0in;margin-bottom:.0001pt;line-height:15.0pt;background:white'><span
+style='font-family:"Arial","sans-serif";color:black'>Every night around 9:00pm
+E.T. the latest xml file gets automatically copied over to what is now
+RIJira01.&nbsp; A little while after that all of the attachments on RIJira are
+copied over to RIJira01.</span></p>
+
+<p class=MsoNormal style='margin-top:7.5pt;margin-right:0in;margin-bottom:0in;
+margin-left:0in;margin-bottom:.0001pt;line-height:15.0pt;background:white'><span
+style='font-family:"Arial","sans-serif";color:black'>Steps to Recover Server:</span></p>
+
+<p class=MsoListParagraphCxSpFirst style='margin-top:7.5pt;margin-right:0in;
+margin-bottom:0in;margin-left:.5in;margin-bottom:.0001pt;text-indent:-.25in;
+line-height:15.0pt;background:white'><span style='font-family:Symbol;
+color:black'><span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Arial","sans-serif";color:black'>Between
+STG Manager, Director, Administrators, and Support, determine if RIJIRA is able
+to be quickly recovered.  </span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-top:7.5pt;margin-right:0in;
+margin-bottom:0in;margin-left:.5in;margin-bottom:.0001pt;text-indent:-.25in;
+line-height:15.0pt;background:white'><span style='font-family:Symbol;
+color:black'><span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Arial","sans-serif";color:black'>If
+RIJIRA is going to be unavailable for an extended period of time, the STG
+Manager or the Administrators can send a request to the help desk to have
+Platforms modify the DNS to direct users to RIJIRA01.</span></p>
+
+<p class=MsoListParagraphCxSpLast style='margin-top:7.5pt;margin-right:0in;
+margin-bottom:0in;margin-left:.5in;margin-bottom:.0001pt;text-indent:-.25in;
+line-height:15.0pt;background:white'><span style='font-family:Symbol;
+color:black'><span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Arial","sans-serif";color:black'>While
+users are directed to RIJIRA01, the STG Manager, Administrators, and Support
+can formulate a plan to fix what is necessary to get the production server up
+and running again as quickly as possible.  </span></p>
+
+<p class=MsoNoSpacing><b><span style='font-size:14.0pt;font-family:"Arial","sans-serif"'>&nbsp;</span></b></p>
+
+<p class=MsoNoSpacing><b><span style='font-size:12.0pt;font-family:"Arial","sans-serif"'>&nbsp;</span></b></p>
+
+</div>
+
+</body>
+
+</html>

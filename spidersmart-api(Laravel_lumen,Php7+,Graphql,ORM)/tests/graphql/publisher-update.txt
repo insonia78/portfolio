@@ -1,0 +1,36 @@
+mutation(
+   $id: Int!, $name: String, $active: Boolean
+){
+  updatePublisher(id: $id, name: $name, active: $active){
+    success
+    data{
+      id
+      name
+      active
+     
+    }
+    errors
+  }
+}
+
+
+
+{
+  "id":1,
+  "name":"Jane Doe",
+  "active":false
+}
+
+
+{
+  "data": {
+    "updatePublisher": {
+      "success": false,
+      "data": null,
+      "errors": [
+        "The entity could not be created.",
+        "[active]: The active field is required."
+      ]
+    }
+  }
+}

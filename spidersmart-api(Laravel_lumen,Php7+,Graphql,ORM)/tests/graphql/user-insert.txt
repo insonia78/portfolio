@@ -1,0 +1,21 @@
+mutation ($type: UserType!, $email: String!, $password: String!, $prefix: String, $firstName: String!, $middleName: String, $lastName: String!, $suffix: String, $verified: Boolean, $active: Boolean, $addresses: [UserAddressInput], $contacts: [UserContactInput], $enrollments: [EnrollmentInput]) {
+  createUser(type: $type, email: $email, password: $password, prefix: $prefix, firstName: $firstName, middleName: $middleName, lastName: $lastName, suffix: $suffix, verified: $verified, active: $active, addresses: $addresses, contacts: $contacts, enrollments: $enrollments) {
+    success
+    data {
+      type
+      email
+      password
+      prefix
+      firstName
+      middleName
+      lastName
+      suffix
+      verified
+      active
+      addresses
+      contacts
+      enrollments
+    }
+    errors
+  }
+}

@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<databaseconfiguration>
+  <datasource>Data Source=DESKTOP-9NQKMLU\SQLEXPRESS</datasource>
+  <initialcatalog>Initial Catalog=Amazing_charts_sample_program</initialcatalog>
+  <integratedsecurity>Integrated Security=SSPI</integratedsecurity>
+  <user>User ID=test</user>
+  <password>Password=test</password>
+</databaseconfiguration>

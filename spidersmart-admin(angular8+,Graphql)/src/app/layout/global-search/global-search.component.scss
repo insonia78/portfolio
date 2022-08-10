@@ -1,0 +1,114 @@
+@import '~src/theme';
+
+#globalSearchLaunch {
+  display: block; 
+  color: #fff
+}
+
+form {
+  display: none;
+}
+
+@include respond-to('desktop') {
+  #globalSearchLaunch {
+    display: none;
+  }
+
+  form {
+    display: block;
+  }
+}
+
+
+
+.clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+#quickSearch{
+  border: 1px solid #d0d0d0;
+  border-radius: 5px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  line-height: 1.4;
+  min-width: 400px;
+  padding: 0.5rem;
+  margin: 0.8rem 0.5rem 0 0;
+
+  &:hover, &:focus{
+    border-color: #a0a0a0;
+  }
+
+}
+
+.quickSearch-result{
+  height: auto;
+
+  // ::ng-deep prevents ng2 from adding shadow-dom references to the mat-option-text class which wouldn't have them since it's a standard div instead of a scoped element
+  ::ng-deep .mat-option-text{
+    width: 100%;
+  }
+
+  .result-student{
+    padding-bottom: 1rem;
+    border-bottom: 1px rgba(0,0,0,.1) solid;
+
+    .contact-info {
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+
+      .name {
+        display: inline-block;
+        flex: 2 0 0;
+      }
+
+      .phone {
+        flex: 1 0 0;
+        text-decoration: none;
+        color: #000;
+        vertical-align: middle;
+
+        > mat-icon {
+          display: inline-block;
+          background: rgba(0, 203, 102, 1);
+          border-radius: 5px;
+          color: #fff;
+          margin-left: 12px;
+          margin-right: 5px;
+          padding: 3px;
+          vertical-align: middle;
+        }
+
+        &:hover {
+          text-decoration: underline;
+
+          > mat-icon {
+            background: lighten(rgba(0, 203, 102, 1), 5%);
+          }
+        }
+      }
+    }
+
+    .enrollment{
+      display: block;
+      font-size: 0.8rem;
+      line-height: 1;
+      margin-top: 0;
+      width: 100%;
+
+      .center{
+        font-weight: bold;
+      }
+    }
+  }
+
+  &:last-child::after{
+    height: 0;
+    background: transparent;
+    margin: 0;
+  }
+}

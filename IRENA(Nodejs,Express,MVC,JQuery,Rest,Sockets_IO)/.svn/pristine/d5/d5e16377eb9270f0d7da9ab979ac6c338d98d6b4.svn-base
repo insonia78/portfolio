@@ -1,0 +1,82 @@
+var express = require('express');
+var router = express.Router();
+
+/* GET home page. */
+router.get(
+    '/',
+    function(req, res, next)
+    {
+	res.render('index', { title: 'Alevo Analytics' });
+    }
+);
+
+router.post(
+    '/calculate-valuation',
+    function(req, res)
+    {
+	console.log(req.body);
+
+	var peakCapacity = parseFloat(req.body.peakCapacity);
+	var systemType = parseFloat(req.body.systemType);
+	var response = es_calculator(peakCapacity, systemType);
+
+	res.setHeader("Content-Type", "application/json");
+	res.write(JSON.stringify(response));
+	res.end();
+    }
+);
+
+
+var ref = require('ref');
+var ffi = require('ffi');
+var doublePtr = ref.refType('double');
+
+var libESCalc = ffi.Library(
+    '/opt/www/SystemLevelToolView/lib/libesCalculator.so',
+    {
+	"esCalculator": ["void", ["double", "double",
+				  doublePtr, doublePtr, doublePtr, doublePtr,
+				  doublePtr, doublePtr, doublePtr, doublePtr]]
+    }
+);
+
+function es_calculator(peakCapacity, systemType)
+{
+    var P_cap_es_025C = ref.alloc('double');
+    var P_cap_es_050C = ref.alloc('double');
+    var P_cap_es_100C = ref.alloc('double');
+    var P_cap_es_200C = ref.alloc('double');
+    var E_cap_es_025C = ref.alloc('double');
+    var E_cap_es_050C = ref.alloc('double');
+    var E_cap_es_100C = ref.alloc('double');
+    var E_cap_es_200C = ref.alloc('double');
+
+    libESCalc.esCalculator(peakCapacity, systemType,
+			   P_cap_es_025C, P_cap_es_050C, P_cap_es_100C, P_cap_es_200C,
+			   E_cap_es_025C, E_cap_es_050C, E_cap_es_100C, E_cap_es_200C);
+
+    console.log('P_cap_es_025C = ', P_cap_es_025C.deref());
+    console.log('P_cap_es_050C = ', P_cap_es_050C.deref());
+    console.log('P_cap_es_100C = ', P_cap_es_100C.deref());
+    console.log('P_cap_es_200C = ', P_cap_es_200C.deref());
+    console.log('E_cap_es_025C = ', E_cap_es_025C.deref());
+    console.log('E_cap_es_050C = ', E_cap_es_050C.deref());
+    console.log('E_cap_es_100C = ', E_cap_es_100C.deref());
+    console.log('E_cap_es_200C = ', E_cap_es_200C.deref());
+
+    var ret = {
+	'P_cap_es_025C': P_cap_es_025C.deref(),
+	'P_cap_es_050C': P_cap_es_050C.deref(),
+	'P_cap_es_100C': P_cap_es_100C.deref(),
+	'P_cap_es_200C': P_cap_es_200C.deref(),
+	'E_cap_es_025C': E_cap_es_025C.deref(),
+	'E_cap_es_050C': E_cap_es_050C.deref(),
+	'E_cap_es_100C': E_cap_es_100C.deref(),
+	'E_cap_es_200C': E_cap_es_200C.deref()
+    };
+
+    return ret;
+}
+
+
+module.exports = router;

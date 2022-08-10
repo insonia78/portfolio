@@ -1,0 +1,125 @@
+--- 
+apiVersion: skaffold/v2beta16
+kind: Config
+build: 
+  artifacts: 
+    - 
+      context: services/prescriptions
+      docker: 
+        dockerfile: Dockerfile
+      image: insonia78/services/prescriptions
+      sync: 
+        manual: 
+          - 
+            dest: "."
+            src: src/**/*.ts
+    - 
+      context: services/location
+      docker: 
+        dockerfile: Dockerfile
+      image: insonia78/services/location
+      sync: 
+        manual: 
+          - 
+            dest: "."
+            src: src/**/*.ts
+    - 
+      context: services/coupon
+      docker: 
+        dockerfile: Dockerfile
+      image: insonia78/services/coupon
+      sync: 
+        manual: 
+          - 
+            dest: "."
+            src: src/**/*.ts
+    - 
+      context: client
+      docker: 
+        dockerfile: Dockerfile
+      image: insonia78/client
+      sync: 
+        manual: 
+          - 
+            dest: "."
+            src: src/**/*.ts    
+    # - 
+    #   context: services/text_messages
+    #   docker: 
+    #     dockerfile: Dockerfile
+    #   image: insonia78/services/text_messages
+    #   sync: 
+    #     manual: 
+    #       - 
+    #         dest: "."
+    #         src: src/**/*.ts
+   
+  local: 
+    push: false
+deploy: 
+  kubectl: 
+    manifests: 
+      - ./infra/k8s/*
+
+# --- 
+# apiVersion: skaffold/v2alpha3
+# build: 
+#   artifacts: 
+#     - 
+#       context: services/prescriptions
+#       docker: 
+#         dockerfile: Dockerfile
+#       image: insonia78/services/prescriptions
+#       sync: 
+#         manual: 
+#           - 
+#             dest: "."
+#             src: src/**/*.ts
+#     - 
+#       context: services/location
+#       docker: 
+#         dockerfile: Dockerfile
+#       image: insonia78/services/location
+#       sync: 
+#         manual: 
+#           - 
+#             dest: "."
+#             src: src/**/*.ts
+#     - 
+#       context: services/coupon
+#       docker: 
+#         dockerfile: Dockerfile
+#       image: insonia78/services/coupon
+#       sync: 
+#         manual: 
+#           - 
+#             dest: "."
+#             src: src/**/*.ts
+#     - 
+#       context: client
+#       docker: 
+#         dockerfile: Dockerfile
+#       image: insonia78/client
+#       sync: 
+#         manual: 
+#           - 
+#             dest: "."
+#             src: src/**/*.ts    
+#     - 
+#       context: services/text_messages
+#       docker: 
+#         dockerfile: Dockerfile
+#       image: insonia78/services/text_messages
+#       sync: 
+#         manual: 
+#           - 
+#             dest: "."
+#             src: src/**/*.ts
+   
+#   local: 
+#     push: false
+# deploy: 
+#   kubectl: 
+#     manifests: 
+#       - ./infra/k8s/*
+# kind: Config

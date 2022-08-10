@@ -1,0 +1,16 @@
+<sm-datatable [dataSource]="students" defaultSortColumn="name" [serverSideProcessing]="true" (dataRequest)="loadData($event)">
+  <sm-datatable-column name="name" label="Name">
+    <ng-container *smDatatableCell="let data">
+      <a [routerLink]="['/student', data.id, 'view']" *hasPermission="Permission.STUDENT_ASSIGN; else nonlinked">{{data.lastName}}, {{data.firstName}}</a>
+      <ng-template #nonlinked>{{data.lastName}}, {{data.firstName}}</ng-template>
+    </ng-container>
+  </sm-datatable-column>
+
+  <sm-datatable-row-actions>
+    <ng-container *smDatatableCell="let data">
+      <sm-datatable-row-action action="delete" tooltip="Unassign Student" (click)="unassignStudent(data.id)" *hasPermission="Permission.STUDENT_ASSIGN"></sm-datatable-row-action>
+    </ng-container>
+  </sm-datatable-row-actions>
+  
+  <sm-datatable-bulk-action action="delete" tooltip="Unassign Selected Student(s)" (select)="unassignStudent($event)" *hasPermission="Permission.STUDENT_ASSIGN"></sm-datatable-bulk-action>
+</sm-datatable>

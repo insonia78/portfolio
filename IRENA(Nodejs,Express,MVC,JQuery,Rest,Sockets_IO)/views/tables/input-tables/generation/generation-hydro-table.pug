@@ -1,0 +1,48 @@
+table(class='generation-hydro-table inline')
+  thead
+    tr
+      th(colspan='10' class='table-header table-header-text') Hydro Generation Parameters 
+    tr
+      th(class ='table-header-field table-header-field-title') Installed cap. year 1 (MW)
+      |
+      th(class ='table-header-field table-header-field-title') Installed cap. year 2 (MW)
+      |
+      th(class ='table-header-field table-header-field-title') Prim. Res. Costs ($/MW)
+      |
+      th(class ='table-header-field table-header-field-title') Sec. Res. Costs ($/MW)
+      |
+      th(class ='table-header-field table-header-field-title') Tert. Res. Costs ($/MW)
+      |
+      th(class ='table-header-field table-header-field-title') Inv. Cost Year 1 ($/MW)
+      |
+      th(class ='table-header-field table-header-field-title') Inv. Cost Year 2 ($/MW)
+      |
+      th(class ='table-header-field table-header-field-title') Vo&M Cost ($/MWh)
+      |
+      th(class ='table-header-field table-header-field-title') Fixed O&M Cost ($/kW-year)
+      |
+      th(class ='table-header-field table-header-field-title') Ramping Rate (MW/h)
+        
+        
+  tbody
+    tr
+      td(class ='table-items-description-content')
+        input.grid-layout-textboxes.form-control#hydrocap1(type='text' name='hydrocap1' value='894')
+      td(class ='table-items-description-content')
+        input.grid-layout-textboxes.form-control#hydrocap2(type='text' name='hydrocap2' value='950')
+      td(class ='table-items-description-content') 
+        input.grid-layout-textboxes.form-control#hydrores1(type='text' name='hydrores1' value='2')
+      td(class ='table-items-description-content') 
+        input.grid-layout-textboxes.form-control#hydrores2(type='text' name='hydrores2' value='1')
+      td(class ='table-items-description-content') 
+        input.grid-layout-textboxes.form-control#hydrores3(type='text' name='hydrores3' value='1')
+      td(class ='table-items-description-content') 
+        input.grid-layout-textboxes.form-control#hydroinvcost1(type='text' name='hydroinvcost1' value='1')
+      td(class ='table-items-description-content') 
+        input.grid-layout-textboxes.form-control#hydroinvcost2(type='text' name='hydroinvcost2' value='1')
+      td(class ='table-items-description-content') 
+        input.grid-layout-textboxes.form-control#hydrovomcost(type='text' name='hydroinvcost2' value='1')          
+      td(class ='table-items-description-content') 
+        input.grid-layout-textboxes.form-control#hydrofomcost(type='text' name='hydroinvcost2' value='1')
+      td(class ='table-items-description-content')
+        input.grid-layout-textboxes.form-control#hydroramprate(type='text' name='hydroinvcost2' value='1')

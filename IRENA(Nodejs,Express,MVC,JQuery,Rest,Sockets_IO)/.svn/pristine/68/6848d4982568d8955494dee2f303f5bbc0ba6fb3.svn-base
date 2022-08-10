@@ -1,0 +1,82 @@
+
+$(document).ready(function() {
+    
+
+ //Initial Set-up
+ getData($('#demand-profile-graph').get(0),"../data/Demand/North.csv")
+ getData($('#wind-profile-graph').get(0),"../data/Generation/Wind/High.csv")
+ getData($('#solar-profile-graph').get(0),"../data/Generation/Solar/High.csv")
+ 
+
+  //plot DEMAND profile depending of user selection
+  $('#input-demand-profile select').change(function(){
+    
+    var opt=$(this).val();
+    var allOpt=['North','Equator','South'];
+    if (allOpt.includes(opt)){
+      var path = '../data/Demand/'+opt+'.csv';
+    }
+
+    getData($('#demand-profile-graph').get(0),path)
+    console.log('Val changed to:' + opt);
+    
+  });
+
+  //plot WIND profile depending of user selection
+  $('#input-wind-profile select').change(function(){
+    
+    var opt=$(this).val();
+    var allOpt=['High','Median','Low'];
+    if (allOpt.includes(opt)){
+      var path = '../data/Generation/Wind/'+opt+'.csv';
+    }
+
+    getData($('#wind-profile-graph').get(0),path)
+    console.log('Wind Option changed to:' + opt);
+    
+  });
+
+  //plot SOLAr profile depending of user selection
+  $('#input-solar-profile select').change(function(){
+    
+    var opt=$(this).val();
+    var allOpt=['High','Median','Low'];
+    if (allOpt.includes(opt)){
+      var path = '../data/Generation/Solar/'+opt+'.csv';
+    }
+
+    getData($('#solar-profile-graph').get(0),path)
+    console.log('Solar Option changed to:' + opt);
+    
+  });
+
+});
+
+function getData(element,filepath){
+      $.ajax({
+        // type: "GET",
+        url: filepath,
+
+        success: function(data) {
+          //get data consistency
+          
+          var g = new Dygraph(element,data,{
+          // options go here. See http://dygraphs.com/options.html
+          legend: 'always',
+          animatedZooms: true
+          });
+        }
+     });
+}
+
+
+// function processData(element,csv) {
+  
+//   var g = new Dygraph(element,csv,{
+//       // options go here. See http://dygraphs.com/options.html
+//       legend: 'always',
+//       animatedZooms: true
+//     });
+
+// }
+

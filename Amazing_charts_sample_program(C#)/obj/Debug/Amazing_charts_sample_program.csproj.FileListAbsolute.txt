@@ -1,0 +1,10 @@
+C:\Users\tomsa\source\repos\Amazing_charts_sample_program\Amazing_charts_sample_program\bin\Debug\Amazing_charts_sample_program.exe.config
+C:\Users\tomsa\source\repos\Amazing_charts_sample_program\Amazing_charts_sample_program\bin\Debug\Amazing_charts_sample_program.exe
+C:\Users\tomsa\source\repos\Amazing_charts_sample_program\Amazing_charts_sample_program\bin\Debug\Amazing_charts_sample_program.pdb
+C:\Users\tomsa\source\repos\Amazing_charts_sample_program\Amazing_charts_sample_program\obj\Debug\Amazing_charts_sample_program.csprojResolveAssemblyReference.cache
+C:\Users\tomsa\source\repos\Amazing_charts_sample_program\Amazing_charts_sample_program\obj\Debug\Amazing_charts_sample_program.Properties.Resources.resources
+C:\Users\tomsa\source\repos\Amazing_charts_sample_program\Amazing_charts_sample_program\obj\Debug\Amazing_charts_sample_program.csproj.GenerateResource.cache
+C:\Users\tomsa\source\repos\Amazing_charts_sample_program\Amazing_charts_sample_program\obj\Debug\Amazing_charts_sample_program.csproj.CoreCompileInputs.cache
+C:\Users\tomsa\source\repos\Amazing_charts_sample_program\Amazing_charts_sample_program\obj\Debug\Amazing_charts_sample_program.exe
+C:\Users\tomsa\source\repos\Amazing_charts_sample_program\Amazing_charts_sample_program\obj\Debug\Amazing_charts_sample_program.pdb
+C:\Users\tomsa\source\repos\Amazing_charts_sample_program\Amazing_charts_sample_program\obj\Debug\Amazing_charts_sample_program.amazing_charts_sample_application.resources

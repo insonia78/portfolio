@@ -1,0 +1,151 @@
+#import ./student.graphql
+
+enum UserType {
+  USER @enum(value: "user")
+  ADMINISTRATOR @enum(value: "administrator")
+  DIRECTOR @enum(value: "director")
+  TEACHER @enum(value: "teacher")
+  STUDENT @enum(value: "student")
+  GUARDIAN @enum(value: "guardian")
+}
+
+type User implements Resource {
+  id: Int!
+  type: UserType!
+  username: String
+  password: String
+  email: String!
+  prefix: String
+  firstName: String!
+  middleName: String
+  lastName: String!
+  suffix: String
+  verified: Boolean
+  dateFrom: DateTime
+  dateTo: DateTime
+  active: Boolean
+  addresses: [UserAddress]!
+  contacts: [UserContact]!
+  enrollments: [Enrollment]!
+  __typename: String
+}
+
+input UserInput {
+  id: Int
+  type: UserType
+  username: String
+  password: String
+  email: String
+  prefix: String
+  firstName: String
+  middleName: String
+  lastName: String
+  suffix: String
+  verified: Boolean
+  addresses: [UserAddressInput]
+  contacts: [UserContactInput]
+  enrollments: [EnrollmentInput]
+}
+
+type UserAddress implements Resource {
+  id: Int!
+  title: String!
+  streetAddress: String!
+  city: String!
+  state: String!
+  postalCode: String!
+  country: String!
+  dateFrom: DateTime
+  dateTo: DateTime
+  __typename: String
+}
+
+input UserAddressInput {
+  id: Int,
+  title: String!
+  streetAddress: String!
+  city: String!
+  state: String!
+  postalCode: String!
+  country: String!
+  __typename: String
+}
+
+type UserContact implements Resource {
+  id: Int!
+  type: String!
+  title: String!
+  value: String!
+  dateFrom: DateTime
+  dateTo: DateTime
+  __typename: String
+}
+
+input UserContactInput {
+  id: Int
+  title: String!
+  type: String!
+  value: String!
+  dateFrom: String
+  __typename: String
+}
+
+type UserResponse implements ResponsePayload {
+  success: Boolean
+  data: User
+  errors: [String]
+}
+
+type UserCollectionResponse implements CollectionResponsePayload {
+  data: [User]
+  errors: [String]
+  metadata: QueryMetaData
+}
+
+extend type Query {
+  users(queryOptions: QueryOptionsInput): UserCollectionResponse!
+    @route(resolver: "User@getAll", operation: "retrieveCollection")
+  user(id: Int!): User! @route(resolver: "User@get", operation: "retrieve")
+}
+
+extend type Mutation {
+  createUser(
+    type: UserType!
+    username: String
+    password: String
+    email: String!
+    password: String!
+    prefix: String
+    firstName: String!
+    middleName: String
+    lastName: String!
+    suffix: String
+    verified: Boolean
+    active: Boolean
+    addresses: [UserAddressInput]
+    contacts: [UserContactInput]
+    enrollments: [EnrollmentInput]
+  ): UserResponse @route(resolver: "User@create", operation: "create")
+
+  updateUser(
+    id: Int!
+    type: UserType
+    username: String
+    password: String
+    email: String
+    password: String
+    prefix: String
+    firstName: String
+    middleName: String
+    lastName: String
+    suffix: String
+    verified: Boolean
+    active: Boolean
+    addresses: [UserAddressInput]
+    contacts: [UserContactInput]
+    enrollments: [EnrollmentInput]
+  ): UserResponse @route(resolver: "User@update", operation: "update")
+
+  deleteUser(id: Int!): UserResponse
+    @route(resolver: "User@delete", operation: "delete")
+}

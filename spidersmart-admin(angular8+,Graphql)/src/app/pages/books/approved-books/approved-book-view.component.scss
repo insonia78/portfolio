@@ -1,0 +1,78 @@
+@import '~src/theme';
+
+section {
+    display: block;
+
+    > figure,
+    > .book-description,
+    > dl {
+        padding: 0;
+        margin: $page-grid-layout-gap*2 $page-grid-layout-gap;
+    }
+
+    > figure {
+        display: block;
+        text-align: center;
+
+        > img {
+            display: inline-block;
+            width: 172px; 
+            height: 260px; 
+            border: 1px solid $color-mediumgray;
+        }
+    }    
+
+    > dl {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        
+        > dt {
+            flex: 1 0 40%;
+            margin: $page-grid-layout-gap 0;
+            display: inline-flex;
+            align-items: center;
+            height: 24px;
+
+        }
+
+        > dd {
+            flex: 1 0 60%;
+            margin: $page-grid-layout-gap 0;
+            height: 24px;
+        }
+
+
+    }
+}
+
+@include respond-to('desktop') {
+    section {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+
+        > figure {
+            order: 1;
+            padding: 0;
+            margin: 0 $page-grid-layout-gap 0 0;
+        }
+
+        > .book-description, {
+            order: 3;
+            flex-basis: 100%;
+            margin-top:  $page-grid-layout-gap;
+        }
+
+        > dl {
+            order: 2;
+            padding: 0;
+            margin: 0 0 0 $page-grid-layout-gap;
+
+            > dd,
+            > dt {
+                flex-basis: 50%;
+            }
+        }
+    }
+}

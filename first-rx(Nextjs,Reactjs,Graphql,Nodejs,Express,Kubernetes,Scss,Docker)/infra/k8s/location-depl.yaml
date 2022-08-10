@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: location-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: location
+  template:
+    metadata:
+      labels:
+        app: location
+    spec:
+      containers:
+        - name: location
+          image: insonia78/services/location
+          env:          
+            # - name: ZIP_LOOKUP_ADDRESS
+            #   value: http://ZiptasticAPI.com/
+            - name: GOOGLE_API_MAPS_KEY
+              value: AIzaSyAhJjZH6lxSraVwcjLBB9O2DfHF0PFJD5Q
+            - name: CITY_AUTO_COMPLETE
+              value: https://maps.googleapis.com/maps/api/place/autocomplete/json
+           
+          
+           
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: location-srv
+spec:
+  selector:
+    app: location
+  ports:
+    - name: location
+      protocol: TCP
+      port: 5000
+      targetPort: 5000

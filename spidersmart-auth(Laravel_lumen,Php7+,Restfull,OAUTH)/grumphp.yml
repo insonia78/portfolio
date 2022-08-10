@@ -1,0 +1,29 @@
+grumphp:
+  tasks:
+    composer: [],
+    #        composer_require_checker: null,
+    git_blacklist: [],
+#    phpcpd:
+#      exclude: ['vendor','storage']
+    phpcs:
+      standard: ['PSR12']
+      whitelist_patterns:
+        - /^app\/(.*)/
+      exclude: ['Generic.Files.LineLength']
+    phplint: [],
+    phpmd:
+      exclude: ['database']
+      ruleset: ['phpmd']
+    phpmnd:
+      exclude_path: ['config', 'vendor', 'storage', 'tests', 'database']
+    phpstan:
+      #            level: 8
+      level: 4
+      ignore_patterns: ['app/Console', 'database', 'tests', 'config']
+      autoload_file: 'bootstrap/app.php'
+      memory_limit: "4000M"
+    phpunit: [],
+    phpversion: [],
+#    psalm: [],
+#        securitychecker: null
+

@@ -1,0 +1,13 @@
+.is-active{
+ font-weight: bolder;
+}
+.navlink-container{
+  margin-top: 11%;
+}
+.navlink-button{
+    color:white;
+    display:inline;
+    text-decoration: none;
+    margin-left: 50%;
+    
+}

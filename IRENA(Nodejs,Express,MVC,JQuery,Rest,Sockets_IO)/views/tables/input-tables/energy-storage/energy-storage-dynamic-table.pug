@@ -1,0 +1,51 @@
+table(id='energy-storage-dynamic-table' class='energy-storage-dynamic-table inline')
+    thead
+      tr
+       th(colspan="10" class='table-header table-header-text') Physical Characteristics
+      tr
+        th(colspan="2" class ='table-header-field table-header-field-title') Type
+        |
+        th(class ='table-header-field table-header-field-title') Power Cap. Year 1 (MW)
+        |
+        th(class ='table-header-field table-header-field-title') Power Cap. Year 2 (MW)
+        |
+        th(class ='table-header-field table-header-field-title') Energy Cap. Year 1 (MWh)
+        |
+        th(class ='table-header-field table-header-field-title') Energy Cap. Year 2 (MWh)
+        |
+        th(class ='table-header-field table-header-field-title') Charging Efficiency (%)
+        |
+        th(class ='table-header-field table-header-field-title') Discharging Efficiency (%)
+        |
+        th(class ='table-header-field table-header-field-title') Ramping Rate (MW/h)
+        |
+        th(class ='table-header-field table-header-field-title') Duration (%)
+        
+      // /tr
+    // thead
+    tbody
+      tr.entry
+        th(colspan="2" class ='table-items-description table-items-description-text') 
+          select#storage_options.grid-layout-textboxes.storage-options.form-control.required(name='storage')
+        td(class ='table-items-description-content') 
+          input.grid-layout-textboxes.form-control.powcap1#powcap1(type='text' value='')
+        td(class ='table-items-description-content') 
+          input.grid-layout-textboxes.form-control.powcap2#powcap2(type='text' value='')
+        td(class ='table-items-description-content') 
+          input.grid-layout-textboxes.form-control.enercap1#enercap1(type='text' value='')
+        td(class ='table-items-description-content') 
+          input.grid-layout-textboxes.form-control.enercap2#enercap2(type='text' value='')
+        td(class ='table-items-description-content') 
+          input.grid-layout-textboxes.form-control.chargeeff#chargeeff(type='text' value='')
+        td(class ='table-items-description-content') 
+          input.grid-layout-textboxes.form-control.dischargeeff#dischargeeff(type='text' value='')
+        td(class ='table-items-description-content') 
+          input.grid-layout-textboxes.form-control.esramprate#esramprate(type='text' value='')
+        td(class ='table-items-description-content') 
+          select.grid-layout-textboxes.duration-options.form-control.esduration#esduration(type='text' value='')
+        
+        td(class ='table-items-description-content btn-field')
+          span.input-group-btn
+            a.btn.btn-primary.btn-add(type='button')
+              span.glyphicon.glyphicon-plus
+          span.remove-btn

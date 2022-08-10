@@ -1,0 +1,54 @@
+
+$(document).ready(function() {
+ 
+  	
+
+
+  //plot Generation Capacity Pie Chart from user input
+
+
+  //get names and values   
+  var data=[];//[['Generation','MW']]
+  $('#cap-by-fuel tbody tr').each(function(i,row){
+    
+    var $prop=$(row).find('th');
+    var $val=$(row).find('td').eq(0).find('input');
+  	console.log($prop.text() +': '+$val.val());
+    data.push([$prop.text(), parseInt($val.val())]);
+    
+    
+   // drawChart($('#generation-cap-fuel').get(0),data);
+  });
+  //google.charts.load("current", {packages:["corechart"]});
+  //google.charts.setOnLoadCallback(drawChart($('#generation-cap-fuel').get(0),data));
+  table2PieChart($('#generation-cap-fuel').get(0),data,'Capacity by Fuel');
+
+});
+
+function table2PieChart(element,array,divTitle) {
+	  google.charts.load("current", {packages:["corechart"]});
+      google.charts.setOnLoadCallback(drawChart);
+
+		function drawChart(){
+			console.log(element);
+			console.log(array);
+            
+	        //var Gdata = google.charts.visualization.arrayToDataTable(array,false);
+	        var Gdata = new google.visualization.DataTable();
+	        Gdata.addColumn('string', 'Property');
+			Gdata.addColumn('number', 'Magnitude');
+	        Gdata.addRows(array)
+
+	        var options = {
+	          title: divTitle,
+	          pieHole: 0.4,
+	          heith:'100%',
+	          //legend: {position: 'bottom', textStyle: {color: 'blue', fontSize: 16}},
+	          chartArea:{left:0,top:30,width:'100%',height:'100%'},
+	
+	        };
+
+	        var chart = new google.visualization.PieChart(element);
+	        chart.draw(Gdata, options);
+	    }
+}

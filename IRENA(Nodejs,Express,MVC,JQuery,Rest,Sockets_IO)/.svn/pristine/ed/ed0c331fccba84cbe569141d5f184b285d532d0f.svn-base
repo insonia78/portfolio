@@ -1,0 +1,148 @@
+$(document).ready(function() {
+
+  //Change this, the user should come 
+  //username = "alevo";
+
+
+  var project
+  var run
+
+  var reqProject=
+  	{
+        "action"  : "RETRIEVE_PROJECTS",
+        
+	};
+
+  var reqRun    =
+  	{
+        "action"  : "RETRIEVE_RUNS",
+        
+	};
+
+  var reqInputs =
+	{
+		"action"  : "RETRIEVE_INPUTS"
+	};
+
+
+	var $projects = $("#project-options");
+	var $runs     = $('#run-options');
+
+	//Load list of projects to options when page is loaded
+	console.log('Calling SLT API')
+	$.post('get-info',reqProject,
+		function(msg){
+			res=$.parseJSON(msg);
+			updateSelection1($projects,res['projects'],'Project');
+
+	})
+
+	$projects.change(function(){
+		//define the project 
+		project = $(this).val();		
+		reqRun['project']=project;
+		reqInputs['project']=project;
+
+		//Update the run options
+	
+		console.log('Calling SLT backend');
+		if (typeof reqRun['project'] == 'undefined'){
+			console.log('project is undefined')
+		}
+		else{
+			$.post('get-info',reqRun,
+				function(msg){
+					res=$.parseJSON(msg);
+					updateSelection1($runs,res['runs'],'Run');
+
+			})
+		}
+	
+		
+	});
+
+
+	$runs.on('focus',function(){
+		console.log('Calling SLT backend')
+		if (typeof reqRun['project'] == 'undefined'){
+			console.log('project is undefined')
+		}
+	})
+	.change(function(){
+		
+		reqInputs['run']=$(this).val();
+		console.log('On Run: ' + reqInputs['run'])
+		
+		console.log('Calling SLT backend');
+		if (typeof reqInputs['run'] == 'undefined'){
+			console.log('Run is undefined')
+		}
+		else{
+			$.post('get-info',reqInputs,
+				function(msg){
+					res=$.parseJSON(msg);
+					
+					console.log(res);
+					updateInputs(res.inputs);
+
+			})
+		}
+
+
+
+	});
+  
+
+
+})
+
+
+function updateSelection1(element,opts,type){
+    var list='<option value=add>Add '+type+'</option>';
+    //console.log(element);
+   //console.log(opts);
+    for (var k=0; k<opts.length;k++){
+        list+='<option value='+opts[k]+'>'+opts[k]+'</option>';       
+    }
+    element.html(list);
+    element.trigger("chosen:updated");
+}
+
+function updateInputs(inputs)
+{
+	console.log('updating inputs')
+
+	for(var key in inputs){
+		if(inputs.hasOwnProperty(key)){
+		$('#'+key).val(inputs[key]);
+		}
+	}
+	//get hydro reserve
+	for (var k=0;k<inputs['hydrores'].length;k++){
+		element ='#'+'hydrores'+(k+1); 
+		$(element).val(inputs['hydrores'][k]);
+	}
+
+	//get yearly results
+	var yearly=inputs['yearly'];
+	console.log(yearly)
+	for(var k = 0; k<yearly.length;k++){
+		var yearN=yearly[k]; 
+
+		for(var key in yearN){
+			if(yearN.hasOwnProperty(key)){
+				element ='#'+key+yearN['year']; 
+				$(element).val(yearN[key]);
+				
+			}
+		}
+		//get hydro profile
+		for (var y=0;y<yearN['hydroEng'].length;y++){
+			element ='#'+'hydroEng'+(k+1)+'_'+(y+1); 
+			$(element).val(yearN['hydroEng'][y]);			
+		}
+	}
+
+
+	
+}

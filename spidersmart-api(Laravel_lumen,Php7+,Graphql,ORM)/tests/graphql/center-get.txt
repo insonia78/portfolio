@@ -1,0 +1,17 @@
+{center(id:1){id}}
+
+
+{
+  "errors": [
+    {
+      "debugMessage": "Your proxy directory \"\/var\/www\/spidersmart-api\/storage\/proxies\" must be writable",
+      "message": "Internal server error",
+      "extensions": {
+        "category": "internal"
+      },
+      "locations": [
+        {
+          "line": 1,
+          "column": 2
+        }
+      ],

@@ -1,0 +1,10 @@
+vendor
+.idea
+.vscode
+Homestead.json
+Homestead.yaml
+.env
+storage/
+*.iml
+.phpunit.result.cache
+cache/

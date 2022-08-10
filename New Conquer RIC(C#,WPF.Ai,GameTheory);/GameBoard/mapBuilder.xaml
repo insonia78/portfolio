@@ -1,0 +1,10 @@
+﻿<Window x:Class="GameBoard.mapBuilder"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="mapBuilder" Height="492.991" Width="684.599">
+    <Grid Margin="0,0,2,0" Background="#FF8B0707">
+        <UniformGrid x:Name="Map"  Background="White" RenderTransformOrigin="-0.314,0.663" Margin="225,10,10,10" Height="440" />
+        <UniformGrid x:Name="Tiles"  Background="White" RenderTransformOrigin="-0.314,0.663" Margin="10,11,476,60" />
+        <Button Content="Save" HorizontalAlignment="Left" Margin="108,407,0,0" VerticalAlignment="Top" Width="91" Height="44" Click="Save_Click"/>
+    </Grid>
+</Window>

@@ -1,0 +1,25 @@
+#FROM 658310991765.dkr.ecr.us-east-1.amazonaws.com/node:alpine
+FROM node:alpine
+
+WORKDIR /prescriptions
+ARG PORT_ARG=4000
+ARG MEDIMPACT_CLIENT_CODE_ARG=MIC61
+ARG MEDIMPACT_URL_ARGS=https://uatrxsavings-ws.medimpact.com/cashcard-ws-v1_0/soap/cashcard
+ARG NATS_URL_ARG=http://localhost:4222
+ARG NATS_CLUSTER_ID_ARG=prescriptions
+
+ENV PORT $PORT_ARG
+ENV NATS_URL $NATS_URL_ARG
+ENV NATS_CLUSTER_ID $NATS_CLUSTER_ID_ARG
+ENV MEDIMPACT_URL $MEDIMPACT_URL_ARGS
+ENV MEDIMPACT_APIKEY = $APIKEYS
+ENV MEDIMPACT_CLIENT_CODE=$MEDIMPACT_CLIENT_CODE_ARG 
+
+COPY package.json .
+RUN npm install
+
+COPY . .
+
+EXPOSE $PORT
+
+CMD ["npm", "start"]

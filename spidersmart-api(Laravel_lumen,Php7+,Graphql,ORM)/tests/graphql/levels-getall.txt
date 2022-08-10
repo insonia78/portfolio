@@ -1,0 +1,10 @@
+{levels{id}}
+
+{
+  "errors": [
+    {
+      "debugMessage": "An issue occurred while retrieving the data.",
+      "message": "Internal server error",
+      "extensions": {
+        "category": "internal"
+      },

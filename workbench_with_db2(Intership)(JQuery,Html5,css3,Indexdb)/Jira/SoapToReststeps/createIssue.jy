@@ -1,0 +1,168 @@
+#import java.net.HttpURLConnection as uc
+import javax.net.ssl.HttpsURLConnection as uc
+import java.net.URL as URL
+import base64
+import string
+import datetime
+import com.atlassian.jira.issue.CustomFieldManager
+import com.atlassian.jira.issue.fields.CustomField
+import com.atlassian.jira.ComponentManager as cpm_mgr
+import com.atlassian.jira.component.ComponentAccessor as cmpacc
+import java.net.URLEncoder as URLEncoder
+import logging
+import zlib
+import java.lang.System as System
+import com.atlassian.jira.util.AttachmentUtils as attutil 
+import java.io.FileInputStream as FileInputStream
+import java.io.OutputStreamWriter as OutputStreamWriter
+import java.io.OutputStream as outstream
+
+
+LOG_FILENAME = 'F:/Home/Jira52/restclient/RestClient.log'
+logging.basicConfig(filename=LOG_FILENAME,level=logging.INFO)
+current_time = datetime.datetime.now()
+logging.info(current_time)
+logging.info('Message from RestCreateIssue.jy')
+logging.info(issue.getAttachments)
+custFieldMng = cmpacc.getCustomFieldManager()
+issueKey = issue.getKey()
+remoteJiraLink = 'http://rigtpjira02:8080/jira/browse/'+issueKey
+summary = issue.getSummary()
+projectKey = issue.getProjectObject().getKey()
+description = issue.getDescription()
+issueType = issue.getIssueTypeObject().getName()
+priority = issue.getPriorityObject().getName()
+reporter = issue.getReporterUser().getName()
+issueId= issue.getId()
+
+custField = custFieldMng.getCustomFieldObjectByName("Site-Specific Product")
+siteSpecificProduct =  custField.getValue(issue)
+custField = custFieldMng.getCustomFieldObjectByName("External ID")
+externalId = custField.getValue(issue) 
+
+  
+collAttachments = issue.getAttachments()
+attachments = ''
+filenames = ''
+mimetypes = ''
+for attachment in collAttachments:    
+#    filepath = 'F:/Home/Jira52/data/attachments/'+str(projectKey)+'/'+str(issueKey)+'/'+str(attachment.getId())        
+#    filecontent = open(filepath,'rb',).read()
+#    fileObj = attutil.getAttachmentFile(attachment)
+#    attachments = attachments +str(attachment.getId())+','        
+#    attachments = attachments +str(URLEncoder.encode(filecontent))
+    filenames = filenames + str(attachment.getFilename())+','
+#logging.info(filenames)
+    mimetypes = mimetypes + str(attachment.getMimetype())+','
+attachments = attachments.strip(',')
+filenames = filenames.strip(',')
+mimetypes = mimetypes.strip(',')
+
+
+custField = custFieldMng.getCustomFieldObjectByName("Product")
+prodMap =  custField.getValue(issue)
+size = ''
+if(prodMap != None):
+   result = {}
+   for key in prodMap.keySet().iterator():
+        result[key] = prodMap.get(key)
+		
+   size = len(result)
+   parentValue = result[None]
+if(size==2):
+    childValue = result['1']
+else:
+    childValue = 'null'
+
+if(issueType == 'TIR - Customer Test') or (issueType == 'TIR - Live'):
+   collAffsVersion = issue.getAffectedVersions()
+   affsVersion = ''
+   for av in collAffsVersion:
+       affsVersion = affsVersion + str(av.getName())+","
+   affsVersion = affsVersion.strip(',')
+   environment = issue.getEnvironment()
+   
+   custField = custFieldMng.getCustomFieldObjectByName("Severity")	
+   severity =  custField.getValue(issue)
+   
+   custField = custFieldMng.getCustomFieldObjectByName("Reproducible")	
+   reproducible =  custField.getValue(issue)
+    
+   custField = custFieldMng.getCustomFieldObjectByName("Defect Symptom")	
+   defectSymptom =  custField.getValue(issue)
+   
+   custField = custFieldMng.getCustomFieldObjectByName("Found-In Batch")	
+   foundInBatch =  custField.getValue(issue)
+
+   pid = issue.getProjectObject().getId()
+   collcomps = cmpacc.getProjectComponentManager().findAllForProject(pid)
+
+   for projcomp in collcomps:
+     if(str(projcomp.getId()) == str(foundInBatch)):
+	    foundInBatch = projcomp.getName()
+
+if(issueType == 'Enhancement Request'):
+   custField = custFieldMng.getCustomFieldObjectByName("Requesting Agency")	
+   requestingAgency =  custField.getValue(issue)		
+    
+   custField = custFieldMng.getCustomFieldObjectByName("Requester")	
+   requester =  custField.getValue(issue)
+   
+   custField = custFieldMng.getCustomFieldObjectByName("Revenue-Generating")	
+   revenueGenerating =  custField.getValue(issue)
+
+if(issueType == 'Task'):
+   dueDate = issue.getDueDate()
+
+
+Webservice_Username = "jiraadmin"
+Webservice_Password = "#DFrwp1ac"
+
+
+if(issueType == 'TIR - Customer Test') or (issueType == 'TIR - Live'):
+#  URLFormat = 'https://rijira01:8443/jira/rest/gtechjiraresource/1.0/gtechjira/create?projectkey='+projectKey+'&summary='+URLEncoder.encode(str(summary))+'&description='+URLEncoder.encode(str(description))+'&parentProduct='+str(parentValue)+'&childProduct='+str(childValue)+'&priority='+str(priority)+'&severity='+str(severity)+'&reproducible='+str(reproducible)+'&foundInBatch='+str(foundInBatch)+'&issueType='+str(issueType)+'&reporter='+str(reporter)+'&defectSymptom='+str(defectSymptom)+'&remoteJiraLink='+str(remoteJiraLink)+'&environment='+URLEncoder.encode(str(environment))+'&externalId='+URLEncoder.encode(str(externalId))+'&siteSpecificProduct='+str(siteSpecificProduct)+'&affectsVersion='+str(affsVersion)+'&attachments='+str(attachments)+'&filenames='+str(filenames)+'&mimetypes='+str(mimetypes)+'&issueKey='+str(issueKey)
+#   URLFormat = 'https://rijira01:8443/jira/rest/gtechjiraresoure/1.0/gtechjira/create?projectkey='+projectKey+'&summary='+URLEncoder.encode(str(summary))+'&description='+URLEncoder.encode(str(description))+'&parentProduct='+str(parentValue)+'&childProduct='+str(childValue)+'&priority='+str(priority)+'&severity='+str(severity)+'&reproducible='+str(reproducible)+'&foundInBatch='+str(foundInBatch)+'&issueType='+str(issueType)+'&reporter='+str(reporter)+'&defectSymptom='+str(defectSymptom)+'&remoteJiraLink='+str(remoteJiraLink)+'&environment='+URLEncoder.encode(str(environment))+'&externalId='+URLEncoder.encode(str(externalId))+'&siteSpecificProduct='+str(siteSpecificProduct)+'&affectsVersion='+str(affsVersion)+'&filenames='+str(filenames)+'&mimetypes='+str(mimetypes)
+   URLFormat = 'https://rijira01:8443/jira/rest/gtechjiraresource/1.0/gtechjira/create?projectkey='+projectKey+'&summary='+URLEncoder.encode(str(summary))+'&description='+URLEncoder.encode(str(description))+'&parentProduct='+str(parentValue)+'&childProduct='+str(childValue)+'&priority='+str(priority)+'&severity='+str(severity)+'&reproducible='+str(reproducible)+'&foundInBatch='+str(foundInBatch)+'&issueType='+str(issueType)+'&reporter='+str(reporter)+'&defectSymptom='+str(defectSymptom)+'&remoteJiraLink='+str(remoteJiraLink)+'&environment='+URLEncoder.encode(str(environment))+'&externalId='+URLEncoder.encode(str(externalId))+'&siteSpecificProduct='+str(siteSpecificProduct)+'&affectsVersion='+str(affsVersion)+'&filenames='+str(filenames)+'&mimetypes='+str(mimetypes)+'&issueId='+str(issueId)
+ 
+if(issueType == 'Enhancement Request'):
+  URLFormat = 'https://rijira01:8443/jira/rest/gtechjiraresource/1.0/gtechjira/create?projectkey='+projectKey+'&summary='+URLEncoder.encode(str(summary))+'&description='+URLEncoder.encode(str(description))+'&parentProduct='+str(parentValue)+'&childProduct='+str(childValue)+'&priority='+str(priority)+'&issueType='+str(issueType)+'&reporter='+str(reporter)+'&revenueGenerating='+str(revenueGenerating)+'&requester='+str(requester)+'&requestingAgency='+str(requestingAgency)+'&remoteJiraLink='+str(remoteJiraLink)+'&externalId='+URLEncoder.encode(str(externalId))+'&siteSpecificProduct='+str(siteSpecificProduct)+'&filenames='+str(filenames)+'&mimetypes='+str(mimetypes)+'&issueId='+str(issueId)
+
+if(issueType == 'Task'):
+  URLFormat = 'https://rijira01:8443/jira/rest/gtechjiraresource/1.0/gtechjira/create?projectkey='+projectKey+'&summary='+URLEncoder.encode(str(summary))+'&description='+URLEncoder.encode(str(description))+'&priority='+str(priority)+'&issueType='+str(issueType)+'&reporter='+str(reporter)+'&duedate='+str(dueDate)+'&remoteJiraLink='+str(remoteJiraLink)+'&filenames='+str(filenames)+'&mimetypes='+str(mimetypes)+'&issueId='+str(issueId)
+ 
+
+
+
+Webservice_Authorization = 'Basic ' + string.strip(base64.encodestring(Webservice_Username + ':'  +  Webservice_Password))
+logging.info('the url is'+URLFormat)
+
+inURL=URLFormat.replace(' ','%20')
+url = URL(inURL)
+uc = url.openConnection()
+uc.setDoOutput(1)
+
+
+uc.setRequestMethod("POST")
+uc.setRequestProperty("Authorization",Webservice_Authorization) 
+uc.setRequestProperty("Content-Type","application/json")
+#uc.setRequestProperty("Content-Type","image/jpg")
+
+conLen = len(URLFormat)
+logging.info(conLen)
+uc.setChunkedStreamingMode(2048)
+
+
+responseCode=uc.getResponseCode()
+responseMessage=uc.getResponseMessage()
+
+
+if(responseCode!=200):
+   error = str(uc.getErrorStream())
+
+
+if(responseCode == 200):	    
+    logging.info('Remote Issue - Response Code2: '+str(responseCode)+', Response Message: '+responseMessage+ ' Date time: '+str(current_time)+' URLFormat: '+str(URLFormat))
+else:    
+    logging.info('Remote Issue - Response Code2: '+str(responseCode)+ ', Response Message: ' +responseMessage+ ', Error: '+error+ ' Date time: '+str(current_time)+ 'URLFormat: '+str(URLFormat))
+   
+uc.disconnect()

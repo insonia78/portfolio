@@ -1,0 +1,11 @@
+$(document).ready(function () {
+    $('#country').change(function () {
+        console.log($(this).val())
+    })
+
+
+
+    
+
+
+})

@@ -1,0 +1,14 @@
+select.form-control.required#storage(name='storage')
+  option Select Storage Type
+  option Compressed Air
+  option Flow Battery
+  option Sodium-Sulphur Battery
+  option Lithium Ion
+  option Sodium-Nickel Chloride Battery
+  option Lead Acid
+  option Nickel-Cadmium Battery
+  option Nickel-Metal Hydride battery
+  option Flywheel
+  option High Power Supercapacitors
+  option Thermal Storage
+  option Pumped Hydro

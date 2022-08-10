@@ -1,0 +1,15 @@
+{
+	"folders": [
+		{
+			"name": "final-project-back-end",
+			"path": "..\\..\\..\\..\\..\\datingsite\\final-project-back-end"
+		},
+		{
+			"path": "..\\..\\..\\.."
+		}
+	],
+	"settings": {
+		"java.configuration.updateBuildConfiguration": "disabled",
+		"maven.view": "hierarchical"
+	}
+}

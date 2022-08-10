@@ -1,0 +1,1 @@
+export const queueGroupName = 'text-message-service';

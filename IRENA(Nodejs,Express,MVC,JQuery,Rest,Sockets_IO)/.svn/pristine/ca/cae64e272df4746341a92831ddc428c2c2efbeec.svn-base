@@ -1,0 +1,138 @@
+//consider to get list of currencies https://finance.yahoo.com/webservice/v1/symbols/allcurrencies/quote?format=json
+
+table#benefitBucketsTable.table.table-striped.table-bordered.table-hover
+  thead
+    tr
+      th.col-lg-2 Benefit Categories
+      |
+      th.col-lg-2 Benefit Bucket
+      |          
+      th.col-lg-2 Value in US $
+      |
+      th.col-lg-2 Value in local currency
+    // /tr
+  // /thead
+  tbody
+    tr
+      th(rowspan='2') Generation Cost Reduction
+      |          
+      td Fuel Cost Savings
+      |          
+      td
+       #fuelCostSavings(type='text' name='fuelCostSavings' disabled)
+      |
+      td
+        #fuelcost(type='text' name='fuelcost' disabled)    
+    // /tr
+    tr
+      td VO&M Cost Savings
+      |          
+      td
+        #vomCostSavings(type='text' name='vomCostSavings' disabled)
+      |
+      td
+        #vomcost(type='text' name='vomcost' disabled)  
+    // /tr
+  tr
+    th(rowspan='4') Ancillary Services Cost Reduction
+    |          
+    td Primary Reserve Cost Savings
+    |          
+    td
+      #primaryreservecost(type='text' name='primaryreservecost' disabled)
+    |
+    td
+      #prireservecost(type='text' name='prireservecost' disabled)  
+    // /tr
+    tr
+      td Secondary Reserve Cost Savings
+      |          
+      td
+        #secondreservecost(type='text' name='secondreservecost' disabled)
+      |
+      td
+        #secreservecost(type='text' name='secreservecost' disabled)  
+    // /tr
+    tr
+      td Tertiary Reserve Cost Savings
+      |          
+      td
+        #tertiaryreservecost(type='text' name='tertiaryreservecost' disabled)
+      |
+      td
+        #terreservecost(type='text' name='terreservecost' disabled)  
+    // /tr
+    tr
+      td Frequency Response Cost Savings
+      |          
+      td
+        #efrCostSavings(type='text' name='efrCostSavings' disabled)
+      |
+      td
+        #freqresponse(type='text' name='freqresponse' disabled)  
+    // /tr
+    tr
+      th Energy Cost Reduction
+      |          
+      td Energy Arbitrage
+      |          
+      td
+        #arbitrage(type='text' name='arbitrage' disabled)
+      |
+      td
+        #energyarbitrage(type='text' name='energyarbitrage' disabled)  
+    // /tr
+    tr
+      th(rowspan='3') T&D Cost Reduction
+      |          
+      td Reactive Power Support Savings
+      |          
+      td
+        #reactivePowerSavings(type='text' name='reactivePowerSavings' disabled)
+      |
+      td
+        #reactive(type='text' name='reactive' disabled)  
+    // /tr
+    tr
+      td T&D Deferral Savings
+      |          
+      td
+        #deferralSavings(type='text' name='deferralSavings' disabled)
+      |
+      td
+        #TnD(type='text' name='TnD' disabled)  
+    // /tr
+    tr
+      td Black Start Savings
+      |          
+      td
+        #blackStartSavings(type='text' name='blackStartSavings' disabled)
+      |
+      td
+        #blackstart(type='text' name='blackstart' disabled)  
+    // /tr
+    tr
+      th Reduced Peak
+      |          
+      td Peaking Plant Capital Savings
+      |          
+      td
+        #peakingPlantCapSavings(type='text' name='peakingPlantCapSavings' disabled)
+      |
+      td
+        #peakcapital(type='text' name='peakcapital' disabled)  
+    // /tr
+    tr
+      th Forecast Error
+      |          
+      td Forecast Error Savings
+      |          
+      td
+        #forecastErrorSavings(type='text' name='forecastErrorSavings' disabled)
+      |
+      td
+        #forecastsavings(type='text' name='forecastsavings' disabled)  
+    // /tr
+  // /tbody	
+// /table
+	

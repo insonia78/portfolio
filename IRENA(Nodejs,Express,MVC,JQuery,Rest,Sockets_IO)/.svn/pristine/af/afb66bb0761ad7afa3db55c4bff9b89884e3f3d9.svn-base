@@ -1,0 +1,283 @@
+$(document).ready(function() 
+    {
+	console.log("loading");
+
+	$('button[type="submit"]').click(	
+	    function (e)
+	    {
+		console.log("calculate button pressed");
+		e.preventDefault();
+
+		//if (!validateFields())
+		//{
+		//    return;
+		//}
+		
+		var valuationData = {};
+		valuationData.country = $('#country').val();
+		valuationData.demandprofile_yr1 = $('#demandprofile_yr1').val();
+		valuationData.demandprofile_yr2 = $('#demandprofile_yr2').val();
+
+		valuationData.basesolar = $('#basesolar').val();
+		valuationData.basewind = $('#basewind').val();
+            
+		valuationData.inputpeak_yr1 = $('#inputpeak_yr1').val();
+		valuationData.inputpeak_yr2 = $('#inputpeak_yr2').val();
+		valuationData.inputenergy_yr1 = $('#inputenergy_yr1').val();
+		valuationData.inputenergy_yr2 = $('#inputenergy_yr2').val();
+		valuationData.p_reserves = $('#p_reserves').val();
+		valuationData.s_reserves = $('#s_reserves').val();
+		valuationData.t_reserves = $('#t_reserves').val();
+		valuationData.hydrores1 = $('#hydrores1').val();
+		valuationData.hydrores2 = $('#hydrores2').val();
+		valuationData.hydrores3 = $('#hydrores3').val();
+		valuationData.hypmax = $('#hypmax').val();
+		valuationData.freregvalue = $('#freregvalue').val();
+		valuationData.peakcapital = $('#peakcapital').val();
+            
+        valuationData.systemType = $('#systemType').val();
+		valuationData.milesOfTransmission = $('#milesOfTransmission').val();
+		valuationData.milesOfDistribution = $('#milesOfDistribution').val();
+		valuationData.peakDemand = $('#peakDemand').val();
+		valuationData.peakDemandGrowthRate = $('#peakDemandGrowthRate').val();
+
+        valuationData.solarcap = $('#solarcap').val();
+		valuationData.windcap = $('#windcap').val();
+
+        valuationData.HydroM1 = $('#HydroM1').val();
+        valuationData.HydroM2 = $('#HydroM2').val();
+        valuationData.HydroM3 = $('#HydroM3').val();
+        valuationData.HydroM4 = $('#HydroM4').val();
+        valuationData.HydroM5 = $('#HydroM5').val();
+        valuationData.HydroM6 = $('#HydroM6').val();
+        valuationData.HydroM7 = $('#HydroM7').val();
+        valuationData.HydroM8 = $('#HydroM8').val();
+        valuationData.HydroM9 = $('#HydroM9').val();
+        valuationData.HydroM10 = $('#HydroM10').val();
+        valuationData.HydroM11 = $('#HydroM11').val();
+        valuationData.HydroM12 = $('#HydroM12').val();
+            
+            
+            
+            
+		$.ajax(
+    		    {
+    			type: 'POST',
+    			url: 'calculate-valuation',
+    			data: valuationData,
+    			success: populateResponse
+    		    }
+		);
+	    }
+	);
+
+	//SAVE TO DATABASE EXAMPLE
+	$('#save-btn').click(	
+	    function (e)
+	    {
+		console.log("save button pressed");
+		e.preventDefault();
+
+		//if (!validateFields())
+		//{
+		//    return;
+		//}
+		
+		var valuationData = {};
+		valuationData.peakCapacity = $('#peakCapacity').val();
+		valuationData.systemType = $('#systemType').val();
+		valuationData.milesOfTransmission = $('#milesOfTransmission').val();
+		valuationData.milesOfDistribution = $('#milesOfDistribution').val();
+		valuationData.peakDemand = $('#peakDemand').val();
+		valuationData.peakDemandGrowthRate = $('#peakDemandGrowthRate').val();
+		// valuationData. = $('#').val();
+		// valuationData. = $('#').val();
+		// valuationData. = $('#').val();
+		// valuationData. = $('#').val();
+		
+		$.ajax(
+    		    {
+    			type: 'POST',
+    			url: 'save-data',
+    			data: valuationData,
+    			success: populateResponse
+    		    }
+		);
+	    }
+	);
+
+
+
+
+
+
+
+
+
+	// $('#country')[0].selectedIndex = -1;
+	
+	$('#P_cap_es_200C').html("");
+	$('#E_cap_es_200C').html("");
+	$('#P_cap_es_100C').html("");
+	$('#E_cap_es_100C').html("");
+	$('#P_cap_es_050C').html("");
+	$('#E_cap_es_050C').html("");
+	$('#P_cap_es_025C').html("");
+	$('#E_cap_es_025C').html("");
+
+	//validate();
+    }
+);
+
+
+function populateResponse(response)
+{
+    console.log(response);
+
+    $('#P_cap_es_200C').html(Math.round(response.P_cap_es_200C * 100) / 100);
+    $('#E_cap_es_200C').html(Math.round(response.E_cap_es_200C * 100) / 100);
+    $('#P_cap_es_100C').html(Math.round(response.P_cap_es_100C * 100) / 100);
+    $('#E_cap_es_100C').html(Math.round(response.E_cap_es_100C * 100) / 100);
+    $('#P_cap_es_050C').html(Math.round(response.P_cap_es_050C * 100) / 100);
+    $('#E_cap_es_050C').html(Math.round(response.E_cap_es_050C * 100) / 100);
+    $('#P_cap_es_025C').html(Math.round(response.P_cap_es_025C * 100) / 100);
+    $('#E_cap_es_025C').html(Math.round(response.E_cap_es_025C * 100) / 100);
+}
+
+
+// function validate()
+// {
+//     $.validator.addMethod(
+// 	"valueNotEquals",
+// 	function(value, element, arg)
+// 	{
+// 	    return arg != value;
+// 	},
+// 	"Value must not equal arg."
+//     );
+    
+//     $("#valuationOfStorageForm").validate(
+// 	{
+// 	    rules:
+// 	    {
+// 		peakCapacity:
+// 		{
+// 		    required: true,
+// 		    number: true,
+// 		    range: [0, 1000000]
+// 		},
+// 		country:
+// 		{
+// 		    valueNotEquals: "Select a country"
+// 		}
+// 	// 	milesOfTransmission:
+// 	// 	{
+// 	// 	    required : true,
+// 	// 	    number: true,
+// 	// 	    range : [1, 1000000]
+// 	// 	},
+// 	// 	milesOfDistribution:
+// 	// 	{
+// 	// 	    required : true,
+// 	// 	    number: true,
+// 	// 	    range : [1, 1000000]
+// 	// 	}
+// 	    },
+// 	    messages:
+// 	    {
+// 		country:
+// 		{
+// 		    valueNotEquals: "Please select a country"
+// 		}
+// 	    }
+// 	}
+//     );
+// }
+
+
+// function validateFields()
+// {
+//     if (!$('#country').valid())
+//     {
+// 	$('#country').focus();
+// 	return false;
+//     }
+
+//     if (!$('#peakCapacity').valid())
+//     {
+// 	$('#peakCapacity').focus();
+// 	return false;
+//     }
+    
+//     if (!$('#milesOfTransmission').valid())
+//     {
+// 	$('#milesOfTransmission').focus();
+// 	return false;
+//     }
+
+//     if (!$('#milesOfDistribution').valid())
+//     {
+// 	$('#milesOfDistribution').focus();
+// 	return false;
+//     }
+
+
+//     // if (!$('#').valid())
+//     // {
+//     // 	$('#').focus();
+//     // 	return false;
+//     // }
+
+//     // if (!$('#').valid())
+//     // {
+//     // 	$('#').focus();
+//     // 	return false;
+//     // }
+
+//     // if (!$('#').valid())
+//     // {
+//     // 	$('#').focus();
+//     // 	return false;
+//     // }
+
+//     // if (!$('#').valid())
+//     // {
+//     // 	$('#').focus();
+//     // 	return false;
+//     // }
+
+//     // if (!$('#').valid())
+//     // {
+//     // 	$('#').focus();
+//     // 	return false;
+//     // }
+
+//     // if (!$('#').valid())
+//     // {
+//     // 	$('#').focus();
+//     // 	return false;
+//     // }
+
+//     // if (!$('#').valid())
+//     // {
+//     // 	$('#').focus();
+//     // 	return false;
+//     // }
+
+//     // if (!$('#').valid())
+//     // {
+//     // 	$('#').focus();
+//     // 	return false;
+//     // }
+
+//     // if (!$('#').valid())
+//     // {
+//     // 	$('#').focus();
+//     // 	return false;
+//     // }
+
+    
+//     return true;
+// }
+
+

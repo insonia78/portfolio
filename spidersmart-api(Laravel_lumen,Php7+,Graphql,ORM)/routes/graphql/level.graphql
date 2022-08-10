@@ -1,0 +1,97 @@
+type Level implements Resource {
+  id: Int!
+  subject: Subject
+  files: [LevelFile]
+  name: String!
+  description: String
+  rule: String!
+  vocabLines: Int!
+  shortAnswerLines: Int!
+  essayLines: Int!
+  dateFrom: DateTime
+  dateTo: DateTime
+  active: Boolean
+  enrollments: [Enrollment]
+  __typename: String
+}
+
+input LevelInput {
+  id: Int
+  subject: SubjectInput
+  name: String
+  description: String
+  rule: String
+  vocabLines: Int
+  shortAnswerLines: Int
+  essayLines: Int
+  enrollments: [EnrollmentInput]
+  __typename: String
+}
+
+type LevelFile implements Resource{
+  id: Int!
+  role: String!
+  name: String
+  description: String
+  mimetype: String
+  path: String
+  dateFrom: DateTime
+  dateTo: DateTime
+  active: Boolean
+  __typename: String
+}
+
+input LevelFileInput {
+  id: Int
+  role: String
+  name: String
+  description: String
+  file: Upload
+}
+
+type LevelResponse implements ResponsePayload {
+  success: Boolean
+  data: Level
+  errors: [String]
+}
+
+type LevelCollectionResponse implements CollectionResponsePayload {
+  data: [Level]
+  errors: [String]
+  metadata: QueryMetaData
+}
+
+extend type Query {
+  levels(queryOptions: QueryOptionsInput): LevelCollectionResponse! @route(resolver: "Level@getAll", operation: "retrieveCollection")
+  level(id: Int!): Level! @route(resolver: "Level@get", operation: "retrieve")
+}
+
+extend type Mutation {
+  createLevel(
+    subject: SubjectInput
+    files: [LevelFileInput]
+    name: String!
+    description: String
+    rule: String
+    vocabLines: Int
+    shortAnswerLines: Int
+    essayLines: Int
+    active: Boolean
+  ): LevelResponse @route(resolver: "Level@create", operation: "create")
+
+  updateLevel(
+    id: Int!
+    subject: SubjectInput
+    files: [LevelFileInput]
+    name: String
+    description: String
+    rule: String
+    vocabLines: Int
+    shortAnswerLines: Int
+    essayLines: Int
+    active: Boolean
+  ): LevelResponse @route(resolver: "Level@update", operation: "update")
+
+  deleteLevel(id: Int!): LevelResponse
+    @route(resolver: "Level@delete", operation: "delete")
+}

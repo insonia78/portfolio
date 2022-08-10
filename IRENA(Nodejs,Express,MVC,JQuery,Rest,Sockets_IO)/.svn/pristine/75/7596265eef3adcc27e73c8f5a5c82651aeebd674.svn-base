@@ -1,0 +1,26 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+#blankSpace {
+    height: 50px
+}
+
+#alevoLogo {
+    max-width: 100%;
+    height: auto;
+}
+
+.error {
+  color: #FF0000;
+}
+
+.table tbody tr th {
+    vertical-align: middle
+}
+

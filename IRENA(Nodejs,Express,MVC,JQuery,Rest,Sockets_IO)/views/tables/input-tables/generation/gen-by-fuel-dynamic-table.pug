@@ -1,0 +1,65 @@
+table(id='cap-by-fuel-dynamic' class='generation-conventional-table')
+    thead
+        tr
+          th(colspan="14" class='table-header table-header-text') Thermal Generation Parameters
+        tr
+          th(colspan="2" class ='table-header-field table-header-field-title') Fuel Type
+          |
+          th(colspan="2" class ='table-header-field table-header-field-title') Unit Type 
+          |
+          th(class ='table-header-field table-header-field-title') Cap. Year 1 (MW)       
+          |  
+          th(class ='table-header-field table-header-field-title') Cap. Year 2 (MW)
+          |     
+          th(class ='table-header-field table-header-field-title') Summer Derate (%)
+          |          
+          th(class ='table-header-field table-header-field-title') Winter  Derate (%)
+          |           
+          th(class ='table-header-field table-header-field-title') Heat Rate (GJ/GWh)
+          |
+          th(class ='table-header-field table-header-field-title') Prim. Res. Cost ($/MW)
+          |
+          th(class ='table-header-field table-header-field-title') Sec. Res. Cost ($/MW)
+          |
+          th(class ='table-header-field table-header-field-title') Tert. Res. Cost ($/MW)
+          |
+          th(class ='table-header-field table-header-field-title') Carbon Rate (Tonne/GJ)
+          |
+          th(class ='table-header-field table-header-field-title') Ramping Rate (MW/h)
+          
+    tbody
+        tr.entry
+          th(colspan="2" class ='table-items-description table-items-description-text') 
+            select#fuel_options.grid-layout-textboxes.fuel-options.form-control.required(name='Fuels')
+             option Liquefied Natural Gas (LNG)
+          td(colspan="2" class ='table-items-description-content')
+            select#unit_options.grid-layout-textboxes.unit-options.form-control.required(name='unit_type')
+          td(class ='table-items-description-content')                           
+            input.grid-layout-textboxes.form-control.pconcap1#pconcap1(type='text')
+          td(class ='table-items-description-content') 
+            input.grid-layout-textboxes.form-control.pconcap2#pconcap2(type='text')                   
+          td(class ='table-items-description-content') 
+            input.grid-layout-textboxes.form-control.sumderate#sumderate(type='text')   
+          td(class ='table-items-description-content') 
+            input.grid-layout-textboxes.form-control.winderate#winderate(type='text')
+          td(class ='table-items-description-content') 
+            input.grid-layout-textboxes.form-control.heatrate#heatrate(type='text')
+          td(class ='table-items-description-content') 
+            input.grid-layout-textboxes.form-control.p_reserve#p_reserve(type='text')
+          td(class ='table-items-description-content') 
+            input.grid-layout-textboxes.form-control.s_reserve#s_reserve(type='text')
+          td(class ='table-items-description-content') 
+            input.grid-layout-textboxes.form-control.t_reserve#t_reserve(type='text')
+          td(class ='table-items-description-content') 
+            input.grid-layout-textboxes.form-control.carbon_rate#carbon_rate(type='text' value='0.059') 
+          td(class ='table-items-description-content') 
+            input.grid-layout-textboxes.form-control.convramprate#convramprate(type='text' value='0.059') 
+          
+          td(class ='table-items-description-content btn-field')
+            span.input-group-btn
+              a.btn-add.btn.btn-primary(type='button')
+                span.glyphicon.glyphicon-plus
+            span.remove-btn
+
+//-append body
+  //-script(src='../js/gen-by-fuel-dynamic.js')

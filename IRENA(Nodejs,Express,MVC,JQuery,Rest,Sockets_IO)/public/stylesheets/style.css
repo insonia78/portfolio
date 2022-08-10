@@ -1,0 +1,264 @@
+body {
+  padding: 5px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  height:auto;
+  width:auto;
+}
+#modal-charts
+{
+    display:none;
+    position: fixed;
+    z-index: 1000;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background: rgba(255,255,255,0.8);
+    text-align: center;
+}
+
+
+#modal-charts text
+{
+   color: black;
+   position: relative;
+   top: 55%;
+   font-size: 24px;
+   font-weight: bold;
+}
+
+
+.title-SLT{
+	text-align: center;
+}
+
+.profile-graph{
+        display: inline-block;
+	width: 400px;
+}
+
+.glyphicon-plus:before {
+  content: "\002b";
+  font-size: 2em;
+}
+.glyphicon-minus:before {
+  content: "\2212";
+  font-size: 2em;
+}
+
+a {
+  color: #00B7FF;
+}
+
+#blankSpace {
+    height: 50px
+}
+
+#Inputs {
+  margin-top: 50px;
+}
+
+#Project {
+  margin-top: 0px;
+  /*margin-bottom: 10px;*/
+}
+
+
+
+.error {
+  color: #FF0000;
+}
+
+.table tbody tr th {
+    vertical-align: middle;
+
+}
+
+thead th{
+	text-align: center;
+}
+
+#page-wrapper{
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: auto;
+  width:auto;
+  padding-left: 0px;
+  padding-right: 0px;
+
+  /*margin-top: 70px;*/
+}
+
+@media (max-height: 414px) {
+  .body-nav {
+      height: 289px;
+      overflow-y: scroll;
+    }
+}
+
+.navbar-fixed-bottom .navbar-collapse, .navbar-fixed-top .navbar-collapse {
+    max-height: 100%;
+}
+
+
+.navbar > .row > span, .navbar > .row > .col-lg-4, .navbar > .row > h3 {
+  display: inline-block;
+  vertical-align: middle;
+  margin-top: 5px;
+  margin-left: 5px;
+
+}
+
+.navbar > .row {
+ margin-right: 0;
+ margin-left: 0;
+}
+
+.out-graph{
+ width: 100% !important;
+}
+
+
+/*style the selects on the edit bar*/
+ .select-editable {
+     position:relative;
+     background-color:white;
+     border:solid grey 1px;
+     width:99%;
+     height:36px;
+ }
+ .select-editable select {
+     position:absolute;
+     top:0px;
+     left:0px;
+     font-size:14px;
+     border:none;
+     width:100%;
+     margin:0;
+ }
+ .select-editable input {
+     position:absolute;
+     top:0px;
+     left:0px;
+     width:90%;
+     padding:0px;
+     font-size:12px;
+     border:none;
+     height:36px;
+     text-align: center;
+     vertical-align: middle;
+     font-weight:bold;
+
+ }
+ .select-editable select:focus, .select-editable input:focus {
+     outline:none;
+ }
+
+ /*.input-group{
+   margin-top:50px;
+ }*/
+
+#side-menu li, #Inputs a, #Outputs a { cursor: pointer; cursor: hand; }
+
+#side-menu {
+ /*position: fixed;*/
+ overflow:auto
+}
+
+h1, a, li, h2 {
+  color:#00609C;
+}
+
+li > a:hover{
+  color:#00BFFF;
+}
+thead > tr >th{
+  background-color:#00BFFF;
+  color:#FFFFFF;
+  vertical-align:top !important;
+  border: 1px solid #00BFFF !important;
+}
+
+h2, h3{
+  margin-bottom:20px;
+}
+
+@media (min-width: 1500px) {
+    .XL{
+    width: 66.6666%;
+    }
+}
+.benefits-graph{
+  height: 320px;
+}
+
+.dygraph-legend {
+        width: 300px;
+        background-color: transparent !important;
+        left: 15% !important;
+}
+
+.loading-box{
+  display: inline-block;
+  margin-top: 5px;
+}
+
+/**********************************************/
+#busyanim {
+  display: inline-block;
+  border: 4px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 4px solid #008CBA;
+  width: 25px;
+  height: 25px;
+  margin-right: 20px;
+}
+
+#charts-loading-anim
+{
+  position: absolute;
+  top: 35%;
+  left: 45%;
+  display: inline-block;
+  border: 10px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 10px solid #008CBA;
+  width: 100px;
+  height: 100px;
+}
+
+.spinning{
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;  
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+/**********************************************/
+
+.wiki-box{
+  display: inline-block;
+  margin-top: 5px;
+}
+
+.right-icon-container{
+  display: inline-block;
+  position:relative;
+  float:right;
+  margin-right:25px;
+  margin-top:20px;
+}
+
+.chart-div
+{
+    width: 800px;
+    height:300px;
+}

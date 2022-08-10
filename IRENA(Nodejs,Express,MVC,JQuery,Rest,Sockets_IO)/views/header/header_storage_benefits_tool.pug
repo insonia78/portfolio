@@ -1,0 +1,16 @@
+div.header_storage_benefits_tool#fixedheader
+      div(class='logo-container')  
+        img(src='images/acelerex-logo.png', class='inline img-responsive company-img' onclick='aboutAcelerex()' alt='Acelerex logo' style='width:40%; max-height:45px;')               
+        text(class='product inline') Storage Benefits Tool
+      div(class='right-icon-container' style="display:none")
+            #busyanim
+            .log-out-icon
+              img.log-out-icon(src="../images/log-out.png" onclick="log_out_pop_up_box()")
+            .wiki-box
+              img(class='wiki-icon' src='../images/wiki.jpg' style='width:30px;height:25px; margin-right:20px;' onclick='wiki()')
+            div(class='menu-icon-container' onclick='ToogleMenu();')
+                div(class='menu-icon-bar')
+                div(class='menu-icon-bar')
+                div(class='menu-icon-bar')
+      //IO tabs
+      include ../tabs/tabs.pug

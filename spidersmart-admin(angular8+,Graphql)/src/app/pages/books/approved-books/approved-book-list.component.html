@@ -1,0 +1,29 @@
+  <sm-datatable [dataSource]="approvedBooks" defaultSortColumn="title"  [serverSideProcessing]="true" (dataRequest)="loadData($event)">
+    <sm-datatable-column name="title">
+      <ng-container *smDatatableCell="let data">
+        <a [routerLink]="['/approved-books', data.id, 'view']" *hasPermission="Permission.BOOK_VIEW; else nonlinked">{{data.title}}</a>
+        <ng-template #nonlinked>{{data.name}}</ng-template>
+      </ng-container>      
+    </sm-datatable-column>
+    <sm-datatable-column name="level">
+      <ng-container *smDatatableCell="let data">
+        <span *ngIf="!data.assignment" class="missing-data with-tooltip" matTooltip="No assignment is associated with this book" matTooltipPosition="before">Not Defined</span>
+        {{data?.level?.name}}
+      </ng-container>
+    </sm-datatable-column>
+    <sm-datatable-column name="dateFrom" label="Last Update">
+      <ng-container *smDatatableCell="let data">
+        {{data.dateFrom|date: "MMM d, y 'at' h:mm a"}}
+      </ng-container>
+    </sm-datatable-column>
+    <sm-datatable-row-actions>
+      <ng-container *smDatatableCell="let data">
+        <sm-datatable-row-action action="edit" tooltip="Edit Book" [route]="['/approved-books', data.id, 'edit']" *hasPermission="Permission.BOOK_UPDATE"></sm-datatable-row-action>
+        <sm-datatable-row-action action="delete" tooltip="Delete Book" (click)="delete(data.id)" *hasPermission="Permission.BOOK_DELETE"></sm-datatable-row-action>
+      </ng-container>
+    </sm-datatable-row-actions>
+    
+    <sm-datatable-bulk-action action="delete" tooltip="Delete Selected Books" (select)="delete($event)" *hasPermission="Permission.BOOK_DELETE"></sm-datatable-bulk-action>
+  </sm-datatable>
+  
+

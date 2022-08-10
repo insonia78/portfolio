@@ -1,0 +1,51 @@
+<ng-container *ngIf="center?.useInventory; else noInventory">
+  <sm-datatable [dataSource]="books" defaultSortColumn="title" [serverSideProcessing]="true" (dataRequest)="loadData($event)">
+    <sm-datatable-column name="title">
+      <ng-container *smDatatableCell="let data">
+        <a [routerLink]="['/approved-books', data.id, 'view']" *hasPermission="Permission.BOOK_VIEW; else nonlinked">{{data.title}}</a>
+        <ng-template #nonlinked>{{data.title}}</ng-template>
+      </ng-container>
+    </sm-datatable-column>
+
+    <sm-datatable-column name="level">
+      <ng-container *smDatatableCell="let data">
+        {{data?.level?.name}}
+      </ng-container>
+    </sm-datatable-column>
+
+    <sm-datatable-column name="quantity">
+      <ng-container *smDatatableCell="let data">
+        <div class="quantity-wrapper" (click)="$event.stopPropagation()">
+          <ng-container *ngIf="inEditMode(data.id)">
+            <mat-form-field>
+              <input matInput [(ngModel)]="currentQuantity" type="number">
+            </mat-form-field>
+            <button mat-icon-button color="accent" matTooltip="Save Changes" (click)="saveQuantity(data, currentQuantity)">
+              <mat-icon>save</mat-icon>
+            </button>
+            <button mat-icon-button color="warn" matTooltip="Cancel" (click)="toggleQuantityEdit(data.id)">
+              <mat-icon>cancel</mat-icon>
+            </button>
+          </ng-container>
+          <span *ngIf="!inEditMode(data.id)">{{data.quantity}}</span>
+        </div>
+      </ng-container>
+    </sm-datatable-column>
+
+    <sm-datatable-row-actions>
+      <ng-container *smDatatableCell="let data">
+        <ng-container *hasPermission="Permission.CENTER_MANAGE_BOOKS">
+          <sm-datatable-row-action *ngIf="!inEditMode(data.id)" action="iso" tooltip="Edit Quantity" (click)="toggleQuantityEdit(data.id, data.quantity)"></sm-datatable-row-action>
+        </ng-container>
+        <sm-datatable-row-action action="delete" tooltip="Remove Book" (click)="removeBook(data)" *hasPermission="Permission.CENTER_MANAGE_BOOKS"></sm-datatable-row-action>
+      </ng-container>
+    </sm-datatable-row-actions>
+    <sm-datatable-bulk-action action="delete" tooltip="Remove Selected Books" (select)="removeBook($event)" *hasPermission="Permission.CENTER_MANAGE_BOOKS"></sm-datatable-bulk-action>
+  </sm-datatable>
+</ng-container>
+
+<ng-template #noInventory>
+  <p *ngIf="center">
+    This center is not configured to use a book inventory.
+  </p>
+</ng-template>

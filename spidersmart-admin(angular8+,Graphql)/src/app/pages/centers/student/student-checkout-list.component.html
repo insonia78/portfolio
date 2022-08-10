@@ -1,0 +1,27 @@
+<sm-datatable [dataSource]="checkouts" defaultSortColumn="dateFrom" defaultSortDirection="desc" [serverSideProcessing]="true" (dataRequest)="loadData($event)">
+  <sm-datatable-column name="title">
+    <ng-container *smDatatableCell="let data">
+      {{data?.book?.title}}
+    </ng-container>      
+  </sm-datatable-column>
+  <sm-datatable-column name="level">
+    <ng-container *smDatatableCell="let data">
+      {{data?.book?.level?.name}}
+    </ng-container>
+  </sm-datatable-column>
+  <sm-datatable-column name="dateFrom" label="Checked Out">
+    <ng-container *smDatatableCell="let data">
+      {{data?.relatedFrom|date: "MMM d, y 'at' h:mm a"}}
+    </ng-container>
+  </sm-datatable-column>
+
+  <sm-datatable-row-actions>
+    <ng-container *smDatatableCell="let data">
+      <!-- <sm-datatable-row-action action="assignment" tooltip="Review Submission" [route]="['/assignment-submission', data.id, 'review']" *hasPermission="Permission.ASSIGNMENT_REVIEW"></sm-datatable-row-action> -->
+      <sm-datatable-row-action action="check_circle" tooltip="Return Book" (click)="returnBook(data)" *hasPermission="Permission.STUDENT_UPDATE"></sm-datatable-row-action>
+    </ng-container>
+  </sm-datatable-row-actions>
+
+  <sm-datatable-bulk-action action="check_circle" tooltip="Return Selected Books" (select)="returnBook($event)" *hasPermission="Permission.STUDENT_UPDATE"></sm-datatable-bulk-action>
+
+</sm-datatable>

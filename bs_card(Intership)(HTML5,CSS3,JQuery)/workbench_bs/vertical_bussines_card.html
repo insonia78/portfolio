@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>To Be Specify</title>
+    
+    </script>
+
+    <!-- Bootstrap -->
+   <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href= "vertical_bussiness_card_workbench.css" rel = "stylesheet">
+	<link href="js/jquery.drawer.css" rel="stylesheet">
+	<script src="js/jquery.js"></script>
+	<script src="js/jquery-ui.js"></script>
+    <!-- Bootstrap -->
+	
+	<link rel="stylesheet" href="js/jquery-ui.css">
+	<link rel="stylesheet" href="style.css">
+    
+	<script src="js_templates/jquery-ui.js"></script>
+    <!-- Bootstrap -->
+	
+	<link rel="stylesheet" href="js_templates/jquery-ui.css">
+    <script src="js_templates/jquery.js"></script>
+	
+	
+	<link rel="stylesheet" href="color-picker/farbtastic.css" type="text/css" />
+	
+	<script type="text/javascript" src="color-picker/farbtastic.js"></script>
+	
+	
+	
+	
+	<script src = "js/dragdropNames.js"></script>
+    <script src="js/jquery.drawer.js"></script>
+    <script src="js/demo.js"></script>
+	
+   
+	
+	 
+	 
+	 
+	 
+	  <!-- Including The jQuery Library -->
+		 <script src="js/jquery-ui.min.js"></script>    
+		
+		<!-- Including the HTML5 Uploader plugin -->
+		<script src="js/jquery.filedrop.js"></script>
+		
+		<!-- The main script file -->
+        <script src="js/script.js"></script>
+
+	
+	
+
+	
+
+	
+	<script type="text/javascript" charset="utf-8">
+  $(document).ready(function() {
+    
+    $('#demo').hide();
+  var color = $('#picker').farbtastic('#color');
+ 
+ 
+  
+  });
+  
+  
+ </script>
+ <script>
+  $(function() {
+    $( "#templates" ).accordion({
+      collapsible: true
+    });
+  });
+  </script>
+ 
+	
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  
+  
+  <body text="#000000" style="background:#2c3651; height:1100px;">
+
+     <section>
+  
+  
+  <!-- Navigation Bar uses bootstrap.css -->
+         <!-- To be defined -->
+ <header>
+  <!-- Navigation Bar uses bootstrap.css -->
+         <!-- To be defined -->
+  <iframe style ="position:absolute;width:100%;height:100%;top:10px;" src ="../header.html">
+  
+    </iframe>
+</header>
+		<!-- Drawer Accordition -->
+		
+		
+		<div class="container">
+			<div class="drawer">
+
+				<!-- First Item -->
+				<div class="drawer-item">
+					<div class="drawer-header">
+						<h1>Design</h1>
+						<div class="drawer-header-icon"></div>
+					</div>
+					<div class="drawer-content">
+					<form  id = "color_change" action="" style="width: 400px;">
+                   
+                     <text class = "background_color">BackGround Color </text>
+  
+  
+                  <div  class="form-item"><label for="color">Color:</label><input type="text" id="color" name="color" value="#123456" /></div><div  id="picker"></div>
+                </form>
+
+						
+						
+						
+						
+						
+						
+						
+					</div>
+				</div>
+
+				<!-- Second Item -->
+				<div class="drawer-item">
+					<div class="drawer-header">
+						<h1>Just Text</h1>
+						<div class="drawer-header-icon"></div>
+					</div>
+					<div class="drawer-content">
+					<br>
+						<div class="Just_text"> 
+						  <div  class = "checkbox" title = "Click Me!" >
+						  Just Text!
+						  
+						  
+						   </div>
+						 </div>
+					</div>
+				</div>
+				<script>
+				
+<!--
+  var entered = 0;
+-->
+</script>
+
+				<!-- Third Item -->
+				<div class="drawer-item">
+					<div class="drawer-header">
+						<h1>Upload Your Image</h1>
+						<div class="drawer-header-icon"></div>
+					</div>
+					<div class="drawer-content">
+						<text> Upload your File </text>
+						<br>
+						<form method="post" action="#">
+  
+  <div id="holder"  style="font-size:20px;color:blue;text-align:center;width:200px; height:200px; border: 10px dashed #ccc" id="holder" ><br><br> drag your file here</div>
+</form>
+		</div>
+				</div>
+			</div> <!-- /#drawer -->
+		</div> <!-- /.container -->
+
+
+<!-- first business card -->
+<div class="myCanvasVertical" > 
+   <div  class= "innerLine" title = "Click On The Selected Element to Activate It!" >
+      
+         <text contentEditable ="true"   id ="textarea"  class = "companyName"  >Company Name</text>  
+		 <br>
+         <text  contentEditable ="true"   id ="textarea" class = "companyMessage" >Company Message</text>
+		 <br>
+         <br>
+		 <text  contentEditable ="true"   id ="textarea" class = "fullName" >Full Name</text>
+         <br>
+		 <text  contentEditable ="true"   id ="textarea" class = "jobTitle" >Job Title</text>
+		 <br>
+         <br>
+		 <text  contentEditable ="true"   id ="textarea" class = "address1" >Address Line 1</text>
+         <br>
+		 <text  contentEditable ="true"   id ="textarea" class = "address2" >Address Line 2</text>
+    	 <br>
+		 <br>
+         <text  contentEditable ="true"   id ="textarea" class = "phone" >Phone/Other</text>
+		 <br>
+		 <text  contentEditable ="true"   id ="textarea" class = "email" >Email/Other</text>
+         <br> 
+         <text  contentEditable ="true"     id ="textarea" class = "web" >Web/Other</text> 
+         <br>
+<!------------------------------------------------ Image --------------------------------------------------------------------------------->		  
+  <div  id = "image-container" title = "It resize it only from the right corner" >
+  <div class = "inner-image" title = "It resize it only from the right corner" >Upload your Photo<br>Or<br>Your Logo<img id = "image"> </div>
+  </div>  
+  
+ <!-----------------------------------------------------------------------------------------------------------------------------> 
+   
+   </div>
+   <div hidden class= "innerLineBack" title = "Click On The Selected Element to Activate It!" >
+         
+       <text contentEditable ="true"   id ="textarea"  class = "backName"  >Text</text>  
+	  <br>
+      <text  contentEditable ="true"   id ="textarea" class = "backName2" >Text</text>
+  	  <br>
+	  <text  contentEditable ="true"   id ="textarea" class = "backName3" >Text</text>
+   
+   </div>
+</div>
+
+
+<!-- Small Demo Cards -->
+   
+ <div class="myCanvasFrontDemo" > 
+   <div class= "innerLineFrontDemo">
+         <text    class = "demo"  >Front</text>  
+ </div>
+</div> 
+ <div class="myCanvasBackDemo" title= "Click to Add a Back Side Also!" > 
+   <div class= "innerLineBackDemo">
+         <text    class = "demo"  >Back</text>  
+   </div>
+
+</div>
+
+<div id="templates">
+  <h3 style = "text-align:center;">Templates (the templates are going to go here )</h3>
+  <div id = "template_container">
+  
+   <div class="myTemplateDemo" > 
+     <div class= "innerLineTemplateDemo">
+         <text class = "demo"  > Template 1</text>  
+    </div>
+</div>
+
+<div class="myTemplateDemo" > 
+     <div class= "innerLineTemplateDemo">
+         <text class = "demo"  > Template 2</text>  
+    </div>
+</div> 
+<div class="myTemplateDemo" > 
+     <div class= "innerLineTemplateDemo">
+         <text class = "demo"  > Template 3</text>  
+    </div>
+</div> 
+    
+  </div>
+
+</div>
+
+
+
+	<!-- Charts Widget -->
+			
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed >
+    <script src="js/bootstrap.min.js"></script>-->
+   </section>	
+ </body>
+  
+</html>

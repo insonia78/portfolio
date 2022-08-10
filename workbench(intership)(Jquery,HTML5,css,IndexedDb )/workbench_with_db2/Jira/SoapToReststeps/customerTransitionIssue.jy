@@ -1,0 +1,79 @@
+import javax.net.ssl.HttpsURLConnection as uc
+import java.net.URL as URL
+import base64
+import string
+import datetime
+import com.atlassian.jira.component.ComponentAccessor as cmpacc
+import com.atlassian.jira.issue.comments.CommentManager
+import com.atlassian.jira.issue.CustomFieldManager
+import com.atlassian.jira.issue.fields.CustomField
+import subprocess
+import java.net.URLEncoder as URLEncoder
+import logging
+
+LOG_FILENAME = 'F:/Home/Jira52/restclient/RestClient.log'
+logging.basicConfig(filename=LOG_FILENAME,level=logging.INFO)
+current_time = datetime.datetime.now()
+logging.info(current_time)
+logging.info('Message from RestCustomerTransitionIssue.jy')
+
+catTirTransitionList = {21:'1071',11:'921'}
+liveTirTransitionList = {21:'1071',11:'921'}
+enhancementTransitionList = {21:'1071',441:'1381'}
+issueKey = issue.getKey()
+localTrnNumber = transientVars.get("actionId")
+issueType = issue.getIssueTypeObject().getId()
+if(catTirTransitionList.get(localTrnNumber) and issueType == "7"):
+   remoteTrnNumber = catTirTransitionList[localTrnNumber]
+if(liveTirTransitionList.get(localTrnNumber) and issueType == "8"):
+   remoteTrnNumber = liveTirTransitionList[localTrnNumber]
+if(enhancementTransitionList.get(localTrnNumber) and issueType =="6"):
+   remoteTrnNumber = enhancementTransitionList[localTrnNumber]
+
+inputComment = transientVars.get('comment')
+comment = 'null';
+if (inputComment != None):
+    commentHeader1 = 'COMMENT VISIBLE FOR BOTH CUSTOMER AND GTECH\n'
+    logginguser = cmpacc.getJiraAuthenticationContext().getUser()
+    commentHeader2 = 'From ' + str(logginguser) + '(' + issue.getAssigneeUser().getEmailAddress() + ') in Partner Jira:\n\n'
+    comment = commentHeader1 + commentHeader2 + inputComment
+    transientVars.put('comment', commentHeader1 + inputComment)
+
+
+Webservice_Username = "jiraadmin"
+Webservice_Password = "#DFrwp1ac"
+
+
+URLFormat = 'https://rijira01:8443/jira/rest/gtechjiraresource/1.0/gtechjira/customertransition?issueKey='+issueKey+'&actionId='+str(remoteTrnNumber)+'&comment='+URLEncoder.encode(str(comment))
+#URLFormat = 'https://rijira01:8443/jira/rest/gtechjiraresource/1.0/gtechjira/customertransition?issueKey='+issueKey+'&actionId='+str(remoteTrnNumber)
+
+
+Webservice_Authorization = 'Basic ' + string.strip(base64.encodestring(Webservice_Username + ':'  +  Webservice_Password))
+
+inURL=URLFormat.replace(' ','%20')
+
+logging.info(inURL)
+
+url = URL(inURL)
+uc = url.openConnection()
+uc.setDoOutput(1)
+uc.setRequestMethod("POST")
+uc.setRequestProperty("Authorization",Webservice_Authorization) 
+uc.setRequestProperty("Content-Type","application/json")
+conLen = len(URLFormat)
+uc.setChunkedStreamingMode(conLen)
+uc.connect()
+responseCode=uc.getResponseCode()
+responseMessage=uc.getResponseMessage()
+
+if(responseCode!=200):
+   error = str(uc.getErrorStream())
+
+
+if(responseCode == 200):	    
+    logging.info('Remote Issue - Response Code2: '+str(responseCode)+', Response Message: '+responseMessage+ ' Date time: '+str(current_time))
+else:    
+    logging.info('Remote Issue - Response Code2: '+str(responseCode)+ ', Response Message: ' +responseMessage+ ', Error: '+error+ ' Date time: '+str(current_time))
+   
+
+

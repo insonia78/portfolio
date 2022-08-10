@@ -1,0 +1,1896 @@
+
+#include "EmulatorThread.h"
+
+EmulatorThread::EmulatorThread(glpkLock *glpk, int identifierId, int row_id, DbConnector * database, QObject *parent) : QThread(parent) {
+    this->database = database;
+    identifier = QString("EmulatorThread_").append(QString::number(identifierId));
+    temp_row = row_id;
+    this->glpk = glpk;
+    this->row_id = &temp_row;    
+    QObject::connect(this, SIGNAL(_terminateThread()), this, SLOT(DeleteThread()), Qt::QueuedConnection);
+}
+
+EmulatorThread::~EmulatorThread() {
+    qDebug() << this << " >> Deleting";
+}
+
+void EmulatorThread::run() {
+    Emulator(*row_id, 1);
+    
+    emit _terminateThread();
+    qDebug() << this << " Finished";
+
+}
+
+void EmulatorThread::DeleteThread() {
+    this->exit();
+    if (!this->wait(3000)) {
+        this->terminate();
+        this->wait();
+
+    } else {
+        this->deleteLater();
+    }
+}
+
+int EmulatorThread::MonthForDay(int day) {
+    if (day < 31) {
+        return 1;
+    } else if (day < 59) {
+        return 2;
+    } else if (day < 90) {
+        return 3;
+    } else if (day < 120) {
+        return 4;
+    } else if (day < 151) {
+        return 5;
+    } else if (day < 181) {
+        return 6;
+    } else if (day < 212) {
+        return 7;
+    } else if (day < 243) {
+        return 8;
+    } else if (day < 273) {
+        return 9;
+    } else if (day < 304) {
+        return 10;
+    } else if (day < 334) {
+        return 11;
+    } else {
+        return 12;
+    }
+}
+
+int EmulatorThread::HoursForDay(int day) {
+    return day * 24;
+}
+
+int EmulatorThread::Emulator(int scenario_and_cases_row_id, int year) {
+    qDebug() << "Emulator Calculation started";
+    double peakdemand1, energydemand1 = 0;
+    std::vector<double> demandprofile1, demandprofile2;
+    double windfirmpower, solarfirmpower, windinvcost1, solarinvcost1;
+    std::vector<double> basewind, basesolar;
+    double hydrocap1, hydrores1, hydrores2, hydrores3, hydroinvcost1, hydrovomcost;//, hydroramprate;
+    double hydroEng1_1, hydroEng1_2, hydroEng1_3, hydroEng1_4, hydroEng1_5, hydroEng1_6, hydroEng1_7, hydroEng1_8, hydroEng1_9, hydroEng1_10, hydroEng1_11, hydroEng1_12;
+    double capplan1, primaryres1, secondres1, tertiaryres1; //lostload1
+    std::vector<double> chargeeff, dischargeeff, invcostpow1, invcostpow2, invcostener1, invcostener2, voms1, voms2, firmpow, fixedoms, eat1, eat2, mcd1, mcd2, enercap1, enercap2, powcap1, powcap2, esramprate, esduration, esenerarb, esmargcost;
+    std::vector<std::string> stotype;
+    std::vector<double> pconcap1, pconcap2, fuelprice1, fuelprice2, heatrate, vom, p_reserve, s_reserve, t_reserve, carbon_rate, invcost1, invcost2, fixedom, sumderate, winderate, convramprate;
+    std::vector<std::string> thermtype;
+    //double discount_rate;
+    //int alt_an_years;
+    
+    //AA results
+    std::vector<double> SolPR, SolPEE, SolPD, SolPS, SolPPeak, SolPH, SolES;
+    //PC results
+    std::vector<double> Hours, PRprice, SRprice, TRprice, energypriceprofile;
+
+    std::vector<double> enercap,demrescap,enercost,demrescost,enerinv,demresinv,enermax,demresmax;
+    double enersav;//,demresPRC,demresSRC,demresTRC;
+    sql::Connection *con = NULL;
+    sql::ResultSet *res;
+    sql::PreparedStatement *pstmt;
+    int count = 0;
+     while(con == NULL)
+        {
+          if(count == 1)
+          {            
+              count = 0;
+              ThreadSleep(1000);
+          }
+         con = database->getEmulatorCon("irena_storage_benefits_tool",con);
+          count++;
+        }
+    try {
+
+        /* Select everything from table. */
+
+//        //Read calculation_settings_table
+//        pstmt = con->prepareStatement("SELECT * FROM calculation_settings_table WHERE scenario_and_cases_row_id = ?");
+//        qDebug() << "int " << scenario_and_cases_row_id;
+//        pstmt->setInt(1, scenario_and_cases_row_id);
+//        res = pstmt->executeQuery();
+//
+//        while (res->next()) {
+//            alt_an_years = std::stoi(res->getString("alt_an_years")); //Convert string to int
+//            discount_rate = res->getDouble("discount_rate");
+//        }
+//        delete res;
+//        delete pstmt;        
+        
+        //Read demand table
+        pstmt = con->prepareStatement("SELECT * FROM demand_table WHERE scenario_and_cases_row_id = ?");
+        qDebug() << " int " << scenario_and_cases_row_id;
+        pstmt->setInt(1, scenario_and_cases_row_id);
+        res = pstmt->executeQuery();
+
+        std::string temp, path, file_temp;
+        while (res->next()) {
+
+            file_temp = res->getString("userdemandprofile1");
+            qDebug() << QString::fromStdString(file_temp);
+            QFileInfo check_file(QString::fromStdString(file_temp));
+            qDebug() << check_file.exists();
+            QFile file(QString::fromStdString(file_temp));
+
+            if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+                qDebug() << this << "Demand 1 File has not opend";
+                std::string query3("UPDATE scenarios_and_cases SET emulator_calculation_status = 'ERROR in FILE'  WHERE row_id = ?;");
+                pstmt = con->prepareStatement(query3);
+                pstmt->setInt(1, scenario_and_cases_row_id);
+                pstmt->execute();
+                delete pstmt;
+                delete con;
+                return 1;
+            } else
+                qDebug() << this << "File Opened";
+
+            QTextStream in(&file);
+            while (!in.atEnd()) {
+                QString line = in.readLine();
+                demandprofile1.push_back(line.toDouble());
+            }
+            file_temp = res->getString("userdemandprofile2");
+            QFile file2(QString::fromStdString(file_temp));
+            if (!file2.open(QIODevice::ReadOnly | QIODevice::Text)) {
+                qDebug() << this << "Demand 2 File has not opend";
+                std::string query2("UPDATE scenarios_and_cases SET emulator_calculation_status = 'ERROR in FILE' WHERE row_id = ?;");
+                pstmt = con->prepareStatement(query2);
+                pstmt->setInt(1, scenario_and_cases_row_id);
+                pstmt->execute();
+                delete pstmt;
+                delete con;
+                return 1;
+            } else
+                qDebug() << this << "File Opened";
+
+            QTextStream in2(&file2);
+            while (!in2.atEnd()) {
+                QString line2 = in2.readLine();
+                demandprofile2.push_back(line2.toDouble());
+            }
+            peakdemand1 = res->getDouble("peakdemand1");
+            energydemand1 = res->getDouble("energydemand1");
+        }
+        delete res;
+        delete pstmt;
+        //Read prices table
+        pstmt = con->prepareStatement("SELECT * FROM production_cost_output_files WHERE scenario_and_cases_row_id = ?");
+        qDebug() << " int " << scenario_and_cases_row_id;
+        pstmt->setInt(1, scenario_and_cases_row_id);
+        res = pstmt->executeQuery();
+        std::string Rfile_temp;
+
+        while (res->next()) {
+            file_temp = res->getString("PC_enerprice");
+            Rfile_temp = res->getString("PC_resprice");
+            qDebug() << QString::fromStdString(file_temp);
+            QFileInfo check_file(QString::fromStdString(file_temp));
+            qDebug() << check_file.exists();
+            QFile file3(QString::fromStdString(file_temp));
+
+            if (!file3.open(QIODevice::ReadOnly | QIODevice::Text)) {
+                qDebug() << this << "Energy Price 1 File has not opened";
+                std::string query3("UPDATE scenarios_and_cases SET emulator_calculation_status = 'ERROR in FILE'  WHERE row_id = ?;");
+                pstmt = con->prepareStatement(query3);
+                pstmt->setInt(1, scenario_and_cases_row_id);
+                pstmt->execute();
+                delete pstmt;
+                delete con;
+                return 1;
+            } else
+                qDebug() << this << "File Opened";
+            QTextStream in3(&file3);
+            int time_counter = 0;
+            while (!in3.atEnd()) {
+                QString line3 = in3.readLine();
+                std::string std_line3 = line3.toStdString();
+                std::stringstream linestream3(std_line3);
+                std::string value3;
+                int read_counter3 = 0;
+                while (getline(linestream3, value3, ',')) {
+                    if (time_counter != 0) {
+                        if (read_counter3 < 1) {
+                            Hours.push_back(atof(value3.c_str()));
+                        } else {
+                            energypriceprofile.push_back(atof(value3.c_str()));
+                        }
+                        read_counter3++;
+                    }
+                }
+                time_counter++;
+            }
+            
+            //Reading reserve prices profile
+            QFile file4(QString::fromStdString(Rfile_temp));
+            if (!file4.open(QIODevice::ReadWrite | QIODevice::Text)) {
+                std::cout << "ERROR: Reserve prices file not opened correctly.";
+                std::string query3("UPDATE scenarios_and_cases SET emulator_calculation_status = 'ERROR in FILE'  WHERE row_id = ?;");
+                pstmt = con->prepareStatement(query3);
+                pstmt->setInt(1, scenario_and_cases_row_id);
+                pstmt->execute();
+                delete pstmt;
+                delete con;
+                return 1;
+            }
+            QTextStream in4(&file4);
+            time_counter = 0;
+            while (!in4.atEnd()) {
+                QString line4 = in4.readLine();
+                std::string std_line4 = line4.toStdString();
+                std::stringstream linestream4(std_line4);
+                std::string value4;
+                int read_counter4 = 0;
+                while (getline(linestream4, value4, ',')) {
+                    if (time_counter != 0) {
+                        if (read_counter4 < 1) {
+                            Hours.push_back(atof(value4.c_str()));
+                        } else if (read_counter4 < 2) {
+                            PRprice.push_back(atof(value4.c_str()));
+                        } else if (read_counter4 < 3) {
+                            SRprice.push_back(atof(value4.c_str()));
+                        } else {
+                            TRprice.push_back(atof(value4.c_str()));
+                        }
+                        read_counter4++;
+                    }
+                }
+                time_counter++;
+            }
+        }
+        delete res;
+        delete pstmt;
+        //Read Renewables table
+        pstmt = con->prepareStatement("SELECT * FROM generation_renewables_table WHERE scenario_and_cases_row_id = " + std::to_string(scenario_and_cases_row_id));
+        res = pstmt->executeQuery();
+        //std::vector<double> enercap1,enercap2,powcap1,powcap2,chargeeff,dischargeeff,invcostpow1,invcostener1,invostpow2,invcostener2,vom1,vom2,firmpow,fixedom,EAT,MDC;
+        while (res->next()) {
+            std::string file_temp;
+            file_temp = res->getString("userbasewind"+std::to_string(year));
+            QFile file5(QString::fromStdString(file_temp));
+            if (!file5.open(QIODevice::ReadOnly | QIODevice::Text)) {
+                qDebug() << this << "Wind File has not opend";
+                std::string query2("UPDATE scenarios_and_cases SET emulator_calculation_status = 'ERROR in FILE' WHERE row_id = ?;");
+                pstmt = con->prepareStatement(query2);
+                pstmt->setInt(1, scenario_and_cases_row_id);
+                pstmt->execute();
+                delete pstmt;
+                delete con;
+                return 1;
+            } else
+                qDebug() << this << "File Opened";
+
+            QTextStream in5(&file5);
+            while (!in5.atEnd()) {
+                QString line5 = in5.readLine();
+                basewind.push_back(line5.toDouble());
+            }
+            file_temp = res->getString("userbasesolar"+std::to_string(year));
+            QFile file6(QString::fromStdString(file_temp));
+            if (!file6.open(QIODevice::ReadOnly | QIODevice::Text)) {
+                qDebug() << this << "Solar File has not opend";
+                std::string query2("UPDATE scenarios_and_cases SET emulator_calculation_status = 'ERROR in FILE WHERE row_id = ?;");
+                pstmt = con->prepareStatement(query2);
+                pstmt->setInt(1, scenario_and_cases_row_id);
+                pstmt->execute();
+                delete pstmt;
+                delete con;
+                return 1;
+            } else
+                qDebug() << this << "File Opened";
+
+            QTextStream in6(&file6);
+            while (!in6.atEnd()) {
+                QString line4 = in6.readLine();
+                basesolar.push_back(line4.toDouble());
+            }
+
+            windfirmpower = res->getDouble("windfirmpower");
+            solarfirmpower = res->getDouble("solarfirmpower");
+            windinvcost1 = res->getDouble("windinvcost1");
+            solarinvcost1 = res->getDouble("solarinvcost1");
+        }
+
+        delete res;
+        delete pstmt;
+        //Read Hydro table
+        pstmt = con->prepareStatement("SELECT * FROM generation_hydro_table WHERE scenario_and_cases_row_id = " + std::to_string(scenario_and_cases_row_id));
+        res = pstmt->executeQuery();
+        while (res->next()) {
+            hydrocap1 = res->getDouble("hydrocap" + std::to_string(year));
+            hydrores1 = res->getDouble("hydrores1");
+            hydrores2 = res->getDouble("hydrores2");
+            hydrores3 = res->getDouble("hydrores3");
+            hydroinvcost1 = res->getDouble("hydroinvcost1");
+            hydrovomcost = res->getDouble("hydrovomcost");
+        }
+        delete res;
+        delete pstmt;
+        //Read Hydro energy table
+        pstmt = con->prepareStatement("SELECT * FROM hydro_monthly_energy_table WHERE scenario_and_cases_row_id = " + std::to_string(scenario_and_cases_row_id));
+        res = pstmt->executeQuery();
+        while (res->next()) {
+            hydroEng1_1 = res->getDouble("hydroEng" + std::to_string(year) + "_1");
+            hydroEng1_2 = res->getDouble("hydroEng" + std::to_string(year) + "_2");
+            hydroEng1_3 = res->getDouble("hydroEng" + std::to_string(year) + "_3");
+            hydroEng1_4 = res->getDouble("hydroEng" + std::to_string(year) + "_4");
+            hydroEng1_5 = res->getDouble("hydroEng" + std::to_string(year) + "_5");
+            hydroEng1_6 = res->getDouble("hydroEng" + std::to_string(year) + "_6");
+            hydroEng1_7 = res->getDouble("hydroEng" + std::to_string(year) + "_7");
+            hydroEng1_8 = res->getDouble("hydroEng" + std::to_string(year) + "_8");
+            hydroEng1_9 = res->getDouble("hydroEng" + std::to_string(year) + "_9");
+            hydroEng1_10 = res->getDouble("hydroEng" + std::to_string(year) + "_10");
+            hydroEng1_11 = res->getDouble("hydroEng" + std::to_string(year) + "_11");
+            hydroEng1_12 = res->getDouble("hydroEng" + std::to_string(year) + "_12");
+        }
+        delete res;
+        delete pstmt;
+        //Read Planning criteria table
+        pstmt = con->prepareStatement("SELECT * FROM programs_planning_criteria_table WHERE scenario_and_cases_row_id = " + std::to_string(scenario_and_cases_row_id));
+        res = pstmt->executeQuery();
+        while (res->next()) {
+            capplan1 = res->getDouble("capplan1");
+            //lostload1 = res->getDouble("lostload1");
+            primaryres1 = res->getDouble("primaryres1");
+            secondres1 = res->getDouble("secondres1");
+            tertiaryres1 = res->getDouble("tertiaryres1");
+        }
+        delete res;
+        delete pstmt;
+        //Read Demand side programme table
+        pstmt = con->prepareStatement("SELECT * FROM programs_demand_side_table WHERE scenario_and_cases_row_id = " + std::to_string(scenario_and_cases_row_id));
+        res = pstmt->executeQuery();
+        while (res->next()) {
+            enercap.push_back(res->getDouble("enercap_ds" + std::to_string(year)));
+            demrescap.push_back(res->getDouble("demrescap_ds" + std::to_string(year)));
+            enercost.push_back(res->getDouble("enercost_ds" + std::to_string(year)));
+            demrescost.push_back(res->getDouble("demrescost_ds" + std::to_string(year)));
+            enerinv.push_back(res->getDouble("enerinv_ds" + std::to_string(year)));
+            demresinv.push_back(res->getDouble("demresinv_ds" + std::to_string(year)));
+            enermax.push_back(res->getDouble("enermax_ds" + std::to_string(year)));
+            demresmax.push_back(res->getDouble("demresmax_ds" + std::to_string(year)));
+            enersav = res->getDouble("enersav_ds");
+//            demresPRC = res->getDouble("demresPRC_ds");
+//            demresSRC = res->getDouble("demresSRC_ds");
+//            demresTRC = res->getDouble("demresTRC_ds");
+        }
+        delete res;
+        delete pstmt;
+        //Read energy storage dynamic table
+        pstmt = con->prepareStatement("SELECT * FROM energy_storage_dynamic_table WHERE scenario_and_cases_row_id = " + std::to_string(scenario_and_cases_row_id));
+        res = pstmt->executeQuery();
+
+        while (res->next()) {
+            chargeeff.push_back(res->getDouble("chargeeff"));
+            dischargeeff.push_back(res->getDouble("dischargeeff"));
+            enercap1.push_back(res->getDouble("enercap1"));
+            enercap2.push_back(res->getDouble("enercap2"));
+            powcap1.push_back(res->getDouble("powcap1"));
+            powcap2.push_back(res->getDouble("powcap2"));
+            esramprate.push_back(res->getDouble("esramprate"));
+            esduration.push_back(res->getDouble("esduration"));
+            stotype.push_back(res->getString("storage_options"));
+        }
+        delete res;
+        delete pstmt;
+        //Read energy storage cost dynamic table
+        pstmt = con->prepareStatement("SELECT * FROM energy_storage_cost_dynamic_table WHERE scenario_and_cases_row_id = " + std::to_string(scenario_and_cases_row_id));
+        res = pstmt->executeQuery();
+
+        while (res->next()) {
+            invcostpow1.push_back(res->getDouble("invcostpow1"));
+            invcostpow2.push_back(res->getDouble("invcostpow2"));
+            invcostener1.push_back(res->getDouble("invcostener1"));
+            invcostener2.push_back(res->getDouble("invcostener2"));
+            voms1.push_back(res->getDouble("vom1"));
+            voms2.push_back(res->getDouble("vom2"));
+            firmpow.push_back(res->getDouble("firmpow"));
+            fixedoms.push_back(res->getDouble("esfixedom"));
+            eat1.push_back(res->getDouble("esenerarb"+std::to_string(year)));
+            mcd1.push_back(res->getDouble("esmargcost"+std::to_string(year)));
+        }
+        delete res;
+        delete pstmt;
+        //Read fuelprice forecast table
+        pstmt = con->prepareStatement("SELECT * FROM fuel_price_forecast_table WHERE scenario_and_cases_row_id = " + std::to_string(scenario_and_cases_row_id));
+        res = pstmt->executeQuery();
+
+        while (res->next()) {
+            fuelprice1.push_back(res->getDouble("fuelprice1"));
+            fuelprice2.push_back(res->getDouble("fuelprice2"));
+        }
+        delete pstmt;
+        delete res;
+        //Read conventional generation dynamic table
+        pstmt = con->prepareStatement("SELECT * FROM generation_conventional_table WHERE scenario_and_cases_row_id = " + std::to_string(scenario_and_cases_row_id));
+        res = pstmt->executeQuery();
+
+        while (res->next()) {
+            pconcap1.push_back(res->getDouble("pconcap1"));
+            pconcap2.push_back(res->getDouble("pconcap2"));
+            heatrate.push_back(res->getDouble("heatrate"));
+            p_reserve.push_back(res->getDouble("p_reserve"));
+            s_reserve.push_back(res->getDouble("s_reserve"));
+            t_reserve.push_back(res->getDouble("t_reserve"));
+            carbon_rate.push_back(res->getDouble("carbon_rate"));
+            sumderate.push_back(res->getDouble("sumderate"));
+            winderate.push_back(res->getDouble("winderate"));
+            convramprate.push_back(res->getDouble("convramprate"));
+            thermtype.push_back(res->getString("fuel_options"));
+        }
+        //Read tech capital dynamic table
+        pstmt = con->prepareStatement("SELECT * FROM tech_capital_dynamic_table WHERE scenario_and_cases_row_id = " + std::to_string(scenario_and_cases_row_id));
+        res = pstmt->executeQuery();
+        while (res->next()) {
+            fixedom.push_back(res->getDouble("fixedom"));
+            vom.push_back(res->getDouble("vom"));
+            invcost1.push_back(res->getDouble("invcost1"));
+            invcost2.push_back(res->getDouble("invcost2"));
+        }
+        //Read installed ESS power capacity
+        pstmt = con->prepareStatement("SELECT * FROM installed_capacity_output_es_cap_tables WHERE scenario_and_cases_row_id = " + std::to_string(scenario_and_cases_row_id));
+        res = pstmt->executeQuery();
+        while (res->next()) {
+            SolPS.push_back(res->getDouble("outinst" + std::to_string(year)));
+        }
+        delete res;
+        delete pstmt;
+        for (unsigned int i = 0; i < SolPS.size(); i++) {
+            qDebug() << "ES power investment: " << SolPS[i];
+        }
+        //Read demand side installed capacity
+        pstmt = con->prepareStatement("SELECT * FROM demand_side_output_installed_cap_tables WHERE scenario_and_cases_row_id = " + std::to_string(scenario_and_cases_row_id));
+        res = pstmt->executeQuery();
+        delete pstmt;
+        while (res->next()) {
+            SolPEE.push_back(res->getDouble("outeff" + std::to_string(year)));
+            SolPD.push_back(res->getDouble("outdem" + std::to_string(year)));
+        }
+        delete res;
+        //        for (int i = 0; i < SolPEE.size(); i++){
+        //            qDebug() << "EE investment: " << SolPEE[i];
+        //            qDebug() << "DR investment: " << SolPD[i];
+        //        }
+        //Read ESS installed energy capacity
+        pstmt = con->prepareStatement("SELECT * FROM energy_capacity_output_es_cap_tables WHERE scenario_and_cases_row_id = " + std::to_string(scenario_and_cases_row_id));
+        res = pstmt->executeQuery();
+        while (res->next()) {
+            SolES.push_back(res->getDouble("outener" + std::to_string(year)));
+        }
+        delete res;
+        delete pstmt;
+        //        for (int i = 0; i < SolES.size(); i++){
+        //            qDebug() << "ES energy investment: " << SolPS[i];
+        //        }
+        //Read hydro dam installed capacity
+        pstmt = con->prepareStatement("SELECT * FROM hydro_generation_output_installed_cap_tables WHERE scenario_and_cases_row_id = " + std::to_string(scenario_and_cases_row_id));
+        res = pstmt->executeQuery();
+        while (res->next()) {
+            SolPH.push_back(res->getDouble("outdam" + std::to_string(year)));
+        }
+        delete res;
+        delete pstmt;
+        //        for (int i = 0; i < SolPH.size(); i++){
+        //            qDebug() << "Hyd investment: " << SolPH[i];
+        //        }
+        //Read Thermal installed capacity
+        pstmt = con->prepareStatement("SELECT * FROM thermal_generation_output_installed_cap_tables WHERE scenario_and_cases_row_id = " + std::to_string(scenario_and_cases_row_id));
+        res = pstmt->executeQuery();
+        while (res->next()) {
+            SolPPeak.push_back(res->getDouble("outthermgen" + std::to_string(year)));
+        }
+        delete res;
+        delete pstmt;
+        //        for (int i = 0; i < SolPPeak.size(); i++){
+        //            qDebug() << "Thermal investment: " << SolPPeak[i];
+        //        }
+        //Read installed renewable capacity
+        pstmt = con->prepareStatement("SELECT * FROM renewables_output_installed_cap_table WHERE scenario_and_cases_row_id = " + std::to_string(scenario_and_cases_row_id));
+        res = pstmt->executeQuery();
+        while (res->next()) {
+            SolPR.push_back(res->getDouble("outwind" + std::to_string(year)));
+            SolPR.push_back(res->getDouble("outsolarpv" + std::to_string(year)));
+        }
+        delete res;
+        delete pstmt;
+        for (unsigned int i = 0; i < SolPR.size(); i++) {
+            qDebug() << "Ren investment: " << SolPR[i];
+        }
+    } catch (sql::SQLException &e) {
+        std::cout << "# ERR: SQLException in " << __FILE__;
+        std::cout << "(" << __FUNCTION__ << ") on line " << __LINE__ << std::endl;
+        std::cout << "# ERR: " << e.what();
+        std::cout << " (MySQL error code: " << e.getErrorCode();
+        std::cout << ", SQLState: " << e.getSQLState() << " )" << std::endl;
+        std::string query2("UPDATE scenarios_and_cases SET emulator_calculation_status = 'ERROR_QUERY', emulator_calculation_date =CURRENT_TIMESTAMP() WHERE row_id = ?;");
+        pstmt = con->prepareStatement(query2);
+        pstmt->setInt(1, scenario_and_cases_row_id);
+        pstmt->execute();
+        delete pstmt;
+        delete con;
+        
+        return 0;
+    }
+  
+    std::vector<double> not_normal, not_normal_status;
+
+    PC_inputs ProdCostIn;
+    ProdCostIn.common_data.NGen = invcost1.size();
+    ProdCostIn.common_data.NGenE = 0;
+    ProdCostIn.common_data.NEE = 1;
+    ProdCostIn.common_data.ND = 1;
+    ProdCostIn.common_data.NR = 2;
+    ProdCostIn.common_data.NHyd = 1;
+    ProdCostIn.common_data.NS = 4;
+    ProdCostIn.common_data.demand = demandprofile1;
+    std::cout << ProdCostIn.common_data.demand.size() << std::endl;
+    ProdCostIn.common_data.Pl = pconcap1;
+    ProdCostIn.common_data.Ph = {hydrocap1};
+    ProdCostIn.common_data.Ad = demresinv;
+    ProdCostIn.common_data.Aee = enerinv;
+    ProdCostIn.common_data.Ah = {hydroinvcost1};
+    ProdCostIn.common_data.Ai = invcost1;
+    ProdCostIn.common_data.Ar = {windinvcost1, solarinvcost1}; //windinvcost2,solarinvcost2
+    ProdCostIn.common_data.As = invcostpow1;
+    ProdCostIn.common_data.Duration = esduration;
+    ProdCostIn.common_data.ETACs = chargeeff;
+    ProdCostIn.common_data.ETADs = dischargeeff;
+    ProdCostIn.common_data.Emissions = carbon_rate;
+    ProdCostIn.common_data.FOMs = fixedoms;
+    ProdCostIn.common_data.FPh = {0.8};
+    ProdCostIn.common_data.FPr = {windfirmpower, solarfirmpower};
+    ProdCostIn.common_data.FPs = firmpow;
+    ProdCostIn.common_data.Fee = {enersav/100};
+    ProdCostIn.common_data.FuelCost = fuelprice1;
+    ProdCostIn.common_data.Heat_Rates = heatrate;
+    for(int s = 0;s<ProdCostIn.common_data.NS;s++){
+        ProdCostIn.common_data.MCD.push_back(150000);
+        ProdCostIn.common_data.EAT.push_back(200000 + 100000*s);
+        ProdCostIn.common_data.PResCs.push_back(0.0);
+        ProdCostIn.common_data.SResCs.push_back(0.0);
+        ProdCostIn.common_data.TResCs.push_back(0.0);
+    }
+    ProdCostIn.common_data.PResC = p_reserve;
+    ProdCostIn.common_data.PResCh = {hydrores1};
+    ProdCostIn.common_data.PeeM = enermax;
+    ProdCostIn.common_data.RCs = invcostener1;
+    ProdCostIn.common_data.ReserveDuration = {0.25, 0.5, 1};
+    ProdCostIn.common_data.ReserveRequirements = {primaryres1, secondres1, tertiaryres1};
+    ProdCostIn.common_data.ResourceH = {hydroEng1_1, hydroEng1_2, hydroEng1_3, hydroEng1_4, hydroEng1_5, hydroEng1_6, hydroEng1_7, hydroEng1_8, hydroEng1_9, hydroEng1_10, hydroEng1_11, hydroEng1_12};
+    for (unsigned int t = 0; t < basewind.size(); t++) {
+        ProdCostIn.common_data.ResourceR.push_back(basewind[t]);
+    }
+    for (unsigned int t = 0; t < basesolar.size(); t++) {
+        ProdCostIn.common_data.ResourceR.push_back(basesolar[t]);
+    }
+    ProdCostIn.common_data.SResC = s_reserve;
+    ProdCostIn.common_data.SResCh = {hydrores2};
+    ProdCostIn.common_data.SafetyFactor = capplan1;
+    ProdCostIn.common_data.TResC = t_reserve;
+    ProdCostIn.common_data.TResCh = {hydrores3};
+    ProdCostIn.common_data.VCd = demrescost;
+    ProdCostIn.common_data.VOM = vom;
+    ProdCostIn.common_data.VOMs = voms1;
+    ProdCostIn.SolEs = SolES;
+    ProdCostIn.SolPd = SolPD;
+    ProdCostIn.SolPee = SolPEE;
+    ProdCostIn.SolPh = SolPH;
+    ProdCostIn.SolPpeak = SolPPeak;
+    ProdCostIn.SolPs = SolPS;
+    ProdCostIn.SolPr = SolPR;
+
+
+    const int NGen = ProdCostIn.common_data.NGen; //Number of peaking generators
+    int NH = 24; //Number of hours
+    const int NHyd = ProdCostIn.common_data.NHyd; //Number of hydro generators
+    const int NEE = ProdCostIn.common_data.NEE; //Energy efficiency measures
+    const int ND = ProdCostIn.common_data.ND; //Demand response technologies
+    const int NR = ProdCostIn.common_data.NR; //Renewable Sources
+    const int NS = ProdCostIn.common_data.NS; //Storage Technologies
+    int NUMBER_OF_DAYS = 365;
+//    for (int i = 0; i < NGen; i++) {
+//        ProdCostIn.common_data.PResC.push_back(5 * (i + 1));
+//        ProdCostIn.common_data.SResC.push_back(5 * (i + 1));
+//        ProdCostIn.common_data.TResC.push_back(5 * (i + 1));
+//    }
+    qDebug() << "NGen: " << NGen << ", NHyd: " << NHyd << ", NEE: " << NEE << ", ND: " << ND << ", NR: " << NR << ", NS: " << NS;
+    const int DaysperMonth[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+    std::vector<double> HoursperMonth;
+    HoursperMonth.reserve(12);
+    int HoursLimits[13] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+    for (int i = 0; i < 12; i++) {
+        HoursperMonth[i] = 24 * DaysperMonth[i];
+    }
+    for (int i = 1; i < 13; i++) {
+        for (int j = 0; j < i; j++) {
+            HoursLimits[i] = HoursLimits[i] + HoursperMonth[j];
+        }
+    }
+
+    //Demand scaling
+    double scalar1;
+    double energy1 = std::accumulate(demandprofile1.begin(), demandprofile1.end(), 0.0);
+    double peak1 = *std::max_element(demandprofile1.begin(), demandprofile1.end());
+    scalar1 = (energydemand1 * 1000 - peakdemand1) / (energy1 - peak1);
+    for (unsigned int i = 0; i < demandprofile1.size(); i++) {
+        demandprofile1[i] = demandprofile1[i] * scalar1;
+    }
+    //Energy Efficiency
+    std::vector<double> saving_factor;
+    for (int i = 0; i < NEE; i++) {
+        saving_factor.push_back(ProdCostIn.common_data.Fee[i] * ProdCostIn.SolPee[i] / ProdCostIn.common_data.PeeM[i]);
+    }
+    double total_sf = std::accumulate(saving_factor.begin(), saving_factor.end(), 0.0);
+    for (unsigned int i = 0; i < demandprofile1.size(); i++) {
+        demandprofile1[i] = demandprofile1[i]*(1 - total_sf);
+    }
+    double max_demand = *std::max_element(demandprofile1.begin(), demandprofile1.end());
+    qDebug() << "Maximum demand is: " << max_demand;
+    double installed_capacity = std::accumulate(ProdCostIn.SolPd.begin(), ProdCostIn.SolPd.end(), 0.0) + std::accumulate(ProdCostIn.SolPr.begin(), ProdCostIn.SolPr.end(), 0.0) + std::accumulate(ProdCostIn.SolPs.begin(), ProdCostIn.SolPs.end(), 0.0) + std::accumulate(ProdCostIn.SolPh.begin(), ProdCostIn.SolPh.end(), 0.0) + std::accumulate(ProdCostIn.SolPpeak.begin(), ProdCostIn.SolPpeak.end(), 0.0);
+    qDebug() << "System capacity is: " << installed_capacity;
+
+    PC_outputs results;
+//    results.energyPrice = new double[8760];
+//    results.RP_price = new double[8760];
+//    results.RS_price = new double[8760];
+//    results.RT_price = new double[8760];
+    //Input data conversion
+    std::vector<double> VCi;
+    VCi.reserve(NGen); //Variable costs of thermal generators ($/MWh);
+    std::vector<double> EmissionFactor;
+    EmissionFactor.reserve(NGen); //Emissions Cost($/MWh)
+
+    for (int i = 0; i < NGen; i++) {
+        VCi[i] = ProdCostIn.common_data.FuelCost[i] * ProdCostIn.common_data.Heat_Rates[i] + ProdCostIn.common_data.VOM[i] + ProdCostIn.common_data.Emissions[i] * ProdCostIn.common_data.Heat_Rates[i] * ProdCostIn.common_data.CarbonPrice;
+        EmissionFactor[i] = ProdCostIn.common_data.Emissions[i] * ProdCostIn.common_data.Heat_Rates[i] * ProdCostIn.common_data.CarbonPrice;
+    }
+    std::vector<double> VCF;
+    VCF.reserve(NH * (NGen));
+    for (int i = 0; i < (NGen); i++) {
+        for (int t = 0; t < NH; t++) {
+            VCF[NH * i + t] = (energypriceprofile[t] - VCi[i]);
+        }
+    }
+    double* PRCost = new double[NH * (NGen)];
+    double *SRCost = new double[NH * (NGen)];
+    double *TRCost = new double[NH * (NGen)];
+    
+    for (int i = 0; i < (NGen); i++) {
+        for (int t = 0; t < NH; t++) {
+            PRCost[NH * i + t] = (PRprice[t] - ProdCostIn.common_data.PResC[i]);
+            SRCost[NH * i + t] = (SRprice[t] - ProdCostIn.common_data.SResC[i]);
+            TRCost[NH * i + t] = (TRprice[t] - ProdCostIn.common_data.TResC[i]);
+        }
+    }
+    double * VCDUF = new double[ND * NH];
+    for (int i = 0; i < ND; i++) {
+        for (int t = 0; t < NH; t++) {
+            VCDUF[NH * i + t] = (-energypriceprofile[t] - ProdCostIn.common_data.VCd[i]);
+        }
+    }
+    double * VCDDF = new double[ND * NH];
+    for (int i = 0; i < ND; i++) {
+        for (int t = 0; t < NH; t++) {
+            VCDDF[NH * i + t] = (energypriceprofile[t] - ProdCostIn.common_data.VCd[i]);
+        }
+    }
+    double *VCRF = new double[NR * NH];
+    for (int i = 0; i < NR; i++) {
+        for (int t = 0; t < NH; t++) {
+            VCRF[NH * i + t] = energypriceprofile[t];
+        }
+    }
+    double *VCHF = new double[NHyd * NH];
+
+    for (int i = 0; i < NHyd; i++) {
+        for (int t = 0; t < NH; t++) {
+            VCHF[NH * i + t] = energypriceprofile[t] - hydrovomcost;
+        }
+    }
+    double * PRCostHyd = new double[NHyd * NH];
+    double *SRCostHyd = new double[NHyd * NH];
+    double *TRCostHyd = new double[NHyd * NH];
+    for (int i = 0; i < NHyd; i++) {
+        for (int t = 0; t < NH; t++) {
+            PRCostHyd[NH * i + t] = PRprice[t] - ProdCostIn.common_data.PResCh[i];
+            SRCostHyd[NH * i + t] = SRprice[t] - ProdCostIn.common_data.SResCh[i];
+            TRCostHyd[NH * i + t] = TRprice[t] - ProdCostIn.common_data.TResCh[i];
+        }
+    }
+    double *VCSCF = new double[NS * NH];
+    double *VCSDF = new double[NS * NH];
+
+    for (int i = 0; i < NS; i++) {
+        for (int t = 0; t < NH; t++) {
+            VCSCF[NH * i + t] = -energypriceprofile[t] - ProdCostIn.common_data.VOMs[i];
+        }
+    }
+    for (int i = 0; i < NS; i++) {
+        for (int t = 0; t < NH; t++) {
+            VCSDF[NH * i + t] = energypriceprofile[t] - ProdCostIn.common_data.VOMs[i];
+        }
+    }
+
+    std::vector<double> PRCosts, SRCosts, TRCosts;
+    for (int i = 0; i < NS; i++) {
+        for (int t = 0; t < NH; t++) {
+            PRCosts.push_back(PRprice[t] - ProdCostIn.common_data.PResCs[i]);
+            SRCosts.push_back(SRprice[t] - ProdCostIn.common_data.SResCs[i]);
+            TRCosts.push_back(TRprice[t] - ProdCostIn.common_data.TResCs[i]);
+        }
+    }
+    //    std::vector<double> VCSEF;
+    //    VCSEF.reserve(NH * NS);
+    //    for (int i = 0; i < NS; i++) {
+    //        for (int t = 0; t < NH; t++) {
+    //            VCSEF[NH * i + t] = 0;
+    //        }
+    //    }
+    std::vector<double> PrevEner;
+    for (int s = 0; s < NS; s++) {
+        PrevEner.push_back(0.5 * ProdCostIn.SolEs[s]);
+    }
+    int NR_VARIABLES = NH * (NGen + 2 * ND + NR + NHyd + NS * 3 + NGen * 3 + NHyd * 3 + NS * 3);
+    qDebug() << "Nr of variables: " << NR_VARIABLES;
+
+    std::vector<double> CostCoefficients;
+    //Cost Vector definition
+    for (int i = 0; i < NH * NGen; i++) {
+        CostCoefficients.push_back(VCF[i]);
+    }
+    for (int i = 0; i < NH * ND; i++) {
+        CostCoefficients.push_back(VCDUF[i]);
+    }
+    for (int i = 0; i < NH * ND; i++) {
+        CostCoefficients.push_back(VCDDF[i]);
+    }
+    for (int i = 0; i < NH * NR; i++) {
+        CostCoefficients.push_back(VCRF[i]);
+    }
+    for (int i = 0; i < NH * NHyd; i++) {
+        CostCoefficients.push_back(VCHF[i]);
+    }
+    for (int i = 0; i < NH * NS; i++) {
+        CostCoefficients.push_back(VCSCF[i]);
+    }
+    for (int i = 0; i < NH * NS; i++) {
+        CostCoefficients.push_back(VCSDF[i]);
+    }
+    for (int i = 0; i < NH * NS; i++) {
+        CostCoefficients.push_back(0.0);
+    }
+    for (int i = 0; i < NH * NGen; i++) {
+        CostCoefficients.push_back(PRCost[i]);
+    }
+    for (int i = 0; i < NH * NGen; i++) {
+        CostCoefficients.push_back(SRCost[i]);
+    }
+    for (int i = 0; i < NH * NGen; i++) {
+        CostCoefficients.push_back(TRCost[i]);
+    }
+    for (int i = 0; i < NH * NHyd; i++) {
+        CostCoefficients.push_back(PRCostHyd[i]);
+    }
+    for (int i = 0; i < NH * NHyd; i++) {
+        CostCoefficients.push_back(SRCostHyd[i]);
+    }
+    for (int i = 0; i < NH * NHyd; i++) {
+        CostCoefficients.push_back(TRCostHyd[i]);
+    }
+    for (int i = 0; i < NH * NS; i++) {
+        CostCoefficients.push_back(PRCosts[i]);
+    }
+    for (int i = 0; i < NH * NS; i++) {
+        CostCoefficients.push_back(SRCosts[i]);
+    }
+    for (int i = 0; i < NH * NS; i++) {
+        CostCoefficients.push_back(TRCosts[i]);
+    }
+    std::cout << "CCsize: " << CostCoefficients.size() << std::endl;
+
+
+    //Rows definitions
+    /*	
+    Hourly Balance			NH			(=)
+    DR Neutrality			ND			(=)
+    Storage Inventory		NH * NS			(=)
+    Thermal Capacity		NH * NGen		(<=)
+    Storage Charge/Discharge Capacity	2 * NH * NS		(<=)
+    Storage Energy Capacity		NH * NS			(<=)
+    Demand Response Up/Down Capacity	2 * NH * ND		(<=)
+    Renewable Capacity		NH * NR			(<=)
+    Hydro capacity			NH * NHyd		(<=)
+    Hydro energy			12			(<=)
+    Sufficient energy for reserves	NH * NS			(<=)
+    Thermal ramping rates           (NH-1)*NGen*2           (<=)
+    Storage ramping rates           (NH-1)*NS*4             (<=)
+    DR ramping rates                (NH-1)*ND*4             (<=)
+    Hydro ramping rates             (NH-1)*NHyd*2           (<=)
+    Hourly reserve provision	NH * 3			(>=)
+    12+NH*4+NS+ND+NH*NS*5+NH*NGen+2*NH*ND+NH*NR+NH*NHyd+(NH-1)*(NGen+NS+ND+NHyd)
+     */
+
+    int PROBLEM_SIZE = NH + ND + NH * NS + NH * NGen + NH * NS * 3 + 2 * NH * ND + NH * NR + NH * NHyd + NHyd + NH * NS + NH * 3; //+ 12;// + NH *NS;//12 + NH * 4 + NS + ND + NH * NS * 5 + NH * NGen + 2 * NH * ND + NH * NR + NH * NHyd;// + (NH - 1)*(NGen * 2 + NS * 4 + ND * 4 + NHyd * 2);
+    qDebug() << "Nr of restrictions: " << PROBLEM_SIZE;
+    double* Lower_Bounds = new double[PROBLEM_SIZE];
+    double* Upper_Bounds = new double[PROBLEM_SIZE];
+    int rowv_counter = 0;
+    int month;
+    int starting_hour;
+    const int NonZeroElements = NH * (NGen + NR + NS * 2 + ND * 2 + NHyd) + NH * ND * 2 + 3 * NS + 4 * NS * (NH - 1) + NGen * NH * 4 + NS * NH * 7 + ND * NH * 2 + NR * NH + NHyd * NH * 4 + NH * NHyd + NH * NS * 5 + NH * 3 * (NGen + NHyd + NS); //+ NH*NHyd;//+ NS + ND * (NH * 2) + NS * 3 + NS * (NH - 1) * 4 + NH * NGen * 4 + NH * NS * 7 + NH * ND * 2 + NH * NR + NH * NHyd * 5 + NS * NH * 5  + NH * 3 * (NGen + NS + NHyd); //+ (NH - 1) * (NGen * 4 + NS * 8 + ND * 8 + NHyd * 4);
+    qDebug() << "NZE: " << NonZeroElements;
+    int* Row_Indexes = new int[NonZeroElements + 1];
+    int* Col_Indexes = new int[NonZeroElements + 1];
+    //std::array<int,NonZeroElements> Row_Indexes, Col_Indexes;
+    double *Mat_Elements = new double[NonZeroElements + 1];
+    int glpkCount = 0;
+    while (!glpk->__tryLocking(false)) {
+        if(glpkCount == 1)
+        {
+            glpkCount = 0;
+            ThreadSleep(1000);
+        }
+        glpkCount++;
+    }
+    std::vector<glp_prob *> PROBLEM_VECTOR;
+    for (int t = 0; t < NUMBER_OF_DAYS; t++) {
+        PROBLEM_VECTOR.push_back(glp_create_prob());
+    }
+
+    for (int day = 0; day < NUMBER_OF_DAYS; day++) {
+        glp_set_prob_name(PROBLEM_VECTOR[day], "Emulator");
+        glp_set_obj_dir(PROBLEM_VECTOR[day], GLP_MAX);
+        glp_add_cols(PROBLEM_VECTOR[day], NR_VARIABLES);
+
+        //Structural variables (Columns).
+        /*
+        Thermal Generation			NH * NGen
+        Demand Response Up Shifts		NH * ND
+        Demand Response Down Shifts		NH * ND
+        Renewable Generation		NH * NR
+        Hydro generation			NH * NHyd
+        Storage Charging			NH * NS
+        Storage Discharging			NH * NS
+        Stored energy			NH * NS
+        Primary reserve thermal		NH * NGen
+        Secondary reserve thermal		NH * NGen
+        Tertiary reserve thermal		NH * NGen
+        Primary reserve hydro		NH * NHyd
+        Secondary reserve hydro		NH * NHyd
+        Tertiary reserve hydro		NH * NHyd
+        Primary reserve storage		NH * NS
+        Secondary reserve storage		NH * NS
+        Tertiary reserve storage		NH * NS
+        NH*(NGen+2*ND+NR+NHyd+NS*3+NGen*3+NHyd*3+NS*3)
+         */
+
+        for (int i = 0; i < NR_VARIABLES; i++) {
+            glp_set_col_bnds(PROBLEM_VECTOR[day], i + 1, GLP_LO, 0.0, 0.0);
+            glp_set_obj_coef(PROBLEM_VECTOR[day], i + 1, CostCoefficients[i]);
+        }
+
+        qDebug() << "Start calculation for day " << day + 1;
+        glp_add_rows(PROBLEM_VECTOR[day], PROBLEM_SIZE);
+        //Problem formulation
+
+        month = MonthForDay(day);
+        starting_hour = HoursForDay(day);
+        rowv_counter = 0;
+        for (int i = 0; i < NH; i++) {
+            Lower_Bounds[i + rowv_counter] = 0.0;
+            Upper_Bounds[i + rowv_counter] = demandprofile1[starting_hour + i];
+        }
+        rowv_counter += NH;
+        for (int i = 0; i < ND; i++) {
+            Lower_Bounds[i + rowv_counter] = 0.0;
+            Upper_Bounds[i + rowv_counter] = 0.0;
+        }
+        rowv_counter += ND;
+        for (int i = 0; i < NS; i++) {
+            for (int t = 0; t < NH; t++) {
+                if (t == 0) {
+                    Lower_Bounds[i * NH + t + rowv_counter] = PrevEner[i];
+                    Upper_Bounds[i * NH + t + rowv_counter] = PrevEner[i];
+                } else {
+                    Lower_Bounds[i * NH + t + rowv_counter] = 0.0;
+                    Upper_Bounds[i * NH + t + rowv_counter] = 0.0;
+                }
+            }
+            qDebug() << "Previous energy " << i + 1 << ": " << PrevEner[i];
+        }
+        rowv_counter += NS * NH;
+        for (int i = 0; i < NGen; i++) {
+            for (int t = 0; t < NH; t++) {
+                Lower_Bounds[i * NH + t + rowv_counter] = 0.0;
+                Upper_Bounds[i * NH + t + rowv_counter] = ProdCostIn.SolPpeak[i];
+            }
+        }
+        rowv_counter += NGen * NH;
+        for (int i = 0; i < NS; i++) {
+            for (int t = 0; t < NH; t++) {
+                Lower_Bounds[i * NH + t + rowv_counter] = 0.0;
+                Upper_Bounds[i * NH + t + rowv_counter] = ProdCostIn.SolPs[i];
+            }
+        }
+        rowv_counter += NS * NH;
+        for (int i = 0; i < NS; i++) {
+            for (int t = 0; t < NH; t++) {
+                Lower_Bounds[i * NH + t + rowv_counter] = 0.0;
+                Upper_Bounds[i * NH + t + rowv_counter] = ProdCostIn.SolPs[i];
+            }
+        }
+        rowv_counter += NS * NH;
+        for (int i = 0; i < NS; i++) {
+            for (int t = 0; t < NH; t++) {
+                Lower_Bounds[i * NH + t + rowv_counter] = 0.0;
+                Upper_Bounds[i * NH + t + rowv_counter] = ProdCostIn.SolEs[i];
+            }
+        }
+        rowv_counter += NS * NH;
+        for (int i = 0; i < ND; i++) {
+            for (int t = 0; t < NH; t++) {
+                Lower_Bounds[i * NH + t + rowv_counter] = 0.0;
+                Upper_Bounds[i * NH + t + rowv_counter] = ProdCostIn.SolPd[i];
+            }
+        }
+        rowv_counter += ND * NH;
+        for (int i = 0; i < ND; i++) {
+            for (int t = 0; t < NH; t++) {
+                Lower_Bounds[i * NH + t + rowv_counter] = 0.0;
+                Upper_Bounds[i * NH + t + rowv_counter] = ProdCostIn.SolPd[i];
+            }
+        }
+        rowv_counter += ND * NH;
+        for (int i = 0; i < NR; i++) {
+            for (int t = 0; t < NH; t++) {
+                Lower_Bounds[i * NH + t + rowv_counter] = 0.0;
+                Upper_Bounds[i * NH + t + rowv_counter] = ProdCostIn.SolPr[i] * ProdCostIn.common_data.ResourceR[i * NH + starting_hour + t];
+            }
+        }
+        rowv_counter += NR * NH;
+        for (int i = 0; i < NHyd; i++) {
+            for (int t = 0; t < NH; t++) {
+                Lower_Bounds[i * NH + t + rowv_counter] = 0.0;
+                Upper_Bounds[i * NH + t + rowv_counter] = ProdCostIn.SolPh[i];
+            }
+        }
+        rowv_counter += NHyd * NH;
+        for (int i = 0; i < NHyd; i++) {
+            Lower_Bounds[rowv_counter + i] = 0.0;
+            Upper_Bounds[rowv_counter + i] = ProdCostIn.common_data.ResourceH[month - 1] / DaysperMonth[month - 1];
+        }
+        rowv_counter += NHyd;
+        for (int i = 0; i < NS; i++) {
+            for (int t = 0; t < NH; t++) {
+                Lower_Bounds[i * NH + t + rowv_counter] = 0.0;
+                Upper_Bounds[i * NH + t + rowv_counter] = 0.0;
+            }
+        }
+        rowv_counter += NS * NH;
+        //    /*//Ramping rates
+        //    for (int i = 0; i < NGen; i++){
+        //        for (int t = 0; t < NH - 1; t++){
+        //            Lower_Bounds[i * NH + t + rowv_counter] = 0.0;
+        //            Upper_Bounds[i * NH + t + rowv_counter] = ProdCostIn.common_data.Ri[i];
+        //        }
+        //    }
+        //    rowv_counter += NGen * (NH-1);
+        //    for (int i = 0; i < NS; i++){
+        //        for (int t = 0; t < NH - 1; t++){
+        //            Lower_Bounds[i * NH + t + rowv_counter] = 0.0;
+        //            Upper_Bounds[i * NH + t + rowv_counter] = ProdCostIn.common_data.RS[i];
+        //        }
+        //    }
+        //    rowv_counter += NS * (NH-1);
+        //    for (int i = 0; i < NS; i++){
+        //        for (int t = 0; t < NH - 1; t++){
+        //            Lower_Bounds[i * NH + t + rowv_counter] = 0.0;
+        //            Upper_Bounds[i * NH + t + rowv_counter] = ProdCostIn.common_data.RS[i];
+        //        }
+        //    }
+        //    rowv_counter += NS * (NH-1);
+        //    for (int i = 0; i < ND; i++){
+        //        for (int t = 0; t < NH - 1; t++){
+        //            Lower_Bounds[i * NH + t + rowv_counter] = 0.0;
+        //            Upper_Bounds[i * NH + t + rowv_counter] = ProdCostIn.common_data.Rd[i];
+        //        }
+        //    }
+        //    rowv_counter += ND * (NH-1);
+        //    for (int i = 0; i < ND; i++){
+        //        for (int t = 0; t < NH - 1; t++){
+        //            Lower_Bounds[i * NH + t + rowv_counter] = 0.0;
+        //            Upper_Bounds[i * NH + t + rowv_counter] = ProdCostIn.common_data.Rd[i];
+        //        }
+        //    }
+        //    rowv_counter += ND * (NH-1);
+        //    for (int i = 0; i < NHyd; i++){
+        //        for (int t = 0; t < NH - 1; t++){
+        //            Lower_Bounds[i * NH + t + rowv_counter] = 0.0;
+        //            Upper_Bounds[i * NH + t + rowv_counter] = ProdCostIn.common_data.Rh[i];
+        //        }
+        //    }
+        //    rowv_counter += NHyd * (NH-1);*/
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < NH; j++) {
+                Lower_Bounds[rowv_counter + i * NH + j] = ProdCostIn.common_data.ReserveRequirements[i];
+                Upper_Bounds[rowv_counter + i * NH + j] = 0.0;
+            }
+        }
+        rowv_counter += NH * 3;
+        qDebug() << "Nr of bounds: " << rowv_counter;
+
+        int rowb_counter = 0;
+        for (int i = 0; i < NH; i++) {
+            glp_set_row_bnds(PROBLEM_VECTOR[day], rowb_counter + 1 + i, GLP_DB, Lower_Bounds[i + rowb_counter], Upper_Bounds[i + rowb_counter]);
+        }
+        rowb_counter += NH;
+        for (int i = 0; i < ND + NH * NS; i++) {
+            glp_set_row_bnds(PROBLEM_VECTOR[day], rowb_counter + 1 + i, GLP_FX, Lower_Bounds[i + rowb_counter], Upper_Bounds[i + rowb_counter]);
+        }
+        rowb_counter += ND + NH * NS;
+        for (int i = 0; i < NHyd + NH * (NGen + NS * 3 + ND * 2 + NR + NHyd + NS); i++) { //+ (NH - 1)*(NGen + 2 * ND + 2 * NS + NHyd); i++) {
+            glp_set_row_bnds(PROBLEM_VECTOR[day], rowb_counter + 1 + i, GLP_UP, Lower_Bounds[i + rowb_counter], Upper_Bounds[i + rowb_counter]);
+        }
+        rowb_counter += NHyd + NH * (NGen + NS * 3 + ND * 2 + NR + NHyd + NS);
+        for (int i = 0; i < NH * 3; i++) {
+            glp_set_row_bnds(PROBLEM_VECTOR[day], rowb_counter + 1 + i, GLP_UP, Lower_Bounds[i + rowb_counter], Upper_Bounds[i + rowb_counter]);
+        }
+        rowb_counter += 3 * NH;
+        qDebug() << "Nr of bounded rows: " << rowb_counter;
+
+        //Matrix definition. Same order as rows and columns.
+        //Rows
+        /*					Non Zero Elements
+        Hourly Balance			NH * (NGen+NR+NS*2+ND*2+NHyd)	(=)
+        DR Neutrality			ND * (NH*2)			(=)
+        Storage Inventory			NS * 3 + NS * (NH - 1) * 4	(=)
+        Thermal Capacity			NH * NGen * 4			(<=)
+        Storage Charge/Discharge Capacity	NH * NS * 6			(<=)
+        Storage Energy Capacity		NH * NS 			(<=)
+        Demand Response Up/Down Capacity	NH * ND * 2			(<=)
+        Renewable Capacity			NH * NR 			(<=)
+        Hydro capacity			NH * NHyd * 4			(<=)
+        Hydro energy			NH * NHyd			(<=)
+        Sufficient energy for reserves	NH * NS * 4			(<=)
+        Thermal ramping rates               (NH-1)*NGen*4                   (<=)
+        Storage ramping rates               (NH-1)*NS*8                     (<=)
+        DR ramping rates                    (NH-1)*ND*8                     (<=)
+        Hydro ramping rates                 (NH-1)*NHyd*4                   (<=)
+        Hourly reserve provision		NH * 3	* (NGen+NS+NHyd)	(>=)
+         * NZE=NH*(NGen+NR+NS*2+ND*2+NHyd)+NS+ND*(NH*2)+NS*3+NS*(NH-1)*4+NH*NGen*4+NH*NS*11+NH*ND*2+NH*NR+NH*NHyd*5+(NH-1)*(NGen*4+NS*8+ND*8+NHyd*4)+NH*3*(NGen+NS+NHyd*ND);
+         */
+
+
+        //std::array<double,NonZeroElements> Mat_Elements;
+        int NZEcounter = 0;
+        int ROWcounter = 0;
+        //    for (int t = 0; t < NonZeroElements + 1; t++){
+        //        Mat_Elements[t] = 1;
+        //    }
+
+        //Hourly Balance
+        for (int i = 0; i < NH; i++) {
+            for (int j = 0; j < NGen + NR + NS * 2 + ND * 2 + NHyd; j++) {
+                Row_Indexes[j + 1 + NZEcounter] = ROWcounter + 1 + i;
+                if (j < NGen) {
+                    Col_Indexes[j + 1 + NZEcounter] = 1 + NH * j + i;
+                    Mat_Elements[j + 1 + NZEcounter] = 1.0;
+                } else if (j < NGen + ND) {
+                    Col_Indexes[j + 1 + NZEcounter] = 1 + NH * j + i;
+                    Mat_Elements[j + 1 + NZEcounter] = -1.0;
+                } else if (j < NGen + ND * 2 + NR + NHyd) {
+                    Col_Indexes[j + 1 + NZEcounter] = 1 + NH * j + i;
+                    Mat_Elements[j + 1 + NZEcounter] = 1.0;
+                } else if (j < NGen + ND * 2 + NR + NHyd + NS) {
+                    Col_Indexes[j + 1 + NZEcounter] = 1 + NH * j + i;
+                    Mat_Elements[j + 1 + NZEcounter] = -1.0;
+                } else {
+                    Col_Indexes[j + 1 + NZEcounter] = 1 + NH * j + i;
+                    Mat_Elements[j + 1 + NZEcounter] = 1.0;
+                }
+            }
+            NZEcounter += (NGen + NR + NHyd + NS * 2 + ND * 2);
+        }
+        ROWcounter = ROWcounter + NH;
+        qDebug() << "Balance NZE counter: " << NZEcounter;
+        qDebug() << "Balance ROW counter: " << ROWcounter;
+
+        //DR Neutrality
+        for (int i = 0; i < ND; i++) {
+            for (int j = 0; j < NH * 2; j++) {
+                Row_Indexes[NZEcounter + 1 + j] = ROWcounter + 1 + i;
+                if (j < NH) {
+                    Col_Indexes[NZEcounter + 1 + j] = NGen * NH + NH * i + j + 1;
+                    Mat_Elements[NZEcounter + 1 + j] = 1.0;
+                } else {
+                    Mat_Elements[NZEcounter + 1 + j] = -1.0;
+                    Col_Indexes[NZEcounter + 1 + j] = NGen * NH + NH * i + j + NH * (ND - 1) + 1;
+                }
+            }
+            NZEcounter = NZEcounter + 2 * NH;
+        }
+        ROWcounter = ROWcounter + ND;
+        qDebug() << "DR Neutrality NZE counter: " << NZEcounter;
+        qDebug() << "DR Neutrality ROW counter: " << ROWcounter;
+
+        //Storage Inventory
+        for (int i = 0; i < NS; i++) {
+            for (int j = 0; j < NH; j++) {
+                if (j == 0) {
+                    Row_Indexes[NZEcounter + 1] = ROWcounter + 1;
+                    Row_Indexes[NZEcounter + 2] = ROWcounter + 1;
+                    Row_Indexes[NZEcounter + 3] = ROWcounter + 1;
+                    Col_Indexes[NZEcounter + 1] = 1 + NH * (NGen + ND * 2 + NR + NHyd) + NH * i + j;
+                    Col_Indexes[NZEcounter + 2] = 1 + NH * (NGen + ND * 2 + NR + NHyd + NS) + NH * i + j;
+                    Col_Indexes[NZEcounter + 3] = 1 + NH * (NGen + ND * 2 + NR + NHyd + NS * 2) + NH * i + j;
+                    Mat_Elements[NZEcounter + 1] = -ProdCostIn.common_data.ETACs[i];
+                    Mat_Elements[NZEcounter + 2] = 1 / ProdCostIn.common_data.ETADs[i];
+                    Mat_Elements[NZEcounter + 3] = 1.0;
+                    NZEcounter += 3;
+                } else {
+                    Row_Indexes[NZEcounter + 1] = ROWcounter + 1;
+                    Row_Indexes[NZEcounter + 2] = ROWcounter + 1;
+                    Row_Indexes[NZEcounter + 3] = ROWcounter + 1;
+                    Row_Indexes[NZEcounter + 4] = ROWcounter + 1;
+                    Col_Indexes[NZEcounter + 1] = 1 + NH * (NGen + ND * 2 + NR + NHyd) + NH * i + j;
+                    Col_Indexes[NZEcounter + 2] = 1 + NH * (NGen + ND * 2 + NR + NHyd + NS) + NH * i + j;
+                    Col_Indexes[NZEcounter + 3] = 1 + NH * (NGen + ND * 2 + NR + NHyd + NS * 2) + NH * i + j;
+                    Col_Indexes[NZEcounter + 4] = 1 + NH * (NGen + ND * 2 + NR + NHyd + NS * 2) + NH * i + j - 1;
+                    Mat_Elements[NZEcounter + 1] = -ProdCostIn.common_data.ETACs[i];
+                    Mat_Elements[NZEcounter + 2] = 1 / ProdCostIn.common_data.ETADs[i];
+                    Mat_Elements[NZEcounter + 3] = 1.0;
+                    Mat_Elements[NZEcounter + 4] = -1.0;
+                    NZEcounter += 4;
+                }
+                ROWcounter = ROWcounter + 1;
+            }
+        }
+        qDebug() << "Inventory NZE counter: " << NZEcounter;
+        qDebug() << "Inventory ROW counter: " << ROWcounter;
+
+        //Thermal Capacity
+        for (int i = 0; i < NGen; i++) {
+            for (int j = 0; j < NH; j++) {
+                Row_Indexes[NZEcounter + 1] = ROWcounter + 1;
+                Row_Indexes[NZEcounter + 2] = ROWcounter + 1;
+                Row_Indexes[NZEcounter + 3] = ROWcounter + 1;
+                Row_Indexes[NZEcounter + 4] = ROWcounter + 1;
+                Col_Indexes[NZEcounter + 1] = i * NH + j + 1;
+                Col_Indexes[NZEcounter + 2] = 1 + NH * (NGen + ND * 2 + NR + NHyd + NS * 3) + i * NH + j;
+                Col_Indexes[NZEcounter + 3] = 1 + NH * (NGen * 2 + ND * 2 + NR + NHyd + NS * 3) + i * NH + j;
+                Col_Indexes[NZEcounter + 4] = 1 + NH * (NGen * 3 + ND * 2 + NR + NHyd + NS * 3) + i * NH + j;
+                Mat_Elements[NZEcounter + 1] = 1.0;
+                Mat_Elements[NZEcounter + 2] = 1.0;
+                Mat_Elements[NZEcounter + 3] = 1.0;
+                Mat_Elements[NZEcounter + 4] = 1.0;
+                NZEcounter = NZEcounter + 4;
+                ROWcounter = ROWcounter + 1;
+            }
+        }
+        qDebug() << "Thermal Cap NZE counter: " << NZEcounter;
+        qDebug() << "Thermal Cap ROW counter: " << ROWcounter;
+
+        //Storage Charge / Discharge Capacity
+        for (int i = 0; i < NS; i++) {
+            for (int j = 0; j < NH; j++) {
+                Row_Indexes[NZEcounter + 1] = ROWcounter + 1;
+                Col_Indexes[NZEcounter + 1] = 1 + NH * (NGen + ND * 2 + NR + NHyd) + NH * i + j;
+                Mat_Elements[NZEcounter + 1] = 1.0;
+                NZEcounter = NZEcounter + 1;
+                ROWcounter = ROWcounter + 1;
+            }
+        }
+        for (int i = 0; i < NS; i++) {
+            for (int j = 0; j < NH; j++) {
+                Row_Indexes[NZEcounter + 1] = ROWcounter + 1;
+                Row_Indexes[NZEcounter + 2] = ROWcounter + 1;
+                Row_Indexes[NZEcounter + 3] = ROWcounter + 1;
+                Row_Indexes[NZEcounter + 4] = ROWcounter + 1;
+                Row_Indexes[NZEcounter + 5] = ROWcounter + 1;
+                Col_Indexes[NZEcounter + 1] = 1 + NH * (NGen + ND * 2 + NR + NHyd) + NH * i + j;
+                Col_Indexes[NZEcounter + 2] = 1 + NH * (NGen + ND * 2 + NR + NHyd + NS) + NH * i + j;
+                Col_Indexes[NZEcounter + 3] = 1 + NH * (NGen * 4 + ND * 2 + NR + NHyd * 4 + NS * 3) + NH * i + j;
+                Col_Indexes[NZEcounter + 4] = 1 + NH * (NGen * 4 + ND * 2 + NR + NHyd * 4 + NS * 4) + NH * i + j;
+                Col_Indexes[NZEcounter + 5] = 1 + NH * (NGen * 4 + ND * 2 + NR + NHyd * 4 + NS * 5) + NH * i + j;
+                Mat_Elements[NZEcounter + 1] = -1.0;
+                Mat_Elements[NZEcounter + 2] = 1.0;
+                Mat_Elements[NZEcounter + 3] = 1.0;
+                Mat_Elements[NZEcounter + 4] = 1.0;
+                Mat_Elements[NZEcounter + 5] = 1.0;
+                NZEcounter = NZEcounter + 5;
+                ROWcounter = ROWcounter + 1;
+            }
+        }
+        qDebug() << "Sto Cap NZE counter: " << NZEcounter;
+        qDebug() << "Sto Cap ROW counter: " << ROWcounter;
+
+        //Storage Energy Capacity
+        for (int i = 0; i < NS; i++) {
+            for (int j = 0; j < NH; j++) {
+                Row_Indexes[NZEcounter + 1] = ROWcounter + 1;
+                Col_Indexes[NZEcounter + 1] = 1 + NH * (NGen + ND * 2 + NR + NHyd + NS * 2) + NH * i + j;
+                Mat_Elements[NZEcounter + 1] = 1.0;
+                NZEcounter = NZEcounter + 1;
+                ROWcounter = ROWcounter + 1;
+            }
+        }
+        qDebug() << "Sto En NZE counter: " << NZEcounter;
+        qDebug() << "Sto En ROW counter: " << ROWcounter;
+
+        //Demand Response Up / Down Capacity
+        for (int i = 0; i < ND; i++) {
+            for (int j = 0; j < NH; j++) {
+                Row_Indexes[NZEcounter + 1] = ROWcounter + 1;
+                Col_Indexes[NZEcounter + 1] = 1 + NH * NGen + NH * i + j;
+                Mat_Elements[NZEcounter + 1] = 1.0;
+                NZEcounter = NZEcounter + 1;
+                ROWcounter = ROWcounter + 1;
+            }
+        }
+        for (int i = 0; i < ND; i++) {
+            for (int j = 0; j < NH; j++) {
+                Row_Indexes[NZEcounter + 1] = ROWcounter + 1;
+                //Row_Indexes[NZEcounter + 2] = ROWcounter + 1;
+                //Row_Indexes[NZEcounter + 3] = ROWcounter + 1;
+                //Row_Indexes[NZEcounter + 4] = ROWcounter + 1;
+                //Row_Indexes[NZEcounter + 5] = ROWcounter + 1;
+                //Col_Indexes[NZEcounter + 1] = 1 + NH * (NGen) + NH * i + j;
+                Col_Indexes[NZEcounter + 1] = 1 + NH * (NGen + ND) + NH * i + j;
+                //Col_Indexes[NZEcounter + 3] = 1 + NH * (NGen * 4 + ND * 2 + NR + NHyd * 4 + NS * 6) + NH * i + j;
+                //Col_Indexes[NZEcounter + 4] = 1 + NH * (NGen * 4 + ND * 3 + NR + NHyd * 4 + NS * 6) + NH * i + j;
+                //Col_Indexes[NZEcounter + 5] = 1 + NH * (NGen * 4 + ND * 4 + NR + NHyd * 4 + NS * 6) + NH * i + j;
+                //Mat_Elements[NZEcounter + 1] = -1.0;
+                Mat_Elements[NZEcounter + 1] = 1.0;
+                //Mat_Elements[NZEcounter + 3] = 1.0;
+                //Mat_Elements[NZEcounter + 4] = 1.0;
+                //Mat_Elements[NZEcounter + 5] = 1.0;
+                NZEcounter = NZEcounter + 1;
+                ROWcounter = ROWcounter + 1;
+            }
+        }
+        qDebug() << "DemR Cap NZE counter: " << NZEcounter;
+        qDebug() << "DemR Cap ROW counter: " << ROWcounter;
+
+        //Renewable Capacity
+        for (int i = 0; i < NR; i++) {
+            for (int j = 0; j < NH; j++) {
+                Row_Indexes[NZEcounter + 1] = ROWcounter + 1;
+                Col_Indexes[NZEcounter + 1] = 1 + NH * (NGen + ND * 2) + i * NH + j;
+                Mat_Elements[NZEcounter + 1] = 1.0;
+                NZEcounter = NZEcounter + 1;
+                ROWcounter = ROWcounter + 1;
+            }
+        }
+        qDebug() << "Ren Cap NZE counter: " << NZEcounter;
+        qDebug() << "Ren Cap ROW counter: " << ROWcounter;
+
+        //Hydro capacity
+        for (int i = 0; i < NHyd; i++) {
+            for (int j = 0; j < NH; j++) {
+                Row_Indexes[NZEcounter + 1] = ROWcounter + 1;
+                Row_Indexes[NZEcounter + 2] = ROWcounter + 1;
+                Row_Indexes[NZEcounter + 3] = ROWcounter + 1;
+                Row_Indexes[NZEcounter + 4] = ROWcounter + 1;
+                Col_Indexes[NZEcounter + 1] = 1 + NH * (NGen + ND * 2 + NR) + i * NH + j;
+                Col_Indexes[NZEcounter + 2] = 1 + NH * (NGen * 4 + ND * 2 + NR + NHyd + NS * 3) + i * NH + j;
+                Col_Indexes[NZEcounter + 3] = 1 + NH * (NGen * 4 + ND * 2 + NR + NHyd * 2 + NS * 3) + i * NH + j;
+                Col_Indexes[NZEcounter + 4] = 1 + NH * (NGen * 4 + ND * 2 + NR + NHyd * 3 + NS * 3) + i * NH + j;
+                Mat_Elements[NZEcounter + 1] = 1.0;
+                Mat_Elements[NZEcounter + 2] = 1.0;
+                Mat_Elements[NZEcounter + 3] = 1.0;
+                Mat_Elements[NZEcounter + 4] = 1.0;
+                NZEcounter = NZEcounter + 4;
+                ROWcounter = ROWcounter + 1;
+            }
+        }
+        qDebug() << "Hyd Cap NZE counter: " << NZEcounter;
+        qDebug() << "Hyd Cap ROW counter: " << ROWcounter;
+
+        //Hydro energy
+        for (int i = 0; i < NHyd; i++) {
+            for (int t = 0; t < NH; t++) {
+                Row_Indexes[NZEcounter + 1] = ROWcounter + 1;
+                Col_Indexes[NZEcounter + 1] = 1 + NH * (NGen + ND * 2 + NR) + i * NH + t;
+                Mat_Elements[NZEcounter + 1] = 1.0;
+                NZEcounter++;
+            }
+            ROWcounter++;
+        }
+        qDebug() << "Hyd En NZE counter: " << NZEcounter;
+        qDebug() << "Hyd En ROW counter: " << ROWcounter;
+
+        //Sufficient energy for reserves
+        for (int i = 0; i < NS; i++) {
+            for (int j = 0; j < NH; j++) {
+                Row_Indexes[NZEcounter + 1] = ROWcounter + 1;
+                Row_Indexes[NZEcounter + 2] = ROWcounter + 1;
+                Row_Indexes[NZEcounter + 3] = ROWcounter + 1;
+                Row_Indexes[NZEcounter + 4] = ROWcounter + 1;
+                Row_Indexes[NZEcounter + 5] = ROWcounter + 1;
+                Col_Indexes[NZEcounter + 1] = 1 + NH * (NGen + ND * 2 + NR + NHyd + NS) + NH * i + j;
+                Col_Indexes[NZEcounter + 2] = 1 + NH * (NGen * 4 + ND * 2 + NR + NHyd * 4 + NS * 3) + NH * i + j;
+                Col_Indexes[NZEcounter + 3] = 1 + NH * (NGen * 4 + ND * 2 + NR + NHyd * 4 + NS * 4) + NH * i + j;
+                Col_Indexes[NZEcounter + 4] = 1 + NH * (NGen * 4 + ND * 2 + NR + NHyd * 4 + NS * 5) + NH * i + j;
+                Col_Indexes[NZEcounter + 5] = 1 + NH * (NGen + ND * 2 + NR + NHyd + NS * 2) + NH * i + j;
+                Mat_Elements[NZEcounter + 1] = 1.0;
+                Mat_Elements[NZEcounter + 2] = ProdCostIn.common_data.ReserveDuration[0];
+                Mat_Elements[NZEcounter + 3] = ProdCostIn.common_data.ReserveDuration[1];
+                Mat_Elements[NZEcounter + 4] = ProdCostIn.common_data.ReserveDuration[2];
+                Mat_Elements[NZEcounter + 5] = -1.0;
+                NZEcounter = NZEcounter + 5;
+                ROWcounter = ROWcounter + 1;
+            }
+        }
+        qDebug() << "Sto Energy NZE counter: " << NZEcounter;
+        qDebug() << "Sto Energy ROW counter: " << ROWcounter;
+        //
+        ////    /*//Thermal ramping rates
+        ////    for (int i = 0; i < NGen; i++) {
+        ////        for (int t = 1; t < NH; t++) {
+        ////            Row_Indexes[NZEcounter + 1] = ROWcounter + 1;
+        ////            Row_Indexes[NZEcounter + 2] = ROWcounter + 1;
+        ////            Col_Indexes[NZEcounter + 1] = 1 + NH * i + t;
+        ////            Col_Indexes[NZEcounter + 2] = 1 + NH * i + t - 1;
+        ////            Mat_Elements[NZEcounter + 1] = 1.0;
+        ////            Mat_Elements[NZEcounter + 1] = -1.0;
+        ////        }
+        ////    }*/
+        //
+        //    /*//Storage ramping rates       Need more thinking about formulation
+        //    for (int i = 0; i < NS; i++){
+        //        for (int t = 1; t < NH; t++){
+        //            Row_Indexes[NZEcounter + 1] = ROWcounter + 1;
+        //            Row_Indexes[NZEcounter + 2] = ROWcounter + 1;
+        //            Col_Indexes[NZEcounter + 1] = 1 + NH * i + t;
+        //            Col_Indexes[NZEcounter + 2] = 1 + NH * i + t - 1;
+        //            Mat_Elements[NZEcounter + 1] = 1.0;
+        //            Mat_Elements[NZEcounter + 1] = -1.0;
+        //        }
+        //    }*/
+        //
+        //Hourly reserve provision
+        for (int i = 0; i < 3; i++) {
+            for (int t = 0; t < NH; t++) {
+                for (int j = 0; j < NGen; j++) {
+                    Row_Indexes[NZEcounter + 1] = ROWcounter + 1;
+                    Col_Indexes[NZEcounter + 1] = 1 + NH * (NGen + ND * 2 + NR + NHyd + NS * 3 + (NGen) * i) + j * NH + t;
+                    Mat_Elements[NZEcounter + 1] = 1.0;
+                    NZEcounter = NZEcounter + 1;
+                }
+                for (int j = 0; j < NHyd; j++) {
+                    Row_Indexes[NZEcounter + 1] = ROWcounter + 1;
+                    Col_Indexes[NZEcounter + 1] = 1 + NH * (NGen * 4 + ND * 2 + NR + NHyd + NS * 3) + NH * NHyd * i + j * NH + t;
+                    Mat_Elements[NZEcounter + 1] = 1.0;
+                    NZEcounter = NZEcounter + 1;
+                }
+                for (int j = 0; j < NS; j++) {
+                    Row_Indexes[NZEcounter + 1] = ROWcounter + 1;
+                    Col_Indexes[NZEcounter + 1] = 1 + NH * (NGen * 4 + ND * 2 + NR + NHyd * 4 + NS * 3 + NS * i) + j * NH + t;
+                    Mat_Elements[NZEcounter + 1] = 1.0;
+                    NZEcounter = NZEcounter + 1;
+                }
+                /*for (int j = 0; j < ND; j++) {
+                    Row_Indexes[NZEcounter + 1] = ROWcounter + 1;
+                    Col_Indexes[NZEcounter + 1] = 1 + NH * (NGen * 4 + ND * 2 + NR + NHyd * 4 + NS * 6) + NH * ND * i + j * NH + t;
+                    Mat_Elements[NZEcounter + 1] = 1.0;
+                    NZEcounter = NZEcounter + 1;
+                }*/
+                ROWcounter = ROWcounter + 1;
+            }
+        }
+        qDebug() << "Reserve Prov NZE counter: " << NZEcounter;
+        qDebug() << "Reserve Prov ROW counter: " << ROWcounter;
+
+        //   const int * Row_Ind, *Col_Ind;
+        //    const double *Mat_Ele;
+        //    Row_Ind = &Row_Indexes[0];
+        //    Col_Ind = &Col_Indexes[0];
+        //    Mat_Ele = &Mat_Elements[0];
+
+        glp_load_matrix(PROBLEM_VECTOR[day], NZEcounter, Row_Indexes, Col_Indexes, Mat_Elements);
+
+        glp_smcp param;
+        glp_init_smcp(&param);
+        param.msg_lev = GLP_MSG_ALL;
+        param.meth = GLP_DUAL;
+        param.pricing = GLP_PT_PSE;
+        param.r_test = GLP_RT_HAR;
+        param.tol_bnd = 1e-7;
+        param.tol_dj = 1e-7;
+        param.tol_piv = 1e-10;
+        param.out_frq = 500;
+        param.out_dly = 0;
+        param.presolve = GLP_ON;
+        param.excl = GLP_ON;
+        param.shift = GLP_ON;
+        param.aorn = GLP_USE_AT;
+
+        int status = glp_simplex(PROBLEM_VECTOR[day], &param);
+        if (status != 0) {
+            not_normal.push_back(day);
+            not_normal_status.push_back(status);
+        }
+        qDebug() << "Solution status: " << status;
+
+        std::vector<double> variables;
+        //Obtaining optimal values of variables
+        for (int i = 0; i < NR_VARIABLES; ++i) {
+            variables.push_back(glp_get_col_prim(PROBLEM_VECTOR[day], i + 1));
+        }
+        int extract_counter = 0;
+        for (int i = 0; i < NGen * NH; i++) //Peaking plants generation
+        {
+            results.G_peak.push_back(variables[i + extract_counter]);
+        }
+        extract_counter = extract_counter + NGen * NH;
+        for (int i = 0; i < ND * NH; i++) //Demand response up-shifts
+        {
+            results.DR_up.push_back(variables[i + extract_counter]);
+        }
+        extract_counter = extract_counter + ND * NH;
+        for (int i = 0; i < ND * NH; i++) //Demand response down-shifts
+        {
+            results.DR_dn.push_back(variables[i + extract_counter]);
+        }
+        extract_counter = extract_counter + ND * NH;
+        for (int i = 0; i < NR * NH; i++) //Renewables generation
+        {
+            results.G_ren.push_back(variables[i + extract_counter]);
+        }
+
+        extract_counter = extract_counter + NR * NH;
+        for (int i = 0; i < NHyd * NH; i++) //Renewables generation
+        {
+            results.G_H.push_back(variables[i + extract_counter]);
+        }
+        extract_counter = extract_counter + NHyd * NH;
+        for (int i = 0; i < NS * NH; i++) //Storage charging
+        {
+            results.G_CS.push_back(variables[i + extract_counter]);
+        }
+        extract_counter = extract_counter + NS * NH;
+        for (int i = 0; i < NS * NH; i++) //Storage discharging
+        {
+            results.G_DS.push_back(variables[i + extract_counter]);
+        }
+        extract_counter = extract_counter + NS * NH;
+        for (int i = 0; i < NS; i++) //Stored energy
+        {
+            for (int t = 0; t < NH; t++) {
+                results.E_ST.push_back(variables[i * NH + t + extract_counter]);
+                if (t == NH - 1) {
+                    PrevEner[i] = variables[i * NH + t + extract_counter];
+                }
+            }
+        }
+        extract_counter = extract_counter + NS * NH;
+        //results.RP_dem.reserve(ND*NH);
+        for (int i = 0; i < NGen * NH; i++) //Peaking plants primary reserve
+        {
+            results.RP_peak.push_back(variables[i + extract_counter]);
+        }
+        extract_counter = extract_counter + NGen * NH;
+        for (int i = 0; i < NGen * NH; i++) //Peaking plants secondary reserve
+        {
+            results.RS_peak.push_back(variables[i + extract_counter]);
+        }
+        extract_counter = extract_counter + NGen * NH;
+        for (int i = 0; i < NGen * NH; i++) //Peaking plants tertiary reserve
+        {
+            results.RT_peak.push_back(variables[i + extract_counter]);
+        }
+        extract_counter = extract_counter + NGen * NH;
+        for (int i = 0; i < NHyd * NH; i++) //Hydro plants primary reserve
+        {
+            results.RP_hyd.push_back(variables[i + extract_counter]);
+        }
+        extract_counter = extract_counter + NHyd * NH;
+        for (int i = 0; i < NHyd * NH; i++) //Hydro plants secondary reserve
+        {
+            results.RS_hyd.push_back(variables[i + extract_counter]);
+        }
+        extract_counter = extract_counter + NHyd * NH;
+        for (int i = 0; i < NHyd * NH; i++) //Hydro plants tertiary reserve
+        {
+            results.RT_hyd.push_back(variables[i + extract_counter]);
+        }
+        extract_counter = extract_counter + NHyd * NH;
+        for (int i = 0; i < NS * NH; i++) //Storage plants primary reserve
+        {
+            results.RP_sto.push_back(variables[i + extract_counter]);
+        }
+        extract_counter = extract_counter + NS * NH;
+        for (int i = 0; i < NS * NH; i++) //Storage plants secondary reserve
+        {
+            results.RS_sto.push_back(variables[i + extract_counter]);
+        }
+        extract_counter = extract_counter + NS * NH;
+        for (int i = 0; i < NS * NH; i++) //Storage plants tertiary reserve
+        {
+            results.RT_sto.push_back(variables[i + extract_counter]);
+        }
+        extract_counter = extract_counter + NS * NH;
+        //        for (int s = 0; s < NS; s++){
+        //            PrevEner[s] = results.E_ST[starting_hour + (s+1)*NH-1];
+        //        }
+        /*for (int i = 0; i < ND * NH; i++) //DemResp plants primary reserve
+        {
+                results.RP_dem[i] = variables[i + extract_counter];
+        }
+        extract_counter = extract_counter + ND * NH;
+        for (int i = 0; i < ND * NH; i++) //DemResp plants secondary reserve
+        {
+                results.RS_dem[i] = variables[i + extract_counter];
+        }
+        extract_counter = extract_counter + ND * NH;
+        for (int i = 0; i < ND * NH; i++) //DemResp plants tertiary reserve
+        {
+                results.RT_dem[i] = variables[i + extract_counter];
+        }
+        extract_counter = extract_counter + ND * NH;*/
+
+        //Obtaining dual variables
+//        for (int i = 0; i < NH; i++) {
+//            results.energyPrice[starting_hour + i] = glp_get_row_dual(PROBLEM_VECTOR[day], i + 2);
+//        }
+//        for (int i = 0; i < NH; i++) {
+//            results.RP_price[starting_hour + i] = glp_get_row_dual(PROBLEM_VECTOR[day], 1 + PROBLEM_SIZE - NH * 3 + i);
+//        }
+//        for (int i = 0; i < NH; i++) {
+//            results.RS_price[starting_hour + i] = glp_get_row_dual(PROBLEM_VECTOR[day], 1 + PROBLEM_SIZE - NH * 2 + i);
+//        }
+//        for (int i = 0; i < NH; i++) {
+//            //qDebug() << i;
+//            results.RT_price[starting_hour + i] = glp_get_row_dual(PROBLEM_VECTOR[day], 1 + PROBLEM_SIZE - NH * 1 + i);
+//        }
+
+        //        for (int i = 0; i < NH; ++i) {
+        //            results.energyPrice[i] = glp_get_row_dual(PROBLEM_VECTOR[day], i + 2);
+        //            results.RP_price[i] = glp_get_row_dual(PROBLEM_VECTOR[day], 1 + PROBLEM_SIZE - NH * 3 + i);
+        //            results.RS_price[i] = glp_get_row_dual(PROBLEM_VECTOR[day], 1 + PROBLEM_SIZE - NH * 2 + i);
+        //            results.RT_price[i] = glp_get_row_dual(PROBLEM_VECTOR[day], 1 + PROBLEM_SIZE - NH * 1 + i);
+        //        }
+
+        glp_delete_prob(PROBLEM_VECTOR[day]);
+
+    }
+    glpk->unLocking();
+    
+    delete Row_Indexes;
+    delete Col_Indexes;
+    delete Mat_Elements;
+    qDebug() << "GRen size: " << results.G_ren.size();
+    
+    std::string charts_DIR = "/home/gonzales1609/IRENA/SBT_Api/";
+    std::string GenFileName = "EM_generation_";
+    GenFileName = GenFileName + std::to_string(year) + "_" + std::to_string(scenario_and_cases_row_id) + ".csv";
+    QFile file5(QString::fromStdString(charts_DIR+GenFileName));
+    if (file5.exists()) {
+        file5.remove();
+    }
+    if (!file5.open(QIODevice::ReadWrite | QIODevice::Text)) {
+        std::cout << "Error opening output file. Please try again.";
+    }
+    QTextStream out5(&file5);
+    QString value = QString::fromStdString("Hour,");
+    for (int i = 0; i < NGen; i++) {
+        value += QString::fromStdString("ThermGen_" + std::to_string(i + 1)).append(",");
+    }
+    for (int i = 0; i < ND; i++) {
+        value += QString::fromStdString("DRUp_" + std::to_string(i + 1)).append(",");
+    }
+    for (int i = 0; i < ND; i++) {
+        value += QString::fromStdString("DRDn_" + std::to_string(i + 1)).append(",");
+    }
+    for (int i = 0; i < NR; i++) {
+        value += QString::fromStdString("RenGen_" + std::to_string(i + 1)).append(",");
+    }
+    for (int i = 0; i < NHyd; i++) {
+        value += QString::fromStdString("HydGen_" + std::to_string(i + 1)).append(",");
+    }
+    for (int i = 0; i < NS; i++) {
+        value += QString::fromStdString("ESCh_" + std::to_string(i + 1)).append(",");
+    }
+    for (int i = 0; i < NS; i++) {
+        value += QString::fromStdString("ESDc_" + std::to_string(i + 1)).append(",");
+    }
+//    for (int i = 0; i < NS; i++) {
+//        value += QString::fromStdString("EST_" + std::to_string(i + 1)).append(",");
+//    }
+    value += QString("Demand");
+    value += QString("\n");
+    out5 << value.toUtf8();
+    //NH=8760;
+    for (int day = 0; day < NUMBER_OF_DAYS; day++) {
+        for (int t = 0; t < NH; t++) {
+            out5 << QString::number(day * NH + t + 1).toUtf8() << QString(",").toUtf8();
+            for (int i = 0; i < NGen; i++) {
+                out5 << QString::number(results.G_peak[day * NH * NGen + i * NH + t]).toUtf8() << QString(",").toUtf8();
+            }
+            for (int i = 0; i < ND; i++) {
+                out5 << QString::number(results.DR_up[day * NH * ND + i * NH + t]).toUtf8() << QString(",").toUtf8();
+            }
+            for (int i = 0; i < ND; i++) {
+                out5 << QString::number(results.DR_dn[day * NH * ND + i * NH + t]).toUtf8() << QString(",").toUtf8();
+            }
+            for (int i = 0; i < NR; i++) {
+                out5 << QString::number(results.G_ren[day * NH * NR + i * NH + t]).toUtf8() << QString(",").toUtf8();
+            }
+            for (int i = 0; i < NHyd; i++) {
+                out5 << QString::number(results.G_H[day * NH * NHyd + i * NH + t]).toUtf8() << QString(",").toUtf8();
+            }
+            for (int i = 0; i < NS; i++) {
+                out5 << QString::number(results.G_CS[day * NH * NS + i * NH + t]).toUtf8() << QString(",").toUtf8();
+            }
+            for (int i = 0; i < NS; i++) {
+                out5 << QString::number(results.G_DS[day * NH * NS + i * NH + t]).toUtf8() << QString(",").toUtf8();
+            }
+//            for (int i = 0; i < NS; i++) {
+//                out5 << QString::number(results.E_ST[day * NH * NS + i * NH + t]).toUtf8() << QString(",").toUtf8();
+//            }
+            out5 << QString::number(demandprofile1[day * NH + t]).toUtf8() << QString(",").toUtf8();
+            out5 << QString::fromStdString("\n").toUtf8();
+        }
+    }
+
+    std::string PRFileName = "EM_primres_";
+    PRFileName = PRFileName + std::to_string(year) + "_" + std::to_string(scenario_and_cases_row_id) + ".csv";
+    QFile file6(QString::fromStdString(charts_DIR+PRFileName));
+    if (file6.exists()) {
+        file6.remove();
+    }
+    if (!file6.open(QIODevice::ReadWrite | QIODevice::Text)) {
+        std::cout << "Error opening output file. Please try again.";
+    }
+    QTextStream out6(&file6);
+
+    QString row1 = QString::fromStdString("Hour,");
+    for (int i = 0; i < NGen; i++) {
+        row1 += QString::fromStdString("ThermPR_" + std::to_string(i + 1)).append(",");
+    }
+    for (int i = 0; i < NHyd; i++) {
+        row1 += QString::fromStdString("HydPR_" + std::to_string(i + 1)).append(",");
+    }
+    for (int i = 0; i < NS; i++) {
+        row1 += QString::fromStdString("ESPR_" + std::to_string(i + 1)).append(",");
+    }
+    row1 += QString::fromStdString("\n");
+    out6 << row1.toUtf8();
+    for (int day = 0; day < NUMBER_OF_DAYS; day++) {
+        for (int t = 0; t < NH; t++) {
+            out6 << QString::number(day * NH + t + 1).toUtf8() << QString(",").toUtf8();
+            for (int i = 0; i < NGen; i++) {
+                out6 << QString::number(results.RP_peak[day * NH * NGen + i * NH + t]).toUtf8() << QString(",").toUtf8();
+            }
+            //           for (int i = 0; i < ND; i++){
+            //               out6 << results.RP_dem[i*NH+t] << ",";
+            //           }
+            for (int i = 0; i < NHyd; i++) {
+                out6 << QString::number(results.RP_hyd[day * NH * NHyd + i * NH + t]).toUtf8() << QString(",").toUtf8();
+            }
+            for (int i = 0; i < NS; i++) {
+                out6 << QString::number(results.RP_sto[day * NH * NS + i * NH + t]).toUtf8() << QString(",").toUtf8();
+            }
+            out6 << QString::fromStdString("\n").toUtf8();
+        }
+    }
+
+    std::string SRFileName = "EM_secres_";
+    SRFileName = SRFileName + std::to_string(year) + "_" + std::to_string(scenario_and_cases_row_id) + ".csv";
+    QFile file7(QString::fromStdString(charts_DIR+SRFileName));
+    if (file7.exists()) {
+        file7.remove();
+    }
+    if (!file7.open(QIODevice::ReadWrite | QIODevice::Text)) {
+        qDebug() << "Error opening output file. Please try again.";
+    }
+    QTextStream out7(&file7);
+
+    QString row = "Hour,";
+    for (int i = 0; i < NGen; i++) {
+        row += QString::fromStdString("ThermSR_" + std::to_string(i + 1) + ",");
+    }
+    for (int i = 0; i < NHyd; i++) {
+        row += QString::fromStdString("HydSR_" + std::to_string(i + 1) + ",");
+    }
+    for (int i = 0; i < NS; i++) {
+        row += QString::fromStdString("ESSR_" + std::to_string(i + 1) + ",");
+    }
+    row += QString::fromStdString("\n");
+    out7 << row.toUtf8();
+    for (int day = 0; day < NUMBER_OF_DAYS; day++) {
+        for (int t = 0; t < NH; t++) {
+            out7 << QString::number(day * NH + t + 1).toUtf8() << QString(",").toUtf8();
+            for (int i = 0; i < NGen; i++) {
+                out7 << QString::number(results.RS_peak[day * NH * NGen + i * NH + t]).toUtf8() << QString(",").toUtf8();
+            }
+            //           for (int i = 0; i < ND; i++){
+            //               out7 << results.RS_dem[i*NH+t] << ",";
+            //           }
+            for (int i = 0; i < NHyd; i++) {
+                out7 << QString::number(results.RS_hyd[day * NH * NHyd + i * NH + t]).toUtf8() << QString(",").toUtf8();
+            }
+            for (int i = 0; i < NS; i++) {
+                out7 << QString::number(results.RS_sto[day * NH * NS + i * NH + t]).toUtf8() << QString(",").toUtf8();
+            }
+            out7 << QString::fromStdString("\n").toUtf8();
+        }
+    }
+    std::string TRFileName = "EM_tertres_";
+    TRFileName = TRFileName + std::to_string(year) + "_" + std::to_string(scenario_and_cases_row_id) + ".csv";
+    QFile file8(QString::fromStdString(charts_DIR+TRFileName));
+    if (file8.exists()) {
+        file8.remove();
+    }
+    if (!file8.open(QIODevice::ReadWrite | QIODevice::Text)) {
+        std::cout << "Error opening output file. Please try again.";
+    }
+    //Changed QDataStream to QTextStream?
+    QTextStream out8(&file8);
+    QString row2 = QString::fromStdString("Hour,");
+    for (int i = 0; i < NGen; i++) {
+        row2 += QString::fromStdString("ThermTR_" + std::to_string(i + 1) + ",");
+    }
+    //        for (int i = 0; i < ND; i++){
+    //            out8 << "DRTR_" + std::to_string(i+1) + ",";
+    //        }
+    for (int i = 0; i < NHyd; i++) {
+        row2 += QString::fromStdString("HydTR_" + std::to_string(i + 1) + ",");
+    }
+    for (int i = 0; i < NS; i++) {
+        row2 += QString::fromStdString("ESTR_" + std::to_string(i + 1) + ",");
+    }
+    row2 += QString::fromStdString("\n");
+    out8 << row2.toUtf8();
+    for (int day = 0; day < NUMBER_OF_DAYS; day++) {
+        for (int t = 0; t < NH; t++) {
+            out8 << QString::number(day * NH + t + 1).toUtf8() << QString(",").toUtf8();
+            for (int i = 0; i < NGen; i++) {
+                out8 << QString::number(results.RT_peak[day * NH * NGen + i * NH + t]).toUtf8() << QString(",").toUtf8();
+            }
+            //           for (int i = 0; i < ND; i++){
+            //               out8 << results.RP_dem[i*NH+t] << ",";
+            //           }
+            for (int i = 0; i < NHyd; i++) {
+                out8 << QString::number(results.RT_hyd[day * NH * NHyd + i * NH + t]).toUtf8() << QString(",").toUtf8();
+            }
+            for (int i = 0; i < NS; i++) {
+                out8 << QString::number(results.RT_sto[day * NH * NS + i * NH + t]).toUtf8() << QString(",").toUtf8();
+            }
+            out8 << QString::fromStdString("\n").toUtf8();
+        }
+    }
+    qDebug() << "Therm generation size: " << results.G_peak.size();
+    for (int i = 0;i<NGen; i++){
+        qDebug()<<"PResC"<<i<<": "<<ProdCostIn.common_data.PResC[i];
+        qDebug()<<"SResC"<<i<<": "<<ProdCostIn.common_data.SResC[i];
+        qDebug()<<"TResC"<<i<<": "<<ProdCostIn.common_data.TResC[i];
+    }
+    for (int i = 0; i < NH * NGen; i++) {
+        qDebug() << "PR Cost: "<<PRCost[i];
+        qDebug() << "SR Cost: "<<SRCost[i];
+        qDebug() << "TR Cost: "<<TRCost[i];
+    }
+    results.G_peak.clear();
+    results.G_exist.clear();
+    results.DR_up.clear();
+    results.DR_dn.clear();
+    results.G_ren.clear();
+    results.G_H.clear();
+    results.G_CS.clear();
+    results.G_DS.clear();
+    results.E_ST.clear();
+    results.RP_peak.clear();
+    results.RS_peak.clear();
+    results.RT_peak.clear();
+    results.RP_sto.clear();
+    results.RS_sto.clear();
+    results.RT_sto.clear();
+    results.RP_hyd.clear();
+    results.RS_hyd.clear();
+    results.RT_hyd.clear();
+    delete PRCost;
+    delete SRCost;
+    delete TRCost;
+    delete VCDUF;
+    delete VCDDF;
+    delete VCRF;
+    delete VCHF;
+    delete PRCostHyd;
+    delete SRCostHyd;
+    delete TRCostHyd;
+    delete VCSCF;
+    delete VCSDF;
+    delete Lower_Bounds;
+    delete Upper_Bounds;
+
+    //    VCSEF.clear();
+   
+
+    try {
+
+        //Write installed ESS power capacity
+        pstmt = con->prepareStatement("SELECT * FROM emulator_output_files WHERE scenario_and_cases_row_id = " + std::to_string(scenario_and_cases_row_id));
+        res = pstmt->executeQuery();
+        if (res->next()) {
+            //UPDATE
+            delete pstmt;
+            pstmt = con->prepareStatement("UPDATE emulator_output_files SET EM_generation=?,EM_primres=?,EM_secres=?,EM_tertres=? WHERE scenario_and_cases_row_id=?");
+            pstmt->setString(1, GenFileName);
+            pstmt->setString(2, PRFileName);
+            pstmt->setString(3, SRFileName);
+            pstmt->setString(4, TRFileName);
+            pstmt->setInt(5, scenario_and_cases_row_id);
+            pstmt->executeUpdate();
+        } else {
+            //INSERT
+            delete pstmt;
+            pstmt = con->prepareStatement("INSERT INTO emulator_output_files(EM_generation,EM_primres,EM_secres,EM_tertres,scenario_and_cases_row_id) VALUES (?,?,?,?,?)");
+            pstmt->setString(1, GenFileName);
+            pstmt->setString(2, PRFileName);
+            pstmt->setString(3, SRFileName);
+            pstmt->setString(4, TRFileName);
+            pstmt->setInt(5, scenario_and_cases_row_id);
+            pstmt->executeUpdate();
+        }
+        delete res;
+        delete pstmt;
+    } catch (sql::SQLException &e) {
+        std::cout << "# ERR: SQLException in " << __FILE__;
+        std::cout << "(" << __FUNCTION__ << ") on line " << __LINE__ << std::endl;
+        std::cout << "# ERR: " << e.what();
+        std::cout << " (MySQL error code: " << e.getErrorCode();
+        std::cout << ", SQLState: " << e.getSQLState() << " )" << std::endl;
+        std::string query2("UPDATE scenarios_and_cases SET emulator_calculation_status = 'ERROR_QUERY', emulator_calculation_date =CURRENT_TIMESTAMP() WHERE row_id = ?;");
+        pstmt = con->prepareStatement(query2);
+        pstmt->setInt(1, scenario_and_cases_row_id);
+        pstmt->execute();
+        delete pstmt;
+        delete con;
+        
+        return 0;
+    }
+    //qDebug() << "Not normal days: "<<not_normal[0];
+    //qDebug() << "status: " << not_normal_status[0];
+    std::string query2("UPDATE scenarios_and_cases SET emulator_calculation_status = 'COMPLETE', emulator_calculation_date =CURRENT_TIMESTAMP() WHERE row_id = ?;");
+
+    pstmt = con->prepareStatement(query2);
+    pstmt->setInt(1, scenario_and_cases_row_id);
+    pstmt->execute();
+    delete pstmt;
+    delete con;
+    
+    return 0; //status;
+}
+
+//
+
+
+int EmulatorThread::ThreadSleep(int sleepTime) {
+    qDebug() << this << " >> Reset locking";
+    this->msleep(sleepTime);
+    return 1;
+
+}
+

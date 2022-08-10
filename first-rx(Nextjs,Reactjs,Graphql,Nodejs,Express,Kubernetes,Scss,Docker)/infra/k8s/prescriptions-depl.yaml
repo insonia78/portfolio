@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: prescriptions-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: prescriptions
+  template:
+    metadata:
+      labels:
+        app: prescriptions
+    spec:
+      containers:
+        - name: prescriptions
+          image: insonia78/services/prescriptions
+          env:
+            # - name: NATS_CLIENT_ID
+            #   valueFrom:
+            #        fieldRef:
+            #            fieldPath: metadata.name 
+            # - name: NATS_URL
+            #   value: 'http://nats-srv:4222' 
+            # - name: NATS_CLUSTER_ID
+            #   value: prescriptions
+                       
+            # - name: ZIP_LOOKUP_ADDRESS
+            #   value: http://ZiptasticAPI.com/
+            - name: MED_IMPACT_URL
+              value: https://https://rxsavings-ws.medimpact.com/cashcard-ws-v1_0/soap/cashcard 
+            
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: prescriptions-srv
+spec:
+  selector:
+    app: prescriptions
+  ports:
+    - name: prescriptions
+      protocol: TCP
+      port: 4000
+      targetPort: 4000

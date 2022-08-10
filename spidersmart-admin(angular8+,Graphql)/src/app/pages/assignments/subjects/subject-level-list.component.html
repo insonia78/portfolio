@@ -1,0 +1,17 @@
+<sm-datatable [dataSource]="levels" defaultSortColumn="name" [serverSideProcessing]="true" (dataRequest)="loadData($event)">
+  <sm-datatable-column name="name">
+    <ng-container *smDatatableCell="let data">
+      <a [routerLink]="['/subject', subjectId, 'level', data.id, 'view']" *hasPermission="Permission.LEVEL_VIEW; else nonlinked">{{data.name}}</a>
+      <ng-template #nonlinked>{{data.name}}</ng-template>
+    </ng-container>
+  </sm-datatable-column>
+
+  <sm-datatable-row-actions>
+    <ng-container *smDatatableCell="let data">
+      <sm-datatable-row-action action="edit" tooltip="Edit Level" [route]="['/subject', subjectId, 'level', data.id, 'edit']" *hasPermission="Permission.LEVEL_UPDATE"></sm-datatable-row-action>
+      <sm-datatable-row-action action="delete" tooltip="Delete Level" (click)="delete(data.id)" *hasPermission="Permission.LEVEL_DELETE"></sm-datatable-row-action>
+    </ng-container>
+  </sm-datatable-row-actions>
+  
+  <sm-datatable-bulk-action action="delete" tooltip="Delete Selected Levels" (select)="delete($event)" *hasPermission="Permission.LEVEL_DELETE"></sm-datatable-bulk-action>
+</sm-datatable>

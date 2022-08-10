@@ -1,0 +1,20 @@
+//- includes/tabs.pug
+.io-tab(style='display:none;')
+  .input-settings
+    button#settings_btn.tablinks(onclick="toggleTab(event, 'settings')") Settings
+    include heading-links/input-setting-links.pug
+  .input-headings
+    button#input_btn.active.tablinks(onclick="toggleTab(event, 'inputs')") Inputs
+    include heading-links/input-heading-links.pug
+  .output-headings
+    button#output_btn.tablinks(onclick="toggleTab(event, 'outputs')") Outputs with ESS
+    include heading-links/output-heading-links.pug
+  .output-noess-headings
+    button#output_noess_btn.tablinks(onclick="toggleTab(event, 'outputs_noess')") Outputs w/o ESS
+    include heading-links/output-heading-noess-links.pug
+  .stacked-benefits-headings
+    button#stacked_benefits_tab_btn.tablinks(onclick="toggleTab(event, 'stacked_benefits')") Stacked Benefits
+    include heading-links/stacked-benefits-links.pug
+  .tabular-headings
+    button#tabular_btn.tablinks(onclick="toggleTab(event,'tabular')") Tabular
+    include heading-links/tabular-heading-links.pug

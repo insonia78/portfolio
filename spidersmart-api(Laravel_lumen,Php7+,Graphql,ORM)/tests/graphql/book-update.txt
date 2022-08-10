@@ -1,0 +1,18 @@
+mutation ( $id: Int!,$level: BookLevelInput, $title: String!, $description: String, $isbn: String!, $coverImage: String, $active: Boolean, $authors: [BookAuthorInput], $genres: [BookGenreInput], $publishers: [BookPublisherInput]) {
+  updateBook(id:$id,level: $level, title: $title, description: $description, isbn: $isbn, coverImage: $coverImage, active: $active, authors: $authors, genres: $genres, publishers: $publishers) {
+    success
+    data {
+      id
+      level
+      title
+      description
+      isbn
+      coverImage
+      active
+      authors
+      genres
+      publishers
+    }
+    errors
+  }
+}

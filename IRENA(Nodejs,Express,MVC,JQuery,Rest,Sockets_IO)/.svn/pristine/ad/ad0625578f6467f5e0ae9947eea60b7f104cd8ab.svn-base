@@ -1,0 +1,519 @@
+form.form-horizontal#valuationOfStorageForm(role='form' method='POST', action='/calculate-valuation')
+  h1 System
+  .row
+    .col-lg-4 
+      table#valuationInputTable.table.table-striped.table-bordered.table-hover
+        thead
+          tr
+            th.col-lg-3
+            |
+            th.col-lg-2 Value
+             
+
+          // /tr
+        // thead
+        tbody
+          tr
+            th Country
+            |       
+            td
+              include country-option.pug
+
+  h2 Programs
+  .col-lg-12
+    include sub-forms/policies-form.pug
+
+  h2 Demand
+  .row
+    .col-lg-8     
+      table#valuationInputTable-Cap.table.table-striped.table-bordered.table-hover
+        thead
+          tr
+            th.col-lg-3
+            |
+            th.col-lg-1 Unit
+            |
+            th.col-lg-2 Value
+
+          // /tr
+        // thead
+        tbody
+        
+          
+          tr
+            th Demand Profile
+            | 
+            td
+            |         
+            td
+              include sub-forms/select-region.pug
+
+          // /tr      
+          tr
+            th Peak Electricity Demand
+            |
+            td MW          
+            td
+              input.form-control#peakCapacity(type='text' name='peakCapacity')
+     
+          // /tr      
+          tr
+            th Annual Energy Demand
+            | 
+            td GWh
+            |         
+            td
+              // /change element ID 
+              input.form-control#peakDemand(type='text' name='peakDemand')
+
+          // /tr
+          tr
+            th Peak Demand Growth Rate
+            |
+            td %
+            |          
+            td
+              input.form-control#peakDemandGrowthRate(type='text' name='peakDemandGrowthRate')
+           
+          // /tr
+    .col-lg-4
+      img(src='images/demand-example.png' style='width:100%')
+
+  h2 Generation 
+  .col-lg-12
+    h3 Conventional
+    .row
+      .col-lg-8
+        table#valuationInputTable-Cap.table.table-striped.table-bordered.table-hover
+          thead
+            tr
+              th.col-lg-2 
+              |
+              th.col-lg-1 Unit
+              |      
+              th.col-lg-2 Natural Gas
+              |         
+              th.col-lg-2 Coal
+              |          
+              th.col-lg-2 Nuclear
+              |          
+              th.col-lg-2 Diesel
+              |          
+              th.col-lg-2 Others
+
+
+
+            // /tr
+          // thead
+          tbody
+          
+            tr
+              th Generation Capacity
+              |
+              th MW
+              |           
+              
+              td 
+                input.form-control(type='text')        
+              td 
+                input.form-control(type='text')
+              td 
+                input.form-control(type='text')        
+              td 
+                input.form-control(type='text')
+              td 
+                input.form-control(type='text')
+
+                  
+            tr
+              th Heat Rate
+              |   
+              th BTU/kWh
+              |        
+              
+              td 
+                input.form-control(type='text')        
+              td 
+                input.form-control(type='text')
+              td 
+                input.form-control(type='text')        
+              td 
+                input.form-control(type='text')
+              td 
+                input.form-control(type='text')
+
+
+            tr
+              th Reserve Cost
+              |      
+              th $/MW
+              |     
+              
+              td 
+                input.form-control(type='text')        
+              td 
+                input.form-control(type='text')
+              td 
+                input.form-control(type='text')        
+              td 
+                input.form-control(type='text')
+              td 
+                input.form-control(type='text')
+
+
+            tr
+              th Fuel Price
+              |     
+              th $/MMBTU
+              |      
+              
+              td 
+                input.form-control(type='text')        
+              td 
+                input.form-control(type='text')
+              td 
+                input.form-control(type='text')        
+              td 
+                input.form-control(type='text')
+              td 
+                input.form-control(type='text')
+
+            tr
+              th VO&M Cost
+              |     
+              th $/MWh
+              |      
+              
+              td 
+                input.form-control(type='text')        
+              td 
+                input.form-control(type='text')
+              td 
+                input.form-control(type='text')        
+              td 
+                input.form-control(type='text')
+              td 
+                input.form-control(type='text')
+
+            tr
+              th Carbon Rate
+              |     
+              th LB/MWh
+              |      
+              
+              td 
+                input.form-control(type='text')        
+              td 
+                input.form-control(type='text')
+              td 
+                input.form-control(type='text')        
+              td 
+                input.form-control(type='text')              
+              td 
+                input.form-control(type='text')
+      .col-lg-4
+        img(src='images/installed-capacity.png' style='width:100%')
+
+
+  .col-lg-12
+    h3 Renewables
+    .row
+      .col-lg-8
+        table#valuationInputTable-Cap.table.table-striped.table-bordered.table-hover
+          thead
+            tr
+              th.col-lg-3 
+              |
+              th Installed Capacity (MW)
+              |      
+              th Profile (%)
+              |         
+              th Cap at Peak (%)
+              
+            // /tr
+          // thead
+          tbody
+          
+            tr
+              th Wind
+              |              
+              td 
+                input.form-control(type='text')        
+              td 
+                include sub-forms/select-region.pug
+              td 
+                input.form-control(type='text') 
+
+            tr
+              th Solar
+              |              
+              td 
+                input.form-control(type='text')        
+              td 
+                include sub-forms/select-region.pug
+              td 
+                input.form-control(type='text') 
+      
+            // /tr
+            // / end of Capacity by fuel
+      .col-lg-4
+        img(src='images/wind-example.png' style='width:100%')
+  .col-lg-12
+    h3 Hydro
+    .row
+      .col-lg-8
+        table.table.table-striped.table-bordered.table-hover
+          tbody
+            tr          
+              th Installed Capacity (MW)
+            
+              td 
+                input.form-control(type='text')      
+            tr          
+              th Reserve Cost ($/MW)
+            
+              td 
+                input.form-control(type='text')               
+
+
+        include sub-forms/hydro-monthly-energy.pug
+      .col-lg-4
+        img(src='images/hidro-example.png' style='width:100%')    
+
+    .col-lg-6.col-lg-offset-6
+      table.table.table-striped.table-bordered.table-hover
+        // thead
+        tbody
+          tr
+            th Total Generation Capacity
+            |          
+            td
+              input.form-control#totalGenerationCapacity(type='text' name='totalGenerationCapacity') 
+  
+  h2 Reserves
+  .col-lg-12    
+    table#reserves-table.table.table-striped.table-bordered.table-hover
+      thead
+        tr
+          th.col-lg-3
+          |
+          th.col-lg-2 Provision (MW)
+          |
+          th.col-lg-2 Duration (min)       
+        // /tr
+      // thead
+      tbody    
+        tr
+          th Primary Reserves
+          |          
+          td
+            input.form-control(type='text')
+          |          
+          td
+            input.form-control(type='text')
+        tr
+          th Secondary Reserves
+          |          
+          td
+            input.form-control(type='text')
+          |          
+          td
+            input.form-control(type='text')
+        tr
+          th Tertiary Reserves
+          |          
+          td
+            input.form-control(type='text')
+          |          
+          td
+            input.form-control(type='text')          
+        // /tr
+      // /End of Reserves Table  
+
+  h2 Energy Storage  
+  .col-lg-12    
+    table#reserves-table.table.table-striped.table-bordered.table-hover
+      thead
+        tr
+          th.col-lg-3
+          |
+          th.col-lg-1 Unit
+          |  
+          th.col-lg-2 2C 
+          |
+          th.col-lg-2 1C       
+          |
+          th.col-lg-2 0.5C 
+          |
+          th.col-lg-2 0.25C
+
+        // /tr
+      // thead
+      tbody    
+        tr
+          th Round Trip Efficiency
+          |
+          td %
+          |          
+          td
+            input.form-control(type='text')
+          |          
+          td
+            input.form-control(type='text')
+          |          
+          td
+            input.form-control(type='text')
+          |          
+          td
+            input.form-control(type='text')    
+        tr
+          th Intallation Cost
+          |
+          td $/kWh
+          |          
+          td
+            input.form-control(type='text')
+          |          
+          td
+            input.form-control(type='text')
+          |          
+          td
+            input.form-control(type='text')
+          |          
+          td
+            input.form-control(type='text')   
+
+    .col-lg-6.col-lg-offset-6
+      table.table.table-striped.table-bordered.table-hover
+        // thead
+        tbody
+          tr
+            th Blended Cost ($/kWh)
+            |          
+            td
+              input.form-control#blended-cost(type='text' name='totalGenerationCapacity') 
+
+  h2 Others
+  .col-lg-12    
+    table#valuationInputTable-Cap.table.table-striped.table-bordered.table-hover
+      thead
+        tr
+          th.col-lg-3
+          |
+          th.col-lg-1 Unit
+          |
+          th.col-lg-2 Value
+         
+        // /tr
+      // thead
+      tbody
+      tr
+        th Carbon Cost
+        | 
+        td $/Ton
+        td
+          input.form-control#milesOfTransmission(type='text' name='milesOfTransmission')
+        |          
+      // /tr
+      tr
+        th Length of Transmission Lines
+        | 
+        td Km         
+        td
+          input.form-control#milesOfTransmission(type='text' name='milesOfTransmission')
+        |          
+      // /tr
+      tr
+        th Length of Distribution Lines
+        |
+        td Km          
+        td
+          input.form-control#milesOfDistribution(type='text' name='milesOfDistribution')     
+        tr
+          th Planning Reserve Margin
+          |          
+          td %
+          |
+          td
+            input.form-control#planningReserveMargin(type='text' name='planningReserveMargin')
+         
+        // /tr
+        tr
+          th Transmission Congestion Indicator
+          |
+          td %
+          |          
+          td
+            input.form-control#transmissionCongestionIndicator(type='text' name='transmissionCongestionIndicator')
+          
+        // /tr
+        tr
+          th Demand Forecast Risk
+          |
+          td %
+          |          
+          td
+            input.form-control#demandForecastRisk(type='text' name='demandForecastRisk')
+         
+        // /tr
+        tr
+          th Geo Diversity Indicator
+          |
+          td %
+          |          
+          td
+            input.form-control#geoDiversityIndicator(type='text' name='geoDiversityIndicator')
+          
+        // /tr
+        tr
+          th Outage Indices
+          |
+          td Hours
+          |          
+          td
+            input.form-control#outageIndices(type='text' name='outageIndices')
+          
+        // /tr
+        tr
+          th Value of Loss Load
+          |
+          td $/MWh
+          |          
+          td
+            input.form-control#voll(type='text' name='voll')
+         
+        // /tr
+        tr
+          th Renewables Output Forecast Risk
+          |
+          td %
+          |          
+          td
+            input.form-control#roForecastRisk(type='text' name='roForecastRisk')
+          
+        // /tr
+        tr
+          th Frequency Regulation Market Payment or Value
+          | 
+          td $/MW
+          |         
+          td
+            input.form-control#frmpv(type='text' name='frmpv')
+        
+        // /tr
+        tr
+          th Value of Avoided Generation Cost
+          |
+          td $/kW
+          |          
+          td
+            input.form-control#vagc(type='text' name='vagc')
+    
+
+    // /.col-lg-12
+      h2 Policies
+      include sub-forms/policies-form.pug
+      // /tr
+    // /tbody
+  // /table
+// /form

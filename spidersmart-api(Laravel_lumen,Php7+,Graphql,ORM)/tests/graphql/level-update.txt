@@ -1,0 +1,14 @@
+mutation ($id: Int!,$subject: [SubjectInput], $name: String!, $active: Boolean, $description: String, $enrollments: [EnrollmentInput]) {
+  updateLevel(id: $id,subject: $subject, name: $name, active: $active, description: $description, enrollments: $enrollments) {
+    success
+    data {
+      id
+      subject
+      name
+      active
+      description
+      enrollments
+    }
+    errors
+  }
+}

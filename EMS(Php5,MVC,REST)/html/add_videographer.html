@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Axon-Videographer Add</title>
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+<script src="js/jquery.js"></script>
+<script>
+$(document).ready(function(){
+	$(".tab_tit").click(function(){		
+		$(".tab_tit").removeClass('active_state');
+		$(this).addClass('active_state');
+		});
+		
+		$(".enroll_text table tr").hover(function () {
+			$(this).addClass('selected_row');
+			
+			
+		  }, 
+		  function () {
+			$(".enroll_text table tr").removeClass('selected_row');
+		  }
+		  );
+		
+		/*$(".enroll_text_left th").click(function(){		
+		$(".enroll_text_left th").removeClass('active_title');
+		$(this).addClass('active_title');
+		});*/
+	});
+</script>
+</head>
+
+<body>
+<div id="main_wrapper">
+	<div class="main_content">
+        <div class="header">
+            <h1>Information Updated</h1>
+            <img src="images/logo_small.png" />
+        </div><!--header-->
+        <div class="enroll_content">
+        	<div class="tab_conatiner">
+                <div class="tab_tit" id="tab1">Up coming </div>
+                <div class="tab_tit" id="tab2">Postponed / Cancelled </div>
+                <div class="tab_tit" id="tab3">Filmed</div>
+                <div class="tab_tit" id="tab4">Videographers</div>
+            </div><!--tab container-->
+          
+            <div class="enroll_text">
+            	<div class="video_detail">
+                <h1>Videographer Information Update</h1>
+                <ul class="enter_details">
+                    <li>
+                    <label>Videographer name</label>
+                    <input type="text" />
+                    </li>
+                    <li>
+                    <label>Company name</label>
+                    <input type="text" />
+                    </li>
+                    <li>
+                    <label>Videographer phone</label>
+                    <input type="text" />
+                    </li>
+                    <li>
+                    <label>Videographer cell</label>
+                    <input type="text" />
+                    </li>
+                    <li>
+                    <label>Videographer alternate</label>
+                    <input type="text" />
+                    </li>
+                    <li>
+                    <label>Videographer email</label>
+                    <input type="text" />
+                    </li>
+                    <li>
+                    <label>Teleprompter no.</label>
+                    <input type="text" />
+                    </li>
+                </ul>
+                <div class="actions_list">
+                <ul class="action_video">
+                    <li><input type="image" src="images/back.png"  onmouseover="this.src='images/back_hover.png';"
+      onmouseout="this.src='images/back.png';" />                                       
+                    </li>
+                    <li><input type="image" src="images/cancel.png"  onmouseover="this.src='images/cancel_hover.png';"
+      onmouseout="this.src='images/cancel.png';" /></li>
+                    <li><input type="image" src="images/submit_hover.png"  onmouseover="this.src='images/submit.png';"
+      onmouseout="this.src='images/submit_hover.png';" /></li>
+                </ul><!--action video-->
+                </div>
+                
+                
+                </div><!--video detail-->	
+                
+  			</div><!--enroll text-->
+        </div><!--enroll content-->
+      <!--<p class="copy">© 2015 Axon communications, Inc.</p>-->
+    </div><!--main_content-->
+
+</div><!--main wrapper-->
+</body>
+</html>

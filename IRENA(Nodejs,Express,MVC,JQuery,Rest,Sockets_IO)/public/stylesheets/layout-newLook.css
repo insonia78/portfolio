@@ -1,0 +1,119 @@
+/******************************************************************/
+/*
+   top nav row
+*/
+body{
+    position:fixed;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    background-color:rgba(64, 102, 140, 0.8);
+    display:inline-block;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+div.wrapper
+{
+    position:fixed;
+    top:0px;
+    left:0px;
+    bottom:0px;
+    right:0px;
+    margin: 0px 0px 0px 0px;
+    height:70px;
+    width:inherit;
+    background-color: black;
+    z-index:999;
+}
+div.header_storage_benefits_tool{
+    margin-top:0px;
+    margin-left:0%;
+    background-color:#40668C;
+    height:73px;
+    width:inherit;
+    z-index:1;
+    border-bottom: 2px solid black;
+ }
+ div.logo-container
+ {
+     position:relative;
+     float:left;
+     min-height:70px;
+     width: 30%;
+     min-width:100px;
+     display:inline-block;
+     min-width:100px;
+     display:inline-block;
+
+ }
+ .inline
+ {
+     display:inline-block;
+ }
+img.company-img{
+    position: relative;
+    margin-left:20px;
+    margin-top:10px;
+    opacity:0.95;
+    border-radius:20px;
+    float:left;
+}
+text.product{
+    position:relative;
+    float:left;
+    margin-left:6px;
+    margin-right:3px;
+    font-size:12px;
+    font-style:italic;
+    color:white;
+    margin-top: 10%;
+}
+div.data-header-container{
+    position:relative;
+    left:0px;
+    top:71px;
+    width:100%;
+    min-height:73px;
+    height:auto;
+    background-color:white;
+    border-bottom: 2px solid black;
+    display: inline-block;
+
+}
+/******************************************************************************/
+div#page-wrapper{
+    position:relative;
+    margin-top:74px;
+    bottom:1px;
+    width:100%;
+    background-color:white;
+    overflow-y:auto;
+    border-top:1px double black;
+    display:block;
+}
+/**************************************************/
+div.menu-icon-container
+{
+    position:relative;
+    float:right;
+}
+div.menu-icon-bar
+{
+    width: 35px;
+    height: 4px;
+    background-color: white;
+    margin: 6px 0;
+}
+.label-div span.highlight 
+{
+   border: 1px solid black;   
+}
+
+.dygraph-label
+{
+    font-weight: bold;
+}

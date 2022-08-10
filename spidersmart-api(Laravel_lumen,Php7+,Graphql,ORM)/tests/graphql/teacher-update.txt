@@ -1,0 +1,22 @@
+mutation ( $id: Int!,type:UserType!,$email: String!, $password: String!, $prefix: String, $firstName: String!, $middleName: String, $lastName: String!, $suffix: String, $verified: Boolean, $active: Boolean, $gender: String, $school: String, $addresses: [UserAddressInput], $contacts: [UserContactInput]) {
+  updateTeacher( id:$id,type:$type,email: $email, password: $password, prefix: $prefix, firstName: $firstName, middleName: $middleName, lastName: $lastName, suffix: $suffix, verified: $verified, active: $active, gender: $gender, school: $school, addresses: $addresses, contacts: $contacts) {
+    success
+    data {
+      id
+      type
+      email
+      password
+      prefix
+      firstName
+      middleName
+      lastName
+      suffix
+      verified
+      active
+      school
+      addresses
+      contacts    
+    }
+    errors
+  }
+}

@@ -1,0 +1,75 @@
+<form [formGroup]="form">
+    <div fxLayout="row wrap">
+        <div fxFlex="100" fxFlex.gt-sm="34">
+            <div fxLayout="row wrap">
+                <h1 fxFlex="100">Level Details</h1>
+            </div>
+            <div fxLayout="row wrap">
+                <mat-form-field fxFlex="100">
+                    <mat-label>Name</mat-label>
+                    <input matInput formControlName="name">
+                    <mat-error *ngIf="form.get('name').hasError('api')">{{form.get('name').getError('api')}}</mat-error>
+                </mat-form-field>
+            </div>
+            <div fxLayout="row">
+                <mat-form-field fxFlex="100">
+                    <mat-label>Description</mat-label>
+                    <textarea matInput formControlName="description"></textarea>
+                    <mat-error *ngIf="form.get('description').hasError('api')">{{form.get('description').getError('api')}}</mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+        <div fxFlex="100" fxFlex.gt-sm="33">
+            <div fxLayout="row wrap">
+                <h1 fxFlex="100">Print Layout</h1>
+            </div>
+            <div fxLayout="row wrap" fxLayoutAlign="space-between">
+                <mat-form-field fxFlex="100">
+                    <mat-label>Rule</mat-label>
+                    <mat-select formControlName="rule">
+                        <mat-option *ngFor="let rule of ['college', 'standard']" [value]="rule">
+                            {{rule|titlecase}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="form.get('rule').hasError('api')">{{form.get('rule').getError('api')}}</mat-error>
+                </mat-form-field>
+                <mat-form-field fxFlex="33">
+                    <mat-label>Vocab Lines</mat-label>
+                    <input matInput formControlName="vocabLines" type="number">
+                    <mat-error *ngIf="form.get('vocabLines').hasError('api')">{{form.get('vocabLines').getError('api')}}</mat-error>
+                </mat-form-field>
+                <mat-form-field fxFlex="33">
+                    <mat-label>Short Answer Lines</mat-label>
+                    <input matInput formControlName="shortAnswerLines" type="number">
+                    <mat-error *ngIf="form.get('shortAnswerLines').hasError('api')">{{form.get('shortAnswerLines').getError('api')}}</mat-error>
+                </mat-form-field>
+                <mat-form-field fxFlex="33">
+                    <mat-label>Essay Lines</mat-label>
+                    <input matInput formControlName="essayLines" type="number">
+                    <mat-error *ngIf="form.get('essayLines').hasError('api')">{{form.get('essayLines').getError('api')}}</mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+        <div fxFlex="100" fxFlex.gt-sm="33">
+            <div fxLayout="row wrap">
+                <h1 fxFlex="100">Attached Files</h1>
+            </div>
+            <div fxLayout="row wrap">
+                <div>
+                    <ul class="file-list" *ngIf="level?.files">
+                        <li *ngFor="let file of level.files">
+                            <div><a href="{{file.path|asset}}" target="_blank">{{file.name}}</a></div> 
+                            <mat-icon class="delete-file" (click)="removeFile(file)">delete</mat-icon>
+                        </li>
+                    </ul>
+                    <button mat-stroked-button (click)="addFiles()" class="primary"><mat-icon>attach_file</mat-icon> Add More Files</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <sm-sticky-panel>
+        <button mat-flat-button class="primary" (click)="save()">Save</button>
+        <a mat-flat-button class="tertiary" [routerLink]="backRoute">Cancel</a>
+    </sm-sticky-panel>
+</form>

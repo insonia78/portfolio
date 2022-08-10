@@ -1,0 +1,15 @@
+
+{
+    "wiki":{
+       "url":"https://35.185.120.23:4000",
+        "port": 4000  
+    },
+    "api":{
+        "hostname":"localhost",
+        "port": 3333
+    },
+    "datafiles":{
+        "path":"/opt/slt_data",
+        "inpath":"/home/gonzales1609/IRENA/SLTview"
+    }
+}

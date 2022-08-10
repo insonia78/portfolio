@@ -1,0 +1,41 @@
+form.form-horizontal#valuationOfStorageForm(role='form' method='POST', action='/calculate-valuation')
+  div(class='programs-container grid-stack-item container-element' id='programs') 
+     p(class='data-header-text') Energy Programs 
+     include tables/input-tables/programs/programs-renewables-table.pug
+     include tables/input-tables/programs/programs-planning-criteria-table.pug
+     include tables/input-tables/programs/programs-demand-side-table.pug
+  div(id='Demand' class='grid-stack-item demand-container')
+    p(class='data-header-text') Demand Parameters
+    include tables/input-tables/demand/demand-table.pug
+    include graphs/input-graphs/demand-profile-graph.pug
+  div(class='generation-conventional-container grid-stack-item' id='available-tech')
+    p(class='data-header-text') Available Technologies Parameters
+    p.data-sub-header-text Thermal Generation
+    .generation-conventional-container.grid-stack-item#thermal_table
+      include tables/input-tables/generation/gen-by-fuel-dynamic-table.pug
+      include graphs/input-graphs/generation-cap-fuel-graph.pug
+      include tables/input-tables/generation/fuelprice-forecast-dynamic-table.pug
+      include tables/input-tables/generation/tech-capital-dynamic-table.pug
+            
+    p.data-sub-header-text Renewable Generation
+      include tables/input-tables/generation/generation-renewables-table.pug
+      include graphs/input-graphs/renewables-profile-graph.pug
+      include tables/input-tables/generation/generation-hydro-table.pug
+      include graphs/input-graphs/hydro-profile-graph.pug
+      include tables/input-tables/generation/generation-hydro-monthly-energy-table.pug
+    p.data-sub-header-text Energy Storage Systems
+    .generation-conventional-container.grid-stack-item#enerstortable
+      include tables/input-tables/energy-storage/energy-storage-dynamic-table.pug
+      include tables/input-tables/energy-storage/energy-storage-cost-dynamic-table.pug
+  //img(src='images/installed-capacity.png' style='width:50%')
+append body
+
+  //load dygraphs
+  script(src='../js/read-csv.js')
+  
+
+  //-plot graphs
+  script(src='../js/graphs/inputcharts.js')
+    
+//script(src='../js/inputs.js')
+   

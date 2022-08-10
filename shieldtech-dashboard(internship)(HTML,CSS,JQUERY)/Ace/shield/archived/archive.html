@@ -1,0 +1,523 @@
+<!--
+! error emblem
+-->
+<!-- #section:basics/sidebar.layout.badge -->
+<span class="badge badge-transparent tooltip-error" title="1 Ongoing Alert">
+	<i class="ace-icon fa fa-exclamation-triangle red bigger-130"></i>
+</span>
+<!-- /section:basics/sidebar.layout.badge -->
+
+<span class="badge badge-transparent tooltip-error" title="1 Ongoing Alert">
+	<i class="ace-icon fa fa-exclamation-triangle red bigger-130"></i>
+</span>
+
+<!--
+dashboard menu item
+-->
+
+<li class="">
+	<a href="#">
+		<i class="menu-icon fa fa-tachometer"></i>
+		<span class="menu-text"> Dashboard </span>
+	</a>
+
+	<b class="arrow"></b>
+</li>
+
+<!--
+PAGE CONTENT
+-->
+
+<div class="alert alert-warning">
+	Ongoing Alerts
+</div>
+<div class="hr dotted"></div>
+<div class="space-6"></div>
+<div class="alert alert-danger">
+	Emergency Call Placed
+</div>
+
+	<div class="col-lg-6">
+
+		<div class="panel panel-primary">
+
+			<div class="panel-heading">
+				<h3 class="panel-title">Location</h3>
+			</div>
+			
+			<div class="panel-body">
+				<div id="map-canvas" style="height: 400px"></div>
+			</div>
+
+		</div>
+
+	</div>
+
+	<div class="col-lg-6">
+
+		<div class="panel panel-primary">
+
+			<div class="panel-heading">
+				<h3 class="panel-title">Student Information</h3>
+			</div>
+			
+			<div class="panel-body">
+
+				<div class="row">
+
+					<div class="center">
+
+                    	<span class="profile-picture">
+                    		<img class="img-responsive" src="../../assets/avatars/profile-pic.jpg">
+                    	</span>
+                    </div>
+
+                    <div class="hr dotted"></div>
+
+                    <div class="col-xs-12">
+
+                    	<div class="profile-user-info profile-user-info-striped">
+
+							<div class="profile-info-row">
+								<div class="profile-info-name"> Phone Number </div>
+
+								<div class="profile-info-value">
+									<span class="editable" id="username">9735550123</span>
+								</div>
+							</div>
+
+							<div class="profile-info-row">
+								<div class="profile-info-name"> First Name </div>
+
+								<div class="profile-info-value">
+									<span class="editable" id="age">Alex</span>
+								</div>
+							</div>
+
+							<div class="profile-info-row">
+								<div class="profile-info-name"> Last Name </div>
+
+								<div class="profile-info-value">
+									<span class="editable" id="age">Doe</span>
+								</div>
+							</div>
+
+							<div class="profile-info-row">
+								<div class="profile-info-name"> Age </div>
+
+								<div class="profile-info-value">
+									<span class="editable" id="signup">23</span>
+								</div>
+							</div>
+
+							<div class="profile-info-row">
+								<div class="profile-info-name"> Medical Issues </div>
+
+								<div class="profile-info-value">
+									<span class="editable" id="login">athsma; alergies: polen, penicillin, cashews (nuts); type two diabetes</span>
+								</div>
+							</div>
+
+							<div class="profile-info-row">
+								<div class="profile-info-name"> Blood Type </div>
+
+								<div class="profile-info-value">
+									<span class="editable" id="about">B+</span>
+								</div>
+							</div>
+
+							<div class="profile-info-row">
+								<div class="profile-info-name"> Assigned Dorm Building </div>
+
+								<div class="profile-info-value">
+									<span class="editable" id="about">Freeman Hall</span>
+								</div>
+							</div>
+
+							<div class="profile-info-row">
+								<div class="profile-info-name"> Dorm Room Number </div>
+
+								<div class="profile-info-value">
+									<span class="editable" id="about">9b</span>
+								</div>
+							</div>
+
+							<div class="profile-info-row">
+								<div class="profile-info-name"> CWID </div>
+
+								<div class="profile-info-value">
+									<span class="editable" id="about">10809078</span>
+								</div>
+							</div>
+
+							<div class="profile-info-row">
+								<div class="profile-info-name"> Registered Email </div>
+
+								<div class="profile-info-value">
+									<span class="editable" id="about">doea9@montclair.edu</span>
+								</div>
+							</div>
+
+
+						</div>
+
+					</div>
+
+				</div>
+
+            </div>
+        </div>
+</div>
+
+<!--
+calandar nav bar entry
+-->
+
+<li class="">
+	<a href="#">
+		<i class="menu-icon fa fa-calendar"></i>
+
+		<span class="menu-text">
+			Calendar
+
+			
+		</span>
+	</a>
+
+	<b class="arrow"></b>
+</li>
+
+<!--
+danger accordion panel template
+-->
+
+<div class="panel panel-danger">
+	
+	<div class="panel-heading">
+		<div class="row">
+
+			<div class="col-xs-12 col-sm-6 col-md-8">
+				<div class="panel-title" id="alerts-title">
+      				<h3><b id="aid"></b>&nbsp&nbsp<span id="timestamp"></span></h3>
+      			</div>
+      		</div>
+
+    		<div class="col-xs-6 col-md-4 text-right">
+      			<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"><button type="button" class="btn btn-danger btn-lg">Toggle Alert</button></a>&nbsp&nbsp<button type="button" class="btn btn-success btn-lg">&nbspArchive&nbsp</button>
+      			
+      		</div>
+
+    	</div>
+    </div> 
+    
+	<div id="collapseOne" class="panel-collapse collapse in">
+
+		<div class="panel-body">
+    		<div class="row">
+
+    			<div class="col-xs-6 col-md-4">
+	    			<div class="thumbnail" id="photo_id">
+	    			</div>
+	    		</div>
+
+	    		<div class="col-xs-12 col-sm-6 col-md-8">
+
+	    			<div class="profile-user-info profile-user-info-striped">
+
+						<div class="profile-info-row">
+							<div class="profile-info-name"> Phone Number </div>
+
+							<div class="profile-info-value">
+								<span class="editable" id="phone_cell"></span>
+							</div>
+						</div>
+
+						<div class="profile-info-row">
+							<div class="profile-info-name"> First Name </div>
+
+							<div class="profile-info-value">
+								<span class="editable" id="name_first"></span>
+							</div>
+						</div>
+
+						<div class="profile-info-row">
+							<div class="profile-info-name"> Last Name </div>
+
+							<div class="profile-info-value">
+								<span class="editable" id="name_last"></span>
+							</div>
+						</div>
+
+						<div class="profile-info-row">
+							<div class="profile-info-name"> Age </div>
+
+							<div class="profile-info-value">
+								<span class="editable" id="dob"></span>
+							</div>
+						</div>
+
+						<div class="profile-info-row">
+							<div class="profile-info-name"> Medical Issues </div>
+
+							<div class="profile-info-value">
+								<span class="editable" id="medical_issues"></span>
+							</div>
+						</div>
+
+						<div class="profile-info-row">
+							<div class="profile-info-name"> Blood Type </div>
+
+							<div class="profile-info-value">
+								<span class="editable" id="blood_type"></span>
+							</div>
+						</div>
+
+						<div class="profile-info-row">
+							<div class="profile-info-name"> Assigned Dorm Building </div>
+
+							<div class="profile-info-value">
+								<span class="editable" id="dorm_building"></span>
+							</div>
+						</div>
+
+						<div class="profile-info-row">
+							<div class="profile-info-name"> Dorm Room Number </div>
+
+							<div class="profile-info-value">
+								<span class="editable" id="dorm_roomnum"></span>
+							</div>
+						</div>
+
+						<div class="profile-info-row">
+							<div class="profile-info-name"> CWID </div>
+
+							<div class="profile-info-value">
+								<span class="editable" id="cwid"></span>
+							</div>
+						</div>
+
+						<div class="profile-info-row">
+							<div class="profile-info-name"> Registered Email </div>
+
+							<div class="profile-info-value">
+								<span class="editable" id="email"></span>
+							</div>
+						</div>
+
+					</div>
+
+				</div>
+
+			</div>
+
+  		</div>
+	</div>
+
+</div>
+
+<!--
+default accordion panel template
+-->
+
+
+<!--
+
+	javascript code archiving
+
+-->
+
+<!--
+
+	multidimentional arrays in js
+
+-->
+// data_mirror_local = new Array(Object.keys(data).length);
+// for (var array_index in data) {
+// 	data_mirror_local[array_index] = new Array(21);
+// 	data_mirror_local[array_index][0] = data[array_index].aid;
+// 	data_mirror_local[array_index][1] = data[array_index].alert_status;
+// 	data_mirror_local[array_index][2] = data[array_index].uid;
+// 	data_mirror_local[array_index][3] = data[array_index].start_time;
+// 	data_mirror_local[array_index][4] = data[array_index].end_time;
+// 	data_mirror_local[array_index][5] = data[array_index].initial_loc;
+// 	data_mirror_local[array_index][6] = data[array_index].end_loc;
+// 	data_mirror_local[array_index][7] = data[array_index].location_history;
+// 	data_mirror_local[array_index][8] = data[array_index].email;
+// 	data_mirror_local[array_index][9] = data[array_index].cwid;
+// 	data_mirror_local[array_index][10] = data[array_index].name_first;
+// 	data_mirror_local[array_index][11] = data[array_index].name_last;
+// 	data_mirror_local[array_index][12] = data[array_index].dob;
+// 	data_mirror_local[array_index][13] = data[array_index].medical_issues;
+// 	data_mirror_local[array_index][14] = data[array_index].blood_type;
+// 	data_mirror_local[array_index][15] = data[array_index].dorm_building;
+// 	data_mirror_local[array_index][16] = data[array_index].dorm_roomnum;
+// 	data_mirror_local[array_index][17] = data[array_index].phone_cell;
+// 	data_mirror_local[array_index][18] = data[array_index].phone_home;
+// 	data_mirror_local[array_index][19] = data[array_index].date_created;
+// 	data_mirror_local[array_index][20] = data[array_index].last_login;
+// }
+
+<!-- 
+old js
+-->
+
+
+/*
+var exceptions = {
+	replace_html: function () { 
+		$('div#object_group').replaceWith(replace_html);
+		$('div#object_group').append(exception_html);
+	}
+};
+*/
+
+// var parent_column = $('#alerts').closest('[class*="col-"]');
+//  $(window).on('resize.jqGrid', function () {
+//      $('#alerts').jqGrid( 'setGridWidth', $(".page-content").width() );
+//  });
+//  //optional: resize on sidebar collapse/expand and container fixed/unfixed
+//  $(document).on('settings.ace.jqGrid' , function(ev, event_name, collapsed) {
+//     if( event_name === 'sidebar_collapsed' || event_name === 'main_container_fixed' ) {
+//        $('#alerts').jqGrid( 'setGridWidth', parent_column.width() );
+//     }
+//  });
+
+// 	$('#alerts').jqGrid({
+
+// 		url: '../db/query_table.php',
+// 		datatype: "json",
+// 		colNames:[' ', 'Status', 'UID', 'Start', 'End', 'Lat', 'Long', 'Lat', 'Long', 'History'],
+// 		colModel:[
+// 			{name: 'aid', index:'aid', width:'25', align:'center'},
+// 			{name: 'alert_status', index:'alert_status', width:'70'},
+// 			{name: 'uid', index:'uid', width:'40', align:'center'},
+// 			{name: 'start_time', index:'start_time', width:'130'},
+// 			{name: 'end_time', index:'end_time', width:'130'},
+// 			{name: 'initial_loc_lat', index:'initial_loc_lat', width:'50'},
+// 			{name: 'initial_loc_long', index:'initial_loc_long', width:'50'},
+// 			{name: 'end_loc_lat', index:'end_loc_lat', width:'50'},
+// 			{name: 'end_loc_long', index:'end_loc_long', width:'50'},
+// 			{name: 'location_history', index:'location_history', width:'300'}
+// 		],
+// 		rowNum:20,
+// 		rowList:[20,50,100],
+// 		pager: $('#pager'),
+// 		sortname: 'aid',
+// 		viewrecords: true,
+// 		sortorder: "desc",
+// 		altRows: true,
+// 		multiselect: true,
+// 		multiboxonly: true,
+// 		editurl: "#",
+// 		caption: "Alert Archive",
+// 		loadonce: true,
+// 		jsonReader: {repeatitems: false},
+// 		loadcomplete: function() {
+// 						var table = this;
+// 						setTimeout(function(){
+// 							styleCheckbox(table);
+							
+// 							updateActionIcons(table);
+// 							updatePagerIcons(table);
+// 							enableTooltips(table);
+// 						}, 0);
+// 					}
+
+
+// 	});
+// 	$('#alerts').jqGrid('navGrid', '#pager');
+
+	// var grid_data = 
+	// [ 
+	// 	{id:"1",name:"Desktop Computer",note:"note",stock:"Yes",ship:"FedEx", sdate:"2007-12-03"},
+	// 	{id:"2",name:"Laptop",note:"Long text ",stock:"Yes",ship:"InTime",sdate:"2007-12-03"},
+	// 	{id:"3",name:"LCD Monitor",note:"note3",stock:"Yes",ship:"TNT",sdate:"2007-12-03"},
+	// 	{id:"4",name:"Speakers",note:"note",stock:"No",ship:"ARAMEX",sdate:"2007-12-03"},
+	// 	{id:"5",name:"Laser Printer",note:"note2",stock:"Yes",ship:"FedEx",sdate:"2007-12-03"},
+	// 	{id:"6",name:"Play Station",note:"note3",stock:"No", ship:"FedEx",sdate:"2007-12-03"},
+	// 	{id:"7",name:"Mobile Telephone",note:"note",stock:"Yes",ship:"ARAMEX",sdate:"2007-12-03"},
+	// 	{id:"8",name:"Server",note:"note2",stock:"Yes",ship:"TNT",sdate:"2007-12-03"},
+	// 	{id:"9",name:"Matrix Printer",note:"note3",stock:"No", ship:"FedEx",sdate:"2007-12-03"},
+	// 	{id:"10",name:"Desktop Computer",note:"note",stock:"Yes",ship:"FedEx", sdate:"2007-12-03"},
+	// 	{id:"11",name:"Laptop",note:"Long text ",stock:"Yes",ship:"InTime",sdate:"2007-12-03"},
+	// 	{id:"12",name:"LCD Monitor",note:"note3",stock:"Yes",ship:"TNT",sdate:"2007-12-03"},
+	// 	{id:"13",name:"Speakers",note:"note",stock:"No",ship:"ARAMEX",sdate:"2007-12-03"},
+	// 	{id:"14",name:"Laser Printer",note:"note2",stock:"Yes",ship:"FedEx",sdate:"2007-12-03"},
+	// 	{id:"15",name:"Play Station",note:"note3",stock:"No", ship:"FedEx",sdate:"2007-12-03"},
+	// 	{id:"16",name:"Mobile Telephone",note:"note",stock:"Yes",ship:"ARAMEX",sdate:"2007-12-03"},
+	// 	{id:"17",name:"Server",note:"note2",stock:"Yes",ship:"TNT",sdate:"2007-12-03"},
+	// 	{id:"18",name:"Matrix Printer",note:"note3",stock:"No", ship:"FedEx",sdate:"2007-12-03"},
+	// 	{id:"19",name:"Matrix Printer",note:"note3",stock:"No", ship:"FedEx",sdate:"2007-12-03"},
+	// 	{id:"20",name:"Desktop Computer",note:"note",stock:"Yes",ship:"FedEx", sdate:"2007-12-03"},
+	// 	{id:"21",name:"Laptop",note:"Long text ",stock:"Yes",ship:"InTime",sdate:"2007-12-03"},
+	// 	{id:"22",name:"LCD Monitor",note:"note3",stock:"Yes",ship:"TNT",sdate:"2007-12-03"},
+	// 	{id:"23",name:"Speakers",note:"note",stock:"No",ship:"ARAMEX",sdate:"2007-12-03"}
+	// ];
+
+		// $.get('../db/query_table.php', function(data){
+
+	// 	(function() {
+
+ //    		var tableFunctions = {
+	// 			append_table: function() {
+	// 				var html = '<table id="object-table" class="display" cellspacing="0"></table>';
+	// 				$('#object-group').append(html);
+	// 			},
+	// 			append_thead_tfoot: function() {
+	// 				var html = '<thead> <tr> <th>AID</th> <th>Alert Status</th> <th>UID</th> <th>Time Placed</th> <th>Time Archived</th> <th>Initial Lat</th> <th>Initial Long</th> <th>End Lat</th> <th>End Long</th> <th>Location History</th> </tr> </thead> <tfoot> <tr> <th>AID</th> <th>Alert Status</th> <th>UID</th> <th>Time Placed</th> <th>Time Archived</th> <th>Initial Lat</th> <th>Initial Long</th> <th>End Lat</th> <th>End Long</th> <th>Location History</th> </tr> </tfoot> <tbody> </tbody>';
+	// 				$('#object-table').append(html);
+	// 			},
+	// 			append_data: function() {
+	// 				var html = '<tr> <td>'+data[i].aid+'</td> <td>'+data[i].alert_status+'</td> <td>'+data[i].uid+'</td> <td>'+data[i].start_time+'</td> <td>'+data[i].end_time+'</td> <td>'+data[i].initial_loc_lat+'</td> <td>'+data[i].initial_loc_long+'</td> <td>'+data[i].end_loc_lat+'</td> <td>'+data[i].end_loc_long+'</td> <td>'+data[i].location_history+'</td> </tr>';
+ //    				$('#object-table tbody').append(html);
+	// 			}
+	// 		};
+
+ //    		if (!data) {
+ //    		} else {
+ //    			tableFunctions.append_table();
+ //    			tableFunctions.append_thead_tfoot();
+ //    			for (i = 0; i < Object.keys(data).length; i = i + 1) {
+ //    				tableFunctions.append_data(i);
+
+ //    			}
+ //    			$('#object-table').dataTable();
+ //    		}
+
+ //    	}());
+ //    });
+
+
+
+<div class="sidebar-shortcuts" id="sidebar-shortcuts">
+	<div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
+		<button id="dashboard" class="btn btn-success">
+			<i class="ace-icon fa fa-signal"></i>
+		</button>
+
+		<button class="btn btn-danger">
+			<i class="ace-icon fa fa-warning"></i>
+		</button>
+
+		<!-- #section:basics/sidebar.layout.shortcuts -->
+		<button class="btn btn-warning">
+			<i class="ace-icon fa fa-users"></i>
+		</button>
+
+		<button class="btn btn-info">
+			<i class="ace-icon fa fa-gear"></i>
+		</button>
+
+		<!-- /section:basics/sidebar.layout.shortcuts -->
+	</div>
+
+	<div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
+		<span class="btn btn-success"></span>
+
+		<span class="btn btn-info"></span>
+
+		<span class="btn btn-warning"></span>
+
+		<span class="btn btn-danger"></span>
+	</div>
+</div><!-- /.sidebar-shortcuts -->

@@ -1,0 +1,111 @@
+
+table#cap-by-fuel-dynamic.table.table-striped.table-bordered.table-hover
+  thead
+    tr
+      th.container Fuel Type
+      |
+      th.col-lg-1 Capacity Year 1 (MW)
+      |  
+      th.col-lg-1 Capacity Year 2 (MW)
+      |     
+      th.col-lg-1 Fuel Price Year 1 ($/mmBTU)
+      |          
+      th.col-lg-1 Fuel Price Year 2 ($/mmBTU)
+      |          
+      th.col-lg-1 Heat Rate (BTU/kWh) 
+      | 
+      th.col-lg-1 VO&M Cost ($/MWh)
+      |         
+      th.col-lg-1 1st Reserve Cost ($/MW)
+      |         
+      th.col-lg-1 2nd Reserve Cost ($/MW)
+      |         
+      th.col-lg-1 3rd Reserve Cost ($/MW)
+      |
+      th.col-lg-1 Carbon Rate (Ton/MWh)
+
+
+
+    // /tr
+  // thead
+  tbody
+  
+    tr.entry
+      th Compressed Natural Gas (CNG)
+      |              
+      td                 
+        input.form-control.pconcap1(type='text', value='7070')
+      td 
+        input.form-control.pconcap2(type='text')      
+      td 
+        input.form-control.fuelprice1(type='text' value='3.23')
+      td 
+        input.form-control.fuelprice2(type='text')       
+      td 
+        input.form-control.heatrate(type='text' value='8900')
+      td 
+        input.form-control.vom(type='text' value='5')
+      td 
+        input.form-control.p_reserve(type='text' value='5')
+      td 
+        input.form-control.s_reserve(type='text') 
+      td 
+        input.form-control.t_reserve(type='text')
+      td 
+        input.form-control.carbon_rate(type='text' value='0.059') 
+
+    tr.entry
+      th Coal
+      |              
+      td                 
+        input.form-control.pconcap1(type='text', value='6071')
+      td 
+        input.form-control.pconcap2(type='text')      
+      td 
+        input.form-control.fuelprice1(type='text' value='2.65')
+      td 
+        input.form-control.fuelprice2(type='text')       
+      td 
+        input.form-control.heatrate(type='text' value='10500')
+      td 
+        input.form-control.vom(type='text' value='2')
+      td 
+        input.form-control.p_reserve(type='text' value='1')
+      td 
+        input.form-control.s_reserve(type='text') 
+      td 
+        input.form-control.t_reserve(type='text')
+      td 
+        input.form-control.carbon_rate(type='text' value='0.103')
+
+    tr.entry
+      th 
+        select.fuel-options.form-control.required(name='Fuels')
+          option Biomass
+      td                 
+        input.form-control.pconcap1(type='text', value='323')
+      td 
+        input.form-control.pconcap2(type='text')      
+      td 
+        input.form-control.fuelprice1(type='text' value='1.69')
+      td 
+        input.form-control.fuelprice2(type='text')       
+      td 
+        input.form-control.heatrate(type='text')
+      td 
+        input.form-control.vom(type='text' value='4')
+      td 
+        input.form-control.p_reserve(type='text')
+      td 
+        input.form-control.s_reserve(type='text') 
+      td 
+        input.form-control.t_reserve(type='text')
+      td 
+        input.form-control.carbon_rate(type='text' value='0.065')     
+      td
+        span.input-group-btn
+          a.btn.btn-primary.btn-add(type='button')
+            span.glyphicon.glyphicon-plus
+
+append body
+  script(src='../js/gen-by-fuel-dynamic.js')

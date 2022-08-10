@@ -1,0 +1,610 @@
+<html xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
+
+   <head>
+   <link href="css/jquery-ui.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/style.css">
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery-ui.js"></script>	
+	<script src = 'js/addTabClass.js'></script>
+	
+	<title>WorkBench</title>
+	<style>
+	.hidden
+	{
+	   display : none ;
+	  
+	}
+	
+	</style>
+<script>
+
+var idbSupported = false;
+var db;
+ 
+var openRequest ;
+var dataBaseName = "dataBaseNames" ;
+
+
+document.addEventListener("DOMContentLoaded", function(){
+	
+	
+	/************************************
+	
+	Functionality Button fetch
+	
+	*************************************/
+	
+	
+     $( '#func_buttons' ).button().click(function()
+	 {
+	 
+	     window.location.href = "dataBase_dialog.html?db_name=&U";
+	 	 
+	 });
+	 
+	 
+	 
+	 $( '#db_buttons' ).button().click(function()
+	 {
+	 
+	    window.location.href = "dataBase_dialog.html";
+	 	 
+	 });
+	 
+	 
+	 if(document.location.href[document.location.href.length - 1] == 'U')	 
+    {	
+	
+	      $( "#database_dialog" ).find( "#erase_buttons_byKey" ).removeClass("hidden");
+	     
+		 dataBaseName = "functunality_buttons" ;
+		 
+		 
+         indexType = "name" ;		 
+	}
+	else
+	{
+	
+	     $( "#database_dialog" ).find( "#erase_buttons_byKey" ).addClass("hidden");
+		 
+	     dataBaseName = "dataBaseNames" ;
+		 
+		 indexType = "db_name" ;
+	
+	}
+    
+	 
+
+	 
+    if("indexedDB" in window) {
+        
+		 idbSupported = true;
+    
+	}
+	
+	
+	
+	
+	
+	 
+    if(idbSupported) {
+	    	 
+		 openRequest = indexedDB.open( dataBaseName );	 
+          
+		  
+        openRequest.onupgradeneeded = function(e) {
+		
+            alert("Upgrading...");
+			
+		    thisDB = e.target.result;
+    
+	
+	
+	
+ 			
+ 
+  }
+       
+        openRequest.onsuccess = function(e) {
+			
+              alert( "Success! Connected to IndexedDb" );
+			  
+			
+			db = e.target.result;
+			
+			for(var i = 0 ; i < db.objectStoreNames.length ; i++)
+			{	
+	                 addToTheDialog_button( indexType , db.objectStoreNames.item(i) , i);				  
+			}
+			
+        }
+ 
+        openRequest.onerror = function(e) 
+		{
+            alert("Error! Not Connected to IndexedDb ");
+            console.dir(e);
+        }
+ 
+    }
+
+	
+var tabs = true ;	
+ 
+var db_dialog = $( "#database_dialog" ).dialog({
+      autoOpen: true,
+      modal: true,
+	  width: 1000,
+	  height:1300,
+      buttons: {
+	   
+        Add: function() {
+            Send();
+          $( this ).dialog( "close" );
+        },
+        Cancel: function() {
+		
+		 window.location.href = "jira internship guide test with dataBase.html";
+		 
+          $( this ).dialog( "close" );
+        }
+      },
+      close: function() 
+	  {
+      
+    	  form[ 0 ].reset();
+      }
+    });
+
+ 
+    // addTab form: calls addTab function on submit and closes the dialog
+    var form = db_dialog.find( "form" ).submit(function( event ) {
+     
+      dialog.dialog( "close" );
+	  
+      event.preventDefault();
+	  
+    });
+	
+	
+	
+  
+  function Send()
+  {
+      
+	  var name_db = $("#db_name").val();
+	 
+	 var db_content = $("#db_content").val();
+	 
+   	 var database ;
+
+	 var version ;
+	  
+       if(dataBaseName)
+      { 
+        
+        
+        database = db;
+        version =  parseInt(database.version);
+	
+		version += 1;
+		
+        database.close();
+		
+	    
+		
+		if( version )
+		{
+		
+           secondRequest = indexedDB.open( dataBaseName , version );
+	         
+         
+		}
+		
+       secondRequest.onupgradeneeded = function(e) {
+		   
+       alert("Upgrading...");
+	   
+       var thisDB = e.target.result;
+			
+			
+			
+			
+			
+			if(!thisDB.objectStoreNames.contains( name_db ) ) 
+			{
+              
+    		    var objectStore = thisDB.createObjectStore( name_db, {autoIncrement: true});
+				
+			      objectStore.createIndex( "db_name", "db_name", {unique : false});
+				
+            }
+			
+ 
+        }
+		
+		
+		
+		
+		
+		secondRequest.onsuccess = function(e) 
+		{
+            
+            db = e.target.result;
+			
+			 var transaction = db.transaction( [ name_db ] , "readwrite" );
+            
+			var store = transaction.objectStore( name_db );
+	   
+	   
+	        
+	       var dataBase =
+	       {
+		       db_name:name_db,
+			   description: db_content
+	   
+	       }
+            
+         var result = store.add( dataBase , version );
+       		   
+		result.onsuccess = function(e)
+       {
+	       window.location.href = "jira internship guide test with dataBase.html?db_name=" + name_db +"&Q";
+  
+       }		
+ 	  
+	  
+  
+     }
+   }
+ }
+ 
+
+
+function addToTheDialog_button( indexType , db_name , i )
+{
+     
+    
+	var db_template = '<fieldset style = "width:70px" >'
+	                 + '<img width ="38" heigth ="38" src = "images/databse.jpg"><text style ="font-size:30px">#{name}</text><br><text>key:#{key}</text><br>'
+					 + '<textarea name="db_content" id="db_content" rows ="5" cols ="50" class="ui-widget-content ui-corner-all">#{description}</textarea><br>'
+					 + '<input id = "get' + i + '" type ="button" value = "Call!" ><input id ="delete' + i + '" type = "button" value ="Delete!" >'
+					 + '</fieldset>' ;
+    
+         var transaction = db.transaction([ db_name ] , "readwrite" );
+            
+		 
+		 var store = transaction.objectStore( db_name );
+        
+		
+		var index = store.index( indexType );
+	
+	
+	var checkKey =  index.getKey( db_name );
+	
+	
+	checkKey.onsuccess = function()
+	{
+		var name ;
+		
+		var key = checkKey.result;	
+	    
+	  var request = store.get( Number( key ) );
+	  
+      request.onsuccess = function(event) {
+       
+	   var cursor = event.target.result;
+	   
+	   
+	   if( indexType == "name")
+	   {
+	      name = cursor.name ;
+	     
+	   }
+	   else
+	   {
+	        name = cursor.db_name ;
+	   }
+	 
+	
+    	var db_dialog =   db_template.replace( /#\{name\}/g, name ).replace( /#\{description\}/g, cursor.description ).replace(/#\{key\}/g, key );
+		
+	
+    	$( "#database_container" ).append( db_dialog );
+		 
+		 if( indexType == "name")
+	    {
+		
+		   $( "#get" + i ).button().click(function(){
+		
+		  
+		
+		   window.location.href = "jira internship guide test with dataBase.html?db_name=&J";
+		
+		  });
+	    }
+		else
+		{
+		
+		    $( "#get" + i ).button().click(function(){
+		
+		   name_db = cursor.db_name;
+		
+		   window.location.href = "jira internship guide test with dataBase.html?db_name="+ name_db +"&Q";
+		
+		  });
+		
+		
+		}
+	  
+		$( "#delete" + i ).button().click(function(){
+		
+		   var database ;
+
+	         var version ;
+		  if(indexType == "db_name")
+		  {
+		  
+		  
+		  var request = window.indexedDB.deleteDatabase( name );
+		
+		request.onsuccess = function(e)
+		{
+		  
+	   
+       if( dataBaseName )
+      { 
+        
+        
+        database = db;
+        version =  parseInt( database.version );
+	
+		version += 1;
+		
+        database.close();
+		
+	    
+		
+		if( version )
+		{
+		
+           secondRequest = indexedDB.open( dataBaseName , version );
+	         
+         
+		}
+		
+       secondRequest.onupgradeneeded = function(e) {
+		   
+       alert("Upgrading...");
+	   
+       var thisDB = e.target.result;
+			
+	    var location = document.referrer;
+			
+		    thisDB.deleteObjectStore(name);
+		    
+			alert("dataBase " + name + "Deleted!");
+			
+		
+		}
+	  
+	  }
+	  
+	}
+	
+ }
+	else
+	{
+	
+	
+	  if( dataBaseName )
+      { 
+        
+        
+        database = db;
+		
+        version =  parseInt( database.version );
+	
+		version += 1;
+		
+        database.close();
+		
+	    
+		
+		if( version )
+		{
+		
+           secondRequest = indexedDB.open( dataBaseName , version );
+	         
+         
+		}
+		
+       secondRequest.onupgradeneeded = function(e) {
+		   
+       alert("Upgrading...");
+	   
+       var thisDB = e.target.result;
+			
+	    var location = document.referrer;
+			
+		    thisDB.deleteObjectStore(name);
+		    
+			alert("dataBase " + name + "Deleted!");
+			
+		
+		}
+	  
+	  }	
+	
+	}
+	
+ });
+	
+	
+	
+	
+
+
+	
+	 }
+	 
+	 
+	
+	}
+
+
+}
+  $( "#database_dialog" ).find( "#erase_buttons_byKey" ).button().click(function()
+  {
+	
+	var db_dialog = $( "#key_dialog" ).dialog({
+      autoOpen: true,
+      modal: false,
+	  width: 250,
+	  height:200
+      
+	   
+        
+        
+    });
+	
+   $( "#deleteKey" ).button().click(function(){   
+     
+	 var name = "";
+	 
+	 var key = $( "#key_text" ).val();
+	 
+	 alert(dataBaseName);
+	 
+      var transaction = db.transaction( [ dataBaseName ] , "readwrite" );
+      
+	  var store = transaction.objectStore( dataBaseName );
+	  
+	   var request = store.get( Number( key ) );
+	    
+	   request.onsuccess = function(e)
+	   {
+	   
+	       var result =  e.target.result ;
+		   
+		   
+		   name = request.name ;
+	       
+		
+	   }
+	  
+	  if( dataBaseName )
+      { 
+        
+        
+        database = db;
+        version =  parseInt( database.version );
+	
+		version += 1;
+		
+        database.close();
+		
+	    
+		
+		if( version )
+		{
+		
+           secondRequest = indexedDB.open( dataBaseName , version );
+	         
+         
+		}
+		
+       secondRequest.onupgradeneeded = function(e) {
+		   
+       alert("Upgrading...");
+	   
+       var thisDB = e.target.result;
+			
+	    var location = document.referrer;
+			
+		    thisDB.deleteObjectStore( name );
+		    
+			alert( "dataBase " + name + "Deleted!");
+			
+		
+		}
+	  
+	  }	
+	  
+   
+   
+   
+   });	
+	
+});
+	
+  
+  
+},false);
+
+</script>
+
+  
+<!--[if gte mso 9]><xml>
+<mso:CustomDocumentProperties>
+<mso:med9f743392a4fddbf4ccc2b27cc76de msdt:dt="string">Draft|54bb13bf-84cf-4f8f-8a1d-666b6f097094</mso:med9f743392a4fddbf4ccc2b27cc76de>
+<mso:IsMyDocuments msdt:dt="string">1</mso:IsMyDocuments>
+<mso:b165e3218c9b48188c793ea09bd74850 msdt:dt="string">Internal Use Only-Confidential|ee5e89b1-84d8-4770-b6a0-819611b62087</mso:b165e3218c9b48188c793ea09bd74850>
+<mso:TaxCatchAll msdt:dt="string">2;#Draft|54bb13bf-84cf-4f8f-8a1d-666b6f097094;#1;#Internal Use Only-Confidential|ee5e89b1-84d8-4770-b6a0-819611b62087</mso:TaxCatchAll>
+<mso:Information_x0020_Classifications msdt:dt="string">1;#Internal Use Only-Confidential|ee5e89b1-84d8-4770-b6a0-819611b62087</mso:Information_x0020_Classifications>
+<mso:Document_x0020_Status msdt:dt="string">2;#Draft|54bb13bf-84cf-4f8f-8a1d-666b6f097094</mso:Document_x0020_Status>
+</mso:CustomDocumentProperties>
+</xml><![endif]-->
+</head>
+ <body>
+ 
+ <div id="database_dialog" title="Accordion data">
+  <form>
+    <fieldset class="ui-helper-reset">
+	  <h2> The applicaton uses IndexedDB For Storing The Files</h2>
+	                    
+	  <h4> please reference</h4>
+	       
+	    <a href ="http://code.tutsplus.com/tutorials/working-with-indexeddb--net-34673" target="_blank"><h3>http://code.tutsplus.com/tutorials/working-with-indexeddb--net-34673</h3></a> 
+      <br>
+	  <label for="db_title">Create a database name </label>
+	  <br>
+      <input type="text" name="db_name" id="db_name" value="" title="creates a new database or calls a existing one" class="ui-widget-content ui-corner-all">
+      <br>
+	  <label for="db_content">Description</label>
+	  <br>
+	  <textarea name="db_content" rows = "5" cols = "50" id="db_content" class="ui-widget-content ui-corner-all">Tab content</textarea>
+      
+	 
+    </fieldset>
+	
+	<fieldset>
+	
+    	<input type = "button" id = "func_buttons" value ="Call Func Button Db" > 
+        <input type = "button" id = "db_buttons" value ="Call Doc/Links Db" > 
+		<input type = "button" id = "erase_buttons_byKey" value ="Erase Db by Key(only for func_buttons)" class ="hidden" > 
+    </fieldset>
+  
+  
+  </form>
+  <form>
+  <div id = "key_dialog" hidden>
+  
+    <p> enter the Key: <input type = "text" id = 'key_text' >
+     <input type ="button" value = "delete" id = "deleteKey" >	
+  
+  </div>
+  </form>
+  <div id ="database_container">
+
+</div>
+
+</div>
+
+ 
+ 
+ 
+ 
+ 
+ </body>
+ 
+ </html>

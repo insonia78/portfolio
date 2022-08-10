@@ -1,0 +1,16 @@
+mutation ($name: String!,$active: Boolean) {
+  createGenre(name: $name, active: $active) {
+    success
+    data {
+      name,
+      active
+    }
+    errors
+  }
+}
+
+{
+	"name": "test Genre",
+  "active":true
+ 
+}

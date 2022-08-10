@@ -1,0 +1,53 @@
+pipelines:
+  branches:
+    '{master}':
+      - step:
+          name: Build and Test
+#          image: php:7.4
+          image: thecodingmachine/php:7.4-v3-apache
+          services:
+            - mariadb
+          caches:
+            - composer
+          script:
+#            - apt-get update && apt-get install -y unzip && apt-get install -y git && apt-get install -y mariadb-client
+            - mv .env.pipeline .env
+            # This replaces the value of DB_CONNECTION in phpunit.xml with the mysql database
+            # This is necessary because using ENV variables was failing for anything other than the "mysql" connection (even when setting "test" as the default connection for everything)
+            - sed -i 's/<env name="DB_CONNECTION" value="[a-z]*"/<env name="DB_CONNECTION" value="mysql"/g' phpunit.xml
+            #            - curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+            - composer install
+#            - mysql -u root -ptest -h 127.0.0.1 -e "USE pipelines; SHOW TABLES;"
+            - php artisan migrate
+            - php artisan db:seed
+            - ./vendor/bin/grumphp run
+            - rm .env
+      - step:
+          name: Deploy to Staging
+          deployment: Staging
+          script:
+            - pipe: atlassian/sftp-deploy:0.5.0
+              variables:
+                USER: $USER
+                SERVER: $HOST
+                REMOTE_PATH: '/var/www/vhosts/api.beta.spidersmart.com/'
+                PASSWORD: $PASSWORD
+      - step:
+          name: Deploy to Production
+          trigger: manual
+          deployment: Production
+          script:
+            - pipe: atlassian/sftp-deploy:0.5.0
+              variables:
+                USER: $USER
+                SERVER: $HOST
+                REMOTE_PATH: '/www/'
+                PASSWORD: $PASSWORD
+
+definitions:
+  services:
+    mariadb:
+      image: mariadb:10
+      environment:
+        MYSQL_DATABASE: 'pipelines'
+        MYSQL_ROOT_PASSWORD: 'test'

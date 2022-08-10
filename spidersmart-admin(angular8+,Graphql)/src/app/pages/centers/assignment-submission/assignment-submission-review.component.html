@@ -1,0 +1,113 @@
+<ng-container *ngIf="formInitialized">
+  <h1>{{submission.assignment.title}}</h1>
+
+  <form [formGroup]="form">
+    <mat-tab-group formArrayName="sections">
+      <mat-tab *ngFor="let section of formSections.controls; let i = index" [formGroupName]="i">
+        <ng-template mat-tab-label>{{section.get('title').value}}</ng-template>
+
+        <p>{{section.get('instructions').value}}</p>
+
+        <ng-container formArrayName="questions">
+          <section *ngFor="let question of section.get('questions').controls; let j = index" [formGroupName]="j" 
+            [ngClass]="{'question-wrapper': true, 'editable': isEditable, 'selected': question.get('question').value.id === selectedQuestionId}" 
+            (click)="setSelectedQuestion(question.get('question').value)" (clickOutside)="clearSelectedQuestion(question.get('question').value)">
+
+            <section class="question-content">
+              <ng-container [ngSwitch]="question.get('question').value.type">
+                <!-- VOCAB QUESTION -->
+                <ng-container *ngSwitchCase="'vocab'">
+                  <h2>{{j+1}}. {{question.get('question').value.question}}</h2>
+                  <p class="answer">{{question.get('answer').value || 'NO ANSWER SUBMITTED'}}</p>
+                </ng-container>
+    
+                <!-- SHORT ANSWER QUESTION -->
+                <ng-container *ngSwitchCase="'short_answer'">
+                  <h2>{{j+1}}. <span [innerHTML]="question.get('question').value.question" class="short-answer-prompt"></span></h2>
+                  <p class="answer">{{question.get('answer').value || 'NO ANSWER SUBMITTED'}}</p>
+                </ng-container>
+    
+                <!-- MULTIPLE CHOICE QUESTION -->
+                <ng-container *ngSwitchCase="'multiple_choice'">
+                  <h2>{{j+1}}. <span [innerHTML]="question.get('question').value.question" class="short-answer-prompt"></span></h2>
+
+                </ng-container>
+    
+                <!-- MULTIPLE ANSWER QUESTION -->
+                <ng-container *ngSwitchCase="'multiple_answer'">
+                  <h2>{{j+1}}. <span [innerHTML]="question.get('question').value.question" class="short-answer-prompt"></span></h2>
+                  
+                </ng-container>
+    
+                <!-- ESSAY QUESTION -->
+                <ng-container *ngSwitchCase="'essay'">
+                  <h2>{{j+1}}. The following essay was presented to the student.</h2>
+                  <div class="essay-prompt" [innerHTML]="question.get('question').value.question"></div>
+                  <div class="essay-wrapper" [innerHTML]="question.get('answer').value"></div>
+                </ng-container>
+              </ng-container>
+              <!-- <quill-editor [modules]="quillConfiguration" formControlName="correction"></quill-editor> -->
+            </section>
+            <section class="question-review">
+              <ng-container *ngIf="selectedQuestionId === question.get('question').value.id; else notSelected">
+                <div class="question-correct">
+                  <h2>Correct:</h2>
+                  <mat-button-toggle-group formControlName="correct">
+                    <mat-button-toggle [value]="true">Yes</mat-button-toggle>
+                    <mat-button-toggle [value]="null">N/A</mat-button-toggle>
+                    <mat-button-toggle [value]="false">No</mat-button-toggle>
+                  </mat-button-toggle-group>
+                </div>
+                <div class="question-comments">
+                  <h2>Comments</h2>
+                  <quill-editor [modules]="quillConfiguration" formControlName="comments"></quill-editor>
+                </div>
+              </ng-container>
+              <ng-template #notSelected>
+                <sm-correct-chip [correct]="question.get('correct').value"></sm-correct-chip>
+
+                <div *ngIf="question.get('comments').value !== null">
+                  <h2>Comments</h2>
+                  <div [innerHTML]="question.get('comments').value"></div>
+                </div>
+              </ng-template>
+            </section>
+          </section>
+        </ng-container>
+      </mat-tab>
+    </mat-tab-group>
+  </form>
+
+  <sm-sticky-panel>
+    <ng-container *ngIf="isEditable; else locked">
+      <button mat-flat-button class="primary" (click)="submit()">{{completeOnSubmit ? 'Submit Review and Close' : 'Submit Review'}}</button>
+      <button mat-flat-button class="secondary" (click)="save()" 
+        [disabled]="autosave" matTooltip="Manual drafts are disabled.  To enable, turn off auto-save first." 
+        [matTooltipDisabled]="!autosave">Save Draft</button>
+      <a mat-flat-button [routerLink]="['/assignment-submission']" class="tertiary">Cancel</a>
+      <div class="options">
+        <mat-slide-toggle color="primary" [checked]="autosave" (change)="autosave = !autosave">Auto-save</mat-slide-toggle>
+        <mat-slide-toggle color="primary" [checked]="completeOnSubmit" (change)="completeOnSubmit = !completeOnSubmit" 
+          matTooltip="If enabled, the assignment will complete and be closed for revision upon submission.">Close on Submit</mat-slide-toggle>
+        <button mat-stroked-button class="secondary"
+          [smPrintAssignmentSubmission]="submission.id"
+          (printFail)="pageService.setLoading(false)"
+          (lookupFail)="pageService.setLoading(false)" 
+          (lookupStart)="pageService.setLoading(true)" 
+          (printStart)="pageService.setLoading(false)"><mat-icon>print</mat-icon> Print</button>
+      </div>
+    </ng-container>
+    <ng-template #locked>
+      The assignment is currently locked because it is complete or pending student submission.
+      <a mat-flat-button [routerLink]="['/assignment-submission']" class="tertiary">Go Back</a>
+      <div class="options">
+        <button mat-stroked-button class="secondary"
+        [smPrintAssignmentSubmission]="submission.id"
+        (printFail)="pageService.setLoading(false)"
+        (lookupFail)="pageService.setLoading(false)" 
+        (lookupStart)="pageService.setLoading(true)" 
+        (printStart)="pageService.setLoading(false)"><mat-icon>print</mat-icon> Print</button>
+      </div>
+    </ng-template>
+  </sm-sticky-panel>
+</ng-container>

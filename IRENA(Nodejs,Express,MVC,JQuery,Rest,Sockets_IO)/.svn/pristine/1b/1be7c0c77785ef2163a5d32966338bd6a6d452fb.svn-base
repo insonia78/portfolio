@@ -1,0 +1,152 @@
+select.form-control.required#country(name='country')
+  option Select a country
+  option Afghanistan
+  option Albania
+  option Algeria
+  option Angola
+  option Antigua and Barbuda
+  option Argentina
+  option Armenia
+  option Australia
+  option Azerbaijan
+  option Bahamas
+  option Bahrain
+  option Bangladesh
+  option Barbados
+  option Belarus
+  option Belgium
+  option Belize
+  option Benin
+  option Bhutan
+  option Bosnia and Herzegovina
+  option Botswana
+  option Brunei
+  option Darussalam
+  option Bulgaria
+  option Burkina Faso
+  option Cabo Verde
+  option Cameroon
+  option China
+  option Colombia
+  option Comoros
+  option Côte d'Ivoire
+  option Croatia
+  option Cuba
+  option Cyprus
+  option Czechia
+  option Denmark
+  option Djibouti
+  option Dominican Republic
+  option Ecuador
+  option Egypt
+  option Eritrea
+  option Estonia
+  option Ethiopia
+  option European Union
+  option Fiji
+  option Finland
+  option France
+  option Gabon
+  option Gambia
+  option Georgia
+  option Germany
+  option Ghana
+  option Greece
+  option Grenada
+  option Guyana
+  option Hungary
+  option Iceland
+  option India
+  option Indonesia
+  option Iran (Islamic Republic of)
+  option Iraq
+  option Ireland
+  option Israel
+  option Italy
+  option Jamaica
+  option Japan
+  option Jordan
+  option Kazakhstan
+  option Kenya
+  option Kiribati
+  option Kuwait
+  option Latvia
+  option Lesotho
+  option Liechtenstein
+  option Lithuania
+  option Luxembourg
+  option Malaysia
+  option Maldives
+  option Mali
+  option Malta
+  option Marshall Islands
+  option Mauritania
+  option Mauritius
+  option Mexico
+  option Micronesia(Federated States of)
+  option Monaco
+  option Mongolia
+  option Montenegro
+  option Morocco
+  option Mozambique
+  option Namibia
+  option Nauru
+  option Kingdom of the Netherlands
+  option New Zealand
+  option Nicaragua
+  option Niger
+  option Nigeria
+  option Norway
+  option Oman
+  option Pakistan
+  option Palau
+  option Panama
+  option Peru
+  option Philippines
+  option Poland
+  option Portugal
+  option Qatar
+  option Republic of Korea
+  option Republic of Moldova
+  option Romania
+  option Russian Federation
+  option Rwanda
+  option Saint Kitts and Nevis
+  option Saint Lucia
+  option Saint Vincent and the Grenadines
+  option Samoa
+  option Sao Tome and Principe
+  option Saudi Arabia
+  option Senegal
+  option Serbia
+  option Seychelles
+  option Sierra Leone
+  option Singapore
+  option Slovakia
+  option Slovenia
+  option Solomon Islands
+  option Somalia
+  option South Africa
+  option Spain
+  option Sri Lanka
+  option Sudan
+  option Swaziland
+  option Sweden
+  option Switzerland
+  option Tajikistan
+  option Thailand
+  option the former Yugoslav Republic of Macedonia
+  option Togo
+  option Tonga
+  option Trinidad and Tobago
+  option Tunisia
+  option Turkey
+  option Tuvalu
+  option Uganda
+  option United Arab Emirates
+  option United Kingdom of Great Britain and Northern Ireland
+  option United States of America
+  option Uruguay
+  option Vanuatu
+  option Yemen
+  option Zambia

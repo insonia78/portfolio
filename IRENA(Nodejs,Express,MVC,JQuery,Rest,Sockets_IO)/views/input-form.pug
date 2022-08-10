@@ -1,0 +1,359 @@
+form.form-horizontal#valuationOfStorageForm(role='form' method='POST', action='/calculate-valuation')
+  table#valuationInputTable.table.table-striped.table-bordered.table-hover
+    thead
+      tr
+        th.col-lg-3
+        |
+        th.col-lg-2 Value
+        |          
+        th.col-lg-5 Description
+        |          
+        th.col-lg-2 Range
+      // /tr
+    // thead
+    tbody
+      tr
+        th Country
+        |          
+        td
+          include country-option.pug
+        |          
+        td IRENA member country
+        |          
+        td 
+      // /tr
+      tr
+        th Peak Capacity (MW)
+        |          
+        td
+          input.form-control#peakCapacity(type='text' name='peakCapacity')
+        |          
+        td The Peak Capacity in MW
+        |          
+        td 0 - 10000
+      // /tr
+      tr
+        th System Type
+        |          
+        td
+          select.form-control#systemType(name='systemType')
+            option(value='1') Normal
+            option(value='2') Island
+        |          
+        td The System Type: Normal or Island
+        |          
+        td Normal/Island
+      // /tr
+      tr
+        th Miles of Transmission
+        |          
+        td
+          input.form-control#milesOfTransmission(type='text' name='milesOfTransmission')
+        |          
+        td Total Miles of Transmission Lines
+        |          
+        td 0 - 1000000
+      // /tr
+      tr
+        th Miles of Distribution
+        |          
+        td
+          input.form-control#milesOfDistribution(type='text' name='milesOfDistribution')
+        |          
+        td Total Miles of Distribution Lines
+        |          
+        td 1 - 1000000
+      // /tr
+      tr
+        th Peak Electricity Demand
+        |          
+        td
+          input.form-control#peakDemand(type='text' name='peakDemand')
+        |          
+        td The Highest Electricity Demand
+        |          
+        td 0 - 100
+      // /tr
+      tr
+        th Peak Demand Growth Rate
+        |          
+        td
+          input.form-control#peakDemandGrowthRate(type='text' name='peakDemandGrowthRate')
+        |          
+        td The Growth Rate of the Peak Demand
+        |          
+        td 0 - 1
+      // /tr
+      tr
+        th Amount of Solar Integration
+        |          
+        td
+          input.form-control#solarIntegration(type='text' name='solarIntegration')
+        |          
+        td Total Amount (MW) of Existing Solar Generation
+        |          
+        td 0 - 500000
+      // /tr
+      tr
+        th Amount of Wind Integration
+        |          
+        td
+          input.form-control#windIntegration(type='text' name='windIntegration')
+        |          
+        td Total Amount (MW) of Existing Wind Generation
+        |          
+        td 0 - 400000
+      // /tr
+      tr
+        th Total Generation Capacity
+        |          
+        td
+          input.form-control#totalGenerationCapacity(type='text' name='totalGenerationCapacity')
+        |          
+        td Total Amount (MW) of Existing Generation Capacity
+        |          
+        td 0 - 8888888
+      // /tr
+      tr
+        th Generation Capacity Natural Gas
+        |          
+        td
+          input.form-control#generationCapacityNatGas(type='text' name='generationCapacityNatGas')
+        |          
+        td Amount (MW) of Existing Natural Gas Generation Capacity 
+        |          
+        td 0 - 1000
+      // /tr
+      tr
+        th Generation Capacity Coal
+        |          
+        td
+          input.form-control#generationCapacityCoal(type='text' name='generationCapacityCoal')
+        |          
+        td Amount (MW) of Existing Coal Generation Capacity 
+        |          
+        td 0 - 1000
+      // /tr
+      tr
+        th Generation Capacity Nuclear
+        |          
+        td
+          input.form-control#generationCapacityNuclear(type='text' name='generationCapacityNuclear')
+        |          
+        td Amount (MW) of Existing Nuclear Generation Capacity 
+        |          
+        td 0 - 1000
+      // /tr
+      tr
+        th Generation Capacity Diesel
+        |          
+        td
+          input.form-control#generationCapacityDiesel(type='text' name='generationCapacityDiesel')
+        |          
+        td Amount (MW) of Existing Diesel Generation Capacity 
+        |          
+        td 0 - 1000
+      // /tr
+      tr
+        th Heat Rate Natural Gas
+        |          
+        td
+          input.form-control#heatRateNatGas(type='text' name='heatRateNatGas')
+        |          
+        td Heat Rate Natural Gas
+        |          
+        td 0 - 1000
+      // /tr
+      tr
+        th Heat Rate Coal
+        |          
+        td
+          input.form-control#heatRateCoal(type='text' name='heatRateCoal')
+        |          
+        td Heat Rate Coal
+        |          
+        td 0 - 1000
+      // /tr
+      tr
+        th Heat Rate Nuclear
+        |          
+        td
+          input.form-control#heatRateNuclear(type='text' name='heatRateNuclear')
+        |          
+        td Heat Rate Nuclear
+        |          
+        td 0 - 1000
+      // /tr
+      tr
+        th Heat Rate Diesel
+        |          
+        td
+          input.form-control#heatRateDiesel(type='text' name='heatRateDiesel')
+        |          
+        td Heat Rate Diesel
+        |          
+        td 0 - 1000
+      // /tr
+      tr
+        th Natural Gas Price
+        |          
+        td
+          input.form-control#priceNatGas(type='text' name='priceNatGas')
+        |          
+        td Natural Gas Price
+        |          
+        td 0 - 1000
+      // /tr
+      tr
+        th Coal Price
+        |          
+        td
+          input.form-control#priceCoal(type='text' name='priceCoal')
+        |          
+        td Coal Price
+        |          
+        td 0 - 1000
+      // /tr
+      tr
+        th Nuclear Fuel Price
+        |          
+        td
+          input.form-control#priceNuclear(type='text' name='priceNuclear')
+        |          
+        td Nuclear Fuel Price
+        |          
+        td 0 - 1000
+      // /tr
+      tr
+        th Diesel Price
+        |          
+        td
+          input.form-control#priceDiesel(type='text' name='priceDiesel')
+        |          
+        td Diesel Price
+        |          
+        td 0 - 1000
+      // /tr
+      tr
+        th Planning Reserve Margin
+        |          
+        td
+          input.form-control#planningReserveMargin(type='text' name='planningReserveMargin')
+        |          
+        td Description of Planning Reserve Margin
+        |          
+        td 0 - 1000
+      // /tr
+      tr
+        th Spinning Reserve Margin
+        |          
+        td
+          input.form-control#spinningReserverMargin(type='text' name='spinningReserverMargin')
+        |          
+        td Description of Spinning Reserve Margin
+        |          
+        td 0 - 1000
+      // /tr
+      tr
+        th Regulation Margin
+        |          
+        td
+          input.form-control#regulationMargin(type='text' name='regulationMargin')
+        |          
+        td Description of Regulation Margin
+        |          
+        td 0 - 1000
+      // /tr
+      tr
+        th Transmission Congestion Indicator
+        |          
+        td
+          input.form-control#transmissionCongestionIndicator(type='text' name='transmissionCongestionIndicator')
+        |          
+        td Description of Transmission Congestion Indicator
+        |          
+        td 0 - 1
+      // /tr
+      tr
+        th Demand Forecast Risk
+        |          
+        td
+          input.form-control#demandForecastRisk(type='text' name='demandForecastRisk')
+        |          
+        td Description of Demand Forecast Risk
+        |          
+        td 0 - 100
+      // /tr
+      tr
+        th Geo Diversity Indicator
+        |          
+        td
+          input.form-control#geoDiversityIndicator(type='text' name='geoDiversityIndicator')
+        |          
+        td Description of Geo Diversity Indicator
+        |          
+        td 1 - 10
+      // /tr
+      tr
+        th Outage Indices
+        |          
+        td
+          input.form-control#outageIndices(type='text' name='outageIndices')
+        |          
+        td General Reliability Indicators
+        |          
+        td 1 - 10
+      // /tr
+      tr
+        th Value of Loss Load
+        |          
+        td
+          input.form-control#voll(type='text' name='voll')
+        |          
+        td Description of Value of Loss Load
+        |          
+        td 1 - 500
+      // /tr
+      tr
+        th Renewables Output Forecast Risk
+        |          
+        td
+          input.form-control#roForecastRisk(type='text' name='roForecastRisk')
+        |          
+        td Description of Renewables Output Forecast Risk
+        |          
+        td 1 - 100
+      // /tr
+      tr
+        th Frequency Regulation Market Payment or Value
+        |          
+        td
+          input.form-control#frmpv(type='text' name='frmpv')
+        |          
+        td Description of Frequency Regulation Market Payment or Value
+        |          
+        td $250K - $600K per MW year
+      // /tr
+      tr
+        th Value of Avoided Generation Cost
+        |          
+        td
+          input.form-control#vagc(type='text' name='vagc')
+        |          
+        td Description of Value of Avoided Generation Cost
+        |          
+        td $$
+      // /tr
+      tr
+        th US Dollar to Local Currency Conversion Factor
+        |          
+        td
+          input.form-control#vagc(type='text' name='vagc')
+        |          
+        td Description of US Dollar to Local Currency Conversion Factor
+        |          
+        td n/a
+      // /tr
+    // /tbody
+  // /table
+// /form

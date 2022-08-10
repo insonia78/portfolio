@@ -1,0 +1,26 @@
+.GameHeaderDetailsContainer-pagecontainer {
+
+    width:100%;
+    min-height:100%;
+    height:auto;
+    border: 2px solid #c4aead;
+    display:grid;
+    align-items: center;
+    justify-items: center;
+    grid-template-columns: 43% 14% 43%;
+    grid-template-rows: auto;
+    color:rgb(146.064 107.457 131.223);
+   
+
+}
+.GameHeaderDetailsConponent-game-title-container{    
+    background-color: black;
+    mix-blend-mode:hard-light;
+}
+.GameHeaderDetailsConponent-game-title-text{
+
+    transform: rotate(-15deg); 
+    color:#34c9eb;
+    background-color: black;
+    mix-blend-mode:difference;
+}

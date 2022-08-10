@@ -1,0 +1,10 @@
+
+select.form-control.required(name='Region')
+  option Select a region
+  option(value='North') North Hemisphere
+  option(value='Equator') Equator
+  option(value='South') South Hemisphere
+  option(value='User') User Defined
+  
+
+

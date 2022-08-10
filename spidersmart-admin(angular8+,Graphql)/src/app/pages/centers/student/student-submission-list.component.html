@@ -1,0 +1,45 @@
+<div class="actions-wrapper">
+  <mat-slide-toggle color="primary" [checked]="showCompleted" (change)="toggleShowComplete()">Show Completed Assignments</mat-slide-toggle>
+  <mat-slide-toggle color="primary" [checked]="showLocked" (change)="toggleShowLocked()">Show Locked Assignments</mat-slide-toggle>
+</div>
+
+<sm-datatable [dataSource]="submissions" defaultSortColumn="dateFrom" [serverSideProcessing]="true" (dataRequest)="loadSubmissions($event)">
+  <sm-datatable-column name="assignment.title" label="Title">
+    <ng-container *smDatatableCell="let data">
+      {{data?.assignment?.title}}
+      <mat-icon *ngIf="data.isStudentDraft" class="has-draft"
+        matTooltip="The student has been working on this.  The last change was made on {{data.dateFrom|date:'MMM d, y'}} at {{data.dateFrom|date:'h:mm a'}}">flip_to_back</mat-icon>
+    </ng-container>
+  </sm-datatable-column>
+  <sm-datatable-column name="center" label="Center">
+    <ng-container *smDatatableCell="let data">
+      {{data?.enrollment?.center?.name}}
+    </ng-container>
+  </sm-datatable-column>
+  <sm-datatable-column name="dateFrom" label="Started">
+    <ng-container *smDatatableCell="let data">
+      {{(data?.isStudentDraft ? data?.lastNonDraft?.dateFrom : data?.dateFrom)|date: "MMM d, y 'at' h:mm a"}}
+    </ng-container></sm-datatable-column>
+  <sm-datatable-column name="status" label="Status">
+    <ng-container *smDatatableCell="let data">{{data?.status|assignmentStatus}}</ng-container>
+  </sm-datatable-column>
+
+  <sm-datatable-row-actions>
+    <ng-container *smDatatableCell="let data">
+      <ng-container *hasPermission="Permission.ASSIGNMENT_REVIEW">
+        <sm-datatable-row-action action="assignment" tooltip="Review Submission" [route]="['/assignment-submission', data.id, 'review']" *ngIf="isEditable(data)"></sm-datatable-row-action>
+        <sm-datatable-row-action action="preview" tooltip="View Submission" [route]="['/assignment-submission', data.id, 'review']" *ngIf="!isEditable(data)"></sm-datatable-row-action>
+      </ng-container>
+      <sm-datatable-row-action action="print" tooltip="Print Submission" 
+        [smPrintAssignmentSubmission]="data.id"
+        (printFail)="pageService.setLoading(false)"
+        (lookupFail)="pageService.setLoading(false)" 
+        (lookupStart)="pageService.setLoading(true)" 
+        (printStart)="pageService.setLoading(false)">
+      </sm-datatable-row-action>
+      <ng-container *hasPermission="Permission.ASSIGNMENT_COMPLETE">
+        <sm-datatable-row-action action="assignment_turned_in" tooltip="Complete Assignment" (click)="complete(data.id)" *ngIf="AssignmentStatus[data.status] !== AssignmentStatus.complete"></sm-datatable-row-action>
+      </ng-container>
+    </ng-container>
+  </sm-datatable-row-actions>
+</sm-datatable>

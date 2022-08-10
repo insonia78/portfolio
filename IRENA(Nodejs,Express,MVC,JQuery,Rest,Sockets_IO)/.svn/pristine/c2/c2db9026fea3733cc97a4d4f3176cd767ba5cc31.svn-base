@@ -1,0 +1,990 @@
+extends ../layout
+
+block content
+  html
+    head
+      meta(http-equiv='Content-Type', content='text/html; charset=windows-1252')
+      meta(name='Generator', content='Microsoft Word 15 (filtered)')
+      style.
+        <!--
+        /* Font Definitions */
+        @font-face
+        {font-family:Helvetica;
+        panose-1:2 11 6 4 2 2 2 2 2 4;}
+        @font-face
+        {font-family:SimSun;
+        panose-1:2 1 6 0 3 1 1 1 1 1;}
+        @font-face
+        {font-family:"Cambria Math";
+        panose-1:2 4 5 3 5 4 6 3 2 4;}
+        @font-face
+        {font-family:Calibri;
+        panose-1:2 15 5 2 2 2 4 3 2 4;}
+        @font-face
+        {font-family:"Geometr415 Blk BT Black";}
+        @font-face
+        {font-family:"Geometric 415 Lite BT";}
+        @font-face
+        {font-family:"Geometr415 Md BT Medium";}
+        @font-face
+        {font-family:Tahoma;
+        panose-1:2 11 6 4 3 5 4 4 2 4;}
+        @font-face
+        {font-family:"Geometr415 Lt BT Lite";}
+        @font-face
+        {font-family:"\@SimSun";
+        panose-1:2 1 6 0 3 1 1 1 1 1;}
+        /* Style Definitions */
+        p.MsoNormal, li.MsoNormal, div.MsoNormal
+        {margin-top:0in;
+        margin-right:0in;
+        margin-left:0in;
+        text-align:justify;
+        line-height:115%;
+        font-size:12.0pt;
+        font-family:"Helvetica",sans-serif;}
+        h1
+        {mso-style-link:"Heading 1 Char";
+        margin-right:0in;
+        margin-left:.5in;
+        text-align:justify;
+        text-indent:-.25in;
+        line-height:107%;
+        page-break-before:always;
+        page-break-after:avoid;
+        font-size:16.0pt;
+        font-family:"Geometr415 Blk BT Black";
+        color:#00538F;
+        text-transform:uppercase;
+        font-weight:normal;}
+        h2
+        {mso-style-link:"Heading 2 Char";
+        margin-right:0in;
+        margin-left:.3in;
+        text-align:justify;
+        text-indent:-.3in;
+        line-height:115%;
+        page-break-after:avoid;
+        font-size:14.0pt;
+        font-family:"Geometric 415 Lite BT";
+        color:#629DD1;
+        text-transform:uppercase;
+        font-weight:normal;}
+        h3
+        {mso-style-link:"Heading 3 Char";
+        margin-top:2.0pt;
+        margin-right:0in;
+        margin-left:.85in;
+        text-align:justify;
+        text-indent:-.35in;
+        line-height:107%;
+        page-break-after:avoid;
+        font-size:12.0pt;
+        font-family:"Trebuchet MS",sans-serif;
+        color:#00375F;
+        font-weight:normal;}
+        h4
+        {mso-style-link:"Heading 4 Char";
+        margin-top:2.0pt;
+        margin-right:0in;
+        margin-left:1.2in;
+        text-align:justify;
+        text-indent:-.45in;
+        line-height:115%;
+        page-break-after:avoid;
+        font-size:12.0pt;
+        font-family:"Trebuchet MS",sans-serif;
+        color:#00538F;
+        font-weight:normal;
+        font-style:italic;}
+        h5
+        {mso-style-link:"Heading 5 Char";
+        margin-top:2.0pt;
+        margin-right:0in;
+        margin-left:1.55in;
+        text-align:justify;
+        text-indent:-.55in;
+        line-height:115%;
+        page-break-after:avoid;
+        font-size:12.0pt;
+        font-family:"Trebuchet MS",sans-serif;
+        color:#00538F;
+        font-weight:normal;}
+        p.MsoToc1, li.MsoToc1, div.MsoToc1
+        {margin:0in;
+        margin-bottom:.0001pt;
+        text-align:justify;
+        font-size:12.0pt;
+        font-family:"Helvetica",sans-serif;}
+        p.MsoToc2, li.MsoToc2, div.MsoToc2
+        {margin-top:0in;
+        margin-right:0in;
+        margin-bottom:0in;
+        margin-left:11.05pt;
+        margin-bottom:.0001pt;
+        text-align:justify;
+        font-size:12.0pt;
+        font-family:"Helvetica",sans-serif;}
+        p.MsoToc3, li.MsoToc3, div.MsoToc3
+        {margin-top:0in;
+        margin-right:0in;
+        margin-bottom:0in;
+        margin-left:22.1pt;
+        margin-bottom:.0001pt;
+        text-align:justify;
+        font-size:12.0pt;
+        font-family:"Helvetica",sans-serif;}
+        p.MsoFootnoteText, li.MsoFootnoteText, div.MsoFootnoteText
+        {mso-style-name:"Footnote Text\,fn\,Texto de rodapé\,nota_rodapé\,nota de rodapé\,FOOTNOTES\,single space\,footnote text\,Footnote Text Char Char\,Footnote text Char Char\,Footnote text";
+        mso-style-link:"Footnote Text Char\,fn Char\,Texto de rodapé Char\,nota_rodapé Char\,nota de rodapé Char\,FOOTNOTES Char\,single space Char\,footnote text Char\,Footnote Text Char Char Char\,Footnote text Char Char Char\,Footnote text Char";
+        margin-top:0in;
+        margin-right:0in;
+        margin-left:0in;
+        text-align:justify;
+        font-size:10.0pt;
+        font-family:"Times New Roman",serif;}
+        p.MsoCommentText, li.MsoCommentText, div.MsoCommentText
+        {mso-style-link:"Comment Text Char";
+        margin-top:0in;
+        margin-right:0in;
+        margin-left:0in;
+        text-align:justify;
+        font-size:10.0pt;
+        font-family:"Helvetica",sans-serif;}
+        p.MsoHeader, li.MsoHeader, div.MsoHeader
+        {mso-style-link:"Header Char";
+        margin-top:0in;
+        margin-right:0in;
+        margin-left:0in;
+        text-align:justify;
+        font-size:12.0pt;
+        font-family:"Helvetica",sans-serif;}
+        p.MsoFooter, li.MsoFooter, div.MsoFooter
+        {mso-style-link:"Footer Char";
+        margin-top:0in;
+        margin-right:0in;
+        margin-left:0in;
+        text-align:justify;
+        font-size:12.0pt;
+        font-family:"Helvetica",sans-serif;}
+        p.MsoCaption, li.MsoCaption, div.MsoCaption
+        {margin-top:0in;
+        margin-right:0in;
+        margin-left:0in;
+        text-align:justify;
+        font-size:9.0pt;
+        font-family:"Helvetica",sans-serif;
+        color:#629DD1;
+        font-weight:bold;}
+        span.MsoFootnoteReference
+        {vertical-align:super;}
+        p.MsoTitle, li.MsoTitle, div.MsoTitle
+        {mso-style-link:"Title Char";
+        margin-right:0in;
+        margin-left:0in;
+        text-align:justify;
+        line-height:107%;
+        page-break-before:always;
+        page-break-after:avoid;
+        font-size:16.0pt;
+        font-family:"Geometr415 Md BT Medium";
+        color:#00538F;}
+        p.MsoBodyText, li.MsoBodyText, div.MsoBodyText
+        {mso-style-link:"Body Text Char";
+        margin-top:0in;
+        margin-right:0in;
+        margin-bottom:0in;
+        margin-left:5.35pt;
+        margin-bottom:.0001pt;
+        font-size:12.0pt;
+        font-family:"Geometr415 Lt BT Lite";}
+        a:link, span.MsoHyperlink
+        {color:blue;
+        text-decoration:underline;}
+        a:visited, span.MsoHyperlinkFollowed
+        {color:purple;
+        text-decoration:underline;}
+        p
+        {margin-right:0in;
+        margin-left:0in;
+        font-size:12.0pt;
+        font-family:"Times New Roman",serif;}
+        p.MsoCommentSubject, li.MsoCommentSubject, div.MsoCommentSubject
+        {mso-style-link:"Comment Subject Char";
+        margin-top:0in;
+        margin-right:0in;
+        margin-left:0in;
+        text-align:justify;
+        font-size:10.0pt;
+        font-family:"Helvetica",sans-serif;
+        font-weight:bold;}
+        p.MsoAcetate, li.MsoAcetate, div.MsoAcetate
+        {mso-style-link:"Balloon Text Char";
+        margin-top:0in;
+        margin-right:0in;
+        margin-left:0in;
+        text-align:justify;
+        font-size:8.0pt;
+        font-family:"Tahoma",sans-serif;}
+        span.MsoPlaceholderText
+        {color:gray;}
+        p.MsoNoSpacing, li.MsoNoSpacing, div.MsoNoSpacing
+        {mso-style-link:"No Spacing Char";
+        margin:0in;
+        margin-bottom:.0001pt;
+        font-size:11.0pt;
+        font-family:"Trebuchet MS",sans-serif;}
+        p.MsoListParagraph, li.MsoListParagraph, div.MsoListParagraph
+        {mso-style-link:"List Paragraph Char";
+        margin-top:0in;
+        margin-right:0in;
+        margin-left:.5in;
+        text-align:justify;
+        line-height:115%;
+        font-size:12.0pt;
+        font-family:"Helvetica",sans-serif;}
+        p.MsoListParagraphCxSpFirst, li.MsoListParagraphCxSpFirst, div.MsoListParagraphCxSpFirst
+        {mso-style-link:"List Paragraph Char";
+        margin-top:0in;
+        margin-right:0in;
+        margin-left:.5in;
+        text-align:justify;
+        line-height:115%;
+        font-size:12.0pt;
+        font-family:"Helvetica",sans-serif;}
+        p.MsoListParagraphCxSpMiddle, li.MsoListParagraphCxSpMiddle, div.MsoListParagraphCxSpMiddle
+        {mso-style-link:"List Paragraph Char";
+        margin-top:0in;
+        margin-right:0in;
+        margin-left:.5in;
+        text-align:justify;
+        line-height:115%;
+        font-size:12.0pt;
+        font-family:"Helvetica",sans-serif;}
+        p.MsoListParagraphCxSpLast, li.MsoListParagraphCxSpLast, div.MsoListParagraphCxSpLast
+        {mso-style-link:"List Paragraph Char";
+        margin-top:0in;
+        margin-right:0in;
+        margin-left:.5in;
+        text-align:justify;
+        line-height:115%;
+        font-size:12.0pt;
+        font-family:"Helvetica",sans-serif;}
+        span.MsoIntenseReference
+        {font-variant:small-caps;
+        color:#0070C0;
+        letter-spacing:.25pt;
+        font-weight:bold;}
+        p.MsoBibliography, li.MsoBibliography, div.MsoBibliography
+        {margin-top:0in;
+        margin-right:0in;
+        margin-left:0in;
+        text-align:justify;
+        line-height:115%;
+        font-size:12.0pt;
+        font-family:"Helvetica",sans-serif;}
+        p.MsoTocHeading, li.MsoTocHeading, div.MsoTocHeading
+        {margin-right:0in;
+        margin-left:.25in;
+        text-align:justify;
+        text-indent:-.25in;
+        line-height:107%;
+        page-break-before:always;
+        page-break-after:avoid;
+        font-size:16.0pt;
+        font-family:"Geometr415 Blk BT Black";
+        color:#00538F;
+        text-transform:uppercase;}
+        span.Heading2Char
+        {mso-style-name:"Heading 2 Char";
+        mso-style-link:"Heading 2";
+        font-family:"Geometric 415 Lite BT";
+        color:#629DD1;
+        text-transform:uppercase;}
+        span.ListParagraphChar
+        {mso-style-name:"List Paragraph Char";
+        mso-style-link:"List Paragraph";
+        font-family:"Calibri",sans-serif;}
+        span.FootnoteTextChar
+        {mso-style-name:"Footnote Text Char\,fn Char\,Texto de rodapé Char\,nota_rodapé Char\,nota de rodapé Char\,FOOTNOTES Char\,single space Char\,footnote text Char\,Footnote Text Char Char Char\,Footnote text Char Char Char\,Footnote text Char";
+        mso-style-link:"Footnote Text\,fn\,Texto de rodapé\,nota_rodapé\,nota de rodapé\,FOOTNOTES\,single space\,footnote text\,Footnote Text Char Char\,Footnote text Char Char\,Footnote text";
+        font-family:"Times New Roman",serif;}
+        span.BalloonTextChar
+        {mso-style-name:"Balloon Text Char";
+        mso-style-link:"Balloon Text";
+        font-family:"Tahoma",sans-serif;}
+        span.CommentTextChar
+        {mso-style-name:"Comment Text Char";
+        mso-style-link:"Comment Text";
+        font-family:"Calibri",sans-serif;}
+        span.CommentSubjectChar
+        {mso-style-name:"Comment Subject Char";
+        mso-style-link:"Comment Subject";
+        font-family:"Calibri",sans-serif;
+        font-weight:bold;}
+        span.HeaderChar
+        {mso-style-name:"Header Char";
+        mso-style-link:Header;
+        font-family:"Calibri",sans-serif;}
+        span.FooterChar
+        {mso-style-name:"Footer Char";
+        mso-style-link:Footer;
+        font-family:"Calibri",sans-serif;}
+        span.Heading1Char
+        {mso-style-name:"Heading 1 Char";
+        mso-style-link:"Heading 1";
+        font-family:"Geometr415 Blk BT Black";
+        color:#00538F;
+        text-transform:uppercase;}
+        span.NoSpacingChar
+        {mso-style-name:"No Spacing Char";
+        mso-style-link:"No Spacing";
+        font-family:"MS Mincho";}
+        span.Heading3Char
+        {mso-style-name:"Heading 3 Char";
+        mso-style-link:"Heading 3";
+        font-family:"Trebuchet MS",sans-serif;
+        color:#00375F;}
+        span.Heading4Char
+        {mso-style-name:"Heading 4 Char";
+        mso-style-link:"Heading 4";
+        font-family:"Trebuchet MS",sans-serif;
+        color:#00538F;
+        font-style:italic;}
+        span.Heading5Char
+        {mso-style-name:"Heading 5 Char";
+        mso-style-link:"Heading 5";
+        font-family:"Trebuchet MS",sans-serif;
+        color:#00538F;}
+        span.TitleChar
+        {mso-style-name:"Title Char";
+        mso-style-link:Title;
+        font-family:"Geometr415 Md BT Medium";
+        color:#00538F;
+        text-transform:uppercase;}
+        span.BodyTextChar
+        {mso-style-name:"Body Text Char";
+        mso-style-link:"Body Text";
+        font-family:"Geometr415 Lt BT Lite";}
+        .MsoChpDefault
+        {font-family:"Trebuchet MS",sans-serif;}
+        .MsoPapDefault
+        {margin-bottom:8.0pt;
+        line-height:107%;}
+        /* Page Definitions */
+        @page WordSection1
+        {size:11.0in 8.5in;
+        margin:1.0in 1.0in 1.0in 45.0pt;}
+        div.WordSection1
+        {page:WordSection1;}
+        /* List Definitions */
+        -->
+    body(lang='EN-US', link='blue', vlink='purple')
+      .WordSection1#section1
+        .row#blankSpace
+        .row
+        .row        
+        table.TableGridLight1(border='1', cellspacing='0', cellpadding='0', width='900', style='width:650.75pt;border-collapse:collapse;border:none')
+          thead
+            tr
+              td(width='78', valign='top', style='width:58.25pt;border:solid #BFBFBF 1.0pt;\
+              padding:0in 5.4pt 0in 5.4pt')
+                a(name='_Toc395623513')
+                p.MsoNormal(align='center', style='text-align:center;line-height:150%')
+                  b
+                    span(style='line-height:150%;font-family:"Times New Roman",serif') System
+              td(width='114', valign='top', style='width:85.5pt;border:solid #BFBFBF 1.0pt;\
+              border-left:none;padding:0in 5.4pt 0in 5.4pt')
+                p.MsoNormal(align='center', style='text-align:center;line-height:150%')
+                  b
+                    span(style='line-height:150%;font-family:"Times New Roman",serif') Feature
+              td(width='156', valign='top', style='width:117.0pt;border:solid #BFBFBF 1.0pt;\
+              border-left:none;padding:0in 5.4pt 0in 5.4pt')
+                p.MsoNormal(align='center', style='text-align:center;line-height:150%')
+                  b
+                    span(style='line-height:150%;font-family:"Times New Roman",serif') Use
+              td(width='222', valign='top', style='width:166.5pt;border:solid #BFBFBF 1.0pt;\
+              border-left:none;padding:0in 5.4pt 0in 5.4pt')
+                p.MsoNormal(align='center', style='text-align:center;line-height:150%')
+                  b
+                    span(style='line-height:150%;font-family:"Times New Roman",serif')
+                      | Expected
+                      | Outcome
+              td(width='342', valign='top', style='width:256.5pt;border:solid #BFBFBF 1.0pt;\
+              border-left:none;padding:0in 5.4pt 0in 5.4pt')
+                p.MsoNormal(align='center', style='text-align:center;line-height:150%')
+                  b
+                    span(style='line-height:150%;font-family:"Times New Roman",serif') Description
+          tr
+            td(width='78', valign='top', style='width:58.25pt;border:solid #BFBFBF 1.0pt;\
+            border-top:none;padding:0in 5.4pt 0in 5.4pt')
+              p.MsoNormal(align='left', style='text-align:left;line-height:150%')
+                span(style='line-height:150%;font-family:"Times New Roman",serif') SLT
+            td(width='114', valign='top', style='width:85.5pt;border-top:none;border-left:\
+            none;border-bottom:solid #BFBFBF 1.0pt;border-right:solid #BFBFBF 1.0pt;\
+            padding:0in 5.4pt 0in 5.4pt')
+              p.MsoNormal(align='left', style='text-align:left;line-height:150%')
+                span(style='line-height:150%;font-family:"Times New Roman",serif') Project
+              p.MsoNormal(align='left', style='text-align:left;line-height:150%')
+                img(width='99', height='33', id='Picture 23', src='../images/project.jpg')
+            td(width='156', valign='top', style='width:117.0pt;border-top:none;border-left:\
+            none;border-bottom:solid #BFBFBF 1.0pt;border-right:solid #BFBFBF 1.0pt;\
+            padding:0in 5.4pt 0in 5.4pt')
+              p.MsoNormal(align='left', style='text-align:left;line-height:150%')
+                span(style='line-height:150%;font-family:"Times New Roman",serif')
+                  | 1. Enter text to
+                  | create a new project
+              p.MsoNormal(align='left', style='text-align:left;line-height:150%')
+                span(style='line-height:150%;font-family:"Times New Roman",serif')
+                  | 2. Select an
+                  | existing project from the dropdown button
+            td(width='222', valign='top', style='width:166.5pt;border-top:none;border-left:\
+            none;border-bottom:solid #BFBFBF 1.0pt;border-right:solid #BFBFBF 1.0pt;\
+            padding:0in 5.4pt 0in 5.4pt')
+              p.MsoNormal(align='left', style='text-align:left;line-height:150%')
+                span(style='line-height:150%;font-family:"Times New Roman",serif')
+                  | 1. Creates a new
+                  | project
+              p.MsoNormal(align='left', style='text-align:left;line-height:150%')
+                span(style='line-height:150%;font-family:"Times New Roman",serif')
+                  | 2. Retrieves an
+                  | existing project
+            td(width='342', valign='top', style='width:256.5pt;border-top:none;border-left:\
+            none;border-bottom:solid #BFBFBF 1.0pt;border-right:solid #BFBFBF 1.0pt;\
+            padding:0in 5.4pt 0in 5.4pt')
+              p.MsoNormal(align='left', style='text-align:left;line-height:150%')
+                span(style='line-height:150%;font-family:"Times New Roman",serif')
+                  | It enables the
+                  | user to create a new project by typing the text in the box or retrieve an
+                  | existing project by selecting in the dropdown button
+          tr
+            td(width='78', valign='top', style='width:58.25pt;border:solid #BFBFBF 1.0pt;\
+            border-top:none;padding:0in 5.4pt 0in 5.4pt')
+              p.MsoNormal(align='left', style='text-align:left;line-height:150%')
+                span(style='line-height:150%;font-family:"Times New Roman",serif') SLT
+            td(width='114', valign='top', style='width:85.5pt;border-top:none;border-left:\
+            none;border-bottom:solid #BFBFBF 1.0pt;border-right:solid #BFBFBF 1.0pt;\
+            padding:0in 5.4pt 0in 5.4pt')
+              p.MsoNormal(align='left', style='text-align:left;line-height:150%')
+                span(style='line-height:150%;font-family:"Times New Roman",serif') Run
+              p.MsoNormal(align='left', style='text-align:left;line-height:150%')
+                img(width='101', height='33', id='Picture 22', src='images/run.jpg')
+            td(width='156', valign='top', style='width:117.0pt;border-top:none;border-left:\
+            none;border-bottom:solid #BFBFBF 1.0pt;border-right:solid #BFBFBF 1.0pt;\
+            padding:0in 5.4pt 0in 5.4pt')
+              p.MsoNormal(align='left', style='text-align:left;line-height:150%')
+                span(style='line-height:150%;font-family:"Times New Roman",serif')
+                  | 1. Enter text to
+                  | create a new run
+              p.MsoNormal(align='left', style='text-align:left;line-height:150%')
+                span(style='line-height:150%;font-family:"Times New Roman",serif')
+                  | 2. Select an
+                  | existing run from the dropdown button
+            td(width='222', valign='top', style='width:166.5pt;border-top:none;border-left:\
+            none;border-bottom:solid #BFBFBF 1.0pt;border-right:solid #BFBFBF 1.0pt;\
+            padding:0in 5.4pt 0in 5.4pt')
+              p.MsoNormal(align='left', style='text-align:left;line-height:150%')
+                span(style='line-height:150%;font-family:"Times New Roman",serif')
+                  | 1. Creates a new
+                  | run
+              p.MsoNormal(align='left', style='text-align:left;line-height:150%')
+                span(style='line-height:150%;font-family:"Times New Roman",serif')
+                  | 2. Retrieves an
+                  | existing run
+            td(width='342', valign='top', style='width:256.5pt;border-top:none;border-left:\
+            none;border-bottom:solid #BFBFBF 1.0pt;border-right:solid #BFBFBF 1.0pt;\
+            padding:0in 5.4pt 0in 5.4pt')
+              p.MsoNormal(align='left', style='text-align:left;line-height:150%')
+                span(style='line-height:150%;font-family:"Times New Roman",serif')
+                  | It enables the
+                  | user to create a new run by typing the text in the box or retrieve an
+                  | existing run by selecting in the dropdown button
+          tr(style='height:44.5pt')
+            td(width='78', valign='top', style='width:58.25pt;border:solid #BFBFBF 1.0pt;\
+            border-top:none;padding:0in 5.4pt 0in 5.4pt;height:44.5pt')
+              p.MsoNormal(align='left', style='text-align:left;line-height:150%')
+                span(style='line-height:150%;font-family:"Times New Roman",serif') SLT
+            td(width='114', valign='top', style='width:85.5pt;border-top:none;border-left:\
+            none;border-bottom:solid #BFBFBF 1.0pt;border-right:solid #BFBFBF 1.0pt;\
+            padding:0in 5.4pt 0in 5.4pt;height:44.5pt')
+              p.MsoNormal(align='left', style='text-align:left;line-height:150%')
+                span(style='line-height:150%;font-family:"Times New Roman",serif') User Icon
+              p.MsoNormal(align='left', style='text-align:left;line-height:150%')
+                img(width='26', height='28', id='Picture 17', src='images/user.PNG')
+            td(width='156', valign='top', style='width:117.0pt;border-top:none;border-left:\
+            none;border-bottom:solid #BFBFBF 1.0pt;border-right:solid #BFBFBF 1.0pt;\
+            padding:0in 5.4pt 0in 5.4pt;height:44.5pt')
+              p.MsoNormal(align='left', style='text-align:left;line-height:150%')
+                span(style='line-height:150%;font-family:"Times New Roman",serif') Shows user name 
+            td(width='222', valign='top', style='width:166.5pt;border-top:none;border-left:\
+            none;border-bottom:solid #BFBFBF 1.0pt;border-right:solid #BFBFBF 1.0pt;\
+            padding:0in 5.4pt 0in 5.4pt;height:44.5pt')
+              p.MsoNormal(align='left', style='text-align:left;line-height:150%')
+                span(style='line-height:150%;font-family:"Times New Roman",serif')
+                  | Displays User
+                  | name beside the user icon
+            td(width='342', valign='top', style='width:256.5pt;border-top:none;border-left:\
+            none;border-bottom:solid #BFBFBF 1.0pt;border-right:solid #BFBFBF 1.0pt;\
+            padding:0in 5.4pt 0in 5.4pt;height:44.5pt')
+              p.MsoNormal(align='left', style='text-align:left;line-height:150%')
+                span(style='line-height:150%;font-family:"Times New Roman",serif')
+                  | It shows the
+                  | user name beside the user icon
+          tr
+            td(width='78', valign='top', style='width:58.25pt;border:solid #BFBFBF 1.0pt;\
+            border-top:none;padding:0in 5.4pt 0in 5.4pt')
+              p.MsoNormal(align='left', style='text-align:left;line-height:150%')
+                span(style='line-height:150%;font-family:"Times New Roman",serif') SLT
+            td(width='114', valign='top', style='width:85.5pt;border-top:none;border-left:\
+            none;border-bottom:solid #BFBFBF 1.0pt;border-right:solid #BFBFBF 1.0pt;\
+            padding:0in 5.4pt 0in 5.4pt')
+              p.MsoNormal(align='left', style='text-align:left;line-height:150%')
+                span(style='line-height:150%;font-family:"Times New Roman",serif') Save
+              p.MsoNormal(align='left', style='text-align:left;line-height:150%')
+                img(width='79', height='35', id='Picture 20', src='images/save.png')
+            td(width='156', valign='top', style='width:117.0pt;border-top:none;border-left:\
+            none;border-bottom:solid #BFBFBF 1.0pt;border-right:solid #BFBFBF 1.0pt;\
+            padding:0in 5.4pt 0in 5.4pt')
+              p.MsoNormal(align='left', style='text-align:left;line-height:150%')
+                span(style='line-height:150%;font-family:"Times New Roman",serif')
+                  | 1. Enter values
+                  | in the Inputs section of webpage
+              p.MsoNormal(align='left', style='text-align:left;line-height:150%')
+                span(style='line-height:150%;font-family:"Times New Roman",serif')
+                  | 2. Click Save
+                  | button
+            td(width='222', valign='top', style='width:166.5pt;border-top:none;border-left:\
+            none;border-bottom:solid #BFBFBF 1.0pt;border-right:solid #BFBFBF 1.0pt;\
+            padding:0in 5.4pt 0in 5.4pt')
+              p.MsoNormal(align='left', style='text-align:left;line-height:150%')
+                span(style='line-height:150%;font-family:"Times New Roman",serif')
+                  | Inputs will be
+                  | saved in the database and can be retrieved by selecting appropriate Project
+                  | and Run
+            td(width='342', valign='top', style='width:256.5pt;border-top:none;border-left:\
+            none;border-bottom:solid #BFBFBF 1.0pt;border-right:solid #BFBFBF 1.0pt;\
+            padding:0in 5.4pt 0in 5.4pt')
+              p.MsoNormal(align='left', style='text-align:left;line-height:150%')
+                span(style='line-height:150%;font-family:"Times New Roman",serif')
+                  | Once the user clicks
+                  | on the Save button, all the input values will be saved in the database and
+                  | can be retrieved by selecting the appropriate project and run
+          tr
+            td(width='78', valign='top', style='width:58.25pt;border:solid #BFBFBF 1.0pt;\
+            border-top:none;padding:0in 5.4pt 0in 5.4pt')
+              p.MsoNormal(align='left', style='text-align:left;line-height:150%')
+                span(style='line-height:150%;font-family:"Times New Roman",serif') SLT
+            td(width='114', valign='top', style='width:85.5pt;border-top:none;border-left:\
+            none;border-bottom:solid #BFBFBF 1.0pt;border-right:solid #BFBFBF 1.0pt;\
+            padding:0in 5.4pt 0in 5.4pt')
+              p.MsoNormal(align='left', style='text-align:left;line-height:150%')
+                span(style='line-height:150%;font-family:"Times New Roman",serif') Calculate
+              p.MsoNormal(align='left', style='text-align:left;line-height:150%')
+                img(width='83', height='33', id='Picture 19', src='images/calculate.png')
+            td(width='156', valign='top', style='width:117.0pt;border-top:none;border-left:\
+            none;border-bottom:solid #BFBFBF 1.0pt;border-right:solid #BFBFBF 1.0pt;\
+            padding:0in 5.4pt 0in 5.4pt')
+              p.MsoNormal(align='left', style='text-align:left;line-height:150%')
+                span(style='line-height:150%;font-family:"Times New Roman",serif')
+                  | After entering
+                  | all the input values, click Calculate button
+            td(width='222', valign='top', style='width:166.5pt;border-top:none;border-left:\
+            none;border-bottom:solid #BFBFBF 1.0pt;border-right:solid #BFBFBF 1.0pt;\
+            padding:0in 5.4pt 0in 5.4pt')
+              p.MsoNormal(align='left', style='text-align:left;line-height:150%')
+                span(style='line-height:150%;font-family:"Times New Roman",serif')
+                  | Algorithm runs
+                  | in the backend and displays output tables and charts in the webpage
+            td(width='342', valign='top', style='width:256.5pt;border-top:none;border-left:\
+            none;border-bottom:solid #BFBFBF 1.0pt;border-right:solid #BFBFBF 1.0pt;\
+            padding:0in 5.4pt 0in 5.4pt')
+              p.MsoNormal(align='left', style='text-align:left;line-height:150%')
+                span(style='line-height:150%;font-family:"Times New Roman",serif')
+                  | Once the user
+                  | clicks on the Calculate button, the algorithm runs in the backend and shows
+                  | output tables and output charts in the output section of webpage
+          tr
+            td(width='78', valign='top', style='width:58.25pt;border:solid #BFBFBF 1.0pt;\
+            border-top:none;padding:0in 5.4pt 0in 5.4pt')
+              p.MsoNormal(align='left', style='text-align:left;line-height:150%')
+                span(style='line-height:150%;font-family:"Times New Roman",serif') SLT
+            td(width='114', valign='top', style='width:85.5pt;border-top:none;border-left:\
+            none;border-bottom:solid #BFBFBF 1.0pt;border-right:solid #BFBFBF 1.0pt;\
+            padding:0in 5.4pt 0in 5.4pt')
+              p.MsoNormal(align='left', style='text-align:left;line-height:150%')
+                span(style='line-height:150%;font-family:"Times New Roman",serif') Status
+              p.MsoNormal(align='left', style='text-align:left;line-height:150%')
+                img(width='101', height='29', id='Picture 29', src='images/status.PNG')
+            td(width='156', valign='top', style='width:117.0pt;border-top:none;border-left:\
+            none;border-bottom:solid #BFBFBF 1.0pt;border-right:solid #BFBFBF 1.0pt;\
+            padding:0in 5.4pt 0in 5.4pt')
+              p.MsoNormal(align='left', style='text-align:left;line-height:150%')
+                span(style='line-height:150%;font-family:"Times New Roman",serif')
+                  | Once you click
+                  | Calculate button, the status changes to IN_PROGRESS
+            td(width='222', valign='top', style='width:166.5pt;border-top:none;border-left:\
+            none;border-bottom:solid #BFBFBF 1.0pt;border-right:solid #BFBFBF 1.0pt;\
+            padding:0in 5.4pt 0in 5.4pt')
+              p.MsoNormal(align='left', style='text-align:left;line-height:150%')
+                span(style='line-height:150%;font-family:"Times New Roman",serif')
+                  | Once the
+                  | calculation is complete, the status changes to COMPLETE and displays the
+                  | output tables and charts in the webpage
+            td(width='342', valign='top', style='width:256.5pt;border-top:none;border-left:\
+            none;border-bottom:solid #BFBFBF 1.0pt;border-right:solid #BFBFBF 1.0pt;\
+            padding:0in 5.4pt 0in 5.4pt')
+              p.MsoNormal(align='left', style='text-align:left;line-height:150%')
+                span(style='line-height:150%;font-family:"Times New Roman",serif')
+                  | Before starting
+                  | of the calculation, the status is Not started. Once the user clicks Calculate
+                  | button, the status changes to Running. After the completion of calculation,
+                  | the status changes to Complete and shows output tables and output charts
+          tr
+            td(width='78', valign='top', style='width:58.25pt;border:solid #BFBFBF 1.0pt;\
+            border-top:none;padding:0in 5.4pt 0in 5.4pt')
+              p.MsoNormal(align='left', style='text-align:left;line-height:150%')
+                span(style='line-height:150%;font-family:"Times New Roman",serif') SLT
+            td(width='114', valign='top', style='width:85.5pt;border-top:none;border-left:\
+            none;border-bottom:solid #BFBFBF 1.0pt;border-right:solid #BFBFBF 1.0pt;\
+            padding:0in 5.4pt 0in 5.4pt')
+              p.MsoNormal(align='left', style='text-align:left;line-height:150%')
+                span(style='line-height:150%;font-family:"Times New Roman",serif') Data Dictionary
+              p.MsoNormal(align='left', style='text-align:left;line-height:150%')
+                img(width='94', height='24', id='Picture 18', src='images/data-dict.PNG')
+            td(width='156', valign='top', style='width:117.0pt;border-top:none;border-left:\
+            none;border-bottom:solid #BFBFBF 1.0pt;border-right:solid #BFBFBF 1.0pt;\
+            padding:0in 5.4pt 0in 5.4pt')
+              p.MsoNormal(align='left', style='text-align:left;line-height:150%')
+                span(style='line-height:150%;font-family:"Times New Roman",serif')
+                  | Click on Data
+                  | Dictionary tab
+            td(width='222', valign='top', style='width:166.5pt;border-top:none;border-left:\
+            none;border-bottom:solid #BFBFBF 1.0pt;border-right:solid #BFBFBF 1.0pt;\
+            padding:0in 5.4pt 0in 5.4pt')
+              p.MsoNormal(align='left', style='text-align:left;line-height:150%')
+                span(style='line-height:150%;font-family:"Times New Roman",serif')
+                  | Directs to a
+                  | popup window containing definitions of all input and output parameters in the webpage
+            td(width='342', valign='top', style='width:256.5pt;border-top:none;border-left:\
+            none;border-bottom:solid #BFBFBF 1.0pt;border-right:solid #BFBFBF 1.0pt;\
+            padding:0in 5.4pt 0in 5.4pt')
+              p.MsoNormal(align='left', style='text-align:left;line-height:150%')
+                span(style='line-height:150%;font-family:"Times New Roman",serif')
+                  | It directs the
+                  | user to a page which contains definitions to all input and output parameters
+                  | in the webpage
+          tr
+            td(width='78', valign='top', style='width:58.25pt;border:solid #BFBFBF 1.0pt;\
+            border-top:none;padding:0in 5.4pt 0in 5.4pt')
+              p.MsoNormal(align='left', style='text-align:left;line-height:150%')
+                span(style='line-height:150%;font-family:"Times New Roman",serif') SLT
+            td(width='114', valign='top', style='width:85.5pt;border-top:none;border-left:\
+            none;border-bottom:solid #BFBFBF 1.0pt;border-right:solid #BFBFBF 1.0pt;\
+            padding:0in 5.4pt 0in 5.4pt')
+              p.MsoNormal(align='left', style='text-align:left;line-height:150%')
+                span(style='line-height:150%;font-family:"Times New Roman",serif') User Guide
+              p.MsoNormal(align='left', style='text-align:left;line-height:150%')
+                img(width='94', height='24', id='Picture 18', src='images/guide.PNG')                
+            td(width='156', valign='top', style='width:117.0pt;border-top:none;border-left:\
+            none;border-bottom:solid #BFBFBF 1.0pt;border-right:solid #BFBFBF 1.0pt;\
+            padding:0in 5.4pt 0in 5.4pt')
+              p.MsoNormal(align='left', style='text-align:left;line-height:150%')
+                span(style='line-height:150%;font-family:"Times New Roman",serif')
+                  | Click on User
+                  | Guide tab
+            td(width='222', valign='top', style='width:166.5pt;border-top:none;border-left:\
+            none;border-bottom:solid #BFBFBF 1.0pt;border-right:solid #BFBFBF 1.0pt;\
+            padding:0in 5.4pt 0in 5.4pt')
+              p.MsoNormal(align='left', style='text-align:left;line-height:150%')
+                span(style='line-height:150%;font-family:"Times New Roman",serif')
+                  | Directs to a
+                  | page which describes different features in the webpage
+            td(width='342', valign='top', style='width:256.5pt;border-top:none;border-left:\
+            none;border-bottom:solid #BFBFBF 1.0pt;border-right:solid #BFBFBF 1.0pt;\
+            padding:0in 5.4pt 0in 5.4pt')
+              p.MsoNormal(align='left', style='text-align:left;line-height:150%')
+                span(style='line-height:150%;font-family:"Times New Roman",serif')
+                  | It directs the
+                  | user to a page which gives a detailed description of different features in
+                  | the webpage
+          tr
+            td(width='78', valign='top', style='width:58.25pt;border:solid #BFBFBF 1.0pt;\
+            border-top:none;padding:0in 5.4pt 0in 5.4pt')
+              p.MsoNormal(align='left', style='text-align:left;line-height:150%')
+                span(style='line-height:150%;font-family:"Times New Roman",serif') SLT
+            td(width='114', valign='top', style='width:85.5pt;border-top:none;border-left:\
+            none;border-bottom:solid #BFBFBF 1.0pt;border-right:solid #BFBFBF 1.0pt;\
+            padding:0in 5.4pt 0in 5.4pt')
+              p.MsoNormal(align='left', style='text-align:left;line-height:150%')
+                span(style='line-height:150%;font-family:"Times New Roman",serif') Inputs
+              p.MsoNormal(align='left', style='text-align:left;line-height:150%')
+                img(width='88', height='24', id='Picture 18', src='images/Inputs.PNG')                 
+            td(width='156', valign='top', style='width:117.0pt;border-top:none;border-left:\
+            none;border-bottom:solid #BFBFBF 1.0pt;border-right:solid #BFBFBF 1.0pt;\
+            padding:0in 5.4pt 0in 5.4pt')
+              p.MsoNormal(align='left', style='text-align:left;line-height:150%')
+                span(style='line-height:150%;font-family:"Times New Roman",serif')
+                  | Click on Inputs
+                  | tab
+            td(width='222', valign='top', style='width:166.5pt;border-top:none;border-left:\
+            none;border-bottom:solid #BFBFBF 1.0pt;border-right:solid #BFBFBF 1.0pt;\
+            padding:0in 5.4pt 0in 5.4pt')
+              p.MsoNormal(align='left', style='text-align:left;line-height:150%')
+                span(style='line-height:150%;font-family:"Times New Roman",serif')
+                  | Directs to a
+                  | page where the user can enter input values
+            td(width='342', valign='top', style='width:256.5pt;border-top:none;border-left:\
+            none;border-bottom:solid #BFBFBF 1.0pt;border-right:solid #BFBFBF 1.0pt;\
+            padding:0in 5.4pt 0in 5.4pt')
+              p.MsoNormal(align='left', style='text-align:left;line-height:150%')
+                span(style='line-height:150%;font-family:"Times New Roman",serif')
+                  | It directs the
+                  | user to the inputs section, where the user can enter numeric values in the
+                  | inputs section
+          tr
+            td(width='78', valign='top', style='width:58.25pt;border:solid #BFBFBF 1.0pt;\
+            border-top:none;padding:0in 5.4pt 0in 5.4pt')
+              p.MsoNormal(align='left', style='text-align:left;line-height:150%')
+                span(style='line-height:150%;font-family:"Times New Roman",serif') SLT
+            td(width='114', valign='top', style='width:85.5pt;border-top:none;border-left:\
+            none;border-bottom:solid #BFBFBF 1.0pt;border-right:solid #BFBFBF 1.0pt;\
+            padding:0in 5.4pt 0in 5.4pt')
+              p.MsoNormal(align='left', style='text-align:left;line-height:150%')
+                span(style='line-height:150%;font-family:"Times New Roman",serif') Outputs
+              p.MsoNormal(align='left', style='text-align:left;line-height:150%')
+                img(width='94', height='24', id='Picture 18', src='images/outputs.PNG')                 
+            td(width='156', valign='top', style='width:117.0pt;border-top:none;border-left:\
+            none;border-bottom:solid #BFBFBF 1.0pt;border-right:solid #BFBFBF 1.0pt;\
+            padding:0in 5.4pt 0in 5.4pt')
+              p.MsoNormal(align='left', style='text-align:left;line-height:150%')
+                span(style='line-height:150%;font-family:"Times New Roman",serif')
+                  | Click on Outputs
+                  | tab
+            td(width='222', valign='top', style='width:166.5pt;border-top:none;border-left:\
+            none;border-bottom:solid #BFBFBF 1.0pt;border-right:solid #BFBFBF 1.0pt;\
+            padding:0in 5.4pt 0in 5.4pt')
+              p.MsoNormal(align='left', style='text-align:left;line-height:150%')
+                span(style='line-height:150%;font-family:"Times New Roman",serif')
+                  | Directs to a
+                  | page which shows output tables and output charts
+            td(width='342', valign='top', style='width:256.5pt;border-top:none;border-left:\
+            none;border-bottom:solid #BFBFBF 1.0pt;border-right:solid #BFBFBF 1.0pt;\
+            padding:0in 5.4pt 0in 5.4pt')
+              p.MsoNormal(align='left', style='text-align:left;line-height:150%')
+                span(style='line-height:150%;font-family:"Times New Roman",serif')
+                  | It directs the
+                  | user to the output section, where the user is presented with output tables
+                  | and charts
+          tr
+            td(width='78', valign='top', style='width:58.25pt;border:solid #BFBFBF 1.0pt;\
+            border-top:none;padding:0in 5.4pt 0in 5.4pt')
+              p.MsoNormal(align='left', style='text-align:left;line-height:150%')
+                span(style='line-height:150%;font-family:"Times New Roman",serif') SLT
+            td(width='114', valign='top', style='width:85.5pt;border-top:none;border-left:\
+            none;border-bottom:solid #BFBFBF 1.0pt;border-right:solid #BFBFBF 1.0pt;\
+            padding:0in 5.4pt 0in 5.4pt')
+              p.MsoNormal(align='left', style='text-align:left;line-height:150%')
+                span(style='line-height:150%;font-family:"Times New Roman",serif') Demand Profile
+            td(width='156', valign='top', style='width:117.0pt;border-top:none;border-left:\
+            none;border-bottom:solid #BFBFBF 1.0pt;border-right:solid #BFBFBF 1.0pt;\
+            padding:0in 5.4pt 0in 5.4pt')
+              p.MsoNormal(align='left', style='text-align:left;line-height:150%')
+                span(style='line-height:150%;font-family:"Times New Roman",serif')
+                  | Select a region
+                  | for year 1 & 2 using dropdown button
+            td(width='222', valign='top', style='width:166.5pt;border-top:none;border-left:\
+            none;border-bottom:solid #BFBFBF 1.0pt;border-right:solid #BFBFBF 1.0pt;\
+            padding:0in 5.4pt 0in 5.4pt')
+              p.MsoNormal(align='left', style='text-align:left;line-height:150%')
+                span(style='line-height:150%;font-family:"Times New Roman",serif')
+                  | Once you select
+                  | a region, demand profiles at the bottom of the table gets updated
+            td(width='342', valign='top', style='width:256.5pt;border-top:none;border-left:\
+            none;border-bottom:solid #BFBFBF 1.0pt;border-right:solid #BFBFBF 1.0pt;\
+            padding:0in 5.4pt 0in 5.4pt')
+              p.MsoNormal(align='left', style='text-align:left;line-height:150%')
+                span(style='line-height:150%;font-family:"Times New Roman",serif')
+                  | Upon selecting
+                  | the region for year 1 & 2, the demand profiles at the bottom of the Demand
+                  | table get updated according to the user selection
+          tr
+            td(width='78', valign='top', style='width:58.25pt;border:solid #BFBFBF 1.0pt;\
+            border-top:none;padding:0in 5.4pt 0in 5.4pt')
+              p.MsoNormal(align='left', style='text-align:left;line-height:150%')
+                span(style='line-height:150%;font-family:"Times New Roman",serif') SLT
+            td(width='114', valign='top', style='width:85.5pt;border-top:none;border-left:\
+            none;border-bottom:solid #BFBFBF 1.0pt;border-right:solid #BFBFBF 1.0pt;\
+            padding:0in 5.4pt 0in 5.4pt')
+              p.MsoNormal(align='left', style='text-align:left;line-height:150%')
+                span(style='line-height:150%;font-family:"Times New Roman",serif') Button
+              p.MsoNormal(align='left', style='text-align:left;line-height:150%')
+                img(width='37', height='36', id='Picture 24', src='images/button.jpg')
+            td(width='156', valign='top', style='width:117.0pt;border-top:none;border-left:\
+            none;border-bottom:solid #BFBFBF 1.0pt;border-right:solid #BFBFBF 1.0pt;\
+            padding:0in 5.4pt 0in 5.4pt')
+              p.MsoNormal(align='left', style='text-align:left;line-height:150%')
+                span(style='line-height:150%;font-family:"Times New Roman",serif')
+                  | Click on the
+                  | button present in the conventional table
+            td(width='222', valign='top', style='width:166.5pt;border-top:none;border-left:\
+            none;border-bottom:solid #BFBFBF 1.0pt;border-right:solid #BFBFBF 1.0pt;\
+            padding:0in 5.4pt 0in 5.4pt')
+              p.MsoNormal(align='left', style='text-align:left;line-height:150%')
+                span(style='line-height:150%;font-family:"Times New Roman",serif')
+                  | 1. Creates a new
+                  | row in the conventional table and allows user to select fuel type from the
+                  | dropdown list
+              p.MsoNormal(align='left', style='text-align:left;line-height:150%')
+                span(style='line-height:150%;font-family:"Times New Roman",serif')
+                  | 2. Can delete
+                  | the created new row
+            td(width='342', valign='top', style='width:256.5pt;border-top:none;border-left:\
+            none;border-bottom:solid #BFBFBF 1.0pt;border-right:solid #BFBFBF 1.0pt;\
+            padding:0in 5.4pt 0in 5.4pt')
+              p.MsoNormal(align='left', style='text-align:left;line-height:150%')
+                span(style='line-height:150%;font-family:"Times New Roman",serif')
+                  | By clicking the
+                  | Dynamic button, a new row gets added to the Conventional table. The user can
+                  | delete the newly created row. The user can select the fuel type by clicking
+                  | the dropdown button and can enter the values in the remaining fields. Once
+                  | the user the capacity fields, the pie chart at the bottom of Conventional
+                  | table gets updated.
+          tr
+            td(width='78', valign='top', style='width:58.25pt;border:solid #BFBFBF 1.0pt;\
+            border-top:none;padding:0in 5.4pt 0in 5.4pt')
+              p.MsoNormal(align='left', style='text-align:left;line-height:150%')
+                span(style='line-height:150%;font-family:"Times New Roman",serif') SLT
+            td(width='114', valign='top', style='width:85.5pt;border-top:none;border-left:\
+            none;border-bottom:solid #BFBFBF 1.0pt;border-right:solid #BFBFBF 1.0pt;\
+            padding:0in 5.4pt 0in 5.4pt')
+              p.MsoNormal(align='left', style='text-align:left;line-height:150%')
+                span(style='line-height:150%;font-family:"Times New Roman",serif')
+                  | Renewable
+                  | Profile
+            td(width='156', valign='top', style='width:117.0pt;border-top:none;border-left:\
+            none;border-bottom:solid #BFBFBF 1.0pt;border-right:solid #BFBFBF 1.0pt;\
+            padding:0in 5.4pt 0in 5.4pt')
+              p.MsoNormal(align='left', style='text-align:left;line-height:150%')
+                span(style='line-height:150%;font-family:"Times New Roman",serif')
+                  | Select a
+                  | scenario for wind & solar using dropdown button
+            td(width='222', valign='top', style='width:166.5pt;border-top:none;border-left:\
+            none;border-bottom:solid #BFBFBF 1.0pt;border-right:solid #BFBFBF 1.0pt;\
+            padding:0in 5.4pt 0in 5.4pt')
+              p.MsoNormal(align='left', style='text-align:left;line-height:150%')
+                span(style='line-height:150%;font-family:"Times New Roman",serif')
+                  | Once you select
+                  | a scenario, renewable profiles at the bottom of the table gets updated
+            td(width='342', valign='top', style='width:256.5pt;border-top:none;border-left:\
+            none;border-bottom:solid #BFBFBF 1.0pt;border-right:solid #BFBFBF 1.0pt;\
+            padding:0in 5.4pt 0in 5.4pt')
+              p.MsoNormal(align='left', style='text-align:left;line-height:150%')
+                span(style='line-height:150%;font-family:"Times New Roman",serif')
+                  | Upon selecting
+                  | the region for wind & solar, the demand profiles at the bottom of the
+                  | Renewables table get updated according to the user selection
+          tr
+            td(width='78', valign='top', style='width:58.25pt;border:solid #BFBFBF 1.0pt;\
+            border-top:none;padding:0in 5.4pt 0in 5.4pt')
+              p.MsoNormal(align='left', style='text-align:left;line-height:150%')
+                span(style='line-height:150%;font-family:"Times New Roman",serif') SLT
+            td(width='114', valign='top', style='width:85.5pt;border-top:none;border-left:\
+            none;border-bottom:solid #BFBFBF 1.0pt;border-right:solid #BFBFBF 1.0pt;\
+            padding:0in 5.4pt 0in 5.4pt')
+              p.MsoNormal(align='left', style='text-align:left;line-height:150%')
+                span(style='line-height:150%;font-family:"Times New Roman",serif') Hydro graph
+            td(width='156', valign='top', style='width:117.0pt;border-top:none;border-left:\
+            none;border-bottom:solid #BFBFBF 1.0pt;border-right:solid #BFBFBF 1.0pt;\
+            padding:0in 5.4pt 0in 5.4pt')
+              p.MsoNormal(align='left', style='text-align:left;line-height:150%')
+                span(style='line-height:150%;font-family:"Times New Roman",serif')
+                  | Shows the
+                  | monthly energy values for year 1 & 2
+            td(width='222', valign='top', style='width:166.5pt;border-top:none;border-left:\
+            none;border-bottom:solid #BFBFBF 1.0pt;border-right:solid #BFBFBF 1.0pt;\
+            padding:0in 5.4pt 0in 5.4pt')
+              p.MsoNormal(align='left', style='text-align:left;line-height:150%')
+                span(style='line-height:150%;font-family:"Times New Roman",serif')
+                  | Once you modify
+                  | the values in the monthly energy table, the hydro graph gets updated
+            td(width='342', valign='top', style='width:256.5pt;border-top:none;border-left:\
+            none;border-bottom:solid #BFBFBF 1.0pt;border-right:solid #BFBFBF 1.0pt;\
+            padding:0in 5.4pt 0in 5.4pt')
+              p.MsoNormal(align='left', style='text-align:left;line-height:150%')
+                span(style='line-height:150%;font-family:"Times New Roman",serif')
+                  | Once the user
+                  | enters the Monthly energy values for year 1 & 2, the hydro graph at the
+                  | bottom of Hydro table gets updated
+          tr
+            td(width='78', valign='top', style='width:58.25pt;border:solid #BFBFBF 1.0pt;\
+            border-top:none;padding:0in 5.4pt 0in 5.4pt')
+              p.MsoNormal(align='left', style='text-align:left;line-height:150%')
+                span(style='line-height:150%;font-family:"Times New Roman",serif') SLT
+            td(width='114', valign='top', style='width:85.5pt;border-top:none;border-left:\
+            none;border-bottom:solid #BFBFBF 1.0pt;border-right:solid #BFBFBF 1.0pt;\
+            padding:0in 5.4pt 0in 5.4pt')
+              p.MsoNormal(align='left', style='text-align:left;line-height:150%')
+                span(style='line-height:150%;font-family:"Times New Roman",serif')
+                  | Local Currency
+                  | conversion factor
+            td(width='156', valign='top', style='width:117.0pt;border-top:none;border-left:\
+            none;border-bottom:solid #BFBFBF 1.0pt;border-right:solid #BFBFBF 1.0pt;\
+            padding:0in 5.4pt 0in 5.4pt')
+              p.MsoNormal(align='left', style='text-align:left;line-height:150%')
+                span(style='line-height:150%;font-family:"Times New Roman",serif')
+                  | Enter the US $
+                  | to local currency conversion factor in the Macro Economic table
+            td(width='222', valign='top', style='width:166.5pt;border-top:none;border-left:\
+            none;border-bottom:solid #BFBFBF 1.0pt;border-right:solid #BFBFBF 1.0pt;\
+            padding:0in 5.4pt 0in 5.4pt')
+              p.MsoNormal(align='left', style='text-align:left;line-height:150%')
+                span(style='line-height:150%;font-family:"Times New Roman",serif')
+                  | Once you enter
+                  | local currency conversion factor, the Value in local currency column of
+                  | Storage Benefits tables gets updated
+            td(width='342', valign='top', style='width:256.5pt;border-top:none;border-left:\
+            none;border-bottom:solid #BFBFBF 1.0pt;border-right:solid #BFBFBF 1.0pt;\
+            padding:0in 5.4pt 0in 5.4pt')
+              p.MsoNormal(align='left', style='text-align:left;line-height:150%')
+                span(style='line-height:150%;font-family:"Times New Roman",serif')
+                  | Once the user
+                  | enters the US dollar to Local conversion factor in the Macro Economic table,
+                  | the Value in local currency column in Storage benefits table shows the
+                  | equivalent local currency value
+          tr
+            td(width='78', valign='top', style='width:58.25pt;border:solid #BFBFBF 1.0pt;\
+            border-top:none;padding:0in 5.4pt 0in 5.4pt')
+              p.MsoNormal(align='left', style='text-align:left;line-height:150%')
+                span(style='line-height:150%;font-family:"Times New Roman",serif') SLT
+            td(width='114', valign='top', style='width:85.5pt;border-top:none;border-left:\
+            none;border-bottom:solid #BFBFBF 1.0pt;border-right:solid #BFBFBF 1.0pt;\
+            padding:0in 5.4pt 0in 5.4pt')
+              p.MsoNormal(align='left', style='text-align:left;line-height:150%')
+                span(style='line-height:150%;font-family:"Times New Roman",serif')
+                  | Download Energy
+                  | and Reserve Prices
+            td(width='156', valign='top', style='width:117.0pt;border-top:none;border-left:\
+            none;border-bottom:solid #BFBFBF 1.0pt;border-right:solid #BFBFBF 1.0pt;\
+            padding:0in 5.4pt 0in 5.4pt')
+              p.MsoNormal(align='left', style='text-align:left;line-height:150%')
+                span(style='line-height:150%;font-family:"Times New Roman",serif')
+                  | Click on
+                  | Download Energy and Reserve Prices button
+            td(width='222', valign='top', style='width:166.5pt;border-top:none;border-left:\
+            none;border-bottom:solid #BFBFBF 1.0pt;border-right:solid #BFBFBF 1.0pt;\
+            padding:0in 5.4pt 0in 5.4pt')
+              p.MsoNormal(align='left', style='text-align:left;line-height:150%')
+                span(style='line-height:150%;font-family:"Times New Roman",serif')
+                  | A zip file
+                  | containing energy and reserve prices can be downloaded.
+            td(width='342', valign='top', style='width:256.5pt;border-top:none;border-left:\
+            none;border-bottom:solid #BFBFBF 1.0pt;border-right:solid #BFBFBF 1.0pt;\
+            padding:0in 5.4pt 0in 5.4pt')
+              p.MsoNormal(align='left', style='text-align:left;line-height:150%')
+                span(style='line-height:150%;font-family:"Times New Roman",serif')
+                  | By clicking on
+                  | the Download Energy and Reserve Prices button, it allows the user to download
+                  | a zip file which contains energy and reserve prices
+        p.MsoNormal(align='center', style='text-align:center;line-height:150%')
+          b
+            span(style='line-height:150%;font-family:"Times New Roman",serif;color:#629DD1')  

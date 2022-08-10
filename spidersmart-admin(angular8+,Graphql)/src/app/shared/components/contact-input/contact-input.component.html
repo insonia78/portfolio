@@ -1,0 +1,31 @@
+<div [formGroup]="form" class="form">
+    <mat-form-field>
+        <mat-label>Type</mat-label>
+        <mat-select formControlName="type">
+            <mat-select-trigger>
+                <ng-container [ngSwitch]="form?.get('type').value">
+                    <mat-icon *ngSwitchCase="ContactType.MOBILE_PHONE">phone_android</mat-icon>
+                    <mat-icon *ngSwitchCase="ContactType.HOME_PHONE">phone</mat-icon>
+                    <mat-icon *ngSwitchCase="ContactType.EMAIL">email</mat-icon>
+                </ng-container>
+                <mat-icon *ngIf="form?.get('type').value === ContactType.EMAIL">email</mat-icon>
+                <span>{{ContactTypeDisplay[form.get('type').value|uppercase]}}</span>
+            </mat-select-trigger>
+            <mat-option *ngFor="let type of ContactType | keyvalue" [value]="type.value">
+                <mat-icon *ngIf="type.value !== ContactType.EMAIL">phone</mat-icon>
+                <mat-icon *ngIf="type.value === ContactType.EMAIL">email</mat-icon>
+                {{ContactTypeDisplay[type.key]}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Description</mat-label>
+        <input matInput formControlName="title" required>
+        <mat-error *ngIf="form?.get('title').hasError('api')">{{form.get('title').getError('api')}}</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Value</mat-label>
+        <input matInput formControlName="value" [textMask]="mask" required>
+        <mat-error *ngIf="form?.get('value').hasError('api')">{{form.get('value').getError('api')}}</mat-error>
+    </mat-form-field>
+</div>

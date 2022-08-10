@@ -1,0 +1,36 @@
+@import '~src/theme';
+
+.question {
+    padding: 2rem 1rem 0;
+
+    > h2 {
+        font-size: 1rem;
+        margin: 0 0 0.5rem;
+
+        > .question-type {
+            font-size: 0.8rem;
+            color: rgba(0, 0, 0, 0.6);
+        }
+    }
+
+    .answer {
+        margin: 1rem 0 0;
+        
+        > h3 {
+            font-weight: bold;
+            font-size: 0.9rem;
+            color: $color-darkgray;
+        }
+    }
+
+    .answer-list {
+        margin: 1rem 0 0;
+        list-style-type: decimal;
+
+        > li {
+            > mat-icon {
+                float: left;
+            }
+        }
+    }
+}

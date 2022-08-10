@@ -1,0 +1,581 @@
+<html>
+
+   <head>
+   <link href="../../Shared%20with%20Everyone/workbench_with_db2/css/jquery-ui.css" rel="stylesheet">
+	<link rel="stylesheet" href="../../Shared%20with%20Everyone/workbench_with_db2/css/style.css">
+    <script src="../../Shared%20with%20Everyone/workbench_with_db2/js/jquery.js"></script>
+    <script src="../../Shared%20with%20Everyone/workbench_with_db2/js/jquery-ui.js"></script>	
+	<script src = '../../Shared%20with%20Everyone/workbench_with_db2/js/addTabClass.js'></script>
+	
+	<title>WorkBench</title>
+	
+<script>
+
+var idbSupported = false;
+var db;
+var dataBaseName = "dataBaseNames" ;
+var db_name ;
+var openRequest ;
+var dataBaseName ;
+var results = "";
+
+document.addEventListener("DOMContentLoaded", function(){
+
+  if("indexedDB" in window) {
+        idbSupported = true;
+    }
+	if(document.location.href[document.location.href.length - 1] == 'Q')
+	{
+	
+        var url = document.location.href,
+         params = url.split('?')[1].split('&'),
+	     data = {},
+		 tmp;
+	
+          
+         for (var i = 0, l = params.length; i < l; i++) 
+		 {
+           tmp = params[i].split('=');
+           data[tmp[0]] = tmp[1];
+           data[tmp[1]] = tmp[2];
+          	   
+		   db_name = data.db_name; 
+		  
+		 }  
+		 
+		
+     }	
+     
+
+	 
+    if(document.location.href[document.location.href.length - 1] == 'D')
+	{
+	
+        var url = document.location.href,
+         params = url.split('?')[1].split('&'),
+	     data = {},
+		 tmp;
+	
+          
+         for (var i = 0, l = params.length; i < l; i++) 
+		 {
+           tmp = params[i].split('=');
+           data[tmp[0]] = tmp[1];
+           data[tmp[1]] = tmp[2];
+          	   
+		   db_name = data.db_name; 
+		  
+		 }  
+		 
+		
+     }	
+     
+	
+	 
+    if(idbSupported) {
+	    	 
+		 openRequest = indexedDB.open(dataBaseName);	 
+          
+		  
+        openRequest.onupgradeneeded = function(e) {
+            alert("Upgrading...");
+		    thisDB = e.target.result;
+    
+	
+	
+	
+ 			
+ 
+  }
+       
+        openRequest.onsuccess = function(e) {
+			
+              alert("Success! Connected to IndexedDb ");
+			  
+			
+			db = e.target.result;
+			for(var i = 0 ; i < db.objectStoreNames.length ; i++)
+			{		
+                   
+				 
+			      addToTheDialog(db.objectStoreNames.item(i),i + 2);
+				 
+				  
+			}
+			
+			db.close()
+			getDataFromTheDataBase(db_name)	
+				
+							
+			
+			
+        }
+ 
+        openRequest.onerror = function(e) {
+            alert("Error! Not Connected to IndexedDb ");
+            console.dir(e);
+        }
+ 
+    }
+
+	
+var tabs = true ;	
+ 
+var db_dialog = $( "#database_dialog" ).dialog({
+      autoOpen: true,
+      modal: true,
+	  width: 1200,
+	  height:1300,
+      buttons: {
+	   
+        Add: function() {
+            Send();
+          $( this ).dialog( "close" );
+        },
+        Cancel: function() {
+		
+          $( this ).dialog( "close" );
+        }
+      },
+      close: function() {
+        form[ 0 ].reset();
+      }
+    });
+
+ 
+    // addTab form: calls addTab function on submit and closes the dialog
+    var form = db_dialog.find( "form" ).submit(function( event ) {
+     
+      dialog.dialog( "close" );
+      event.preventDefault();
+	  
+    });
+	
+	
+	
+  
+  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+function addToTheDialog(db_name, i)
+{
+     
+    
+	var db_template = '<fieldset style = "width:70px">'
+	                 + '<img width ="38" heigth ="38" src = "images/databse.jpg"><text style ="font-size:30px">#{name}</text><br>'
+					 + '<textarea name="db_content" id="db_content" rows ="5" cols ="50" class="ui-widget-content ui-corner-all">#{description}</textarea><br>'
+					 + '<input id = "get'+i+'" type ="button" value = "Call!" >'
+					 + '</fieldset>' ;
+    
+         var transaction = db.transaction([db_name] , "readwrite" );
+            
+		 var store = transaction.objectStore(db_name);
+        
+		var index = store.index("db_name");
+	
+	var checkKey =  index.getKey(db_name);
+	
+	checkKey.onsuccess = function()
+	{
+		
+		var key = checkKey.result;	
+	
+	  var request = store.get(Number(key));
+	  
+      request.onsuccess = function(event) {
+       
+	   var cursor = event.target.result;
+	 
+	   var db_dialog =   db_template.replace( /#\{name\}/g, cursor.db_name ).replace( /#\{description\}/g, cursor.description );
+		
+		$("#database_container").append(db_dialog);
+		
+		
+		$("#get"+i).button().click(function(){
+		
+		name_db = cursor.db_name;
+		window.location.href = "getUrl.html?db_name=" + name_db +"&D";
+		
+		});
+	  
+	
+	  
+	 }
+	}
+
+
+}
+function getDataFromTheDataBase(db_name)
+{  
+  
+ if(idbSupported) {
+	     if(db_name)
+		 {	
+             	
+		     openRequest = indexedDB.open(db_name);	 
+          
+		  }
+		  
+        openRequest.onupgradeneeded = function(e) {
+            alert("Upgrading...");
+		    thisDB = e.target.result;	
+ 
+        }
+       
+        openRequest.onsuccess = function(e) {
+			
+              alert("Success! Connected to IndexedDb ");
+			  
+			
+			db = e.target.result;
+			
+			
+			for(var i = 0 ; i < db.objectStoreNames.length ; i++)
+			{		
+                   
+				 
+			      addAccordiondb(db.objectStoreNames.item(i));
+				 
+				  
+			}
+			
+				
+				
+							
+			
+			
+        }
+ 
+        openRequest.onerror = function(e) {
+            alert("Error! Not Connected to IndexedDb ");
+            console.dir(e);
+        }
+ 
+    }
+	
+}
+function addAccordiondb( title2) 
+{
+	
+	
+	if(title2 == "")
+	{
+		
+	  	
+		
+	}
+	else
+	{
+		
+	
+    var key ; 	
+	var anewTab ;
+	var tabs ;
+    
+	
+	
+	var transaction = db.transaction([title2] , "readonly" ) ;
+	
+	var store = transaction.objectStore(title2);
+	
+	var index = store.index("accordion");
+	
+	var checkKey =  index.getKey(title2);
+	
+	checkKey.onsuccess = function()
+	{
+		
+		key = checkKey.result;
+	
+	
+	    
+	
+	
+	
+	
+	
+	  var request = store.get(Number(key));
+	  
+      request.onsuccess = function(event) {
+       
+	   var cursor = event.target.result;
+     
+	 
+		
+		 
+	  		
+		n_tabs = cursor.n_tabs;
+		
+	    description = cursor.description;		
+		hAccordion = cursor.hAccordion;
+		anewTab = cursor.anewTab;
+		
+	    tabs = cursor.tabs ;
+		
+		
+		results += "MASTER FOLDER!\n\n" + cursor.accordion +"\n\n";
+	    
+		
+		
+	     addTabdb( anewTab);         
+		
+		
+	 	 
+	  
+	} // end of request
+ 
+
+    request.onerror = function(event) 
+	{
+              
+			  var cursor = event.target.result;
+			  alert("657 Error" );
+          
+
+     }	      
+   }
+  }
+} 
+	  	
+	  
+  
+
+
+
+		    
+    
+			  
+//////////////////////////////////////////////////////////////////////
+/***********************************************************
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Adding addTabdb
+
+
+*****************************************************************/
+
+//////////////////////////////////////////////////////////////////////////
+		
+		
+		
+		
+function addTabdb( anewTab ) 
+{
+	
+	    
+	 
+    
+	
+	
+		
+	      
+		
+	for(var i = 0; i  <  anewTab.length ; i++)
+	{
+	
+	       if(anewTab[i] == "")
+		   {
+			   /////////
+			   /*********
+			   can be implemented for re-indexing  
+			   
+			   *********/
+			   
+			   ///////////
+			   continue;
+			   
+		   }
+		   else
+		   {    
+	
+	 
+	        addPortletDb( anewTab[i] ) ; 
+	 
+	   
+    
+	
+           }
+	
+	
+
+  } // end of for
+
+
+	 
+  
+} // end of function
+
+///////////////////////////////////////////////////////////////
+/*********************************************************
+
+
+ >>>>>>>>>>>>>>>>>>>>>>> addPortletDb
+
+
+
+********************************************************/
+
+
+
+/////////////////////////////////////////////////////////////
+
+
+
+function addPortletDb( anewTab  )
+   {	
+	     
+         
+		  
+		  
+			  
+			  for( var y = 0 ; y < anewTab.portlet.length ; y++)
+			  {
+				  
+				  
+				 if(anewTab.portlet[y] == "")
+                 {
+					 ////////////////
+					 
+					 /**********************
+					 >>>>>>>>>>>.. It can be implemented for the reindexing of the tables 
+					 
+					 ***********************/
+					 
+					 ///////////////////////
+					 continue ;
+				 }
+                  else
+				  {
+					  
+				  				 
+			        
+		    
+			
+			        var tabTitle = anewTab.portlet[y].name;
+			
+			
+			          results += "Folder!: " + tabTitle
+                                +"\n--------------------";            
+		    
+			
+			
+			
+			var fieldsdb =  anewTab.portlet[y].field;
+			
+		     
+		 
+			 addField_Portlet_db( fieldsdb, y );
+             
+          }     	
+		
+	
+	
+     } // end of anewTbas for loop
+		  
+	 
+ } // end of addPortletloop;
+
+	
+	
+	
+		
+		
+//////////////////////////////////////////////////
+		
+/******************************
+
+
+addField_Portlet_db( fields, i )
+
+****************************************/		
+		
+		
+//////////////////////////////////////////////////
+		
+		
+		
+		function addField_Portlet_db( fields, y )
+	   {
+		   
+          for(var i = 0 ; i < fields.length; i++ )
+		  {
+			  fieldPath = y + "/" + i ;
+			 
+			 
+    		  
+			  if(fields[i] == null || fields[i] == "")
+			  {
+				  /****************
+				  
+				    use to reindex the fields;
+				  
+				  ***************/
+			      continue ;	  
+			  }
+			  else
+			  {
+			  
+			  var url = fields[i].url;
+			  
+			  var fieldTitle = fields[i].file_name;
+			  var description = fields[i].description ;
+			  
+			  }
+			  results +="\n\nFile : "+ fieldTitle 
+			            +"\n----------------"
+                        +"\n+ Url:" + url 
+                         
+                        +"\n+ Description:" + description
+                        +"\n--------------------------";  						
+			  
+			    
+	    
+       }$
+	   ("#list").append(results);	
+	}
+
+ //end of function overloaded accordion	   		 
+   
+  
+  $("#links").button();
+  $("#alinks").button();
+  
+  
+			
+},false);
+
+</script>
+
+  </head>
+ <body>
+ 
+ <div id="database_dialog" title="Accordion data">
+  <form>
+     <a href ="https://home.gtk.gtech.com/departments/tpst/strattools/_layouts/15/start.aspx#/SitePages/Home.aspx" target ="_blank"><button id="links">SharePoint</button></a>
+	 <a href ="https://www.google.com" target ="_blank"><button id="alinks">Google</button></a>
+  </form>
+  <div id ="database_container">
+
+</div>
+
+<textarea id ="list" style ="position:absolute; left:580px;top:200px;"rows = "50" cols ="60">
+
+
+
+</textarea>
+
+</div>
+
+ 
+ 
+ 
+ 
+ 
+ </body>
+ 
+ </html>

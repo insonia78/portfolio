@@ -1,0 +1,27 @@
+.output-charts-container
+  p.data-header-text#capgenheading Capacity and Generation by Fuel Type
+  .chart-container
+    include graphs/output-graphs/cap-per-tech-noess.pug
+  .chart-container
+    include graphs/output-graphs/gen-per-tech-noess.pug
+  .chart-container
+    include graphs/output-graphs/gen-profile-noess.pug
+  .chart-container
+    include graphs/output-graphs/prim-res-profile-noess.pug
+  .chart-container
+    include graphs/output-graphs/sec-res-profile-noess.pug
+  .chart-container
+    include graphs/output-graphs/ter-res-profile-noess.pug
+  .chart-container
+    include graphs/output-graphs/ener-price-profile-noess.pug
+  .chart-container
+    include graphs/output-graphs/reserve-prices-noess.pug
+
+  .emulator-generation-container
+    include graphs/output-graphs/emulator-generation.pug
+  .emulator-primres-container
+    include graphs/output-graphs/emulator-primres.pug
+  .emulator-secres-container
+    include graphs/output-graphs/emulator-secres.pug
+  .emulator-tertres-container
+    include graphs/output-graphs/emulator-tertres.pug

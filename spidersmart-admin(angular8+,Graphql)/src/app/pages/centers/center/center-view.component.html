@@ -1,0 +1,82 @@
+<ng-container *ngIf="center">
+    <h1>SpiderSmart {{center.name}}</h1>
+<!-- 
+
+    <div style="display: flex; flex-flow: row; margin: 2rem 0">
+        <mat-card style="margin-right: 2rem">
+            <div style="display: flex; align-items: center; justify-content: center; height: 100%">
+                <div style="color: #fff; background: #3a9052; border-radius: 50%; width: 5rem; height: 5rem; display: inline-flex; align-items: center; justify-content: center">
+                    <mat-icon style="font-size: 4rem; width: 4rem; height: 4rem;">group</mat-icon>
+                </div>
+                <mat-card-header>
+                    <mat-card-title style="display: inline-flex; align-items: center;">
+                        <span style="font-size: 3rem;line-height: 1; margin-right: 0.3rem;">6</span> new students
+                    </mat-card-title>
+                    <mat-card-subtitle style="margin-bottom: 0; text-align: right">37 total students</mat-card-subtitle>
+                </mat-card-header>
+            </div>
+        </mat-card>
+
+        <mat-card>
+            <div style="display: flex; align-items: center; justify-content: center; height: 100%">
+                <div style="color: #fff; background: rgb(201, 129, 32); border-radius: 50%; width: 5rem; height: 5rem; display: inline-flex; align-items: center; justify-content: center">
+                    <mat-icon style="font-size: 3.6rem; width: 3.6rem; height: 3.6rem;">menu_book</mat-icon>
+                </div>
+                <mat-card-header>
+                    <mat-card-title style="display: inline-flex; align-items: center;">
+                        <span style="font-size: 3rem;line-height: 1; margin-right: 0.3rem;">453</span> books
+                    </mat-card-title>
+                    <mat-card-subtitle style="margin-bottom: 0; text-align: right">48 checked out</mat-card-subtitle>
+                </mat-card-header>
+            </div>
+        </mat-card>
+    </div>
+
+    <mat-divider></mat-divider> -->
+
+    <div style="display: flex; justify-content: space-between; margin-top: 2rem;">
+        <google-map [center]="coords" [options]="mapOptions" [zoom]="16" [height]="300">
+            <map-marker [position]="coords" [label]="markerLabel"></map-marker>
+        </google-map>
+
+        <div class="mat-body-2">
+            <p>
+                {{center.streetAddress}}<br> 
+                {{center.city}} {{center.state}}, {{center.postalCode}}<br> 
+                {{center.country}}
+            </p>
+            <p style="display: flex; align-items: center;">
+                <mat-icon>email</mat-icon>
+                {{center.email}}
+            </p>
+            <p style="display: flex; align-items: center">
+                <mat-icon>phone</mat-icon>
+                {{center.phone | phone}}
+            </p>
+            <p class="mat-body-1">
+                <a href="http://www.spidersmart.com/{{center.label}}" target="_blank" rel="noopener" style="text-decoration: none;">View Center Subsite <mat-icon [inline]="true">launch</mat-icon></a>
+            </p>
+        </div>
+        <div>
+            <h2>Hours of Operation</h2>
+            <dl class="hours-list">
+                <ng-container *ngFor="let day of ['M','T','W','R','F','S','U']">
+                <dt>{{day|dayOfWeek}}:</dt>
+                <dd *ngFor="let range of center?.hours[day]">{{range.startTime}} - {{range.endTime}}</dd>
+                <dd *ngIf="!center?.hours[day] || center?.hours[day].length < 1">Closed</dd>
+                </ng-container>
+            </dl>
+            <h2>Subjects Offered</h2>
+
+            <p style="width: 50%">
+                {{center?.subjects | csv:'name'}}
+            </p>
+
+        </div>
+
+    
+    </div>
+
+
+
+</ng-container>

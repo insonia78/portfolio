@@ -1,0 +1,21 @@
+$(document).ready(function () {
+    $('#country').change(function () {
+        console.log($(this).val())
+    })
+
+    $('#download-zip').on('click', function () {
+        $.ajax({
+            url: '/get-outputs-zip',
+            type: 'post',
+            data: JSON.stringify({ 'test': 123 }),
+
+            success: function (retData) {
+                console.log(retData)
+                $("body").append("<iframe src='" + retData.url + "' style='display: none;' ></iframe>");
+            }
+        });
+    }
+    )
+
+
+})

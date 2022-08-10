@@ -1,0 +1,80 @@
+<ng-container *ngIf="mode === 'VIEW'">
+    <mat-nav-list fxLayout="row wrap">
+        <mat-list-item fxFlex *ngFor="let contact of currentContacts">
+            <a mat-list-item [href]="generateContactLink(contact)">
+                <ng-container [ngSwitch]="contact.type">
+                    <ng-container *ngSwitchCase="ContactType.MOBILE_PHONE">
+                        <mat-icon matListIcon style="font-size: 36px; height: 36px; width: 36px; color: #444">smartphone</mat-icon>
+                        <span matLine style="text-align: center">
+                            <strong>{{contact.title}}</strong><br>
+                            <span style="font-size: 1.2rem;">{{contact.value|phone}}</span>
+                        </span>
+                    </ng-container>
+                    <ng-container *ngSwitchCase="ContactType.HOME_PHONE">
+                        <mat-icon matListIcon>phone</mat-icon>
+                        <span matLine style="text-align: center">
+                            <strong>{{contact.title}}</strong><br>
+                            <span style="font-size: 1.2rem;">{{contact.value|phone}}</span>
+                        </span>
+                    </ng-container>
+                    <ng-container *ngSwitchCase="ContactType.WORK_PHONE">
+                        <mat-icon matListIcon>phone</mat-icon>
+                        <span matLine style="text-align: center">
+                            <strong>{{contact.title}}</strong><br>
+                            <span style="font-size: 1.2rem;">{{contact.value|phone}}</span>
+                        </span>
+                    </ng-container>
+                    <ng-container *ngSwitchCase="ContactType.EMAIL">
+                        <mat-icon matListIcon>email</mat-icon>
+                        <span matLine style="text-align: center">
+                            <strong>{{contact.title}}</strong><br>
+                            <span style="font-size: 1.2rem;">{{contact.value|phone}}</span>
+                        </span>
+                    </ng-container>
+                </ng-container>
+            </a>
+            <mat-divider></mat-divider>
+        </mat-list-item>
+    </mat-nav-list>
+</ng-container>
+<ng-container *ngIf="mode === 'EDIT'">
+    <form [formGroup]="form" *ngIf="currentContacts">
+        <div fxLayout="row" formArrayName="contacts" *ngFor="let contact of form.get('contacts').controls; let i = index">
+            <ng-container [formGroupName]="i">
+                <mat-form-field appearance="outline" fxFlex="10">
+                    <mat-label>Type</mat-label>
+                    <mat-select formControlName="type">
+                        <mat-select-trigger>
+                            <mat-icon *ngIf="contact.get('type').value !== ContactType.EMAIL">phone</mat-icon>
+                            <mat-icon *ngIf="contact.get('type').value === ContactType.EMAIL">email</mat-icon>
+                            {{ContactTypeDisplay[contact.get('type').value|uppercase]}}
+                        </mat-select-trigger>
+                        <mat-option *ngFor="let type of ContactType | keyvalue" [value]="type.value">
+                            <mat-icon *ngIf="type.value !== ContactType.EMAIL">phone</mat-icon>
+                            <mat-icon *ngIf="type.value === ContactType.EMAIL">email</mat-icon>
+                            {{ContactTypeDisplay[type.key]}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field appearance="outline" fxFlex="50">
+                    <mat-label>Description</mat-label>
+                    <input matInput formControlName="title" [required]="true">
+                    <mat-error>The description field is required.</mat-error>                    
+                </mat-form-field>
+                <mat-form-field appearance="outline" fxFlex="30">
+                    <mat-label>Value</mat-label>
+                    <input matInput formControlName="value" [textMask]="getTextMask(i)" [required]="true">
+                    <mat-error>The value field is required.</mat-error>                    
+                </mat-form-field>
+                <div fxFlex="10">
+                    <button mat-button (click)="removeContact(i)" [ngClass]="['button', 'icon']">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </div>
+            </ng-container>
+        </div>
+        <button mat-button (click)="addContact()" [ngClass]="['button', 'icon']">
+            <mat-icon>person_add</mat-icon> Add Contact
+        </button>
+    </form>
+</ng-container>

@@ -1,0 +1,111 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    meta(name='description', content='')
+    meta(name='author', content='')
+    title System Level Tool
+    // Bootstrap Core CSS
+    link(href='../bower_components/bootstrap/dist/css/bootstrap.min.css', rel='stylesheet')
+    // MetisMenu CSS
+    link(href='../bower_components/metisMenu/dist/metisMenu.min.css', rel='stylesheet')
+    // Custom CSS
+    link(href='stylesheets/sb-admin-2.css', rel='stylesheet')
+    link(href='../bower_components/sweetalert/dist/sweetalert.css', rel='stylesheet')
+
+    // Custom Fonts
+    link(href='../bower_components/font-awesome/css/font-awesome.min.css', rel='stylesheet', type='text/css')
+    link(href='stylesheets/style.css', rel='stylesheet')
+    // HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
+    // WARNING: Respond.js doesn't work if you view the page via file://
+    //if lt IE 9
+      script(src='https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js')
+      script(src='https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js')
+
+    link(rel='stylesheet', href='//cdnjs.cloudflare.com/ajax/libs/dygraph/2.0.0/dygraph.min.css')
+        
+  body
+    #wrapper
+      // Navigation
+      nav.navbar.navbar-default.navbar-fixed-top(role='navigation', style='margin-bottom: 0')
+        .row
+          button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
+              span.sr-only Toggle navigation
+              span.icon-bar
+              span.icon-bar
+              span.icon-bar
+
+          a.navbar-left(href='#')
+            img.alevoLogo(src='images/Alevo-Analytics-Logo.png', class='img-responsive' alt='Alevo Analytics Logo' style='width:auto; max-height:45px;')
+          span.navbar-left
+              img.img-fluid.alevoLogo(src='../images/gridmaestro-logo1.png') 
+          span
+              p.navbar-text System Level Tool &trade;     
+          span
+              button#calculate-btn.btn.btn-primary(type="submit") Calculate
+          span
+              button#save-btn.btn.btn-primary(type="submit") Save 
+                i.fa.fa-floppy-o.fa-fw
+
+          h3
+            span#status-label.label.label-default
+              | Not Started
+
+          //- span
+          //-   a(href='/data-dictionary' target="_blank")
+          //-     i.fa.fa-book.fa-fw
+          //-     |  Data Dictionary
+                
+          span.nav.navbar-top-links.navbar-right
+            h3
+              a.dropdown-toggle(data-toggle='dropdown', href='#')
+                i.text-info #{username}
+                i.fa.fa-user.fa-fw
+
+
+          .col-lg-4
+            .input-group
+              span.input-group-addon Project
+              .select-editable
+                select#project-select.select-editable(name='Projects', onchange='this.nextElementSibling.value=this.value')
+                  option Select Project
+                input#project-options
+                //- (style='width: 185px; margin-left: -199px;color: red; margin-top: 1px; border: none; float: left;')
+              //-.input-group
+              span.input-group-addon Run
+              .select-editable
+                select#run-select.select-editable(name='Runs',onchange='this.nextElementSibling.value=this.value')
+                  option Select Run
+                input#run-options
+        .row
+          .navbar-default.sidebar(role='navigation')
+            .sidebar-nav.navbar-collapse
+              ul#side-menu.nav                           
+                li
+                  a(href='/data-dictionary')
+                    i.fa.fa-book.fa-fw
+                    |  Data Dictionary
+
+    // jQuery
+    script(src='../bower_components/jquery/dist/jquery.min.js')
+    // Bootstrap Core JavaScript
+    script(src='../bower_components/bootstrap/dist/js/bootstrap.min.js')
+    // Metis Menu Plugin JavaScript
+    script(src='../bower_components/metisMenu/dist/metisMenu.min.js')
+    //sweetalert
+    script(src='../bower_components/sweetalert/dist/sweetalert.min.js')
+    //validator
+    script(src='../bower_components/validator-js/validator.min.js')
+
+    // Custom Theme JavaScript
+    script(src='js/sb-admin-2.js')
+    script(src='../js/gen-by-fuel-dynamic.js')
+    script(src='js/layout.js')
+
+    #page-wrapper
+        block content
+
+//-append body
+  //script(src='../bower_components/datatables/media/js/jquery.dataTables.min.js')

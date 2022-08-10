@@ -1,0 +1,10 @@
+{
+    "api":{
+        "hostname": "localhost",
+        "port": 3333
+    },
+    "datafiles":{
+        "path":"/opt/slt_data",
+        "inpath":"/home/bobclary/SystemLevelToolView"
+    }
+}

@@ -1,0 +1,40 @@
+
+
+    
+  table(class='program-renewables-table')
+      thead
+        tr
+          th(colspan="4" style='width:10%' class='table-header table-header-text') - RENEWABLES -
+        tr
+          th(class='table-header-field-empty')
+          |
+          th(class ='table-header-field table-header-field-title') Capacity Year 1 (MW)
+          |
+          th(class ='table-header-field table-header-field-title') Capacity Year 2 (MW)
+          |
+          th(class ='table-header-field table-header-field-title') Cost ($/MWh)
+
+      tbody  
+        tr
+          th(class ='table-items-description table-items-description-text') Wind
+          |
+          td(class ='table-items-description-content') 
+            input.grid-layout-textboxes.form-control#windcappol1(type='text' name='windcappol1')
+          |
+          td(class ='table-items-description-content')
+            input.grid-layout-textboxes.form-control#windcappol2(type='text' name='windcappol2')
+          |
+          td(class ='table-items-description-content')
+            input.grid-layout-textboxes.form-control#windcost(type='text' name='windcost')
+
+        tr
+          th(class ='table-items-description table-items-description-text') Solar
+          |
+          td(class ='table-items-description-content') 
+            input.grid-layout-textboxes.form-control#solarcappol1(type='text' name='solarcappol1')
+          |
+          td(class ='table-items-description-content')
+            input.grid-layout-textboxes.form-control#solarcappol2(type='text' name='solarcappol2')
+          |
+          td(class ='table-items-description-content') 
+            input.grid-layout-textboxes.form-control#solarcost(type='text' name='solarcost')

@@ -1,0 +1,67 @@
+table(id='energy-storage-cost-dynamic-table' class='energy-storage-cost-dynamic-table inline')
+    thead
+      tr
+       th(colspan="14" class='table-header table-header-text') Energy Storage Costs
+      tr
+        th(colspan="2" class ='table-header-field table-header-field-title') Type
+        |
+        th(class ='table-header-field table-header-field-title') Inv. Cost Power Year 1 ($/kW)
+        |
+        th(class ='table-header-field table-header-field-title') Inv. Cost Power Year 2 ($/kW)
+        |
+        th(class ='table-header-field table-header-field-title') Inv. Cost Energy Year 1 ($/MWh)
+        |
+        th(class ='table-header-field table-header-field-title') Inv. Cost Energy Year 2 ($/MWh)
+        |
+        th(class ='table-header-field table-header-field-title') VOM Year 1 ($/MWh)
+        |
+        th(class ='table-header-field table-header-field-title') VOM Year 2 ($/MWh)
+        |
+        th(class ='table-header-field table-header-field-title') Firm Power (%)
+        |
+        th(class ='table-header-field table-header-field-title') Fixed O&M ($/kW-year)     
+        |
+        th(class ='table-header-field table-header-field-title') Energy Arb. Term Year 1 ($/kW-year)
+        |
+        th(class ='table-header-field table-header-field-title') Energy Arb. Term Year 2 ($/kW-year)
+        |
+        th(class ='table-header-field table-header-field-title') Marginal Cost of Dist. Year 1 ($/kW-year)
+        |
+        th(class ='table-header-field table-header-field-title') Marginal Cost of Dist. Year 2 ($/kW-year)
+        
+      // /tr
+    // thead
+    tbody
+      tr.entry
+        th(colspan="2" class ='table-items-description table-items-description-text') 
+          select#storage_options.grid-layout-textboxes.storage-options.form-control.required(name='storage')
+        td(class ='table-items-description-content') 
+          input.grid-layout-textboxes.form-control.invcostpow1#invcostpow1(type='text' value='')
+        td(class ='table-items-description-content') 
+          input.grid-layout-textboxes.form-control.invcostpow2#invcostpow2(type='text' value='')     
+        td(class ='table-items-description-content') 
+          input.grid-layout-textboxes.form-control.invcostener1#invcostener1(type='text' value='')
+        td(class ='table-items-description-content') 
+          input.grid-layout-textboxes.form-control.invcostener2#invcostener2(type='text' value='')
+        td(class ='table-items-description-content') 
+          input.grid-layout-textboxes.form-control.vom1#vom1(type='text' value='')
+        td(class ='table-items-description-content') 
+          input.grid-layout-textboxes.form-control.vom2#vom2(type='text' value='')
+        td(class ='table-items-description-content') 
+          input.grid-layout-textboxes.form-control.firmpow#firmpow(type='text' value='')
+        td(class ='table-items-description-content') 
+          input.grid-layout-textboxes.form-control.esfixedom#esfixedom(type='text' value='')   
+        td(class ='table-items-description-content') 
+          input.grid-layout-textboxes.form-control.esenerarb1#esenerarb1(type='text' value='')
+        td(class ='table-items-description-content') 
+          input.grid-layout-textboxes.form-control.esenerarb2#esenerarb2(type='text' value='')
+        td(class ='table-items-description-content') 
+          input.grid-layout-textboxes.form-control.esmargcost1#esmargcost1(type='text' value='')
+        td(class ='table-items-description-content') 
+          input.grid-layout-textboxes.form-control.esmargcost2#esmargcost2(type='text' value='')
+            
+        td(class ='table-items-description-content btn-field')
+          span.input-group-btn
+            a.btn.btn-primary.btn-add(type='button')
+              span.glyphicon.glyphicon-plus
+          span.remove-btn

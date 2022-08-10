@@ -1,0 +1,15 @@
+// h1 Output Charts
+// /.wrapper1
+  #ess-power 
+    h3 Power Capacity
+  #ess-energy 
+    h3 Energy Capacity
+  #price-energy Three
+    h3 Energy Price
+  #price-energy-fuel
+    h3 Energy Reserve Price
+  #price-reserve Five
+  #price-reserve-fuel Six
+  #total-benefits seven
+
+img(src='images/output-example.PNG' style='width:100%')

@@ -1,0 +1,33 @@
+extends layout
+
+block content
+  .container-fluid
+    .row
+      .col-lg-3.col-lg-offset-2
+        img.img-fluid(src='../images/ALEVO-Analytics-Logo.png')#alevoLogo
+    .row#blankSpace
+    .row
+      .col-lg-8.col-lg-offset-2
+        h3 INPUTS
+    .row
+      .col-lg-8.col-lg-offset-2
+        include input-form.pug
+    .row
+      .col-lg-8.col-lg-offset-2
+        button.btn.btn-primary(type="submit") Calculate
+    .row#blankSpace
+    .row
+      .col-lg-8.col-lg-offset-2
+        h3 Energy Storage Size
+    .row
+      .col-lg-8.col-lg-offset-2
+        include storage-size-table.pug
+    .row#blankSpace
+    .row
+      .col-lg-8.col-lg-offset-2
+        h3 Storage Benefit Buckets
+    .row
+      .col-lg-8.col-lg-offset-2
+        include benefit-buckets-table.pug
+    script(src='../bower_components/jquery-validation/dist/jquery.validate.min.js')
+    script(src='../js/index.js')

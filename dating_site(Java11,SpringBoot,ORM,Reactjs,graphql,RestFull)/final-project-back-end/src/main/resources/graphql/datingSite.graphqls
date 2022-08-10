@@ -1,0 +1,87 @@
+
+
+
+type LikeAndMessages{
+    id:Int!,
+    receiverEmail:String,
+    message:String,
+    like:Boolean,
+    email:String
+}
+
+
+type Characteristics {    
+	id: Int!
+    first_name: String,
+	middle_name: String,
+    last_name:String,
+    gender:String,	
+    age:Int,
+    hair_color:String,
+    eye_color:String,
+    height:String,
+    weight:String,
+    etnicity:String,
+    message:String,
+    photos:[Photos],
+    member:ReturnMember   
+}
+type Photos {
+	id: Int!
+	photo_path:String
+}
+type ReturnMember{
+    email:String
+}
+type Member{    
+    email:String!
+    password:String!
+}
+
+# Root
+type Query {
+	findAllCharacteristics: [Characteristics] 
+    findCharasteristics(email:String!):Characteristics
+    findCharasteristic(id:Int):Characteristics  	
+}
+
+# Root
+type Mutation {
+	registerMember(email:String!,confirmEmail:String!,password:String!,confirmPassword:String!):ReturnMember
+    validateMember(email:String!,password:String!):ReturnMember
+
+    updateMember(email:String!,password:String!):ReturnMember
+    deleteMember(email:String!):Boolean    
+    
+    createMessage(receverEmail:String,email:String,message:String):Boolean 
+    createLike(receverEmail:String,email:String,like:Boolean):Boolean 
+
+    createCharacteristics(
+    email:String!,    
+    first_name: String!,
+    middle_name:String, 
+    last_name:String!,
+    gender:String!,
+    age:Int!,
+    hair_color:String,
+    eye_color:String,
+    height:String,
+    weight:String,
+    etnicity:String,
+    message:String ):Characteristics
+    
+    updateCharacteristics(id:Int!,
+    first_name: String!,
+    middle_name:String, 
+    last_name:String!,
+    gender:String!,
+    age:Int!,    
+    hair_color:String,
+    eye_color:String,
+    height:String,
+    weight:String,
+    etnicity:String,
+    message:String ):Characteristics
+    
+    deleteCharacteristics(id:Int!):Boolean
+}

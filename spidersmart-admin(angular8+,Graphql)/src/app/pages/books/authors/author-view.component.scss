@@ -1,0 +1,30 @@
+@import '~src/theme';
+
+.book-list {
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+    margin: $page-grid-layout-gap 0 0;
+
+    > li {
+        display: inline;
+
+        .book-detail {
+            display: block;
+            width: 150px;
+            text-align: center;
+            margin: 0 $page-grid-layout-gap $page-grid-layout-gap 0;
+        
+            .book-cover {
+                width: 100px;
+                height: 150px;
+                border: 2px solid #aaa;
+            }
+
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+    }
+}

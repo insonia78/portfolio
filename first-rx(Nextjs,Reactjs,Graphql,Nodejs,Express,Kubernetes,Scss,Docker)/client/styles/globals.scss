@@ -1,0 +1,1223 @@
+/*
+veresion 2 
+Source: https://github.com/emilynorton?tab=repositories 
+FirstRx
+Created for FirstRx by TESCHGlobal, 2021 (EN)
+*/
+
+/* ============================================================ */	
+/* == Colors == */
+/* ============================================================ */	
+	
+/*
+
+==== PALETTE ====
+
+Green		#009245	
+Black 		#000
+White 		#FFF
+LightGray	#E9EDE9
+MediumGray  #D2DAD2 
+DarkGray	#536553
+Red/Error	#C42021
+
+==== DEBUGGING ====
+
+Responsive
+Red = 320
+Cyan = 400
+Blue = 600
+Green = 768
+Purple = 992
+Orange = 1200
+
+*/
+	
+/* ============================================================ */	
+/* == Baseline == */
+/* ============================================================ */	
+
+* {box-sizing: border-box;}
+
+html {}
+
+body {
+	font-family: 'Roboto', Helvetica, Arial, sans-serif;
+	font-size: 12px;
+	margin: 0;
+	padding: 0;
+	color: #000;
+	background-color: #FFF;
+}
+
+/* ==Typography== */
+
+h1 {
+	margin: 0;
+	padding: 0;
+}
+
+h2 {
+	margin: 0;
+	padding: 0;
+	font-weight: 300;
+}
+
+h3 {
+	margin: 0;	
+	padding: 0;
+	font-weight: 600;
+	font-size: 2em;
+}
+
+h3 span {
+	font-size: 0.6em;
+	font-weight: 400;
+	display: block;
+}
+
+h4 {
+	margin: 0 0 0.4em 0;	
+	padding: 0;
+	font-size: 1.4em;
+}
+
+h5 {
+	margin: 0;	
+	padding: 0;
+}
+
+.cursor{
+	cursor:pointer;
+}
+
+p {}
+
+strong {}
+em {}
+
+/* == Regular  Lists == */
+
+ul {}
+ol {}
+li {}
+
+/* == Data Lists == */
+	
+dl {
+	margin: 0;
+	padding: 0;
+}
+dt {
+	margin: 0;
+	padding: 0;
+}
+dt:after {
+}
+
+dd+dt {
+}
+
+dd {
+	margin: 0;
+	padding: 0;	
+}
+
+dd:before {
+}
+
+dt+dd:before {
+}
+
+dd+dd {
+}
+	
+/* == Links == */
+
+a:link {
+	color: #000;
+  	text-decoration: none;
+}
+a:visited {
+	color: #000;
+	text-decoration: none;
+}
+a:hover {
+	color: #000;
+	border-bottom: 1px solid #009245;
+}
+a:active {
+	color: #000;
+	border-bottom: 1px solid #009245;
+}
+
+h1 a:link {
+  	text-decoration: none;
+}
+h1 a:visited {
+	text-decoration: none;
+}
+h1 a:hover {
+	color: #009245;
+	border-bottom: 1px solid #fff;
+}
+h1 a:active {
+	color: #009245;
+	border-bottom: 1px solid #fff;
+}
+
+div.logo a:link {
+	color: #000;
+  	text-decoration: none;
+}
+div.logo a:visited {
+	color: #000;
+	text-decoration: none;
+}
+div.logo a:hover {
+	color: #000;
+	border-bottom: 1px solid #fff;
+}
+div.logo a:active {
+	color: #000;
+	border-bottom: 1px solid #fff;
+}
+	
+/* ==Images== */
+
+img {
+	max-width: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+/* ==Logo and Tagline formatting== */
+
+div.logo {
+	margin: 1em 0 0 0;
+}
+
+div.logo img {
+	max-width: 150px;
+}
+
+h1 span {
+	display: none;
+}
+
+.tagline {
+	display: block;
+	font-size: .5em;
+	font-weight: 300;
+}
+
+/* ==Page Structure and Layout== */	
+	
+header {
+	width: 90%;
+	margin: 0.3em auto 1em auto;
+	padding: 0;
+}
+
+header div.flexcontainer {
+	margin: 0;	
+	padding: 0;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+header div.flexcontainer > div.left {
+    text-align: left;
+    flex: auto;
+}
+
+header div.flexcontainer > div.right {
+	text-align: left;
+	flex: auto;
+}
+
+main {
+	position:relative;
+	width: 90%;
+	margin: 0 auto;
+	padding: 0.6em 1em 1em 1em;
+	border: 1px solid #D2DAD2;
+	border-radius: 12px;
+}
+
+footer {	
+	width: 90%;
+	margin: 0 auto 2em auto;
+	padding: 0;
+}
+
+div {}
+section {}
+.article {}
+aside {}	
+
+hr {display: none;}
+
+/* ==Primary Navigation== */
+
+nav.primary {
+	margin: 0.8em 0 0 0;
+	padding: 0;
+	font-size: 0.75em;
+}
+
+nav.primary ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+nav.primary ul li {
+	display: inline;
+	margin: 0;
+	padding: 0;
+}
+nav.primary ul li+li {
+	margin: 0 0.5em 0 0;
+	padding: 0;
+}
+
+.selected {
+	border-bottom: 1px solid #009245;
+}
+
+nav.primary ul li.homelink {
+	display: none;
+}
+
+/* ==Main Stepped Process== */
+
+section.stepped_process {
+	position:relative;	
+	margin: 0.5em 0 0 0;
+	padding: 1em;
+	background-color: #E9EDE9;
+	border: 1px solid #E9EDE9;
+	border-radius: 8px;
+}
+
+/* ==Show buttons in Clickthrough == */
+
+div.clickthrough {
+	border: 1px solid #E9EDE9;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	justify-content: space-between;
+}
+
+div.clickthrough_hide {
+	border: 1px solid #E9EDE9;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	justify-content: space-between;
+}
+
+div.clickthrough div {
+	border: 1px solid #009245;
+	background-color: #009245;
+	border-radius: 8px;
+	padding: 0.6em 1em;
+	max-width: 160px;
+	font-size: 1.3em;
+	font-weight: 500;
+	color: #fff;
+}
+
+div.clickthrough div.back {
+	border: 1px solid #536553;
+	background-color: #FFF;
+	border-radius: 8px;
+	padding: 0.6em 1em;
+	max-width: 160px;
+	font-size: 1.3em;
+	font-weight: 500;
+	color: #536553;
+}
+
+div.clickthrough_hide div {
+	border: 1px solid #E9EDE9;
+	background-color: #E9EDE9;
+	border-radius: 8px;
+	padding: 0.6em 1em;
+	max-width: 160px;
+	font-size: 1.3em;
+	font-weight: 500;
+	color: #E9EDE9;
+}
+
+div.clickthrough div:hover {
+	border: 1px solid #009245;
+	background-color: #fff;
+	color: #009245;
+	cursor: pointer;
+}
+
+div.clickthrough_hide div:hover {
+	border: 1px solid #E9EDE9;
+	cursor: pointer;
+}
+
+div.clickthrough a:link {
+	color: #000;
+  	text-decoration: none;
+}
+div.clickthrough a:visited {
+	color: #000;
+	text-decoration: none;
+}
+div.clickthrough a:hover {
+	color: #000;
+	border-bottom: 0;
+}
+div.clickthrough a:active {
+	color: #000;
+	border-bottom: 0;
+}
+
+div.clickthrough_hide a:link {
+	color: #000;
+  	text-decoration: none;
+}
+div.clickthrough_hide a:visited {
+	color: #000;
+	text-decoration: none;
+}
+div.clickthrough_hide a:hover {
+	color: #000;
+	border-bottom: 0;
+}
+div.clickthrough_hide a:active {
+	color: #000;
+	border-bottom: 0;
+}
+
+/* ==FORMS==*/
+
+p.instructions {
+	color: #536553;
+	font-weight: 500;
+	font-size: 1.1em;
+}
+
+/* ==Error Handling==*/
+
+p.error {
+	color: #C42021;
+}
+
+p.error a:link {
+	color: #C42021;
+	border-bottom: 1px solid #C42021;
+}
+p.error a:visited {
+	color: #C42021;
+	border-bottom: 1px solid #C42021;
+}
+p.error a:hover {
+	color: #C42021;
+	border-bottom: 0;
+}
+p.error a:active {
+	color: #C42021;
+	border-bottom: 0;
+}
+
+/* ==Language Selector Form== */
+
+form.language {
+	font-size: 0.8em;
+}
+
+form.language label {
+	display: block;
+	font-weight: 500;
+	margin: 1em 0 0.3em 0;
+}
+
+.language-select {
+	width: 100%;
+	border: 1px solid #333;
+	border-radius: 5px;
+	padding: 0.2em;
+}
+
+form.language button {
+	display: none;
+}
+
+/* ==Main Find My Prescription Form== */
+
+form.find_rx {
+	margin: 0.4em 0;
+	border: 1px solid #E9EDE9;
+}
+
+form.find_rx label {display: none;}
+form.find_rx button {display: none;}
+
+form.find_rx input{
+	width: 100%;
+	border: 3px solid #333;
+	border-radius: 4px;
+	padding: 0.5em;
+	font-size: 1.3em;
+	color: #536553;
+}
+
+.circular_progress_container{
+	
+	opacity:0.4;	
+	
+}
+.circular_progress{
+	display:flex;
+	align-items: center;
+	justify-content: center;
+	position:absolute;		
+	top:30%;
+	width:96%;	
+  }
+
+form.find_rx input.error {
+	border: 3px solid #C42021;
+	border-radius: 4px;
+	padding: 0.5em;
+	font-size: 1.3em;
+	color: #536553;
+}
+
+/* ==Help Text Home Page == */
+
+body#Home section.help {
+	color: #536553;
+	padding: 0 0.3em;
+}
+
+body#Home section.help ol {
+	margin: 0 0 0 1.4em;
+	padding: 0;
+}
+
+body#Home section.help ol li {
+	margin: 0 0 0.2em 0;
+	padding: 0 0.4em;
+}
+
+/* ==Drug Information Form == */
+.rx label{
+	display:block !important;
+}
+.rx {
+	border: 3px solid #009245;
+	border-radius: 4px;
+	margin: 0 0 1em 0;
+	padding: 0.5em;
+	background-color: #fff;
+}
+
+.rx p {
+	margin: 0 0 0.3em 0;
+	padding: 0;
+	display: flex;
+	align-items: center;
+}
+
+.rx label { 
+	margin: 0 0.5em 0 0;
+	padding: 0;
+	flex: auto;
+	width: 40%;
+	font-weight: 500;
+	font-size: 1em;
+}
+
+.rx select {
+	border: 1px solid #536553;
+	border-radius: 5px;
+	padding: 0.2em;
+	flex: auto;
+	width: 60%;
+	font-size: 0.9em;
+}
+
+.rx button {
+	display: none;
+}
+
+/* ==Location Form== */
+
+form.location {
+	margin: 0.4em 0;
+}
+
+form.location label {display: none;}
+form.location button {display: none;}
+
+form.location input{
+	width: 100%;
+	border: 3px solid #333;
+	border-radius: 4px;
+	margin: 0;
+	padding: 0.5em;
+	font-size: 1.3em;
+	color: #536553;
+}
+
+form.location input.error {
+	width: 100%;
+	border: 3px solid #C42021;
+	border-radius: 4px;
+	margin: 0;
+	padding: 0.5em;
+	font-size: 1.3em;
+	color: #536553;
+}
+
+form.location div {
+	font-size: 1.3em;
+	margin: 0.4em 0 0 0.4em;
+	padding: 0;
+}
+
+form.location div.results {
+	font-size: 1.6em;
+	margin: 0.6em 0;
+	padding: 0;
+	font-weight: 500;
+}
+
+form.location div a:link {
+	color: #333;
+	border-bottom: 1px solid #333;
+}
+form.locationrx div a:visited {
+	color: #333;
+	border-bottom: 1px solid #333;
+}
+form.location div a:hover {
+	color: #333;
+	border-bottom: 0;
+}
+form.location div a:active {
+	color: #333;
+	border-bottom: 0;
+}
+
+/* ==Coupon Results== */
+
+section.results {
+	margin: 0;
+	padding: 0;
+}
+
+section.results p.location {
+	margin: 0.3em 0 0.6em 0;
+	padding: 0;
+	font-size: 1.3em;
+}
+
+section.results p.location a:link {
+	color: #333;
+	border-bottom: 1px solid #333;
+}
+
+.article.coupon {
+	border: 1px solid #333;
+	font-size: 1.2em;
+	border-radius: 8px;
+	margin: 0.7em 0 0 0;
+	padding: 0.25em;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: flex-start;
+}
+
+.article.coupon .price {
+	margin: 0;
+	padding: 0;
+}
+
+.article.coupon .price div {
+	margin: 0.1em 0 0 0;
+	font-size: 2em;
+	color: #009245;
+	width: 100px;
+}
+
+.article.coupon .coupon_button {
+	border: 1px solid #E9EDE9;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+}
+
+.article.coupon .coupon_button  {
+	border: 1px solid #009245;
+	background-color: #009245;
+	border-radius: 8px;
+	padding: 0.6em 1em;
+	max-width: 160px;
+	font-size: 1em;
+	font-weight: 500;
+	color: #fff;
+}
+
+.article.coupon div.coupon_button:hover {
+	border: 1px solid #009245;
+	background-color: #fff;
+	color: #009245;
+	cursor: pointer;
+}
+
+.article.coupon .coupon_button a:link {
+	color: #000;
+  	text-decoration: none;
+}
+.article.coupon .coupon_button a:visited {
+	color: #000;
+	text-decoration: none;
+}
+.article.coupon .coupon_button a:hover {
+	color: #000;
+	border-bottom: 0;
+}
+.article.coupon .coupon_button a:active {
+	color: #000;
+	border-bottom: 0;
+}
+
+.article.coupon .pharmacy {
+	margin: 0;
+	padding: 0;
+}
+
+.article.coupon .pharmacy div {
+	font-size: 0.8em;
+	margin: 0.2em 0 0 0;
+	padding: 0;
+	max-width: 300px;
+}
+
+.article.coupon .pharmacy address {
+	display: inline;
+}
+
+.article.coupon div.pharmacy address strong {
+	font-size: 1.2em;
+	display: block;
+}
+
+div.list_info {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+}
+
+div.list_info p {
+	margin: 0;
+	padding: 0;
+	width: 30%;
+}
+
+div.list_info p span {
+	font-weight: 500;
+}
+
+div.list_info p.radius {
+	text-align: right;
+}
+
+
+/* ==Coupon Detail Page== */
+
+section.stepped_process p.start_over {
+	margin: 0 0 1em 0;
+	padding: 0;
+}
+
+section.stepped_process p.start_over a:link {
+	border-bottom: 1px solid #333;
+}
+
+article.single_coupon {
+	border: 3px solid #009245;
+	border-radius: 8px;
+	background-color: #fff;
+	margin: 0;
+	padding: 0.4em 1em;
+}
+
+article.single_coupon p.drugcode {
+	font-size: 1.7em;
+	margin: 0 0 0.4em 0;
+	padding: 0;
+}
+article.single_coupon p.price {
+	font-size: 1.7em;
+	font-weight: 500;
+	color: #009245;
+	margin: 0 0 0.4em 0;
+	padding: 0;
+}
+article.single_coupon p.address {
+	font-size: 1.4em;
+	font-weight: 500;
+	margin: 0 0 0.4em 0;
+	padding: 0;
+}
+article.single_coupon p.address address {
+	display: inline;
+}
+
+article.single_coupon p.disclaimer {
+	font-weight: 500;
+	text-transform: uppercase;
+}
+
+article.single_coupon dl {
+	margin: 0;
+	padding: 0.5em;
+	border: 1px solid #009245;
+	border-radius: 8px;
+}
+
+article.single_coupon dl dt {
+	font-weight: 500;
+	display: inline;
+	margin: 0 0.2em 0 0;
+	padding: 0;
+}
+
+article.single_coupon dl dd {
+	display: inline;
+	margin: 0 0.6em 0 0;
+	padding: 0;
+}
+
+
+h4.coupon {
+	margin: 0.6em 0 1em 0;
+	padding: 0;
+	font-size: 1.1em;
+	color: #009245;
+}
+h4.coupon address {
+	display: inline;
+	margin: 0 0 0 0.5em;
+	color: #333;
+}
+
+h4.coupon a:link {
+	border-bottom: 1px solid #333;
+}
+
+form#text_coupon {
+	margin: 1em 0;
+}
+
+form#text_coupon label {
+	display: none;
+}
+form#text_coupon button {
+	display: none;
+}
+form#text_coupon input {
+	border: 3px solid #333;
+	border-radius: 4px;
+	margin: 0;
+	padding: 0.5em;
+	font-size: 1.4em;
+	font-weight: 500;
+	color: #536553;
+	width: 100%;
+}
+form#text_coupon div {
+	border: 1px solid #009245;
+	background-color: #009245;
+	border-radius: 8px;
+	margin: 0.4em;
+	padding: 0.2em 0.4em;
+	max-width: 160px;
+	font-size: 1em;
+	font-weight: 500;
+	color: #fff;
+	text-align: center;
+}
+
+/* ==Lower Level Content Pages== */
+
+body#About main, body#Help main {
+	font-size: 1.2em;
+}
+
+body#About h2, body#Help h2 {
+	font-weight: 500;
+}
+
+/* ==Help Text for Content Page (not home page) == */
+
+body#Help ol {
+	margin: 0 0 0 1.6em;
+	padding: 0;
+}
+
+body#Help ol li {
+	margin: 0 0 0.4em 0;
+	padding: 0 0.4em;
+}
+
+
+/* ==Tiny Things == */
+
+.fineprint {
+	color: #536553;
+	font-size: 0.75em;
+}
+
+/* ============================================================ */
+/* == Be Responsive / Mobile First == */
+/* ============================================================ */
+
+
+/* ============================================================ */
+/* == 320 == */
+/* ============================================================ */
+
+@media screen and (min-width: 320px) {
+
+.circular_progress{		
+	top:30%;
+		
+}
+
+/* ==Debugging== */
+	
+/*h2 {color: red;}*/
+
+/* === end 320 === */							
+}
+
+/* ============================================================ */
+/* == 500 == */
+/* ============================================================ */
+
+@media screen and (min-width: 500px) {
+
+section.stepped_process > .circular_progress{		
+	top:30%;
+		
+}
+	
+/* ==Debugging== */
+
+/*h2 {color: cyan;}*/
+	
+.article.coupon {
+	flex-wrap: nowrap;
+	align-items: center;
+}
+
+.article.coupon div.price {
+	text-align: center;
+}
+
+.article.coupon div.pharmacy div {
+	max-width: 160px;
+}
+
+/* === end 500 === */							
+}
+
+/* ============================================================ */
+/* == 600 == */
+/* ============================================================ */
+
+@media screen and (min-width: 600px) {
+
+
+		
+/* ==Debugging== */
+
+/*h2 {color: blue;}*/
+	
+body {
+	font-size: 14px;
+}
+
+div.logo img {
+	max-width: 200px;
+}
+
+div.clickthrough div {
+	max-width: 250px;
+}
+
+div.clickthrough div.back {
+	max-width: 160px;
+}
+
+.article.coupon div.pharmacy div {
+	max-width: 200px;
+}
+
+form#text_coupon input {
+	width: 50%;
+}
+
+form#text_coupon div {
+	display: inline;
+	padding: 0.4em 0.6em;
+}
+
+/* === end 600 === */							
+}
+
+/* ============================================================ */
+/* == 768 == */
+/* ============================================================ */
+
+@media screen and (min-width: 768px) {
+
+
+
+/* ==Debugging== */
+
+/*h2 {color: green;}*/
+
+/* ==Nav text is larger== */
+
+nav.primary {
+	font-size: 1em;
+}
+
+/* ==Alignment/positioning changes in header== */
+
+header div.flexcontainer {
+	align-items: flex-start;
+}
+
+header div.flexcontainer > div.left {
+    width: 70%;
+}
+
+header div.flexcontainer > div.right {
+    width: 30%;
+}
+
+/* ==Rx Display Form is larger font but smaller constrained width== */
+
+.rx label{
+	display:contents;
+}
+
+.rx {
+	font-size: 16px;	
+}
+
+.rx p {
+	max-width: 500px;
+	margin: 0 auto 0.4em auto;
+}
+
+.rx label { 
+	width: 25%;
+}
+
+.rx select {
+	width: 75%;
+}
+
+/* ==Largest possible page size is right here== */
+
+main {
+	max-width: 700px;
+}
+header {
+	max-width: 700px;
+}
+footer {
+	max-width: 700px;
+}
+
+section.help {
+	font-size: 1.2em;
+}
+
+section.results {
+}
+
+ .article.coupon {
+	margin: 0.7em auto;
+	max-width: 500px;
+}
+
+.article.coupon div.pharmacy div {
+	font-size: 0.75em;
+}
+
+div.list_info {
+	margin: 0 auto;
+	max-width: 500px;
+}
+
+
+/* === end 768 === */							
+}
+
+/* ============================================================ */
+/* == 992 == */
+/* ============================================================ */
+
+@media screen and (min-width: 992px) {
+
+
+
+/* ==Debugging== */
+
+/*h2 {color: purple;}*/
+
+/* === end 992 === */							
+}
+
+/* ============================================================ */
+/* == 1200 == */
+/* ============================================================ */
+
+@media screen and (min-width: 1200px) {
+
+/* ==Debugging== */
+
+/*h2 {color: orange;}*/
+
+/* === end 1200 === */							
+}
+
+/* ============================================================ */
+/* == CSS END == */
+/* ============================================================ */
+
+/* === end CSS === */
+
+// version 1 from wire frames
+// https://www.figma.com/proto/f1Af0b6joE7OVyo4R4hb7i/FirstRx-Design?node-id=25%3A1&viewport=520%2C440%2C0.5&scaling=min-zoom
+// https://www.figma.com/proto/f1Af0b6joE7OVyo4R4hb7i/FirstRx-Design?node-id=102%3A1390&viewport=212%2C389%2C0.5&scaling=min-zoom
+// https://www.figma.com/proto/f1Af0b6joE7OVyo4R4hb7i/FirstRx-Design?node-id=349%3A797&viewport=317%2C508%2C0.5&scaling=scale-down 
+
+
+
+// html,
+// body { 
+   
+   
+//     font-size:1.25vmin;   
+//     font-family :"Roboto", sans-serif;
+//     position:relative;
+  
+// }
+// *{
+//   margin:0;
+//   padding:0;
+// }
+
+// a {
+//   color: inherit;
+//   text-decoration: none;
+// }
+
+// * {
+//   box-sizing: border-box;
+// }
+// #prescription{
+//   margin-top:2vh;
+// }
+// .next-button{  
+//   margin-right:.5vw;
+//   margin-bottom:.5vh;
+//   background: #C4C4C4;
+//   border-radius: 8px;
+//   float:right;
+//   width:12.70vw;
+//   height:4.89vh;
+
+//   font-style: normal;
+//   font-weight: normal;
+//   font-size: 24px;
+//   line-height: 28px;
+//   text-decoration-line: underline;
+
+//   color: #333333;
+
+// }
+// @media only screen and (max-width: 1440px) {
+//   .next-button{  
+//     margin-right:.5vw;
+//     margin-bottom:.5vh;
+//     background: #C4C4C4;
+//     border-radius: 8px;
+//     float:right;
+//     width:15.70vw;
+//     height:4.89vh;
+  
+//     font-style: normal;
+//     font-weight: normal;
+//     font-size: 2rem;
+//     line-height: 2.4rem;
+//     text-decoration-line: underline;
+  
+//     color: #333333;
+  
+//   }
+  
+
+// }
+//  @media only screen and (max-width: 550px) {
+//    html,
+//    body {
+//     font-size:2.1vmin;
+//     font-family :"Roboto", sans-serif;
+//     position:absolute;
+//     width:auto;
+//     height:auto;
+   
+//   }
+//   .next-button{  
+//     margin-right:.5vw;
+//     margin-bottom:.5vh;
+//     background: #C4C4C4;
+//     border-radius: 8px;
+//     float:right;
+//     width:36.25vw;
+//     height:4.39vh;
+  
+//     font-style: normal;
+//     font-weight: normal;
+//     font-size: 1.4rem;
+//     line-height: 1.6rem;
+//     text-decoration-line: underline;
+  
+//     color: #333333;
+  
+//   }
+//   @media only screen and (max-height: 561px) {
+//     html,
+//     body {
+//      font-size:1.5vmin;
+//      font-family :"Roboto", sans-serif;     
+    
+//    }
+    
+//   }
+   
+//  }
+ 
+
+

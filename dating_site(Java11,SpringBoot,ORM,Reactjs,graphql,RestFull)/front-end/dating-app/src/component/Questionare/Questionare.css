@@ -1,0 +1,5 @@
+.grid{
+    display:grid;
+    grid-auto-rows: auto;
+    grid-auto-columns: auto;
+}

@@ -1,0 +1,130 @@
+<html>
+
+   <head>
+   <link  rel ="stylesheet"  href = "functionality.css" >
+   <link href="css/jquery-ui.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/style.css">
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery-ui.js"></script>	
+	<script src = "js/functionality_buttons.js"></script>
+	<script src = "js/functionality_button_configuration.js"></script>
+	<script src = "js/addTabClass.js"></script>
+	
+	
+	
+</head>
+<style>
+.quick_menu_container
+{
+position:absolute;
+   z-index: 1;
+   width:300px;
+   border: 1px solid black ;
+
+}
+</style>
+
+ <body>
+ 
+ <!--------------------------------------------------------------------------------------------------Functionality Buttons ------------------------>
+
+
+<div id="functionality_setUp" title="Accordion data" class ="hidden">
+  <form>
+    
+    <fieldset id ="window_pop_up" style = "width:100px">
+	     <legend>Set Up pop Up screens </legend>
+      
+	  <div id ="popUp_container">
+	  
+	     <label>Name Of the Button:</label> <input width = '80px' type='text' id ='button' >
+		 <br>
+	     <label>Description(optional)</label>
+		 <br>
+		 <textarea rows ='3' cols ='40' id ='popUp_description'></textarea>
+		 <br>
+		 <br>
+		 
+		 <input type="button" value='set Up Pop Up windows' id ="popUp_setUp1"/>
+		 
+	  
+
+      </div>
+	 
+    </fieldset>
+	<fieldset id ="window_pop_up_checkboxes"style = "width:200px;position:absolute; left:500px;top:10px;" >
+	
+	<legend>Options</legend>
+	
+                        <input id ="sticky_notes" type="checkbox" name="animal" value="Sticky Notes" />Sticky Notes <br />
+                        <input id ="side_bar" type="checkbox" name="animal" value="Side Bar" />Side Bar<br />
+                        <input id ="video" type="checkbox" name="animal" value="Video" />Video<br />
+                        
+	
+	
+	</fieldset>
+	
+	
+	<div id ="aInsert" style = "width:100px; position:absolute; left:5px; top:110px; ">
+	
+	
+	
+	</div>
+	
+	
+	<div id="popUpWindowContainer" style = "width:700px;position:absolute; left:10px;top:540px;border:1px solid black">
+	
+	
+	
+	</div>
+	
+	<fieldset id ="window_pop_up_checkboxes" style = "width:300px;position:absolute; left:500px;top:130px;float:rigth;" >
+	
+	<legend>Links to automated launch</legend>
+	
+	
+	
+     <input type="button" value='set href property' id ="aHref"/>
+	 <input type="button" value='get Url' id ="agetUrl"/> 
+                        
+	
+	
+	</fieldset>
+	
+  </form>
+ 
+</div>
+<style>
+.popUp{ width: 250px; height: 350px; padding: 0.5em; 
+
+   border: 1px solid black;
+
+}
+
+</style>
+
+<div id = "popUp_setUp">
+
+<div class ="quick_menu_container">
+
+<input type = "button"  id ="getScreen" value = "New Screen">
+<input type = "button"  id ="getUrl" value = "Get Url">
+<input type = "button"  id ="getAdd" value = "Add">
+<input type = "button"  id ="getDelete" value = "Delete">
+
+</div>
+ <form>
+
+
+ </form>
+</div>
+
+
+ 
+ 
+ 
+ 
+ 
+ </body>
+ 
+ </html>	

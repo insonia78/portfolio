@@ -1,0 +1,36 @@
+<div [formGroup]="form" class="form">
+    <mat-form-field>
+        <mat-label>Title</mat-label>
+        <input matInput formControlName="title" required>        
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Street Address</mat-label>
+        <input matInput formControlName="streetAddress" required>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>City</mat-label>
+        <input matInput formControlName="city" required>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>State</mat-label>
+        <input matInput formControlName="state" required>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Postal Code</mat-label>
+        <input matInput formControlName="postalCode" required>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Country</mat-label>
+        <sm-country-select formControlName="country" required></sm-country-select>
+    </mat-form-field>
+    <p>
+        <mat-error *ngIf="form.touched && (form?.get('title').hasError('required') || 
+            form?.get('streetAddress').hasError('required') ||
+            form?.get('city').hasError('required') ||
+            form?.get('state').hasError('required') || 
+            form?.get('postalCode').hasError('required') ||
+            form?.get('country').hasError('required'))">
+            The address must be filled out completely.
+        </mat-error>
+    </p>
+</div>

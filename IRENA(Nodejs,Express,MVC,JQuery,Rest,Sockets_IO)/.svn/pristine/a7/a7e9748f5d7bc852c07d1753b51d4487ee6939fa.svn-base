@@ -1,0 +1,60 @@
+table#storageSizeTable.table.table-striped.table-bordered.table-hover
+  thead
+    tr
+      th.col-lg-1 Total MW
+      |
+      td.col-lg-1
+      |          
+      th.col-lg-1 Total MWh
+      |          
+      td.col-lg-1
+
+    // /tr
+  // /thead
+  tbody
+    tr
+      td 2C MW
+      |          
+      td
+        #P_cap_es_200C(type='text' name='P_cap_es_200C' disabled)
+      |          
+      td 2C MWh
+      |          
+      td 
+        #E_cap_es_200C(type='text' name='E_cap_es_200C' disabled)
+    // /tr
+    tr
+      td 1C MW
+      |          
+      td
+        #P_cap_es_100C(type='text' name='P_cap_es_100C' disabled)
+      |          
+      td 1C MWh
+      |          
+      td 
+        #E_cap_es_100C(type='text' name='E_cap_es_100C' disabled)
+    // /tr
+    tr
+      td 0.5C MW
+      |          
+      td
+        #P_cap_es_050C(type='text' name='P_cap_es_050C' disabled)
+      |          
+      td 0.5C MWh
+      |          
+      td 
+        #E_cap_es_050C(type='text' name='E_cap_es_050C' disabled)
+    // /tr
+    tr
+      td 0.25C MW
+      |          
+      td
+        #P_cap_es_025C(type='text' name='P_cap_es_025C' disabled)
+      |          
+      td 0.25C MWh
+      |          
+      td 
+        #E_cap_es_025C(type='text' name='E_cap_es_025C' disabled)
+    // /tr
+  // /tbody	
+// /table

@@ -1,0 +1,110 @@
+.table-responsive
+  table#hydro-monthly-energy.table.table-striped.table-bordered.table-hover.table-condensed
+    thead
+      tr
+        th.col-lg-2 
+        |
+        th Jan
+        |      
+        th Feb
+        |         
+        th Mar
+        |         
+        th Apr
+        |         
+        th May
+        |         
+        th Jun
+        |
+        th Jul
+        |      
+        th Aug
+        |         
+        th Sep
+        |         
+        th Oct
+        |         
+        th Nov
+        |         
+        th Dec
+
+      // /tr
+    // thead
+    tbody
+    
+      tr
+        th.col-lg-1 Monthly Energy Year 1 (GWh)
+        |              
+        td 
+          input.form-control#hydroEng1_1(type='text' name='hydroEng1_1' value=120)
+        |
+        td 
+          input.form-control#hydroEng1_2(type='text' name='hydroEng1_2' value=130)
+        |
+        td 
+          input.form-control#hydroEng1_3(type='text' name='hydroEng1_3' value=150)
+        |
+        td 
+          input.form-control#hydroEng1_4(type='text' name='hydroEng1_4' value=160)
+        |
+        td 
+          input.form-control#hydroEng1_5(type='text' name='hydroEng1_5' value=190)
+        |
+        td 
+          input.form-control#hydroEng1_6(type='text' name='hydroEng1_6' value=125)
+        |              
+        td 
+          input.form-control#hydroEng1_7(type='text' name='hydroEng1_7' value=136)
+        |
+        td 
+          input.form-control#hydroEng1_8(type='text' name='hydroEng1_8' value=114)
+        |
+        td 
+          input.form-control#hydroEng1_9(type='text' name='hydroEng1_9' value=120)
+        |
+        td 
+          input.form-control#hydroEng1_10(type='text' name='hydroEng1_10' value=178)
+        |
+        td 
+          input.form-control#hydroEng1_11(type='text' name='hydroEng1_11' value=170)
+        |
+        td 
+          input.form-control#hydroEng1_12(type='text' name='hydroEng1_12' value=120)
+      tr
+        th Monthly Energy Year 2 (GWh)
+        |              
+        td 
+          input.form-control#hydroEng2_1(type='text' name='hydroEng2_1' value=110)
+        |
+        td 
+          input.form-control#hydroEng2_2(type='text' name='hydroEng2_2' value=120)
+        |
+        td 
+          input.form-control#hydroEng2_3(type='text' name='hydroEng2_3' value=160)
+        |
+        td 
+          input.form-control#hydroEng2_4(type='text' name='hydroEng2_4' value=170)
+        |
+        td 
+          input.form-control#hydroEng2_5(type='text' name='hydroEng2_5' value=180)
+        |
+        td 
+          input.form-control#hydroEng2_6(type='text' name='hydroEng2_6' value=120)
+        |              
+        td 
+          input.form-control#hydroEng2_7(type='text' name='hydroEng2_7' value=126)
+        |
+        td 
+          input.form-control#hydroEng2_8(type='text' name='hydroEng2_8' value=140)
+        |
+        td 
+          input.form-control#hydroEng2_9(type='text' name='hydroEng2_9' value=135)
+        |
+        td 
+          input.form-control#hydroEng2_10(type='text' name='hydroEng2_10' value=198)
+        |
+        td 
+          input.form-control#hydroEng2_11(type='text' name='hydroEng2_11' value=185)
+        |
+        td 
+          input.form-control#hydroEng2_12(type='text' name='hydroEng2_12' value=140)

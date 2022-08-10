@@ -1,0 +1,351 @@
+var express = require('express');
+var router = express.Router();
+var mysql = require('mysql');
+
+
+var con = mysql.createConnection({
+  host: "localhost",
+  user: "alevo",
+  password: "alevo4Irena",
+  database: "IRENA"
+});
+
+
+/* GET home page. */
+router.get(
+    '/',
+    function(req, res, next)
+    {
+	res.render('index', { title: 'Alevo Analytics' });
+    }
+);
+
+/* GET index page. */
+router.get(
+    '/inputs',
+    function(req, res, next)
+    {
+    res.render('index', { title: 'Alevo Analytics' });
+    }
+);
+
+
+/* GET Data Dictionary Page. */
+router.get('/data-dictionary', function(req, res, next) {
+  res.render('sub-forms/data-dictionary', { title: 'Express' });
+});
+
+
+router.post(
+    '/calculate-valuation',
+    function(req, res)
+    {
+    console.log("calculate button");
+	console.log(req.body);
+         
+    var response = es_save_to_db(req)
+            
+    var systemType = parseFloat(req.body.systemType);
+	var response = es_calculator(peakCapacity, systemType);
+
+	res.setHeader("Content-Type", "application/json");
+	res.write(JSON.stringify(response));
+	res.end();
+    }
+);
+
+
+var ref = require('ref');
+var ffi = require('ffi');
+var doublePtr = ref.refType('double');
+
+var libESCalc = ffi.Library(
+    'lib/libesCalculator.so',
+    {
+	"esCalculator": ["void", ["double", "double",
+				  doublePtr, doublePtr, doublePtr, doublePtr,
+				  doublePtr, doublePtr, doublePtr, doublePtr]]
+    }
+);
+/******************************************************************************/
+/* es_save_to_db function                                                     */
+/* called from the SLT screens to save the inpute to MySQL                    */
+/******************************************************************************/
+
+function es_save_to_db(req)
+{
+    console.log("**********************");
+    console.log("starting es_save_to_db");
+    console.log("**********************");
+/*
+    still missing these!!!!!
+   username
+   project
+   run
+*/
+
+    /* assigned all of the variables from req to local variables */
+    var c_country = req.body.country;
+    var c_eneffpower = parseFloat(req.body.eneffpower);
+    var c_eneffeng = parseFloat(req.body.eneffeng);
+    var c_eneffcost = parseFloat(req.body.eneffcost);
+    var c_demrespower = parseFloat(req.body.demrespower);
+    var c_demreseng = parseFloat(req.body.demreseng);
+    var c_demrescost = parseFloat(req.body.demrescost);
+    var c_distpvpower = parseFloat(req.body.distpvpower);
+    var c_distpveng = parseFloat(req.body.distpveng);
+    var c_distpvcost = parseFloat(req.body.distpvcost);
+    var c_windcap = parseFloat(req.body.windcap);
+    var c_windcost = parseFloat(req.body.windcost);
+    var c_solarcap = parseFloat(req.body.solarcap);
+    var c_solarcost = parseFloat(req.body.solarcost);
+    var c_demandprofile_yr1 = req.body.demandprofile_yr1;
+    var c_demandprofile_yr2 = req.body.demandprofile_yr2;
+    var c_inputpeak_yr1 = parseFloat(req.body.inputpeak_yr1);
+	var c_inputpeak_yr2 = parseFloat(req.body.inputpeak_yr2);
+    var c_inputenergy_yr1 = parseFloat(req.body.inputenergy_yr1);
+    var c_inputenergy_yr2 = parseFloat(req.body.inputenergy_yr2);
+    var c_peakdemgrowrt_yr1 = parseFloat(req.body.peakdemgrowrt_yr1);
+    var c_peakdemgrowrt_yr2 = parseFloat(req.body.peakdemgrowrt_yr2);
+    var c_basewind = req.body.basewind;
+    var c_windpeakcap = parseFloat(req.body.windpeakcap);
+    var c_basesolar = req.body.basesolar;
+    var c_solarpeakcap = parseFloat(req.body.solarpeakcap);
+    var c_hydroEng0101 = parseFloat(req.body.hydroEng0101);
+    var c_hydroEng0102 = parseFloat(req.body.hydroEng0102);
+    var c_hydroEng0103 = parseFloat(req.body.hydroEng0103);
+    var c_hydroEng0104 = parseFloat(req.body.hydroEng0104);
+    var c_hydroEng0105 = parseFloat(req.body.hydroEng0105);
+    var c_hydroEng0106 = parseFloat(req.body.hydroEng0106);
+    var c_hydroEng0107 = parseFloat(req.body.hydroEng0107);
+    var c_hydroEng0108 = parseFloat(req.body.hydroEng0108);
+    var c_hydroEng0109 = parseFloat(req.body.hydroEng0109);
+    var c_hydroEng0110 = parseFloat(req.body.hydroEng0110);
+    var c_hydroEng0111 = parseFloat(req.body.hydroEng0111);
+    var c_hydroEng0112 = parseFloat(req.body.hydroEng0111);
+    var c_hypmax = parseFloat(req.body.hypmax);
+    var c_hydrores1 = parseFloat(req.body.hydrores1);
+    var c_hydrores2 = parseFloat(req.body.hydrores2);
+    var c_hydrores3 = parseFloat(req.body.hydrores3);
+    var c_p_reserves = parseFloat(req.body.p_reserves);
+    var c_s_reserves = parseFloat(req.body.s_reserves);
+    var c_t_reserves = parseFloat(req.body.t_reserves);
+    var c_esrt2c = parseFloat(req.body.esrt2c);
+    var c_esrt1c = parseFloat(req.body.esrt1c);
+    var c_esrt5c = parseFloat(req.body.esrt5c);
+    var c_esrt25c = parseFloat(req.body.esrt25c);
+    var c_escost2c = parseFloat(req.body.escost2c);
+    var c_escost1c = parseFloat(req.body.escost1c);
+    var c_escost5c = parseFloat(req.body.escost5c);
+    var c_escost25c = parseFloat(req.body.escost25c);
+    var c_carboncost = parseFloat(req.body.carboncost);
+    var c_translength = parseFloat(req.body.translength);
+    var c_distlength = parseFloat(req.body.distlength);
+    var c_planresmargin = parseFloat(req.body.planresmargin);
+    var c_transcongind = parseFloat(req.body.transcongind);
+    var c_demforrisk = parseFloat(req.body.demforrisk);
+    var c_geodivind = parseFloat(req.body.geodivind);
+    var c_outageIndices = parseFloat(req.body.outageIndices);
+    var c_vallossload = parseFloat(req.body.vallossload);
+    var c_renoutforrisk = parseFloat(req.body.renoutforrisk);
+    var c_freregvalue = parseFloat(req.body.freregvalue);
+    var c_peakcapital = parseFloat(req.body.peakcapital);
+    
+
+    /* if a variable is NaN then set it to a default*/
+    if (c_country == NaN) {c_country = ""};
+    if (isNaN(c_eneffpower)) {c_eneffpower = 0};
+    if (isNaN(c_eneffeng)) {c_eneffeng = 0};
+    if (isNaN(c_eneffcost)) {c_eneffcost = 0};
+    if (isNaN(c_demrespower)) {c_demrespower = 0};
+    if (isNaN(c_demreseng)) {c_demreseng = 0};
+    if (isNaN(c_demrescost)) {c_demrescost = 0};
+    if (isNaN(c_distpvpower)) {c_distpvpower = 0};
+    if (isNaN(c_distpveng)) {c_distpveng = 0};
+    if (isNaN(c_distpvcost)) {c_distpvcost = 0};
+    if (isNaN(c_windcap)) {c_windcap = 0};
+    if (isNaN(c_windcost)) {c_windcost = 0};
+    if (isNaN(c_solarcap)) {c_solarcap = 0};
+    if (isNaN(c_solarcost)) {c_solarcost = 0};
+    if (c_demandprofile_yr1 == NaN) {c_demandprofile_yr1 = ""};
+    if (c_demandprofile_yr2 == NaN) {c_demandprofile_yr1 = ""};
+    if (isNaN(c_inputpeak_yr1)) {c_inputpeak_yr1 = 0};
+    if (isNaN(c_inputpeak_yr2)) {c_inputpeak_yr2 = 0};
+    if (isNaN(c_inputenergy_yr1)) {c_inputenergy_yr1 = 0};
+    if (isNaN(c_inputenergy_yr2)) {c_inputenergy_yr2 = 0};
+    if (isNaN(c_peakdemgrowrt_yr1)) {c_peakdemgrowrt_yr1 = 0};
+    if (isNaN(c_peakdemgrowrt_yr2)) {c_peakdemgrowrt_yr2 = 0};
+    if (c_basewind == NaN) {c_basewind = ""};
+    if (isNaN(c_windpeakcap)) {c_windpeakcap = 0};
+    if (c_basesolar == NaN) {c_basesolar = ""};
+    if (isNaN(c_solarpeakcap)) {c_solarpeakcap = 0};
+    if (isNaN(c_hydroEng0101)) {c_hydroEng0101 = 0};
+    if (isNaN(c_hydroEng0102)) {c_hydroEng0102 = 0};
+    if (isNaN(c_hydroEng0103)) {c_hydroEng0103 = 0};
+    if (isNaN(c_hydroEng0104)) {c_hydroEng0104 = 0};
+    if (isNaN(c_hydroEng0105)) {c_hydroEng0105 = 0};
+    if (isNaN(c_hydroEng0106)) {c_hydroEng0106 = 0};
+    if (isNaN(c_hydroEng0107)) {c_hydroEng0107 = 0};
+    if (isNaN(c_hydroEng0108)) {c_hydroEng0108 = 0};
+    if (isNaN(c_hydroEng0109)) {c_hydroEng0109 = 0};
+    if (isNaN(c_hydroEng0110)) {c_hydroEng0110 = 0};
+    if (isNaN(c_hydroEng0111)) {c_hydroEng0111 = 0};
+    if (isNaN(c_hydroEng0112)) {c_hydroEng0112 = 0};
+    if (isNaN(c_hypmax)) {c_hypmax = 0};
+    if (isNaN(c_hydrores1)) {c_hydrores1 = 0};
+    if (isNaN(c_hydrores2)) {c_hydrores2 = 0};
+    if (isNaN(c_hydrores3)) {c_hydrores3 = 0};
+    if (isNaN(c_p_reserves)) {c_p_reserves = 0};
+    if (isNaN(c_s_reserves)) {c_s_reserves = 0};
+    if (isNaN(c_t_reserves)) {c_t_reserves = 0};
+    if (isNaN(c_esrt2c)) {c_esrt2c = 0};
+    if (isNaN(c_esrt1c)) {c_esrt1c = 0};
+    if (isNaN(c_esrt5c)) {c_esrt5c = 0};
+    if (isNaN(c_esrt25c)) {c_esrt25c = 0};
+    if (isNaN(c_escost2c)) {c_escost2c = 0};
+    if (isNaN(c_escost1c)) {c_escost1c = 0};
+    if (isNaN(c_escost5c)) {c_escost5c = 0};
+    if (isNaN(c_escost25c)) {c_escost25c = 0};
+    if (isNaN(c_carboncost)) {c_carboncost = 0};
+    if (isNaN(c_translength)) {c_translength = 0};
+    if (isNaN(c_distlength)) {c_distlength = 0};
+    if (isNaN(c_planresmargin)) {c_planresmargin = 0};
+    if (isNaN(c_transcongind)) {c_transcongind = 0};
+    if (isNaN(c_demforrisk)) {c_demforrisk = 0};
+    if (isNaN(c_geodivind)) {c_geodivind = 0};
+    if (isNaN(c_outageIndices)) {c_outageIndices = 0};
+    if (isNaN(c_vallossload)) {c_vallossload = 0};
+    if (isNaN(c_renoutforrisk)) {c_renoutforrisk = 0};   
+    if (isNaN(c_freregvalue)) {c_freregvalue = 0};
+    if (isNaN(c_peakcapital)) {c_peakcapital = 0};
+     
+    console.log("inserting into slt_input");
+
+    var slt_input_fields = {
+     country: c_country,
+     eneffpower: c_eneffpower,
+     eneffeng: c_eneffeng,
+     eneffcost: c_eneffcost,
+     demrespower: c_demrespower,
+     demreseng: c_demreseng,
+     demrescost: c_demrescost,
+     distpvpower: c_distpvpower,
+     distpveng: c_distpveng,
+     distpvcost: c_distpvcost,
+     windcap: c_windcap,
+     windcost: c_windcost,
+     solarcap: c_solarcap,
+     solarcost: c_solarcost,
+     demandprofile_yr1: c_demandprofile_yr1,
+     demandprofile_yr2: c_demandprofile_yr2,
+     inputpeak_yr1: c_inputpeak_yr1,
+     inputpeak_yr2: c_inputpeak_yr2,
+     inputenergy_yr1: c_inputenergy_yr1,
+     inputenergy_yr2: c_inputenergy_yr2,
+     peakdemgrowrt_yr1: c_peakdemgrowrt_yr1,
+     peakdemgrowrt_yr2: c_peakdemgrowrt_yr2,
+     basewind: c_basewind,
+     windpeakcap: c_windpeakcap,
+     basesolar: c_basesolar,
+     solarpeakcap: c_solarpeakcap,
+     hydroEng0101: c_hydroEng0101,
+     hydroEng0102: c_hydroEng0102,
+     hydroEng0103: c_hydroEng0103,
+     hydroEng0104: c_hydroEng0104,
+     hydroEng0105: c_hydroEng0105,
+     hydroEng0106: c_hydroEng0106,
+     hydroEng0107: c_hydroEng0107,
+     hydroEng0108: c_hydroEng0108,
+     hydroEng0109: c_hydroEng0109,
+     hydroEng0110: c_hydroEng0110,
+     hydroEng0111: c_hydroEng0111,
+     hydroEng0112: c_hydroEng0112,
+     hypmax: c_hypmax,
+     hydrores1: c_hydrores1,
+     hydrores2: c_hydrores2,
+     hydrores3: c_hydrores3,
+     p_reserves: c_p_reserves,
+     s_reserves: c_s_reserves,
+     t_reserves: c_t_reserves,
+     esrt2c: c_esrt2c,
+     esrt1c: c_esrt1c,
+     esrt5c: c_esrt5c,
+     esrt25c: c_esrt25c,
+     escost2c: c_escost2c,
+     escost1c: c_escost1c,
+     escost5c: c_escost5c,
+     escost25c: c_escost25c,
+     carboncost: c_carboncost,
+     translength: c_translength,
+     distlength: c_distlength,
+     planresmargin: c_planresmargin,
+     transcongind: c_transcongind,
+     demforrisk: c_demforrisk,
+     geodivind: c_geodivind,
+     outageIndices: c_outageIndices,
+     vallossload: c_vallossload,
+     renoutforrisk: c_renoutforrisk,
+     freregvalue: c_freregvalue,
+     peakcapital: c_peakcapital};
+
+    /* console.log(slt_input_fields); */
+    
+    con.query('INSERT INTO slt_input SET ?', slt_input_fields, function(err,res)
+     {
+      if(err) throw err;
+      var c_slt_input_row_id = res.insertId;
+      console.log('Last row_id:', res.insertId);
+     });  
+
+    
+    console.log("**********************");
+    console.log("ending es_save_to_db  ");
+    console.log("**********************");
+    
+    return 0;
+};
+
+
+
+
+
+function es_calculator(peakCapacity, systemType)
+{
+    var P_cap_es_025C = ref.alloc('double');
+    var P_cap_es_050C = ref.alloc('double');
+    var P_cap_es_100C = ref.alloc('double');
+    var P_cap_es_200C = ref.alloc('double');
+    var E_cap_es_025C = ref.alloc('double');
+    var E_cap_es_050C = ref.alloc('double');
+    var E_cap_es_100C = ref.alloc('double');
+    var E_cap_es_200C = ref.alloc('double');
+
+    libESCalc.esCalculator(peakCapacity, systemType,
+			   P_cap_es_025C, P_cap_es_050C, P_cap_es_100C, P_cap_es_200C,
+			   E_cap_es_025C, E_cap_es_050C, E_cap_es_100C, E_cap_es_200C);
+
+    console.log('P_cap_es_025C = ', P_cap_es_025C.deref());
+    console.log('P_cap_es_050C = ', P_cap_es_050C.deref());
+    console.log('P_cap_es_100C = ', P_cap_es_100C.deref());
+    console.log('P_cap_es_200C = ', P_cap_es_200C.deref());
+    console.log('E_cap_es_025C = ', E_cap_es_025C.deref());
+    console.log('E_cap_es_050C = ', E_cap_es_050C.deref());
+    console.log('E_cap_es_100C = ', E_cap_es_100C.deref());
+    console.log('E_cap_es_200C = ', E_cap_es_200C.deref());
+
+    var ret = {
+	'P_cap_es_025C': P_cap_es_025C.deref(),
+	'P_cap_es_050C': P_cap_es_050C.deref(),
+	'P_cap_es_100C': P_cap_es_100C.deref(),
+	'P_cap_es_200C': P_cap_es_200C.deref(),
+	'E_cap_es_025C': E_cap_es_025C.deref(),
+	'E_cap_es_050C': E_cap_es_050C.deref(),
+	'E_cap_es_100C': E_cap_es_100C.deref(),
+	'E_cap_es_200C': E_cap_es_200C.deref()
+    };
+
+    return ret;
+}
+
+
+module.exports = router;

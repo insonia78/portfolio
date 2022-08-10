@@ -1,0 +1,55 @@
+/*
+particular changes for the input_feedback_input;
+*/
+/* 
+    Created on : Dec 23, 2015, 5:55:36 PM
+    Author     : thomas
+*/
+
+section > .center-left
+{
+    width:1300px;
+    height:100%;
+    position:relative;
+    top:10px;
+    left:10px;
+    background-color:white; 
+    z-index:1;
+    
+}
+section > .center-right
+{
+    width:400px;
+    height:100%;
+    position:absolute;
+    top:10px;
+    left:1320px;
+    background-color:white; 
+    z-index:1;
+    
+}
+ th {
+    background-color: #4CAF50;
+    color: white;
+}
+#action-buttons
+{
+   
+    position:absolute;
+    left:1310px;
+    z-index:1;
+    
+    
+}
+#action-buttons>#fetch-data
+{
+    position:relative;
+    top:-36px;
+    left:110px;
+    width:300px;
+    z-index:1;
+    
+    
+    
+    
+}

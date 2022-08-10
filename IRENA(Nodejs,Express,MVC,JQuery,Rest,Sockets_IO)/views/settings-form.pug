@@ -1,0 +1,25 @@
+.alt-analysis-setting-container
+   p#alternative-analysis-heading(class='data-header-text') Alternative Analysis Settings
+   table.settings-table.AA-settings-table
+     tbody
+       tr
+         th Number of Calculation Years:  
+         td
+           select#alt_an_years.select-years
+             include sub-forms/year-options.pug
+       tr
+         th Discount Rate (%): 
+         td
+           input#discount_rate.grid-layout-textboxes
+
+
+.production-cost-setting-container
+   p#production-cost-heading(class='data-header-text') Production Cost Settings
+   
+.stacked-benefits-setting-container
+   p#stacked-benefits-heading(class='data-header-text') Stacked Benefits Settings
+   
+
+.emulator-setting-container
+   p#emulator-heading(class='data-header-text') Emulator Settings
+   

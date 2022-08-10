@@ -1,0 +1,61 @@
+{
+    "facilities": [
+        {
+            "id": "Bellevue Hospital",
+            "buildings": [
+                {
+                    "id": "East",
+                    "nurse_units": [
+                        {
+                            "id": "ER_TEAM_1",
+                            "rooms": [
+                                {
+                                    "id": "all",
+                                    "beds": [
+                                        {
+                                            "id": "all"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "Seattle Hospital",
+            "buildings": [
+                {
+                    "id": "all",
+                    "nurse_units": [
+                        {
+                            "id": "all",
+                            "rooms": [
+                                {
+                                    "id": "101",
+                                    "beds": [
+                                        {
+                                            "id": "all"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "103",
+                                    "beds": [
+                                        {
+                                            "id": "A"
+                                        },
+                                        {
+                                            "id": "B"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

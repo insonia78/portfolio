@@ -1,0 +1,653 @@
+<html xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=Generator content="Microsoft Word 15 (filtered)">
+<script src="../menu_bar/menu_bar.js"></script>
+<title>GTECH use of Jira project when Customer is entering issues.</title>
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:Cambria;
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Tahoma;
+	panose-1:2 11 6 4 3 5 4 4 2 4;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:10.0pt;
+	margin-left:0in;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";}
+p.MsoHeader, li.MsoHeader, div.MsoHeader
+	{mso-style-link:"Header Char";
+	margin:0in;
+	margin-bottom:.0001pt;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";}
+p.MsoFooter, li.MsoFooter, div.MsoFooter
+	{mso-style-link:"Footer Char";
+	margin:0in;
+	margin-bottom:.0001pt;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:purple;
+	text-decoration:underline;}
+p.MsoAcetate, li.MsoAcetate, div.MsoAcetate
+	{mso-style-link:"Balloon Text Char";
+	margin:0in;
+	margin-bottom:.0001pt;
+	font-size:8.0pt;
+	font-family:"Tahoma","sans-serif";}
+p.MsoNoSpacing, li.MsoNoSpacing, div.MsoNoSpacing
+	{mso-style-link:"No Spacing Char";
+	margin:0in;
+	margin-bottom:.0001pt;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";}
+p.MsoListParagraph, li.MsoListParagraph, div.MsoListParagraph
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:10.0pt;
+	margin-left:.5in;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";}
+p.MsoListParagraphCxSpFirst, li.MsoListParagraphCxSpFirst, div.MsoListParagraphCxSpFirst
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";}
+p.MsoListParagraphCxSpMiddle, li.MsoListParagraphCxSpMiddle, div.MsoListParagraphCxSpMiddle
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";}
+p.MsoListParagraphCxSpLast, li.MsoListParagraphCxSpLast, div.MsoListParagraphCxSpLast
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:10.0pt;
+	margin-left:.5in;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";}
+span.fn
+	{mso-style-name:fn;}
+span.BalloonTextChar
+	{mso-style-name:"Balloon Text Char";
+	mso-style-link:"Balloon Text";
+	font-family:"Tahoma","sans-serif";}
+span.HeaderChar
+	{mso-style-name:"Header Char";
+	mso-style-link:Header;}
+span.FooterChar
+	{mso-style-name:"Footer Char";
+	mso-style-link:Footer;}
+span.NoSpacingChar
+	{mso-style-name:"No Spacing Char";
+	mso-style-link:"No Spacing";
+	font-family:"Times New Roman","serif";}
+.MsoChpDefault
+	{font-family:"Calibri","sans-serif";}
+.MsoPapDefault
+	{margin-bottom:10.0pt;}
+ /* Page Definitions */
+ @page WordSection1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.0in 1.0in 1.0in;}
+div.WordSection1
+	{page:WordSection1;}
+ /* List Definitions */
+ ol
+	{margin-bottom:0in;}
+ul
+	{margin-bottom:0in;}
+-->
+</style>
+
+
+<!--[if gte mso 9]><xml>
+<mso:CustomDocumentProperties>
+<mso:med9f743392a4fddbf4ccc2b27cc76de msdt:dt="string">Draft|54bb13bf-84cf-4f8f-8a1d-666b6f097094</mso:med9f743392a4fddbf4ccc2b27cc76de>
+<mso:IsMyDocuments msdt:dt="string">1</mso:IsMyDocuments>
+<mso:b165e3218c9b48188c793ea09bd74850 msdt:dt="string">Internal Use Only-Confidential|ee5e89b1-84d8-4770-b6a0-819611b62087</mso:b165e3218c9b48188c793ea09bd74850>
+<mso:TaxCatchAll msdt:dt="string">2;#Draft;#1;#Internal Use Only-Confidential</mso:TaxCatchAll>
+</mso:CustomDocumentProperties>
+</xml><![endif]-->
+</head>
+
+<body lang=EN-US link=blue vlink=purple>
+
+<div class=WordSection1>
+
+<div align=center>
+
+<table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0 width="100%"
+ style='width:100.0%;border-collapse:collapse'>
+ <tr style='height:2.0in'>
+  <td width="100%" valign=top style='width:100.0%;padding:0in 5.4pt 0in 5.4pt;
+  height:2.0in'>
+  <p class=MsoNoSpacing><span style='font-family:"Cambria","serif";text-transform:
+  uppercase'>&nbsp;</span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0in'>
+  <td width="100%" style='width:100.0%;border:none;border-bottom:solid #4F81BD 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt;height:1.0in'>
+  <p class=MsoNoSpacing align=center style='text-align:center'><span
+  style='font-size:40.0pt;font-family:"Cambria","serif"'>&nbsp;</span></p>
+  </td>
+ </tr>
+ <tr style='height:.5in'>
+  <td width="100%" style='width:100.0%;border:none;padding:0in 5.4pt 0in 5.4pt;
+  height:.5in'>
+  <p class=MsoNoSpacing align=center style='text-align:center'><span
+  style='font-size:40.0pt;font-family:"Cambria","serif"'>GTECH Jira User Notes
+  for Customer Projects.</span></p>
+  </td>
+ </tr>
+ <tr style='height:.25in'>
+  <td width="100%" style='width:100.0%;padding:0in 5.4pt 0in 5.4pt;height:.25in'>
+  <p class=MsoNoSpacing align=center style='text-align:center'>&nbsp;</p>
+  </td>
+ </tr>
+ <tr style='height:.25in'>
+  <td width="100%" style='width:100.0%;padding:0in 5.4pt 0in 5.4pt;height:.25in'>
+  <p class=MsoNoSpacing align=center style='text-align:center'><b>&nbsp;</b></p>
+  </td>
+ </tr>
+ <tr style='height:.25in'>
+  <td width="100%" style='width:100.0%;padding:0in 5.4pt 0in 5.4pt;height:.25in'>
+  <p class=MsoNoSpacing align=center style='text-align:center'><b>&nbsp;</b></p>
+  </td>
+ </tr>
+</table>
+
+</div>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0 align=left
+ width="100%" style='width:100.0%;border-collapse:collapse;margin-left:7.1pt;
+ margin-right:7.1pt'>
+ <tr>
+  <td width="100%" valign=top style='width:100.0%;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNoSpacing>&nbsp;</p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><b><span style='font-size:12.0pt'>USER   CONFIGURATION</span></b></p>
+
+<p class=MsoListParagraph style='text-indent:-.25in'><span style='font-family:
+Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>
+
+<table cellpadding=0 cellspacing=0>
+ <tr>
+  <td width=44 height=0></td>
+ </tr>
+ <tr>
+  <td></td>
+  <td><img width=592 height=203
+  src="Notes%20for%20GTECH%20users%20Re%20Cust%20Access_files/image001.jpg"></td>
+ </tr>
+</table>
+
+<br clear=ALL>
+There will be a project on the customer Jira server corresponding with the one
+on the GTECH Jira server.    The project key will use the GTECH key preceded by
+PJ (examples: PJXXX, PJLUNA, PJESOA where the production projects are XXX,
+LUNA, and ESOA). </p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoListParagraphCxSpFirst style='margin-top:0in;margin-right:0in;
+margin-bottom:0in;margin-left:1.0in;margin-bottom:.0001pt;text-indent:-.25in'><span
+style='font-family:"Courier New"'>o<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span>When Jira Administrators create the customer Jira project, they
+will set the Project Lead to be a designated Customer user.   That Project Lead
+will be assigned to the <b>Tester</b> role in the customer’s version of the
+project.</p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-top:0in;margin-right:0in;
+margin-bottom:0in;margin-left:1.0in;margin-bottom:.0001pt'>&nbsp;</p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-top:0in;margin-right:0in;
+margin-bottom:0in;margin-left:1.0in;margin-bottom:.0001pt;text-indent:-.25in'><span
+style='font-family:"Courier New"'>o<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span>Jira Administrators will be responsible for adding customer users
+to the Jira system on the customer server.   The user names need and passwords need
+to be provided.   Please note that their <u>password must be 8 characters long
+and have both numeric and alphabetic characters</u>.  The GTECH Project Leads
+should forward these requests to <a href="mailto:SRPT_Requests@gtech.com">SRPT_Requests@gtech.com</a>.  
+</p>
+
+<p class=MsoListParagraphCxSpMiddle>&nbsp;</p>
+
+<p class=MsoListParagraphCxSpLast style='margin-top:0in;margin-right:0in;
+margin-bottom:0in;margin-left:1.0in;margin-bottom:.0001pt;text-indent:-.25in'><span
+style='font-family:"Courier New"'>o<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span>Please be VERY CAREFUL to select only known names for your site
+as this is how we restrict project visibility – all customer users will be
+assigned the Tester role in the project in order for the user to browse the
+project and assign to other customer users.   It is crucial that no external
+user is assigned a role in a project other than the one associated with their
+site – users with any role can browse information in a project.</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>&nbsp;</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>&nbsp;</p>
+
+<p class=MsoListParagraphCxSpFirst style='margin-bottom:0in;margin-bottom:.0001pt'>&nbsp;</p>
+
+<p class=MsoListParagraphCxSpLast>&nbsp;</p>
+
+<span style='font-size:11.0pt;font-family:"Calibri","sans-serif"'><br
+clear=all style='page-break-before:always'>
+</span>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><b><span style='font-size:12.0pt'>PROJECT   CONFIGURATION</span></b></p>
+
+<p class=MsoListParagraphCxSpFirst style='text-indent:-.25in'><span
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>From within the GTECH project, all issues logged by the customer from
+the external server will have a single generic lottery Reporter.  The Jira Administrator<b>
+</b>will create that generic user in the GTECH Jira project and assign it a
+Tester role.   </p>
+
+<p class=MsoListParagraphCxSpMiddle><span style='font-size:10.0pt'>&nbsp;</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:1.0in;text-indent:-.25in'><span
+style='font-family:"Courier New"'>o<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span>Format of user:   <i>Project Name</i> Lottery (<i>GTECH Project
+Lead username</i>)</p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:1.0in;text-indent:-.25in'><span
+class=fn><span style='font-family:"Courier New"'>o<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span></span>Example1:    <span class=fn>Sample One Lottery (Sharon
+Lindeblad)</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:1.0in;text-indent:-.25in'><span
+style='font-family:"Courier New"'>o<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span><span class=fn>Example2:  </span>RFSS-Spain ONCE Lottery (Viktor
+Farcic)</p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:1.0in'>&nbsp;</p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:1.0in'><img border=0
+width=248 height=118 id="Picture 1"
+src="Notes%20for%20GTECH%20users%20Re%20Cust%20Access_files/image002.jpg"></p>
+
+<p class=MsoListParagraphCxSpLast style='margin-left:1.0in'>&nbsp;</p>
+
+<p class=MsoNormal><b><span style='font-size:12.0pt'>ISSUE   CONFIGURATION</span></b></p>
+
+<p class=MsoListParagraphCxSpFirst style='text-indent:-.25in'><span
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Issues created from customer side are limited to: CAT, TIR-Live, and
+Enhancement Request issue types only.   There will be a corresponding issue in
+the GTECH Jira system.  The two issues are not numbered the same but are linked
+programmatically (not using Jira links).</p>
+
+<p class=MsoListParagraphCxSpMiddle>&nbsp;</p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-.25in'><span
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>For each issue submitted by the customer, there is a tab with a
+link to the customer version of the issue within the GTECH Jira issue for use
+by GTECH personnel.   The customer does not have a similar link and has no
+access to the GTECH version of the issue.</p>
+
+<p class=MsoListParagraphCxSpMiddle><span style='font-size:7.0pt'>&nbsp;</span></p>
+
+<p class=MsoListParagraphCxSpMiddle><span style='position:absolute;z-index:
+251658240;left:0px;margin-left:58px;margin-top:147px;width:176px;height:52px'><img
+width=176 height=52
+src="Notes%20for%20GTECH%20users%20Re%20Cust%20Access_files/image003.gif"></span> <img
+border=0 width=340 height=236 id="Picture 13"
+src="Notes%20for%20GTECH%20users%20Re%20Cust%20Access_files/image004.jpg"></p>
+
+<p class=MsoListParagraphCxSpMiddle>&nbsp;</p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-.25in'><span
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>The workflow for the customer version of the issues will not
+include all statuses that GTECH versions of the issues go through as directed
+by GTECH Info Security.   The customer will see the issue as In Progress while
+it goes through the development and QA process on the GTECH side.</p>
+
+<p class=MsoListParagraphCxSpLast>&nbsp;</p>
+
+<p class=MsoNormal><b><span style='font-size:12.0pt'>CUSTOMER ACTIONS </span></b></p>
+
+<p class=MsoListParagraphCxSpFirst style='text-indent:-.25in'><span
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Customers can edit and add attachments before the issue is
+submitted to GTECH.</p>
+
+<p class=MsoListParagraphCxSpMiddle>&nbsp;</p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-.25in'><span
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Customers can also Close the issue as Not A Problem prior to
+submission.</p>
+
+<p class=MsoListParagraphCxSpMiddle>&nbsp;</p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-.25in'><span
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Any attachments linked to an issue when the customer submits the
+issue to GTECH will be copied to the GTECH version of the issue.</p>
+
+<p class=MsoListParagraphCxSpMiddle>&nbsp;</p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-.25in'><span
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>The customer will have a <i>Submit Comment to GTECH</i> action
+available for each issue.   The resulting comments will be displayed in both
+the customer issue and the GTECH version of the issue with submitter
+information.   </p>
+
+<p class=MsoListParagraphCxSpMiddle><img border=0 width=534 height=170
+id="Picture 16"
+src="Notes%20for%20GTECH%20users%20Re%20Cust%20Access_files/image005.jpg"></p>
+
+<p class=MsoListParagraphCxSpMiddle>&nbsp;</p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-.25in'><span
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Customer users can also assign issues in their system to other
+customer users.</p>
+
+<p class=MsoListParagraphCxSpLast>&nbsp;</p>
+
+<p class=MsoNormal><b><span style='font-size:12.0pt'>GTECH USER ACTIONS </span></b></p>
+
+<p class=MsoListParagraphCxSpFirst style='text-indent:-.25in'><span
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>There is a separate action to log comments that GTECH users would
+like visible to the customer users,  <i>Submit Comment to Customer. </i>  It is
+available to the current assignee of the issue in all non-closed statuses.</p>
+
+<p class=MsoListParagraphCxSpMiddle><span style='font-size:8.0pt'>&nbsp;</span></p>
+
+<p class=MsoListParagraphCxSpLast style='margin-left:1.0in;text-indent:-.25in'><span
+style='font-family:"Courier New"'>o<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span>
+
+<table cellpadding=0 cellspacing=0>
+ <tr>
+  <td width=91 height=0></td>
+ </tr>
+ <tr>
+  <td></td>
+  <td><img width=482 height=159
+  src="Notes%20for%20GTECH%20users%20Re%20Cust%20Access_files/image006.jpg"></td>
+ </tr>
+</table>
+
+<br clear=ALL>
+If there is no customer version of an issue (it was created within the GTECH
+Jira system) the <i>Submit Comment to Customer</i> action will not be
+available/displayed.</p>
+
+<p class=MsoNormal style='margin-left:.25in'>
+
+<table cellpadding=0 cellspacing=0 align=left>
+ <tr>
+  <td width=292 height=30></td>
+ </tr>
+ <tr>
+  <td></td>
+  <td><img width=165 height=45
+  src="Notes%20for%20GTECH%20users%20Re%20Cust%20Access_files/image007.gif"></td>
+ </tr>
+</table>
+
+ &nbsp;</p>
+
+<br clear=ALL>
+
+<p class=MsoListParagraph style='margin-left:1.0in;text-indent:-.25in'><span
+style='font-family:"Courier New"'>o<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span>These comments will be propagated to the customer version of the
+issue but will not include names of GTECH personnel, as directed by GTECH
+InfoSecurity</p>
+
+<p class=MsoNormal style='margin-left:.5in'><img border=0 width=472 height=153
+id="Picture 19"
+src="Notes%20for%20GTECH%20users%20Re%20Cust%20Access_files/image008.jpg"></p>
+
+<p class=MsoListParagraphCxSpFirst style='margin-left:1.0in;text-indent:-.25in'><span
+style='font-family:"Courier New"'>o<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span>For internal-only comments, GTECH personnel should use the
+standard Jira <i>Comment</i> action.</p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:1.0in'>&nbsp;</p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-.25in'><span
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>If GTECH users have an attachment that they want visible to the
+customer they need to log into the project on the customer Jira server and add
+the attachment.</p>
+
+<p class=MsoListParagraphCxSpMiddle>&nbsp;</p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-.25in'><span
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Pass QA, Ready for Production actions cannot be initiated on the
+GTECH server for those TIR-Live or Enhancement Request issues that have been submitted
+by the customer.    Also, CAT cannot be by-passed for those issues.</p>
+
+<p class=MsoListParagraphCxSpMiddle>&nbsp;</p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:1.0in;text-indent:-.25in'><span
+style='font-family:"Courier New"'>o<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span>For issues that are logged/created on the GTECH server the Pass
+QA, Ready for Production actions are available to the GTECH user</p>
+
+<p class=MsoListParagraphCxSpMiddle>&nbsp;</p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-.25in'><span
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Pass/Fail CAT actions cannot be initiated on the GTECH server for
+those issues that have been submitted by the customer.    This is designed such
+that if an issue is created by the customer, they will be the one to mark it
+Pass or Fail.   Alternatively, the GTECH Project Lead can log into the customer
+server and initiate the action from within the customer version of the issue if
+need be since they have Manager role in that project.</p>
+
+<p class=MsoListParagraphCxSpMiddle>&nbsp;</p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:1.0in;text-indent:-.25in'><span
+style='font-family:"Courier New"'>o<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span>For issues that are logged/created on the GTECH server the
+Pass/Fail CAT actions are appropriately available for initiation on the GTECH
+server</p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:1.0in'>&nbsp;</p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-.25in'><span
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>When an issue is cloned the <strong><i><span style='font-family:
+"Calibri","sans-serif"'>Remote Jira Link</span></i></strong><strong><span
+style='font-family:"Calibri","sans-serif"'> </span></strong><strong><span
+style='font-family:"Calibri","sans-serif";font-weight:normal'>field on the <i>CustomerAccessRef</i>
+tab must be cleared in the clone.  If not, the workflow will error because it’s
+trying to reconcile with associated issue in PartnerJira.</span></strong></p>
+
+<p class=MsoListParagraphCxSpMiddle>&nbsp;</p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-.25in'><span
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>When GTECH users update an Enhancement issue that was
+created/reported by the customer, the following field values will be propagated
+to the customer.  Please note this will only occur if Edit function is used to
+update.   It will not propagate to PartnerJira using Bulk Edit or Quick Edit
+(version 5).</p>
+
+<p class=MsoListParagraphCxSpMiddle>&nbsp;</p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:1.0in;text-indent:-.25in'><span
+style='font-family:"Courier New"'>o<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span>Summary</p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:1.0in;text-indent:-.25in'><span
+style='font-family:"Courier New"'>o<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span>Priority</p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:1.0in;text-indent:-.25in'><span
+style='font-family:"Courier New"'>o<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span>Due Date</p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:1.0in;text-indent:-.25in'><span
+style='font-family:"Courier New"'>o<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span>Component/Sched Batch</p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:1.0in;text-indent:-.25in'><span
+style='font-family:"Courier New"'>o<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span>Product (parent and child, if applicable)</p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:1.0in;text-indent:-.25in'><span
+style='font-family:"Courier New"'>o<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span>Site-Specific Product</p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:1.0in;text-indent:-.25in'><span
+style='font-family:"Courier New"'>o<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span>Revenue-Generating</p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:1.0in;text-indent:-.25in'><span
+style='font-family:"Courier New"'>o<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span>Fix Version<br>
+<b>NOT </b> Description, Requester, or Requesting Agency<br>
+<br>
+</p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-.25in'><span
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>When GTECH users update a CAT or LIVE defect issue that was
+created/reported by the customer, the following field values will be propagated
+to the customer.  Please note this will only occur if Edit function is used to
+update.   It will not propagate to PartnerJira using Bulk Edit or Quick Edit (version
+5).</p>
+
+<p class=MsoListParagraphCxSpMiddle>&nbsp;</p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:1.0in;text-indent:-.25in'><span
+style='font-family:"Courier New"'>o<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span>Summary</p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:1.0in;text-indent:-.25in'><span
+style='font-family:"Courier New"'>o<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span>Priority</p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:1.0in;text-indent:-.25in'><span
+style='font-family:"Courier New"'>o<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span>Severity</p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:1.0in;text-indent:-.25in'><span
+style='font-family:"Courier New"'>o<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span>Due Date</p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:1.0in;text-indent:-.25in'><span
+style='font-family:"Courier New"'>o<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span>Component/Sched Batch</p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:1.0in;text-indent:-.25in'><span
+style='font-family:"Courier New"'>o<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span>Product (parent and child, if applicable)</p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:1.0in;text-indent:-.25in'><span
+style='font-family:"Courier New"'>o<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span>Site-Specific Product</p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:1.0in;text-indent:-.25in'><span
+style='font-family:"Courier New"'>o<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span>Found-In Batch</p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:1.0in;text-indent:-.25in'><span
+style='font-family:"Courier New"'>o<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span>Reproducible</p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:1.0in;text-indent:-.25in'><span
+style='font-family:"Courier New"'>o<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span>Defect Symptom</p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:1.0in;text-indent:-.25in'><span
+style='font-family:"Courier New"'>o<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span>Fix Version</p>
+
+<p class=MsoListParagraphCxSpLast style='margin-left:1.0in;text-indent:-.25in'><span
+style='font-family:"Courier New"'>o<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span>Test Description (added Feb 2014)<br>
+<b>* NOT</b> Description</p>
+
+<p class=MsoNormal style='margin-left:.25in'><b><span style='font-size:12.0pt'>GTECH
+MANAGER ACTIONS </span></b></p>
+
+<p class=MsoListParagraphCxSpFirst style='text-indent:-.25in'><span
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>GTECH managers will be responsible for adding Batches in the
+customer project on the customer Jira server to correspond with those on the
+GTECH Jira server.  You are not required to enter batch details (SAP ID, Start
+Date, Release Date), however.   Only the exact same name as is in GTECH project
+will be required.</p>
+
+<p class=MsoListParagraphCxSpMiddle>&nbsp;</p>
+
+<p class=MsoListParagraphCxSpLast style='text-indent:-.25in'><span
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>GTECH managers will <u>not</u> need to add Versions in the
+customer project on the customer Jira server to correspond with those on the
+GTECH Jira server.    A program copying all versions entered in the GTECH Jira
+project is run every 30 minutes to synchronize versions so that read-only
+information is available to the customer in the Fix Version field of issues.</p>
+
+</div>
+
+</body>
+
+</html>

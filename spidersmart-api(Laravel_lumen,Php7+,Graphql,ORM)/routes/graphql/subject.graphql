@@ -1,0 +1,76 @@
+type Subject implements Resource {
+  id: Int!
+  name: String!
+  displayName: String
+  displayIcon: String
+  description: String
+  dateFrom: DateTime
+  dateTo: DateTime
+  hasBooks: Boolean
+  hasArticles: Boolean
+  active: Boolean
+  centers: [Center]
+  levels: [Level]
+  __typename: String
+}
+
+input SubjectInput {
+  id: Int
+  name: String
+  displayName: String
+  displayIcon: String
+  description: String
+  hasBooks: Boolean
+  hasArticles: Boolean
+  centers: [CenterInput]
+  levels: [LevelInput]
+  __typename: String
+}
+
+type SubjectResponse implements ResponsePayload {
+  success: Boolean
+  data: Subject
+  errors: [String]
+}
+
+type SubjectCollectionResponse implements CollectionResponsePayload {
+  data: [Subject]
+  errors: [String]
+  metadata: QueryMetaData
+}
+
+extend type Query {
+  subjects(queryOptions: QueryOptionsInput): SubjectCollectionResponse!
+    @route(resolver: "Subject@getAll", operation: "retrieveCollection")
+  subject(id: Int!): Subject!
+    @route(resolver: "Subject@get", operation: "retrieve")
+  subjectLevels(id: Int!, queryOptions: QueryOptionsInput): LevelCollectionResponse!
+    @route(resolver: "Subject@getLevels", operation: "retrieveCollection")
+
+}
+
+extend type Mutation {
+  createSubject(
+    name: String!
+    displayName: String
+    displayIcon: String
+    description: String
+    hasBooks: Boolean
+    hasArticles: Boolean
+    active: Boolean
+  ): SubjectResponse @route(resolver: "Subject@create", operation: "create")
+
+  updateSubject(
+    id: Int!
+    name: String
+    displayName: String
+    displayIcon: String
+    description: String
+    hasBooks: Boolean
+    hasArticles: Boolean
+    active: Boolean
+  ): SubjectResponse @route(resolver: "Subject@update", operation: "update")
+
+  deleteSubject(id: Int!): SubjectResponse
+    @route(resolver: "Subject@delete", operation: "delete")
+}

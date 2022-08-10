@@ -1,0 +1,30 @@
+parameters:
+    tasks:
+        composer: null,
+#        composer_require_checker: null,
+        git_blacklist: null,
+        phpcpd:
+            exclude: ['vendor','storage','app/Models','cache']
+            min_lines: 16
+        phpcs:
+            standard: ['PSR12']
+            whitelist_patterns:
+                - /^app\/(.*)/
+            exclude: ['Generic.Files.LineLength']
+        phplint: null,
+        phpmd:
+            exclude: ['database']
+            ruleset: ['phpmd']
+        phpmnd:
+            exclude_path: ['config', 'vendor', 'storage', 'tests', 'database', 'docs']
+        phpstan:
+#            level: 8
+            level: 4
+            ignore_patterns: ['app/Console', 'database', 'tests', 'config']
+            autoload_file: 'bootstrap/app.php'
+            memory_limit: "4000M"
+        phpunit: null,
+        phpversion: null,
+        psalm: null,
+#        securitychecker: null
+

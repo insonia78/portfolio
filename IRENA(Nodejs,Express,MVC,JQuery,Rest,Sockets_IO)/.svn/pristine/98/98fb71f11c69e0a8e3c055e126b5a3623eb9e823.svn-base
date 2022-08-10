@@ -1,0 +1,47 @@
+extends layout
+
+block content
+  .container-fluid
+    .row#blankSpace
+    .row#blankSpace
+  .row
+    .col-lg-8.col-lg-offset-2
+      h1 Inputs
+      .row
+        
+        include input-form2.pug
+      // /.row
+        .col-lg-8.col-lg-offset-2
+          button.btn.btn-primary(type="submit") Calculate
+
+      .row
+        //.col-lg-8.col-lg-offset-2
+        a(href='/data-dictionary/#Output-info' target="_blank")
+          h1 Outputs
+      .row
+        //.col-lg-8
+        h3 Energy Storage Size Year 1
+        include storage-size-table.pug
+
+        h3 Energy Storage Size Year 2
+        include storage-size-table.pug
+      .row
+        //.col-lg-8
+        h3 Storage Benefit Buckets Year 1
+        include benefit-buckets-table.pug
+
+        h3 Storage Benefit Buckets Year 2
+        include benefit-buckets-table.pug
+      .row
+        .pull-right
+          a(href='path to file', download='Prices.csv') 
+            h3 
+              span.label.label-primary
+                | Click to Download Energy and Reserve Prices
+            
+      .row
+        //.col-lg-8
+        include output-graphs.pug
+
+    script(src='../bower_components/jquery-validation/dist/jquery.validate.min.js')
+    script(src='../js/index.js')

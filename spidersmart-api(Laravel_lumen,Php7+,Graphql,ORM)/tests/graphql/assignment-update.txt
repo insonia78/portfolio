@@ -1,0 +1,80 @@
+mutation(
+    $id: Int!,
+    $title: String!,
+    $description: String!,
+    $questions: [QuestionInput]
+){
+  updateAssignment(
+    id: $id,
+    title: $title,
+    description: $description,
+    questions: $questions
+  ){
+    success
+    data{
+      id
+      title
+      description,
+      questions{
+        id
+        type
+        question
+        answers{
+          id
+          answer
+          correct
+        }
+      }
+    }
+    errors
+  }
+}
+
+{
+    "id": 136,
+	"title": "Test Assignment",
+	"description": "This Test Assignment was created via gql",
+	"questions": [
+		{
+		    "id": 33,
+			"type": "multiple_choice",
+			"question": "This is the updated first test question",
+			"answers": [
+				{
+				    "id": 23,
+					"answer": "Option ABC",
+					"correct": false
+				},
+				{
+				    "id": 25,
+					"answer": "Option C",
+					"correct": false
+				},
+				{
+				    "answer": "Option D",
+				    "correct": true
+				}
+			]
+		},
+		{
+		    "id": 34,
+			"type": "short_answer",
+			"question": "This is the second test question",
+			"answer": "A new short answer response here"
+		},
+		{
+			"type": "multiple_answer",
+			"question": "This is the fourth test question",
+			"answers": [
+				{
+					"answer": "Option A",
+					"correct": true
+				},
+				{
+					"answer": "Option B",
+					"correct": false
+				}
+			]
+		}
+	]
+}

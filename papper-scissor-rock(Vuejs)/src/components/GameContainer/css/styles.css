@@ -1,0 +1,19 @@
+.GameComponent-pagecontainer {
+
+    background-color: #00563f;
+    width:65%;
+    min-height:22em;
+    height:auto;
+    border-radius: 5px;
+    border:.75em ridge #9e6429;
+    border-style: inset outset;
+}
+.GameComponent-actioncontainer{
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+    justify-content:space-between;
+    padding:1em 2em;
+    min-height: 22em;
+    height:auto;
+}

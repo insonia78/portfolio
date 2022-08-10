@@ -1,0 +1,40 @@
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: text-messages-depl
+# spec:
+#   replicas: 1
+#   selector:
+#     matchLabels:
+#       app: text-messages
+#   template:
+#     metadata:
+#       labels:
+#         app: text-messages
+#     spec:
+#       containers:
+#         - name: text-messages
+#           image: insonia78/services/text_messages
+#           env:          
+#             # - name: ZIP_LOOKUP_ADDRESS
+#             #   value: http://ZiptasticAPI.com/
+#             - name: GOOGLE_API_MAPS_KEY
+#               value: AIzaSyAhJjZH6lxSraVwcjLBB9O2DfHF0PFJD5Q
+#             - name: CITY_AUTO_COMPLETE
+#               value: https://maps.googleapis.com/maps/api/place/autocomplete/json
+           
+          
+           
+# ---
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: text-messages-srv
+# spec:
+#   selector:
+#     app: text-messages
+#   ports:
+#     - name: text-messages
+#       protocol: TCP
+#       port: 7000
+#       targetPort: 7000

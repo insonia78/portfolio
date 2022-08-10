@@ -1,0 +1,89 @@
+$(function()
+{
+
+     fuelOptions=['Biomass',
+                    'Compressed Natural Gas (CNG)',
+                     'Liquefied Natural Gas (LNG)',
+                     'Landfill Gas (LFG)',
+                     'Heavy Fuel Oil (HFO)',
+                     'Light Fuel Oil (LFO)',
+                     'Jet Fuel',
+                     'Residual Fuel Oil (RFO)',
+                     'Distillate Fuel Oil (DFO)',
+                     'Coal',
+                     'Uranium'];
+
+                     
+    //include functionality to add fuel
+    $('#cap-by-fuel-dynamic').on('click', '.btn-add', function(e)
+    {
+        e.preventDefault();
+
+        var controlForm = $('#cap-by-fuel-dynamic tbody tr:first');
+            console.log(controlForm)
+            currentEntry = $(this).parents('.entry:first'),
+            newEntry = $(currentEntry.clone()).appendTo(controlForm.parents('tbody'));
+
+        newEntry.find('input.cap').val('0');
+
+        currentEntry.find('td span .btn-add')
+            .removeClass('btn-add').addClass('btn-remove')
+            .removeClass('btn-primary').addClass('btn-default')
+            .html('<span class="glyphicon glyphicon-minus"></span>');      
+
+        newEntry.find('.fuel-options').change(function(){
+            console.log('test1111' + $(this).val());
+            console.log(fuelOptions[$(this).val()]);
+        }) 
+
+    }).on('click', '.btn-remove', function(e)
+    {
+		$(this).parents('.entry:first').remove();
+		e.preventDefault();
+		return false;
+	});
+
+
+    var $sel=$('#cap-by-fuel-dynamic .fuel-options');
+    updateSelection($sel,fuelOptions);
+    $sel.on('focus',function(){
+
+       updateSelection($(this),fuelOptions);
+    });
+
+
+    $sel.change(function(){
+        var opt=$(this).val();
+        console.log('fuel type: ' + fuelOptions[opt])
+    });
+
+
+
+
+});
+
+
+//update this logic
+function updateSelection(element,opts){
+    var list='';
+    //console.log(element);
+    //console.log(opts);
+    for (var k=0; k<opts.length;k++){
+        list+='<option value='+k+'>'+opts[k]+'</option>';       
+    }
+    element.html(list);
+    element.trigger("chosen:updated");
+}
+// Gas:
+//   Compressed Natural Gas (CNG)
+//   Liquefied Natural Gas (LNG)
+//   Landfill Gas (LFG)
+// Oil:
+//   Heavy Fuel Oil (HFO)
+//   Light Fuel Oil (LFO)
+//   Jet Fuel
+//   Residual Fuel Oil (RFO)
+//   Distillate Fuel Oil (DFO)
+// Coal
+// Uranium
+// Biomass

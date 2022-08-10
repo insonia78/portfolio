@@ -1,0 +1,17 @@
+mutation ($name: String!,$active: Boolean) {
+  createAuthor(name: $name, active: $active) {
+    success
+    data {
+      name,
+      active
+    }
+    errors
+  }
+}
+
+
+{
+	"name": "test Author",
+  "active":true
+ 
+}

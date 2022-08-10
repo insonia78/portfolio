@@ -1,0 +1,71 @@
+.PlayButtonContainer-pagecontainer {
+
+    min-height:inherit;
+    height:auto;
+    border-radius: 5px;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding:.5em;
+    /* width:13%; */
+
+}
+
+.PlayButtonContainer-buttoncontainer {
+
+    min-height:8em;
+    width:10em;
+    margin-top: 4em;
+    cursor:pointer;
+    border-radius: 5px;
+    background-color: #8c92ac;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.PlayButtonContainer-text{
+    font-size:3em;
+}
+.PlayButtonContainer-result-text{
+    font-size:1.2em;
+    color:white;
+}
+
+@media only screen and  ( max-width : 850px ){
+
+
+    .PlayButtonContainer-buttoncontainer{
+      width:100%;
+      /* min-height:90%; */
+      padding: 5% 30%;
+     
+      
+      }
+      .PlayButtonContainer-text{
+        font-size:2em;
+    }
+    .PlayButtonContainer-pagecontainer {
+
+        width:8%;
+    
+    }
+    
+     
+   
+ }
+ @media only screen and  ( max-width : 330px ){
+    .PlayButtonContainer-buttoncontainer{
+        width:100%;
+        padding: 5% 30%;
+       
+        
+        }
+    .PlayButtonContainer-text{
+        font-size:.25rem;
+    }
+   
+ }

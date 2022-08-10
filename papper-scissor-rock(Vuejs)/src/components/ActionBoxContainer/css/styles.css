@@ -1,0 +1,29 @@
+.ActionBoxContainer-pagecontainer {
+
+    background-color: black;
+    width:28em;
+    min-height:inherit;
+    height:auto;
+    border-radius: 5px;
+    border: 2px solid #c4aead;
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+}
+.ActionBoxContainer-papper-scissor-rock-properties{
+    font-size:15em !important;
+    color:white;
+}
+.ActionBoxContainer-icons-text-container{
+    width:100%;
+    min-height:inherit;
+    height:auto;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color:white;
+
+}

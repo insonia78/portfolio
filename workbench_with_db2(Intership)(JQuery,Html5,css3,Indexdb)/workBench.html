@@ -1,0 +1,818 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>jQuery UI Tabs - Sortable</title>
+  <link href="css/jquery-ui.css" rel="stylesheet">
+  
+  <link href = "menubar_style.css" rel ="stylesheet" type = "text/css">	
+	<link rel="stylesheet" href="style.css">
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery-ui.js"></script>	
+	<script src="js/Word_Export_PlugIn/FileSaver.js"></script> 
+    <script src="js/Word_Export_PlugIn/jquery.wordexport.js"></script>
+    <script src ="s/sortableworbench.js"></script>
+	<script src ="js/sortable_ul.js"></script>	
+	<script src ="js/lightbox.js"></script>	
+	<script src = "addTab_addPortlet_forworbench.js"></script>
+	<link href="lightbox.css" rel="stylesheet">
+	<style>
+	#iframeResult
+	{
+	    width:100%;
+		height:100%;
+	
+	}
+	</style>
+  <script>
+  
+  <!------------------ sortable for the tabs ----------------------------------->
+  
+  $(function() {
+    var tabs = $( "#tabs1" ).tabs({
+	 heightStyle: "content"
+	
+	});
+    
+	var tabs = $( "#tabs2" ).tabs({
+	 heightStyle: "fill"
+	
+	});
+    
+  });
+  </script>
+  
+  <script>
+  <!---------------------------------Tool Tip ----------------------------------------------->
+  $(function() {
+    $( document ).tooltip();
+   });	
+  </script>
+  
+  
+  <script>
+  
+  <!-------------------page loading the info from the Jira Internship Guide -------------------------------------------->
+  var db_name ;
+  var tabs ;
+  var document ;
+  
+ 
+  window.onload = function () {
+   
+    var url = document.location.href,
+         param = url.split('?')[1].split('&'),
+	     data = {},
+		 tmp;
+		
+		
+    for (var i = 0, l = param.length; i < l; i++) {
+         tmp = param[i].split('=');
+		 
+         data[tmp[0]] = tmp[1];
+         //id[tmp[1]] = tmp[2];
+         //db_name[tmp[2]] = tmp[3];
+         //tabs[tmp[3]] = tmp[4];  		 
+		 }
+	   document = data.document ;
+       
+        
+	  db_name = data.db_name;
+	  
+	  
+	  
+	
+	  switch(data.id)
+	  {
+	          case "Termination_Request":
+                                       {
+									          counter = 0 ;
+											  
+									          var tabs = $( "#tabs1" ).tabs();
+											 document = window.open( document , "", "width = 200", "height = 500") ;
+									           
+											  document.moveTo( 800 , 500 ); 
+											  document.resizeTo( 500 , 600 );
+											 
+											  
+											  
+											  
+									           
+											  document.moveTo( 14000 , 300 ); 
+											  document.resizeTo(400,600);
+											   
+											  
+											  var tabTitle_Ri = "RiJira Server",
+										      tabTitle_PjRi = 'Customer Access PartnerJira TEST Server',
+											  tabTitle_Ri1 = "RiJira Server",
+                                              tabContent_Ri1 = "SELECT A FILTER!!!!!!This Server is where you get the termination request from the queue with the filter associated in the side tab under 'tab-1",
+                                              
+											  tabContent_PjRi = "This Server is where you check if the user is present in the Client server", 
+											  tabContent_Ri = "This Server is where you check if the user is present in the production server"; 
+											  
+											  
+											  
+											  tabTemplate =  "<li title = '#{title}'  value = '#{value}'><a href='#{href}'>#{label}</a> <span class='ui-icon ui-icon-close' role='presentation'>Remove Tab</span></li>";
+      
+											  var label = tabTitle_Ri || "Tab " + counter,
+											      label1 = tabTitle_PjRi || "Tab " + counter,
+												  label2 = tabTitle_Ri1 || "Tab " + counter;
+                                              var id = "tabs-" +  ++counter;
+											  /********************
+											  Tab1 right
+											  *********************/
+                                              var li =  tabTemplate.replace( /#\{title\}/g, tabContent_Ri ).replace(/#\{value\}/g, label).replace( /#\{href\}/g, "#" + id ).replace( /#\{label\}/g, label ) ;
+                                              tabs.find( "#sortable1" ).append( li );
+											  var Ri = '<div id = "'+ String(id) + '" class = "ui-tabs-panel ui-widget-content ui-corner-bottom  ui-sortable"> <iframe  class="result_output" frameborder="0" name="view" src = "https://rijira.gtk.gtech.com:8443/jira/secure/admin/user/UserBrowser.jspa " sandbox="allow-forms allow-same-origin allow-scripts allow-popups allow-pointer-lock allow-top-navigation" contenteditable ="true"></iframe></div>'; 
+	                                          
+											  tabs.append(Ri); 
+											  /**********************
+											  Tab2 right
+											  ************************/
+											  var id = "tabs-" +  ++counter;  
+											  var li =  tabTemplate.replace( /#\{title\}/g, tabContent_PjRi ).replace(/#\{value\}/g, label1).replace( /#\{href\}/g, "#" + id ).replace( /#\{label\}/g, label1 ) ;
+                                              tabs.find( "#sortable1" ).append( li );
+											  var Ri = '<div id = "'+ String(id) + '" class = " ui-tabs-panel ui-widget-content ui-corner-bottom .column ui-sortable"> <iframe  class="result_output" frameborder="0" name="view" src = "http://rigtpjira:8080/jira/secure/admin/user/UserBrowser.jspa sandbox="allow-forms allow-same-origin allow-scripts allow-popups allow-pointer-lock allow-top-navigation" contenteditable ="true"</iframe></div>'; 
+	                                         tabs.append(Ri);
+											  tabs.tabs( "refresh" );
+											  
+											 
+											 /************************
+											 
+												Left Table
+											    
+											 
+											 **************************/
+											 
+											 
+											 var tabs = $( "#tabs2" ).tabs();
+											 /*************************
+											 
+											 Tab with the document
+											 
+											 
+											 *****************************/
+											 var tabContent_doc = "The document that you selected";
+											 
+											 var id = "tabs-" +  ++counter;
+											  var li =  tabTemplate.replace( /#\{title\}/g, tabContent_doc ).replace(/#\{value\}/g, data.id).replace( /#\{href\}/g, "#" + id ).replace( /#\{label\}/g, data.id ) ;
+											  
+                                              tabs.find( "#sortable2" ).append( li );
+											  var Ri = '<div id = "'+ String(id) + '" class = "ui-tabs-panel ui-widget-content ui-corner-bottom ui-sortable"></div>'; 
+	                                          tabs.append(Ri);
+											 
+											 
+											 /*****************
+											  Tab1 left
+											  
+											*********************/
+											
+											  var documentTitle = data.id;		
+											  var id = "tabs-" +  ++counter;
+											  var li =  tabTemplate.replace( /#\{title\}/g, tabContent_Ri1 ).replace(/#\{value\}/g, label).replace( /#\{href\}/g, "#" + id ).replace( /#\{label\}/g, label ) ;
+                                              tabs.find( "#sortable2" ).append( li );
+											  var Ri = '<div id = "'+ String(id) + '"class = "termination_request ui-tabs-panel ui-widget-content ui-corner-bottom  ui-sortable"> <iframe id = "filters"  src ="https://rijira.gtk.gtech.com:8443/jira/issues/?filter=34533" frameborder="0" name="view" sandbox="allow-forms allow-same-origin allow-scripts allow-popups allow-pointer-lock allow-top-navigation" contenteditable ="true" ></iframe></div>'; 
+	                                        
+											  tabs.append(Ri); 
+                                               
+											/*************************************
+											
+											   toggling the two tabs
+											
+											*************************************/
+                                                      
+                                              
+											   
+                                               $("#tabs1").removeClass("tabs1");
+											   
+											     $("#tabs1").addClass("resizerightside");  
+		                                       
+		  
+	                                           $("#tabs2").mouseover(function()
+											   {
+											   
+											      $("#tabs2").removeClass("left");
+											   
+											      $("#tabs2").addClass("resizefromtheleft");  
+											                                                 
+		                                       });
+		                                        $("#tabs1").mouseover(function()
+												{	 
+												   $("#tabs2").removeClass("resizefromtheleft");	   
+	                                               $("#tabs2").addClass("left");
+		                                      		  
+	                                               
+                                               });												   
+	                                                   
+	                                           tabs.tabs( "refresh" );
+											  
+											 
+											 /*******************************************************
+											 
+											         side tabs 
+											 
+											 
+											 ******************************************************/
+			                                  var tabs = $("#vtabs").tabs();
+											  $("#vtabs").dblclick();
+											  var label4 = "FILTERS";
+											  tabVertTemplate =  "<li style = 'text-align:left;' title = '#{title}'  value = '#{value}'><a href='#{href}'>#{label}</a> <span class='ui-icon ui-icon-close' role='presentation'>Remove Tab</span></li>";
+											  
+											  var tabContent_RiV = "the filters for Ri jira this filter will travers the different types of request's you have to handle";  
+											  var documentTitle = data.id;		
+											  var id = "tabs-" +  ++counter,
+											  tabVertTemplate =  "<li title = '#{title}'  value = '#{value}'><a href='#{href}'>#{label}</a> <span class='ui-icon ui-icon-close' role='presentation'>Remove Tab</span></li>";
+      
+											  var li =  tabTemplate.replace( /#\{title\}/g, tabContent_RiV ).replace(/#\{value\}/g, label4).replace( /#\{href\}/g, "#" + id ).replace( /#\{label\}/g, label4 ) ;
+                                              
+											  tabs.find( "#sortable3" ).append( li );
+											  var Ri = '<div id = "'+ String(id) + '" class = "ui-tabs-panel ui-widget-content ui-corner-bottom  ui-sortable">'+
+											                                     '<fieldset><legend>Filters</legend><dl>'
+																				 +'<dt><input type = "button" id = "Unassigned_Termination_Request" value = "Unassigned Termination Request"></dt><br>'
+                                                                                 +'<dt><input type = "button" id = "termination_requests_for_Sharon" value = "Termination requests for Sharon"></dt><br>'
+																				 +'<dt><input type = "button" id = "Recently_created" value = "Recently created "></dt><br>'
+																				 +'<dt><input type = "button" id = "Term_Requ_Curr_User" value = "Term Requ Current User "></dt><br>'
+																				 +'<dt><input type = "button" id = "Sadha_Termination_Request" value = "Sadha Termination Request"></dt><br>'																				 
+																				 + '</dl></fieldset></div>'; 
+	                                          tabs.append(Ri); 
+											  tabs.tabs( "refresh" );
+											  
+											  
+											  
+											   /******************************************************
+											   
+											     side tab buttons for filters 
+											   
+											   ********************************************************/
+                                                   tabs.find("#Unassigned_Termination_Request")
+												   .button()
+												   .click(function(){
+												   
+												    $("#tabs2").find('#filters').attr('src',"https://rijira.gtk.gtech.com:8443/jira/issues/?filter=34533"); 					   
+												   
+												   });
+												   tabs.find("#termination_requests_for_Sharon")
+												   .button()
+												   .click(function(){
+												   
+												    $("#tabs2").find('#filters').attr('src',"https://rijira.gtk.gtech.com:8443/jira/issues/?filter=34296"); 					   
+												   
+												   });
+												   tabs.find("#Recently_created")
+												   .button()
+												   .click(function(){
+												   
+												    $("#tabs2").find('#filters').attr('src',"https://rijira.gtk.gtech.com:8443/jira/issues/?filter=34298"); 					   
+												   
+												   });
+												   tabs.find("#Term_Requ_Curr_User")
+												   .button()
+												   .click(function(){
+												   
+												    $("#tabs2").find('#filters').attr('src',"https://rijira.gtk.gtech.com:8443/jira/issues/?filter=34026"); 					   
+												   
+												   });
+												   tabs.find("#Sadha_Termination_Request")
+												   .button()
+												   .click(function(){
+												   
+												    $("#tabs2").find('#filters').attr('src',"https://rijira.gtk.gtech.com:8443/jira/issues/?filter=34734"); 					   
+												   
+												   });
+												   
+												   /*****************************************
+												   
+												      Notes and sentence Templates
+												   
+												   
+												   *******************************************/
+												    
+													
+													var id = "tabs-" +  ++counter,
+											        label4 = "Notes <br> & <br> sentece <br> Templates ",
+												    tabContent_RiV = "were to write notes and where you can find sentence templates to add to the issue";
+													
+												    var li =  tabTemplate.replace( /#\{title\}/g, tabContent_RiV ).replace(/#\{value\}/g, label4).replace( /#\{href\}/g, "#" + id ).replace( /#\{label\}/g, label4 ) ;
+                                              
+											        tabs.find( "#sortable3" ).append( li );
+												    var Ri = '<div style ="background-color:#8fbde5;width:500px;height:300px;"id = "'+ String(id) + '" class = "ui-tabs-panel ui-widget-content ui-corner-bottom  ui-sortable">'
+													                                      +'<h3><u><b>If a user has been deactivated from Jira</b></u></h3><br>' 
+																						  + '<img width ="40px" title ="a screen shot for it" src ="image/terminaiton_request_removed_from.PNG"><br>'
+																						  + '<textarea overflow: auto;  rows = "6" cols ="50" value ="Removed from all groups, project roles, and set inactive">Removed from all groups, project roles, and set inactive</textarea>'
+																						  + '</div>';
+												   
+												    tabs.append(Ri); 
+											        tabs.tabs( "refresh" );
+												   
+												   $("img").click(function(){
+												     var a = document.createElement("a");
+													    a.setAttribute("href","image/terminaiton_request_removed_from.PNG");
+														a.setAttribute("rel",'lightbox[vecta]');
+													  
+												    a.click();
+												   
+												   });
+												   tabs.mouseover(function()
+												   {
+												   
+												        $(this).removeClass("hover");
+												   
+												   });
+												   tabs.mouseout(function()
+												   {
+												   
+												        $(this).addClass("hover");
+												   
+												   });
+												   
+	                                            tabs.tabs( "refresh" );
+											 
+			                                    break;
+			  
+			                                
+			  
+			  
+			                         }
+                default:
+                {
+				
+				     $('#iframeResult').attr("src",data.src);
+				      break;
+				
+				}				
+	       
+	  
+	  }
+	   $( "#home" )
+      .button()
+      .click(function() {
+	  
+       window.location.href = "Jira Internship guide test with dataBase.html?db_name="+ db_name; 
+      });
+   
+	
+	
+} 
+  
+   
+  $(function() {
+    
+  
+  
+	   $( "#add_accordion")
+      .button()
+      .click(function() {
+        dialog.dialog( "open" );
+      });
+	  
+	   $( "#add_field" )
+      .button()
+      .click(function() {
+        dialog.dialog( "open" );
+      });
+	  
+	 
+	  
+	  $( "#doc" )
+      .button()
+      .click(function() {
+	  
+	 
+	  
+	  $("#load").wordExport();
+      
+		
+		
+		  
+            
+        
+       
+      });
+});
+  
+  </script>
+  
+  
+  
+  
+  
+  
+  
+  
+ 
+  
+  <script>
+  $(document).ready(function(){
+  
+  
+     $("#helperMenu").button()
+	 .click(function(){
+	 var icon = $( this );
+      
+      icon.find( ".container_Menu" ).toggleClass("hide");
+	  
+	  /***********************
+	     Menu Buttons
+	  ******************/
+	  $("#side_bar").button(function(){
+	          
+	       $(".workbench").find("#vtabs").removeClass("hide");
+	    });
+	  
+	  });
+	  
+	  
+     
+		
+		
+	   
+	   /***********************************
+	   
+	   fill screen 
+	   
+	   *******************************/
+	   $("#tabs1").find("#fill_screen").click(function()
+	   {
+	   
+	            
+				   
+				  $("#tabs1").toggleClass("tabs1");
+				  
+				
+               		   
+			  $("#tabs1").toggleClass("fill_screen");
+			  
+			  
+			  
+              	   
+	   });
+	   $("#tabs2").find("#fill_screen").click(function()
+	   {
+	   
+	            
+				   
+				  $("#tabs2").toggleClass("left");
+				  
+				
+               		   
+			  $("#tabs2").toggleClass("fill_screen");
+			  
+			  
+			  
+              	   
+	   });
+	   $("#hide_selected").button().click();
+	   
+	   /************************
+	   
+	     Item Selected  
+	   
+	   ************************/
+			   
+			    $('.selected').dblclick(function(){			  
+			 
+			       $(this).toggleClass("confirm_opacity");
+				});
+				
+  });
+  
+  </script>
+ 
+
+  
+  
+</head>
+
+
+	
+  
+
+<body id = "main">
+ 
+ <div class = "workbench">
+       <div id="load hide">
+ 
+       </div>
+  <!-- portlet dialog -->
+  
+ 
+  <!-- portlet dialog -->
+  
+ 
+ <div id = "portlet_dialog" title="portlet data">
+  <form>
+    <fieldset  id = "portlet_dialog_container" class="ui-helper-reset">
+      <label for="tab_title">Title</label>
+      <input type="text" name="tab_title" id="tab_title" value="Tab Title" class="ui-widget-content ui-corner-all">
+      <div class="container" style="height:100px;">
+          <text></text>
+         <form enctype="multipart/form-data">
+        <div class="form-group">
+                  <text> Upload your File </text>
+				  <br>
+        <form method="post" action="#">
+        <input type="file">
+       <div id="holder"  style="font-size:20px;color:blue;text-align:center;width:150px; height:150px; border: 10px dashed #ccc" id="holder" ><br><br> drag your file here</div>
+       </form>
+	   
+        <div class="form-group">
+        <button class="btn btn-primary">Submit</button>
+        <button class="btn btn-default" type="reset">Reset</button>
+        
+		</div>
+		
+	 </div>	
+   </form>
+  </div>		
+</fieldset>
+</form>
+  
+
+</div>
+ <!-- end of portlet dialog -->
+  <!-- start of field dialog -->
+<!--
+<div id = "field_dialog" title= "field data">
+ 
+    <fieldset  id = "field_dialog_container" class="ui-helper-reset">
+      <label for="tab_title">Title</label>
+      <input type="text" name="tab_title" id="tab_title" value="Tab Title" class="ui-widget-content ui-corner-all">
+      <div class="container" style="height:100px;">
+          <text></text>
+         
+        <div class="form-group">
+                  <text> Upload your File1 </text>
+				  <br>
+        <form method="post" action="#">
+        <input type="file">
+       <div id="holder"  style="font-size:20px;color:blue;text-align:center;width:150px; height:150px; border: 10px dashed #ccc" id="holder" ><br><br> drag your file here1</div>
+       </form>
+	   
+        <div class="form-group">
+        <button class="btn btn-primary">Submit</button>
+        <button class="btn btn-default" type="reset">Reset</button>
+        
+		</div>
+		
+	 </div>	
+   
+  </div>		
+</fieldset>
+
+  
+
+</div>
+-->
+<!-- To Add a tab -->  
+
+ 
+<div id="dialog" title="Tab data">
+  <form>
+    <fieldset class="ui-helper-reset">
+      <label for="tab_title">Title</label>
+      <input type="text" name="tab_title" id="tab_title" value="Tab Title" class="ui-widget-content ui-corner-all">
+      <label for="tab_content">Content</label>
+	  <textarea name="tab_content" id="tab_content" class="ui-widget-content ui-corner-all">Tab content</textarea>
+      
+    </fieldset>
+  </form>
+</div>
+  
+
+<!-------------------------------------Drop Down menu Up  left -------------------->
+
+
+   <div id ="helperMenu" >
+     <div class ="container_Menu">
+	   <ul>
+	    <li><input type="button" id="side_bar" name="button"  value = "Side Bar"></li>
+		<li><input type="button" id="resize_right_tab" name="button" value="resize_right_tab"></li>
+		<li><input type="button" id="resize_left_tab" name="button" value="resize_left_tab"></li>
+		
+		<li><input type="button" id="hide_selected" name="button" value="hide_selected"></li>
+		
+	   </ul>
+	   
+	   </div>
+   </div>
+   
+   <!-------------------------------------- Static menu -------------------------------------------->
+   <script>
+   
+  $(function() {
+   
+	   $( "#add_accordion")
+      .button()
+      .click(function() {
+        dialog.dialog( "open" );
+      });
+	  
+	   $( "#add_field" )
+      .button()
+      .click(function() {
+        dialog.dialog( "open" );
+		
+      });
+	  
+	  
+	  
+	  $( "#doc" )
+      .button()
+      .click(function() {
+	  
+	 
+	  
+	  $("#load").wordExport();
+      
+		
+	
+	        
+		  
+            
+        
+       
+      });
+});
+  
+  </script>
+ <div id="radioset1">
+		<input type="button" id="add_tab" name="button"  value = "Add Tab">
+		<input type="button" id="add_portlet" name="button" value="Add Portlet">
+		<input type="button" id="add_accordion" name="button" value="Add Accordion">
+		<input type="button" id="add_field" name="button" value="Add Field">
+		<input type= "button" id ="home" name = "button" value ="Home">
+		<input type="button" id="close_tab" name="button" value="close_tab"><br><br>
+		<input type="button" id="doc" name="button" value="word.docx">
+		<input type="button" id="toggle_size" name="button" value="toggle size">
+   </div>
+  
+ <!---------------------------------------------Side tab ------------------------------------------------------------------>
+ 
+ 
+ 
+ 
+ 
+<style>
+  
+  <!------------------------------------ for vertical Tab ----------------------------------------------->
+  .ui-tabs-vertical { width: 100px; }
+  .ui-tabs-vertical .ui-tabs-nav { padding: .2em .1em .2em .2em; float: left; width: 5em; }
+  .ui-tabs-vertical .ui-tabs-nav li { clear: left; width: 100%; border-bottom-width: 1px !important; border-right-width: 0 !important; margin: 0 -1px .2em 0; }
+  .ui-tabs-vertical .ui-tabs-nav li a { display:block; }
+  .ui-tabs-vertical .ui-tabs-nav li.ui-tabs-active { padding-bottom: 0; padding-right: .1em; border-right-width: 1px; }
+  .ui-tabs-vertical .ui-tabs-panel {z-index:-1;position:absolute;left:110px; padding: 1em; float: right; background-color:white; width: 300px;}
+  </style>
+  <script>
+  $(function() {
+    $( "#vtabs" ).tabs().addClass( "ui-tabs-vertical ui-helper-clearfix" );
+    $( "#vtabs li" ).removeClass( "ui-corner-top" ).addClass( "ui-corner-left" );
+	$("#vtabs").draggable();
+	$("#vtab_pop").draggable();
+		$("#vtab_pop").button().dblclick(function(){
+	      
+	       $(".workbench").find("#vtabs").toggleClass("hide")
+		   .mouseout(function()
+		   {
+		      $(this).addClass("opacity");
+		   }).mouseover(function()
+		   {
+		   
+		      $(this).removeClass("opacity");
+
+		       
+		   });
+	  });
+  });
+  </script>
+ 
+   
+  <div id ="vtab_pop" title ="dbl click to active/deactivate">
+  <div id="vtabs" class = "hide selected" >
+     <ul id ='sortable3'>
+  
+     </ul>
+  </div>
+</div>
+
+
+<!-------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+
+ <script>
+  
+  
+  $(function() {
+    $( "#sortable1, #sortable2" ).sortable({
+      connectWith: ".connectedSortable"
+    }).disableSelection();
+	
+	
+	
+	/*************************************
+		
+		    Resizing the Tabs 
+		
+		*************************************/
+		
+		
+	   $("#resize_right_tab").button().click(function(){
+	   
+	      $("#tabs2").toggleClass("left",1000);
+	      $("#tabs2").toggleClass("resizeleftside",1000);
+		  $("#tabs1").toggleClass("tabs1",1000);
+	      $("#tabs1").toggleClass("resizerightside",1000);
+	      
+	      $("tabs1").tabs("refresh");
+	      $("tabs2").tabs("refresh");
+	   
+	   });
+       $("#resize_left_tab").button().click(function()
+	   { 
+	      
+		  $("#tabs1").toggleClass("tabs1",1000);
+	      $("#tabs1").toggleClass("resizefromtheright",1000);
+	      
+	      $("#tabs2").toggleClass("left",1000);
+	      $("#tabs2").toggleClass("resizefromtheleft",1000);
+		 
+	      $("tabs1").tabs("refresh");
+	      $("tabs2").tabs("refresh");
+	    
+	   
+	   });
+	   
+	   $("#toggle_size").button().click(function(){
+	       $("#tabs2").toggleClass("left",1000);
+		   $("#tabs1").toggleClass("tabs1",1000);
+		    $("#tabs2").toggleClass("resizeleftside",1000);		  
+	      $("#tabs1").toggleClass("resizerightside",1000);
+		  
+	      $("#tabs1").mouseout(function(){
+		  
+		    $("#tabs2").toggleClass("resizeleftside",1000);
+		  
+	      $("#tabs1").toggleClass("resizerightside",1000);
+	     
+	      
+	      
+		  
+		  });
+		   $("#tabs1").mouseover(function(){
+		   
+		   
+	      $("#tabs1").toggleClass("resizefromtheright",1000);
+	      
+	      
+	      $("#tabs2").toggleClass("resizefromtheleft",1000);
+		 
+	      
+		   
+		   
+		   });
+	   
+	   
+	   
+	   });
+ });//end function 
+  
+  </script>
+  
+
+
+
+
+<!-----------------------------------------------------Right Tab-------------------------------------------------------------------------------------------------> 
+
+<div id="tabs1" class ="tabs1">
+  
+  <ul id="sortable1" class="connectedSortable" >
+  <li id ="fill_screen" class="ui-state-default ui-corner-all" title="click to fill/resize"><span  class="ui-icon ui-icon-document-b"></span></li>
+  <li class="ui-state-default ui-corner-all" title=".ui-icon-note"><span class="ui-icon ui-icon-note"></span></li>
+  
+  </ul >
+  
+  
+
+  
+ </div>
+ 
+ <!-------------------------------------------------------------------------------------------------------------------------------------------------------------->
+ 
+ <!------------------------------------------------------------LEFT Tab ------------------------------------------------------------------------------------------->
+
+  
+ <div id="tabs2" class = "left selected" >
+  <ul id="sortable2" class="connectedSortable">
+   <li id ="fill_screen" class="ui-state-default ui-corner-all" title="click to fill/resize"><span class="ui-icon ui-icon-document-b"></span></li>
+  <li class="ui-state-default ui-corner-all" title=".ui-icon-note"><span class="ui-icon ui-icon-note"></span></li>
+  
+   
+   </ul>
+  
+  </div>
+ </div>
+ 
+ <!------------------------------------------------------------------------------------------------------------------->
+
+</body>
+</html>

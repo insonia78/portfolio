@@ -1,0 +1,148 @@
+﻿<Window x:Name="Window" x:Class="OptionsMenu.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" WindowStartupLocation="CenterScreen" Height="350" Width="525" WindowStyle="None" AllowsTransparency="True" ShowInTaskbar="False">
+    <Window.Resources>
+        <Style x:Key="ButtonStyle1" TargetType="{x:Type Button}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid>
+                            <Rectangle Fill="Red" RadiusY="9" RadiusX="9" Stroke="Black"/>
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsFocused" Value="True"/>
+                            <Trigger Property="IsDefaulted" Value="True"/>
+                            <Trigger Property="IsMouseOver" Value="True"/>
+                            <Trigger Property="IsPressed" Value="True"/>
+                            <Trigger Property="IsEnabled" Value="False"/>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="ButtonStyle2" TargetType="{x:Type Button}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid>
+                            <Rectangle Fill="{x:Null}" Stroke="{x:Null}"/>
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsFocused" Value="True"/>
+                            <Trigger Property="IsDefaulted" Value="True"/>
+                            <Trigger Property="IsMouseOver" Value="True"/>
+                            <Trigger Property="IsPressed" Value="True"/>
+                            <Trigger Property="IsEnabled" Value="False"/>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="ButtonStyle3" TargetType="{x:Type Button}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid>
+                            <Rectangle RadiusY="9" RadiusX="9" Stroke="Black">
+                                <Rectangle.Fill>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="#FFA42A46" Offset="0.004"/>
+                                        <GradientStop Color="#FFE7EACA" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Rectangle.Fill>
+                            </Rectangle>
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsFocused" Value="True"/>
+                            <Trigger Property="IsDefaulted" Value="True"/>
+                            <Trigger Property="IsMouseOver" Value="True"/>
+                            <Trigger Property="IsPressed" Value="True"/>
+                            <Trigger Property="IsEnabled" Value="False"/>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="ButtonStyle4" TargetType="{x:Type Button}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid>
+                            <Rectangle RadiusY="9" RadiusX="9" Stroke="Black">
+                                <Rectangle.Fill>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="#FFA42A46" Offset="0.004"/>
+                                        <GradientStop Color="#FFFF0039" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Rectangle.Fill>
+                            </Rectangle>
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsFocused" Value="True"/>
+                            <Trigger Property="IsDefaulted" Value="True"/>
+                            <Trigger Property="IsMouseOver" Value="True"/>
+                            <Trigger Property="IsPressed" Value="True"/>
+                            <Trigger Property="IsEnabled" Value="False"/>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="ButtonStyle5" TargetType="{x:Type Button}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid>
+                            <Rectangle RadiusY="9" RadiusX="9" Stroke="Black">
+                                <Rectangle.Fill>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="#FFA42A46" Offset="0.004"/>
+                                        <GradientStop Color="#FF530214" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Rectangle.Fill>
+                            </Rectangle>
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsFocused" Value="True"/>
+                            <Trigger Property="IsDefaulted" Value="True"/>
+                            <Trigger Property="IsMouseOver" Value="True"/>
+                            <Trigger Property="IsPressed" Value="True"/>
+                            <Trigger Property="IsEnabled" Value="False"/>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Window.Background>
+        <SolidColorBrush />
+    </Window.Background>
+    <Grid>
+        <Rectangle x:Name="Menu_Window" HorizontalAlignment="Left" Height="330" Margin="10,10,0,0" Stroke="Black" VerticalAlignment="Top" Width="505" RadiusX="9" RadiusY="9">
+            <Rectangle.Fill>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFA42A46" Offset="0.004"/>
+                    <GradientStop Color="#FF530214" Offset="1"/>
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Rectangle HorizontalAlignment="Left" Height="22" Margin="10,30,0,0" VerticalAlignment="Top" Width="505" Fill="#FF640F0F"/>
+        <Rectangle x:Name="Title_Bar" HorizontalAlignment="Left" Height="42" Margin="10,10,0,0" VerticalAlignment="Top" Width="505" RadiusX="9" RadiusY="9" Fill="#FF640F0F" MouseDown="Title_Bar_MouseDown"/>
+        <Label x:Name="Title" Content="Options" HorizontalAlignment="Left" Margin="210,10,0,0" VerticalAlignment="Top" Height="31" Width="105" FontFamily="SketchFlow Print" FontWeight="Bold" FontSize="24" MouseDown="Title_MouseDown" ToolTip="The Options Menu lets toggle sound, save your game, and return to the Title Screen."/>
+        <Button x:Name="Exit_Button" Content="X" HorizontalAlignment="Left" Height="42" Margin="462,10,0,0" Style="{DynamicResource ButtonStyle1}" VerticalAlignment="Top" Width="44" FontFamily="SketchFlow Print" FontSize="18" FontWeight="Bold" Cursor="Hand" Click="Exit_Button_Click"/>
+        <Button x:Name="Return_Main_Menu" Content="Return to Title Screen" HorizontalAlignment="Left" Height="24" Margin="345,307,0,0" Style="{DynamicResource ButtonStyle2}" VerticalAlignment="Top" Width="161" FontFamily="SketchFlow Print" Cursor="Hand" Foreground="#FFF7EEEE" FontSize="14" ToolTip="Returns you to the Title Screen " Click="Return_Main_Menu_Click"/>
+        <Label x:Name="Sound_Text" Content="Sound:" HorizontalAlignment="Left" Margin="70,105,0,0" VerticalAlignment="Top" Height="56" Width="141" FontFamily="Simplified Arabic" FontSize="36" Foreground="White"/>
+        <WrapPanel x:Name="Toggle_Panel" HorizontalAlignment="Left" Height="56" Margin="263,105,0,0" VerticalAlignment="Top" Width="201">
+            <Button x:Name="Sound_On_Button" Content="ON" Height="55" Style="{DynamicResource ButtonStyle4}" Width="100" Cursor="Hand" ToolTip="Turns sound on" Click="Sound_On_Button_Click" Background="#FFFB7E7E"/>
+            <Button x:Name="Sound_Off_Button" Content="OFF" Height="55" Style="{DynamicResource ButtonStyle5}" Width="100" Cursor="Hand" ToolTip="Turns sound off" Click="Sound_Off_Button_Click" Foreground="White"/>
+        </WrapPanel>
+        <Button x:Name="Save_Button" Content="SAVE GAME" HorizontalAlignment="Left" Height="55" Margin="170,205,0,0" Style="{DynamicResource ButtonStyle3}" VerticalAlignment="Top" Width="199" Cursor="Hand" BorderBrush="#FF707070" ToolTip="Saves progress made in the game"/>
+        <MediaElement x:Name="Bgm" HorizontalAlignment="Left" Height="100" Margin="26,214,0,0" VerticalAlignment="Top" Width="100" Source="Jumper.wav" LoadedBehavior="Manual" MediaEnded="Bgm_MediaEnded"/>
+    </Grid>
+</Window>

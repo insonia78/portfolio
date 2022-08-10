@@ -1,0 +1,552 @@
+02-07-2018 19:45 +00:00: UserSession >> Reading Session File
+02-07-2018 19:45 +00:00: out loop
+02-07-2018 19:45 +00:00: finished
+02-07-2018 19:45 +00:00: instantitating UserSession
+02-07-2018 19:45 +00:00: { wiki: 
+   { url: 'https://35.196.211.59:4000/STORAGE-BENEFITS-TOOL',
+     port: 4000 },
+  api: { hostname: 'localhost', port: 3333 },
+  datafiles: 
+   { path: '/opt/slt_data',
+     inpath: '/home/gonzales1609/IRENA/SLTview' } }
+02-07-2018 19:45 +00:00: [0mGET / [32m200 [0m2076.529 ms - 3470[0m
+02-07-2018 19:45 +00:00: [0mGET /stylesheets/layout-newLook.css [32m200 [0m22.655 ms - 2229[0m
+02-07-2018 19:45 +00:00: [0mGET /stylesheets/circle-timer/circle.css [32m200 [0m13.088 ms - 1888[0m
+02-07-2018 19:45 +00:00: [0mGET /stylesheets/welcome-page/welcome-page.css [32m200 [0m7.231 ms - 1242[0m
+02-07-2018 19:45 +00:00: [0mGET /stylesheets/pop-up-boxes/pop-up-box-list.css [32m200 [0m15.602 ms - 2956[0m
+02-07-2018 19:45 +00:00: [0mGET /js/pop-up-boxes/error-message-pop-up.js [32m200 [0m0.698 ms - 359[0m
+02-07-2018 19:45 +00:00: [0mGET /js/pop-up-boxes/log-in-pop-up.js [32m200 [0m1.957 ms - 3781[0m
+02-07-2018 19:45 +00:00: [0mGET /js/circle-timer/circle-timer.js [32m200 [0m5.280 ms - 6520[0m
+02-07-2018 19:45 +00:00: [0mGET /js/log-in/log-in.js [32m200 [0m4.754 ms - 584[0m
+02-07-2018 19:45 +00:00: [0mGET /images/acelerex-logo.png [36m304 [0m0.909 ms - -[0m
+02-07-2018 19:45 +00:00: [0mGET /images/_wind.PNG [32m200 [0m0.693 ms - 397445[0m
+02-07-2018 19:45 +00:00: - REQ_CREDENTIAL_VALIDATION ::ffff:127.0.0.1
+02-07-2018 19:45 +00:00: >> ProcessRequest  ::ffff:127.0.0.1
+02-07-2018 19:45 +00:00: - REQ_CREDENTIAL_VALIDATION >> REQUESTING FTP CALL ::ffff:127.0.0.1
+02-07-2018 19:45 +00:00: - TCP >> makeHttpsRequest
+02-07-2018 19:45 +00:00: - TCP >> Waiting for Data
+02-07-2018 19:45 +00:00:  - TCP CALL REQUESTED >> ::ffff:127.0.0.1
+02-07-2018 19:45 +00:00:  - End
+02-07-2018 19:45 +00:00: - TCP >> Connected
+02-07-2018 19:45 +00:00: - TCP >> Connection closed
+02-07-2018 19:45 +00:00: [0mPOST /REQ_CREDENTIAL_VALIDATION [32m200 [0m1099.193 ms - 5[0m
+02-07-2018 19:45 +00:00: - REQ_CREDENTIAL_VALIDATION ::ffff:127.0.0.1
+02-07-2018 19:45 +00:00: >> ProcessRequest  ::ffff:127.0.0.1
+02-07-2018 19:45 +00:00: - REQ_CREDENTIAL_VALIDATION >> REQUESTING FTP CALL ::ffff:127.0.0.1
+02-07-2018 19:45 +00:00: - TCP >> makeHttpsRequest
+02-07-2018 19:45 +00:00: - TCP >> Waiting for Data
+02-07-2018 19:45 +00:00:  - TCP CALL REQUESTED >> ::ffff:127.0.0.1
+02-07-2018 19:45 +00:00:  - End
+02-07-2018 19:45 +00:00: - TCP >> Connected
+02-07-2018 19:45 +00:00: - TCP >> Connection closed
+02-07-2018 19:45 +00:00: [0mPOST /REQ_CREDENTIAL_VALIDATION [32m200 [0m1011.088 ms - 5[0m
+02-07-2018 19:45 +00:00: [0mGET /stylesheets/layout-newLook.css [36m304 [0m0.716 ms - -[0m
+02-07-2018 19:45 +00:00: [0mGET /stylesheets/circle-timer/circle.css [36m304 [0m4.946 ms - -[0m
+02-07-2018 19:45 +00:00: [0mGET /stylesheets/welcome-page/welcome-page.css [36m304 [0m0.729 ms - -[0m
+02-07-2018 19:45 +00:00: [0mGET /stylesheets/pop-up-boxes/pop-up-box-list.css [36m304 [0m0.576 ms - -[0m
+02-07-2018 19:46 +00:00: [0mGET / [32m200 [0m231.840 ms - 3470[0m
+02-07-2018 19:46 +00:00: [0mGET /stylesheets/layout-newLook.css [32m200 [0m0.817 ms - 2229[0m
+02-07-2018 19:46 +00:00: [0mGET /stylesheets/circle-timer/circle.css [32m200 [0m0.605 ms - 1888[0m
+02-07-2018 19:46 +00:00: [0mGET /stylesheets/pop-up-boxes/pop-up-box-list.css [32m200 [0m0.547 ms - 2956[0m
+02-07-2018 19:46 +00:00: [0mGET /stylesheets/welcome-page/welcome-page.css [32m200 [0m0.545 ms - 1242[0m
+02-07-2018 19:46 +00:00: [0mGET /js/pop-up-boxes/error-message-pop-up.js [32m200 [0m0.559 ms - 359[0m
+02-07-2018 19:46 +00:00: [0mGET /js/pop-up-boxes/log-in-pop-up.js [32m200 [0m0.600 ms - 3781[0m
+02-07-2018 19:46 +00:00: [0mGET /js/circle-timer/circle-timer.js [32m200 [0m0.428 ms - 6520[0m
+02-07-2018 19:46 +00:00: [0mGET /js/log-in/log-in.js [32m200 [0m0.538 ms - 584[0m
+02-07-2018 19:46 +00:00: [0mGET /images/acelerex-logo.png [32m200 [0m1.202 ms - 28837[0m
+02-07-2018 19:46 +00:00: [0mGET /images/_wind.PNG [32m200 [0m1.338 ms - 397445[0m
+02-07-2018 19:46 +00:00: [0mGET /favicon.ico [33m404 [0m576.681 ms - 14018[0m
+02-07-2018 19:46 +00:00: - REQ_CREDENTIAL_VALIDATION ::ffff:204.9.220.50
+02-07-2018 19:46 +00:00: >> ProcessRequest  ::ffff:204.9.220.50
+- REQ_CREDENTIAL_VALIDATION >> REQUESTING FTP CALL ::ffff:204.9.220.50
+- TCP >> makeHttpsRequest
+02-07-2018 19:46 +00:00: - TCP >> Waiting for Data
+ - TCP CALL REQUESTED >> ::ffff:204.9.220.50
+ - End
+02-07-2018 19:46 +00:00: - TCP >> Connected
+02-07-2018 19:46 +00:00: - TCP >> Connection closed
+02-07-2018 19:46 +00:00: [0mPOST /REQ_CREDENTIAL_VALIDATION [32m200 [0m1003.705 ms - 5[0m
+02-07-2018 19:46 +00:00: [0mGET / [36m304 [0m186.038 ms - -[0m
+02-07-2018 19:46 +00:00: [0mGET /stylesheets/layout-newLook.css [36m304 [0m1.001 ms - -[0m
+02-07-2018 19:46 +00:00: [0mGET /stylesheets/circle-timer/circle.css [36m304 [0m1.186 ms - -[0m
+02-07-2018 19:46 +00:00: [0mGET /stylesheets/welcome-page/welcome-page.css [36m304 [0m0.790 ms - -[0m
+02-07-2018 19:46 +00:00: [0mGET /stylesheets/pop-up-boxes/pop-up-box-list.css [36m304 [0m0.375 ms - -[0m
+02-07-2018 19:46 +00:00: [0mGET /js/pop-up-boxes/error-message-pop-up.js [36m304 [0m0.360 ms - -[0m
+02-07-2018 19:46 +00:00: [0mGET /js/pop-up-boxes/log-in-pop-up.js [36m304 [0m0.368 ms - -[0m
+02-07-2018 19:46 +00:00: [0mGET /js/circle-timer/circle-timer.js [36m304 [0m0.765 ms - -[0m
+02-07-2018 19:46 +00:00: [0mGET /js/log-in/log-in.js [36m304 [0m6.025 ms - -[0m
+02-07-2018 19:46 +00:00: [0mGET /images/acelerex-logo.png [36m304 [0m4.098 ms - -[0m
+02-07-2018 19:46 +00:00: [0mGET /images/_wind.PNG [36m304 [0m3.850 ms - -[0m
+02-07-2018 19:46 +00:00: - REQ_CREDENTIAL_VALIDATION ::ffff:127.0.0.1
+02-07-2018 19:46 +00:00: >> ProcessRequest  ::ffff:127.0.0.1
+02-07-2018 19:46 +00:00: - REQ_CREDENTIAL_VALIDATION >> REQUESTING FTP CALL ::ffff:127.0.0.1
+02-07-2018 19:46 +00:00: - TCP >> makeHttpsRequest
+02-07-2018 19:46 +00:00: - TCP >> Waiting for Data
+02-07-2018 19:46 +00:00:  - TCP CALL REQUESTED >> ::ffff:127.0.0.1
+ - End
+02-07-2018 19:46 +00:00: - TCP >> Connected
+02-07-2018 19:46 +00:00: - TCP >> Connection closed
+02-07-2018 19:46 +00:00: [0mPOST /REQ_CREDENTIAL_VALIDATION [32m200 [0m1004.030 ms - 5[0m
+02-07-2018 19:46 +00:00: [0mGET /REQ_CREDENTIAL_VALIDATION [33m404 [0m439.106 ms - 14018[0m
+02-07-2018 19:46 +00:00: [0mGET /bower_components/sweetalert/dist/sweetalert.css [36m304 [0m3.857 ms - -[0m
+02-07-2018 19:46 +00:00: [0mGET /bower_components/font-awesome/css/font-awesome.min.css [36m304 [0m4.501 ms - -[0m
+02-07-2018 19:46 +00:00: [0mGET /stylesheets/style.css [36m304 [0m4.400 ms - -[0m
+02-07-2018 19:46 +00:00: [0mGET /stylesheets/layout-newLook.css [36m304 [0m4.292 ms - -[0m
+02-07-2018 19:46 +00:00: [0mGET /stylesheets/tab_style.css [36m304 [0m3.717 ms - -[0m
+02-07-2018 19:46 +00:00: [0mGET /stylesheets/grid-layout-styling.css [32m200 [0m10.135 ms - 12454[0m
+02-07-2018 19:46 +00:00: [0mGET /stylesheets/side-slider.css [36m304 [0m0.869 ms - -[0m
+02-07-2018 19:46 +00:00: [0mGET /stylesheets/horizontal-menu/horizontal-menu.css [36m304 [0m3.701 ms - -[0m
+02-07-2018 19:46 +00:00: [0mGET /stylesheets/welcome-page/welcome-page.css [36m304 [0m3.386 ms - -[0m
+02-07-2018 19:46 +00:00: [0mGET /stylesheets/pop-up-boxes/pop-up-box-list.css [36m304 [0m1.260 ms - -[0m
+02-07-2018 19:46 +00:00: [0mGET /js/side-slider.js [36m304 [0m3.046 ms - -[0m
+02-07-2018 19:46 +00:00: [0mGET /js/tab_switch.js [36m304 [0m0.699 ms - -[0m
+02-07-2018 19:46 +00:00: [0mGET /bower_components/jquery/dist/jquery.min.js [36m304 [0m0.394 ms - -[0m
+02-07-2018 19:46 +00:00: [0mGET /bower_components/metisMenu/dist/metisMenu.min.js [36m304 [0m0.482 ms - -[0m
+02-07-2018 19:46 +00:00: [0mGET /bower_components/sweetalert/dist/sweetalert.min.js [36m304 [0m0.378 ms - -[0m
+02-07-2018 19:46 +00:00: [0mGET /bower_components/validator-js/validator.min.js [36m304 [0m0.471 ms - -[0m
+02-07-2018 19:46 +00:00: [0mGET /js/sb-admin-2.js [36m304 [0m0.765 ms - -[0m
+02-07-2018 19:46 +00:00: [0mGET /js/gen-by-fuel-dynamic.js [32m200 [0m2.301 ms - 2181[0m
+02-07-2018 19:46 +00:00: [0mGET /js/existing-storage-dynamic.js [36m304 [0m1.392 ms - -[0m
+02-07-2018 19:46 +00:00: [0mGET /js/layout.js [32m200 [0m7.450 ms - 17625[0m
+02-07-2018 19:46 +00:00: [0mGET /js/inputs.js [36m304 [0m0.846 ms - -[0m
+02-07-2018 19:46 +00:00: [0mGET /js/graphs/generatecharts.js [36m304 [0m2.880 ms - -[0m
+02-07-2018 19:46 +00:00: [0mGET /js/js_Objects/test_response.js [36m304 [0m0.399 ms - -[0m
+02-07-2018 19:46 +00:00: [0mGET /js/js_Objects/Project_and_Runs_bucket.js [36m304 [0m0.320 ms - -[0m
+02-07-2018 19:46 +00:00: [0mGET /js/horizontal-menu/datalist_selector.js [33m404 [0m269.042 ms - 14018[0m
+02-07-2018 19:46 +00:00: [0mGET /js/horizontal-menu/set_data_to_tables.js [36m304 [0m7.565 ms - -[0m
+02-07-2018 19:46 +00:00: [0mGET /js/horizontal-menu/save_button.js [36m304 [0m2.062 ms - -[0m
+02-07-2018 19:46 +00:00: [0mGET /js/horizontal-menu/get_data_from_tables.js [36m304 [0m1.697 ms - -[0m
+02-07-2018 19:46 +00:00: [0mGET /js/horizontal-menu/horizontal-menu.js [36m304 [0m1.526 ms - -[0m
+02-07-2018 19:46 +00:00: [0mGET /js/horizontal-menu/delete_button.js [36m304 [0m1.395 ms - -[0m
+02-07-2018 19:46 +00:00: [0mGET /images/acelerex-logo.png [36m304 [0m0.355 ms - -[0m
+02-07-2018 19:46 +00:00: [0mGET /images/user.PNG [36m304 [0m1.076 ms - -[0m
+02-07-2018 19:46 +00:00: [0mGET /images/wiki.jpg [36m304 [0m0.948 ms - -[0m
+02-07-2018 19:46 +00:00: [0mGET /images/log-out.png [36m304 [0m0.813 ms - -[0m
+02-07-2018 19:46 +00:00: [0mGET /js/horizontal-menu/tab-list-container.js [36m304 [0m0.522 ms - -[0m
+02-07-2018 19:46 +00:00: [0mGET /js/pop-up-boxes/error-message-pop-up.js [36m304 [0m0.298 ms - -[0m
+02-07-2018 19:46 +00:00: [0mGET /js/pop-up-boxes/log-in-pop-up.js [36m304 [0m0.418 ms - -[0m
+02-07-2018 19:46 +00:00: - REQ_PROJECTS_AND_RUNS >> ::ffff:127.0.0.1
+02-07-2018 19:46 +00:00: UserSession >> getUserNameIndexByPort
+02-07-2018 19:46 +00:00: 1
+02-07-2018 19:46 +00:00: [0mPOST /REQ_PROJECTS_AND_RUNS [31m500 [0m283.109 ms - 14146[0m
+02-07-2018 19:47 +00:00: [0mGET /js/horizontal-menu/datalist_selector.js [33m404 [0m240.812 ms - 14018[0m
+02-07-2018 19:47 +00:00: - REQ_PROJECTS_AND_RUNS >> ::ffff:127.0.0.1
+02-07-2018 19:47 +00:00: UserSession >> getUserNameIndexByPort
+02-07-2018 19:47 +00:00: 1
+02-07-2018 19:47 +00:00: [0mPOST /REQ_PROJECTS_AND_RUNS [31m500 [0m221.152 ms - 14146[0m
+02-07-2018 20:00 +00:00: [0mGET / [36m304 [0m104.310 ms - -[0m
+02-07-2018 20:00 +00:00: [0mGET /stylesheets/layout-newLook.css [36m304 [0m1.280 ms - -[0m
+02-07-2018 20:00 +00:00: [0mGET /stylesheets/circle-timer/circle.css [36m304 [0m1.131 ms - -[0m
+02-07-2018 20:00 +00:00: [0mGET /images/acelerex-logo.png [36m304 [0m1.006 ms - -[0m
+02-07-2018 20:00 +00:00: [0mGET /stylesheets/welcome-page/welcome-page.css [36m304 [0m0.360 ms - -[0m
+02-07-2018 20:00 +00:00: [0mGET /images/_wind.PNG [36m304 [0m2.311 ms - -[0m
+02-07-2018 20:00 +00:00: [0mGET /stylesheets/pop-up-boxes/pop-up-box-list.css [36m304 [0m10.835 ms - -[0m
+02-07-2018 20:00 +00:00: [0mGET /js/pop-up-boxes/error-message-pop-up.js [36m304 [0m10.603 ms - -[0m
+02-07-2018 20:00 +00:00: [0mGET /js/pop-up-boxes/log-in-pop-up.js [36m304 [0m1.964 ms - -[0m
+02-07-2018 20:00 +00:00: [0mGET /js/circle-timer/circle-timer.js [36m304 [0m1.171 ms - -[0m
+02-07-2018 20:00 +00:00: [0mGET /js/log-in/log-in.js [36m304 [0m0.402 ms - -[0m
+02-07-2018 20:01 +00:00: - REQ_CREDENTIAL_VALIDATION ::ffff:127.0.0.1
+02-07-2018 20:01 +00:00: >> ProcessRequest  ::ffff:127.0.0.1
+02-07-2018 20:01 +00:00: - REQ_CREDENTIAL_VALIDATION >> REQUESTING FTP CALL ::ffff:127.0.0.1
+02-07-2018 20:01 +00:00: - TCP >> makeHttpsRequest
+02-07-2018 20:01 +00:00: - TCP >> Waiting for Data
+02-07-2018 20:01 +00:00:  - TCP CALL REQUESTED >> ::ffff:127.0.0.1
+02-07-2018 20:01 +00:00:  - End
+02-07-2018 20:01 +00:00: - TCP >> Received error: Error: connect ECONNREFUSED 127.0.0.1:3333
+02-07-2018 20:01 +00:00: - TCP >> Connection closed
+02-07-2018 20:01 +00:00: - Process response for ::ffff:127.0.0.1
+ - Error
+02-07-2018 20:01 +00:00: [0mPOST /REQ_CREDENTIAL_VALIDATION [32m200 [0m102.787 ms - 42[0m
+02-07-2018 20:01 +00:00: [0mGET / [36m304 [0m134.764 ms - -[0m
+02-07-2018 20:01 +00:00: [0mGET /stylesheets/layout-newLook.css [36m304 [0m6.525 ms - -[0m
+02-07-2018 20:01 +00:00: [0mGET /stylesheets/circle-timer/circle.css [36m304 [0m6.413 ms - -[0m
+02-07-2018 20:01 +00:00: [0mGET /stylesheets/welcome-page/welcome-page.css [36m304 [0m6.279 ms - -[0m
+02-07-2018 20:01 +00:00: [0mGET /stylesheets/pop-up-boxes/pop-up-box-list.css [36m304 [0m5.062 ms - -[0m
+02-07-2018 20:01 +00:00: [0mGET /js/pop-up-boxes/error-message-pop-up.js [36m304 [0m0.375 ms - -[0m
+02-07-2018 20:01 +00:00: [0mGET /js/pop-up-boxes/log-in-pop-up.js [36m304 [0m0.551 ms - -[0m
+02-07-2018 20:01 +00:00: [0mGET /js/circle-timer/circle-timer.js [36m304 [0m3.667 ms - -[0m
+02-07-2018 20:01 +00:00: [0mGET /js/log-in/log-in.js [36m304 [0m2.285 ms - -[0m
+02-07-2018 20:01 +00:00: [0mGET /images/acelerex-logo.png [36m304 [0m3.247 ms - -[0m
+02-07-2018 20:01 +00:00: [0mGET /images/_wind.PNG [36m304 [0m0.640 ms - -[0m
+02-07-2018 20:01 +00:00: - REQ_CREDENTIAL_VALIDATION ::ffff:127.0.0.1
+02-07-2018 20:01 +00:00: >> ProcessRequest  ::ffff:127.0.0.1
+02-07-2018 20:01 +00:00: - REQ_CREDENTIAL_VALIDATION >> REQUESTING FTP CALL ::ffff:127.0.0.1
+02-07-2018 20:01 +00:00: - TCP >> makeHttpsRequest
+02-07-2018 20:01 +00:00: - TCP >> Waiting for Data
+02-07-2018 20:01 +00:00:  - TCP CALL REQUESTED >> ::ffff:127.0.0.1
+ - End
+- TCP >> Received error: Error: connect ECONNREFUSED 127.0.0.1:3333
+- TCP >> Connection closed
+02-07-2018 20:01 +00:00: - Process response for ::ffff:127.0.0.1
+ - Error
+02-07-2018 20:01 +00:00: [0mPOST /REQ_CREDENTIAL_VALIDATION [32m200 [0m102.456 ms - 42[0m
+02-07-2018 20:04 +00:00: [0mGET / [36m304 [0m119.205 ms - -[0m
+02-07-2018 20:04 +00:00: [0mGET /stylesheets/layout-newLook.css [36m304 [0m0.379 ms - -[0m
+02-07-2018 20:04 +00:00: [0mGET /stylesheets/circle-timer/circle.css [36m304 [0m0.352 ms - -[0m
+02-07-2018 20:04 +00:00: [0mGET /stylesheets/welcome-page/welcome-page.css [36m304 [0m0.347 ms - -[0m
+02-07-2018 20:04 +00:00: [0mGET /stylesheets/pop-up-boxes/pop-up-box-list.css [36m304 [0m0.338 ms - -[0m
+02-07-2018 20:04 +00:00: [0mGET /js/pop-up-boxes/error-message-pop-up.js [36m304 [0m0.388 ms - -[0m
+02-07-2018 20:04 +00:00: [0mGET /js/pop-up-boxes/log-in-pop-up.js [36m304 [0m0.769 ms - -[0m
+02-07-2018 20:04 +00:00: [0mGET /js/circle-timer/circle-timer.js [36m304 [0m0.337 ms - -[0m
+02-07-2018 20:04 +00:00: [0mGET /js/log-in/log-in.js [36m304 [0m4.341 ms - -[0m
+02-07-2018 20:04 +00:00: [0mGET /images/acelerex-logo.png [36m304 [0m4.261 ms - -[0m
+02-07-2018 20:04 +00:00: [0mGET /images/_wind.PNG [36m304 [0m4.246 ms - -[0m
+02-07-2018 20:04 +00:00: - REQ_CREDENTIAL_VALIDATION ::ffff:127.0.0.1
+02-07-2018 20:04 +00:00: >> ProcessRequest  ::ffff:127.0.0.1
+02-07-2018 20:04 +00:00: - REQ_CREDENTIAL_VALIDATION >> REQUESTING FTP CALL ::ffff:127.0.0.1
+02-07-2018 20:04 +00:00: - TCP >> makeHttpsRequest
+02-07-2018 20:04 +00:00: - TCP >> Waiting for Data
+02-07-2018 20:04 +00:00:  - TCP CALL REQUESTED >> ::ffff:127.0.0.1
+02-07-2018 20:04 +00:00:  - End
+02-07-2018 20:04 +00:00: - TCP >> Connected
+02-07-2018 20:04 +00:00: - TCP >> Connection closed
+02-07-2018 20:04 +00:00: - Process response for ::ffff:127.0.0.1
+ - Error
+02-07-2018 20:04 +00:00: [0mPOST /REQ_CREDENTIAL_VALIDATION [32m200 [0m103.054 ms - 42[0m
+02-07-2018 20:04 +00:00: [0mGET / [36m304 [0m132.324 ms - -[0m
+02-07-2018 20:04 +00:00: [0mGET /stylesheets/layout-newLook.css [36m304 [0m0.707 ms - -[0m
+02-07-2018 20:04 +00:00: [0mGET /stylesheets/circle-timer/circle.css [36m304 [0m3.086 ms - -[0m
+02-07-2018 20:04 +00:00: [0mGET /stylesheets/welcome-page/welcome-page.css [36m304 [0m0.708 ms - -[0m
+02-07-2018 20:04 +00:00: [0mGET /stylesheets/pop-up-boxes/pop-up-box-list.css [36m304 [0m2.354 ms - -[0m
+02-07-2018 20:04 +00:00: [0mGET /js/pop-up-boxes/error-message-pop-up.js [36m304 [0m0.810 ms - -[0m
+02-07-2018 20:04 +00:00: [0mGET /js/pop-up-boxes/log-in-pop-up.js [36m304 [0m7.187 ms - -[0m
+02-07-2018 20:04 +00:00: [0mGET /js/circle-timer/circle-timer.js [36m304 [0m5.749 ms - -[0m
+02-07-2018 20:04 +00:00: [0mGET /js/log-in/log-in.js [36m304 [0m1.087 ms - -[0m
+02-07-2018 20:04 +00:00: [0mGET /images/acelerex-logo.png [36m304 [0m1.038 ms - -[0m
+02-07-2018 20:04 +00:00: [0mGET /images/_wind.PNG [36m304 [0m0.964 ms - -[0m
+02-07-2018 20:04 +00:00: [0mGET / [36m304 [0m75.589 ms - -[0m
+02-07-2018 20:04 +00:00: [0mGET /stylesheets/layout-newLook.css [36m304 [0m0.774 ms - -[0m
+02-07-2018 20:04 +00:00: [0mGET /stylesheets/circle-timer/circle.css [36m304 [0m0.587 ms - -[0m
+02-07-2018 20:04 +00:00: [0mGET /stylesheets/welcome-page/welcome-page.css [36m304 [0m0.652 ms - -[0m
+02-07-2018 20:04 +00:00: [0mGET /stylesheets/pop-up-boxes/pop-up-box-list.css [36m304 [0m2.650 ms - -[0m
+02-07-2018 20:04 +00:00: [0mGET /js/pop-up-boxes/error-message-pop-up.js [36m304 [0m0.330 ms - -[0m
+02-07-2018 20:04 +00:00: [0mGET /js/pop-up-boxes/log-in-pop-up.js [36m304 [0m0.568 ms - -[0m
+02-07-2018 20:04 +00:00: [0mGET /js/circle-timer/circle-timer.js [36m304 [0m0.957 ms - -[0m
+02-07-2018 20:04 +00:00: [0mGET /js/log-in/log-in.js [36m304 [0m0.778 ms - -[0m
+02-07-2018 20:04 +00:00: [0mGET /images/acelerex-logo.png [36m304 [0m0.570 ms - -[0m
+02-07-2018 20:04 +00:00: [0mGET /images/_wind.PNG [36m304 [0m3.229 ms - -[0m
+02-07-2018 20:04 +00:00: - REQ_CREDENTIAL_VALIDATION ::ffff:127.0.0.1
+02-07-2018 20:04 +00:00: >> ProcessRequest  ::ffff:127.0.0.1
+02-07-2018 20:04 +00:00: - REQ_CREDENTIAL_VALIDATION >> REQUESTING FTP CALL ::ffff:127.0.0.1
+02-07-2018 20:04 +00:00: - TCP >> makeHttpsRequest
+02-07-2018 20:04 +00:00: - TCP >> Waiting for Data
+ - TCP CALL REQUESTED >> ::ffff:127.0.0.1
+ - End
+02-07-2018 20:04 +00:00: - TCP >> Connected
+02-07-2018 20:04 +00:00: - TCP >> Connection closed
+02-07-2018 20:04 +00:00: - Process response for ::ffff:127.0.0.1
+ - Error
+02-07-2018 20:04 +00:00: [0mPOST /REQ_CREDENTIAL_VALIDATION [32m200 [0m103.114 ms - 42[0m
+02-07-2018 20:04 +00:00: [0mGET /stylesheets/layout-newLook.css [36m304 [0m0.973 ms - -[0m
+02-07-2018 20:04 +00:00: [0mGET /stylesheets/circle-timer/circle.css [36m304 [0m2.515 ms - -[0m
+02-07-2018 20:04 +00:00: [0mGET /stylesheets/welcome-page/welcome-page.css [36m304 [0m1.845 ms - -[0m
+02-07-2018 20:04 +00:00: [0mGET /stylesheets/pop-up-boxes/pop-up-box-list.css [36m304 [0m1.352 ms - -[0m
+02-07-2018 20:05 +00:00: - REQ_CREDENTIAL_VALIDATION ::ffff:127.0.0.1
+02-07-2018 20:05 +00:00: >> ProcessRequest  ::ffff:127.0.0.1
+02-07-2018 20:05 +00:00: - REQ_CREDENTIAL_VALIDATION >> REQUESTING FTP CALL ::ffff:127.0.0.1
+02-07-2018 20:05 +00:00: - TCP >> makeHttpsRequest
+02-07-2018 20:05 +00:00: - TCP >> Waiting for Data
+02-07-2018 20:05 +00:00:  - TCP CALL REQUESTED >> ::ffff:127.0.0.1
+02-07-2018 20:05 +00:00:  - End
+02-07-2018 20:05 +00:00: - TCP >> Connected
+02-07-2018 20:05 +00:00: - TCP >> Connection closed
+02-07-2018 20:05 +00:00: - Process response for ::ffff:127.0.0.1
+ - Error
+02-07-2018 20:05 +00:00: [0mPOST /REQ_CREDENTIAL_VALIDATION [32m200 [0m103.440 ms - 42[0m
+02-07-2018 20:06 +00:00: - REQ_CREDENTIAL_VALIDATION ::ffff:127.0.0.1
+02-07-2018 20:06 +00:00: >> ProcessRequest  ::ffff:127.0.0.1
+02-07-2018 20:06 +00:00: - REQ_CREDENTIAL_VALIDATION >> REQUESTING FTP CALL ::ffff:127.0.0.1
+- TCP >> makeHttpsRequest
+02-07-2018 20:06 +00:00: - TCP >> Waiting for Data
+ - TCP CALL REQUESTED >> ::ffff:127.0.0.1
+ - End
+02-07-2018 20:06 +00:00: - TCP >> Connected
+02-07-2018 20:06 +00:00: - TCP >> Connection closed
+02-07-2018 20:06 +00:00: - Process response for ::ffff:127.0.0.1
+ - Error
+02-07-2018 20:06 +00:00: [0mPOST /REQ_CREDENTIAL_VALIDATION [32m200 [0m101.912 ms - 42[0m
+02-07-2018 20:08 +00:00: [0mGET / [36m304 [0m100.669 ms - -[0m
+02-07-2018 20:08 +00:00: [0mGET /stylesheets/layout-newLook.css [36m304 [0m0.398 ms - -[0m
+02-07-2018 20:08 +00:00: [0mGET /stylesheets/circle-timer/circle.css [36m304 [0m0.367 ms - -[0m
+02-07-2018 20:08 +00:00: [0mGET /images/acelerex-logo.png [36m304 [0m4.486 ms - -[0m
+02-07-2018 20:08 +00:00: [0mGET /stylesheets/welcome-page/welcome-page.css [36m304 [0m5.938 ms - -[0m
+02-07-2018 20:08 +00:00: [0mGET /images/_wind.PNG [36m304 [0m2.653 ms - -[0m
+02-07-2018 20:08 +00:00: [0mGET /stylesheets/pop-up-boxes/pop-up-box-list.css [36m304 [0m2.261 ms - -[0m
+02-07-2018 20:08 +00:00: [0mGET /js/pop-up-boxes/error-message-pop-up.js [36m304 [0m2.407 ms - -[0m
+02-07-2018 20:08 +00:00: [0mGET /js/pop-up-boxes/log-in-pop-up.js [36m304 [0m0.454 ms - -[0m
+02-07-2018 20:08 +00:00: [0mGET /js/circle-timer/circle-timer.js [36m304 [0m0.360 ms - -[0m
+02-07-2018 20:08 +00:00: [0mGET /js/log-in/log-in.js [36m304 [0m4.820 ms - -[0m
+02-07-2018 20:08 +00:00: - REQ_CREDENTIAL_VALIDATION ::ffff:127.0.0.1
+02-07-2018 20:08 +00:00: >> ProcessRequest  ::ffff:127.0.0.1
+02-07-2018 20:08 +00:00: - REQ_CREDENTIAL_VALIDATION >> REQUESTING FTP CALL ::ffff:127.0.0.1
+- TCP >> makeHttpsRequest
+02-07-2018 20:08 +00:00: - TCP >> Waiting for Data
+ - TCP CALL REQUESTED >> ::ffff:127.0.0.1
+ - End
+02-07-2018 20:08 +00:00: - TCP >> Connected
+02-07-2018 20:08 +00:00: - TCP >> Connection closed
+02-07-2018 20:08 +00:00: - Process response for ::ffff:127.0.0.1
+ - Error
+02-07-2018 20:08 +00:00: [0mPOST /REQ_CREDENTIAL_VALIDATION [32m200 [0m102.747 ms - 42[0m
+02-07-2018 20:08 +00:00: [0mGET /stylesheets/layout-newLook.css [36m304 [0m0.459 ms - -[0m
+02-07-2018 20:08 +00:00: [0mGET /stylesheets/circle-timer/circle.css [36m304 [0m5.364 ms - -[0m
+02-07-2018 20:08 +00:00: [0mGET /stylesheets/welcome-page/welcome-page.css [36m304 [0m5.192 ms - -[0m
+02-07-2018 20:08 +00:00: [0mGET /stylesheets/pop-up-boxes/pop-up-box-list.css [36m304 [0m1.192 ms - -[0m
+02-07-2018 20:08 +00:00: - REQ_CREDENTIAL_VALIDATION ::ffff:127.0.0.1
+02-07-2018 20:08 +00:00: >> ProcessRequest  ::ffff:127.0.0.1
+02-07-2018 20:08 +00:00: - REQ_CREDENTIAL_VALIDATION >> REQUESTING FTP CALL ::ffff:127.0.0.1
+- TCP >> makeHttpsRequest
+02-07-2018 20:08 +00:00: - TCP >> Waiting for Data
+02-07-2018 20:08 +00:00:  - TCP CALL REQUESTED >> ::ffff:127.0.0.1
+ - End
+02-07-2018 20:08 +00:00: - TCP >> Connected
+02-07-2018 20:08 +00:00: - TCP >> Connection closed
+02-07-2018 20:08 +00:00: - Process response for ::ffff:127.0.0.1
+ - Error
+02-07-2018 20:08 +00:00: [0mPOST /REQ_CREDENTIAL_VALIDATION [32m200 [0m102.823 ms - 42[0m
+02-07-2018 20:16 +00:00: UserSession >> Reading Session File
+02-07-2018 20:16 +00:00: out loop
+02-07-2018 20:16 +00:00: finished
+02-07-2018 20:16 +00:00: instantitating UserSession
+02-07-2018 20:16 +00:00: { wiki: 
+   { url: 'https://35.196.211.59:4000/STORAGE-BENEFITS-TOOL',
+     port: 4000 },
+  api: { hostname: 'localhost', port: 3333 },
+  datafiles: 
+   { path: '/opt/slt_data',
+     inpath: '/home/gonzales1609/IRENA/SLTview' } }
+02-07-2018 20:19 +00:00: UserSession >> Reading Session File
+02-07-2018 20:19 +00:00: out loop
+02-07-2018 20:19 +00:00: finished
+02-07-2018 20:19 +00:00: instantitating UserSession
+02-07-2018 20:19 +00:00: { wiki: 
+   { url: 'https://35.196.211.59:4000/STORAGE-BENEFITS-TOOL',
+     port: 4000 },
+  api: { hostname: 'localhost', port: 3333 },
+  datafiles: 
+   { path: '/opt/slt_data',
+     inpath: '/home/gonzales1609/IRENA/SLTview' } }
+<<<<<<< HEAD
+=======
+02-07-2018 20:23 +00:00: UserSession >> Reading Session File
+02-07-2018 20:23 +00:00: out loop
+02-07-2018 20:23 +00:00: finished
+02-07-2018 20:23 +00:00: instantitating UserSession
+02-07-2018 20:23 +00:00: { wiki: 
+   { url: 'https://35.196.211.59:4000/STORAGE-BENEFITS-TOOL',
+     port: 4000 },
+  api: { hostname: 'localhost', port: 3333 },
+  datafiles: 
+   { path: '/opt/slt_data',
+     inpath: '/home/gonzales1609/IRENA/SLTview' } }
+02-07-2018 20:24 +00:00: [0mGET / [36m304 [0m643.775 ms - -[0m
+02-07-2018 20:24 +00:00: [0mGET /stylesheets/circle-timer/circle.css [36m304 [0m6.858 ms - -[0m
+02-07-2018 20:24 +00:00: [0mGET /images/acelerex-logo.png [36m304 [0m11.496 ms - -[0m
+02-07-2018 20:24 +00:00: [0mGET /stylesheets/welcome-page/welcome-page.css [36m304 [0m11.554 ms - -[0m
+02-07-2018 20:24 +00:00: [0mGET /images/_wind.PNG [36m304 [0m8.549 ms - -[0m
+02-07-2018 20:24 +00:00: [0mGET /stylesheets/pop-up-boxes/pop-up-box-list.css [36m304 [0m8.398 ms - -[0m
+02-07-2018 20:24 +00:00: [0mGET /stylesheets/layout-newLook.css [32m200 [0m17.749 ms - 2185[0m
+02-07-2018 20:24 +00:00: [0mGET /js/pop-up-boxes/error-message-pop-up.js [36m304 [0m0.683 ms - -[0m
+02-07-2018 20:24 +00:00: [0mGET /js/pop-up-boxes/log-in-pop-up.js [36m304 [0m2.678 ms - -[0m
+02-07-2018 20:24 +00:00: [0mGET /js/circle-timer/circle-timer.js [36m304 [0m2.591 ms - -[0m
+02-07-2018 20:24 +00:00: [0mGET /js/log-in/log-in.js [36m304 [0m0.862 ms - -[0m
+02-07-2018 20:24 +00:00: - REQ_CREDENTIAL_VALIDATION ::ffff:127.0.0.1
+02-07-2018 20:24 +00:00: >> ProcessRequest  ::ffff:127.0.0.1
+02-07-2018 20:24 +00:00: - REQ_CREDENTIAL_VALIDATION >> REQUESTING FTP CALL ::ffff:127.0.0.1
+02-07-2018 20:24 +00:00: - TCP >> makeHttpsRequest
+02-07-2018 20:24 +00:00: - TCP >> Waiting for Data
+02-07-2018 20:24 +00:00:  - TCP CALL REQUESTED >> ::ffff:127.0.0.1
+02-07-2018 20:24 +00:00:  - End
+02-07-2018 20:24 +00:00: - TCP >> Connected
+02-07-2018 20:24 +00:00: - TCP >> Connection closed
+02-07-2018 20:24 +00:00: [0mPOST /REQ_CREDENTIAL_VALIDATION [32m200 [0m1030.282 ms - 5[0m
+02-07-2018 20:24 +00:00: - REQ_CREDENTIAL_VALIDATION ::ffff:127.0.0.1
+02-07-2018 20:24 +00:00: >> ProcessRequest  ::ffff:127.0.0.1
+02-07-2018 20:24 +00:00: - REQ_CREDENTIAL_VALIDATION >> REQUESTING FTP CALL ::ffff:127.0.0.1
+02-07-2018 20:24 +00:00: - TCP >> makeHttpsRequest
+02-07-2018 20:24 +00:00: - TCP >> Waiting for Data
+02-07-2018 20:24 +00:00:  - TCP CALL REQUESTED >> ::ffff:127.0.0.1
+02-07-2018 20:24 +00:00:  - End
+02-07-2018 20:24 +00:00: - TCP >> Connected
+02-07-2018 20:24 +00:00: - TCP >> Connection closed
+02-07-2018 20:24 +00:00: [0mPOST /REQ_CREDENTIAL_VALIDATION [32m200 [0m1005.254 ms - 5[0m
+02-07-2018 20:26 +00:00: - REQ_CREDENTIAL_VALIDATION ::ffff:127.0.0.1
+02-07-2018 20:26 +00:00: >> ProcessRequest  ::ffff:127.0.0.1
+- REQ_CREDENTIAL_VALIDATION >> REQUESTING FTP CALL ::ffff:127.0.0.1
+- TCP >> makeHttpsRequest
+02-07-2018 20:26 +00:00: - TCP >> Waiting for Data
+ - TCP CALL REQUESTED >> ::ffff:127.0.0.1
+ - End
+02-07-2018 20:26 +00:00: - TCP >> Connected
+02-07-2018 20:26 +00:00: - TCP >> Connection closed
+02-07-2018 20:26 +00:00: [0mPOST /REQ_CREDENTIAL_VALIDATION [32m200 [0m1005.537 ms - 5[0m
+02-07-2018 20:26 +00:00: [0mGET /stylesheets/layout-newLook.css [36m304 [0m0.387 ms - -[0m
+02-07-2018 20:26 +00:00: [0mGET /stylesheets/circle-timer/circle.css [36m304 [0m0.345 ms - -[0m
+02-07-2018 20:26 +00:00: [0mGET /stylesheets/welcome-page/welcome-page.css [36m304 [0m0.376 ms - -[0m
+02-07-2018 20:26 +00:00: [0mGET /stylesheets/pop-up-boxes/pop-up-box-list.css [36m304 [0m0.424 ms - -[0m
+02-07-2018 20:33 +00:00: - REQ_CREDENTIAL_VALIDATION ::ffff:127.0.0.1
+02-07-2018 20:33 +00:00: >> ProcessRequest  ::ffff:127.0.0.1
+02-07-2018 20:33 +00:00: - REQ_CREDENTIAL_VALIDATION >> REQUESTING FTP CALL ::ffff:127.0.0.1
+02-07-2018 20:33 +00:00: - TCP >> makeHttpsRequest
+02-07-2018 20:33 +00:00: - TCP >> Waiting for Data
+02-07-2018 20:33 +00:00:  - TCP CALL REQUESTED >> ::ffff:127.0.0.1
+02-07-2018 20:33 +00:00:  - End
+02-07-2018 20:33 +00:00: - TCP >> Connected
+02-07-2018 20:33 +00:00: - TCP >> Connection closed
+02-07-2018 20:33 +00:00: [0mPOST /REQ_CREDENTIAL_VALIDATION [32m200 [0m1009.931 ms - 5[0m
+02-07-2018 20:34 +00:00: - REQ_CREDENTIAL_VALIDATION ::ffff:127.0.0.1
+02-07-2018 20:34 +00:00: >> ProcessRequest  ::ffff:127.0.0.1
+02-07-2018 20:34 +00:00: - REQ_CREDENTIAL_VALIDATION >> REQUESTING FTP CALL ::ffff:127.0.0.1
+- TCP >> makeHttpsRequest
+02-07-2018 20:34 +00:00: - TCP >> Waiting for Data
+02-07-2018 20:34 +00:00:  - TCP CALL REQUESTED >> ::ffff:127.0.0.1
+ - End
+02-07-2018 20:34 +00:00: - TCP >> Connected
+02-07-2018 20:34 +00:00: - TCP >> Connection closed
+02-07-2018 20:34 +00:00: [0mPOST /REQ_CREDENTIAL_VALIDATION [32m200 [0m1006.368 ms - 5[0m
+02-07-2018 20:34 +00:00: - REQ_CREDENTIAL_VALIDATION ::ffff:127.0.0.1
+02-07-2018 20:34 +00:00: >> ProcessRequest  ::ffff:127.0.0.1
+02-07-2018 20:34 +00:00: - REQ_CREDENTIAL_VALIDATION >> REQUESTING FTP CALL ::ffff:127.0.0.1
+- TCP >> makeHttpsRequest
+- TCP >> Waiting for Data
+ - TCP CALL REQUESTED >> ::ffff:127.0.0.1
+ - End
+- TCP >> Connected
+- TCP >> Connection closed
+02-07-2018 20:34 +00:00: [0mPOST /REQ_CREDENTIAL_VALIDATION [32m200 [0m1006.574 ms - 5[0m
+02-07-2018 21:15 +00:00: - REQ_CREDENTIAL_VALIDATION ::ffff:127.0.0.1
+02-07-2018 21:15 +00:00: >> ProcessRequest  ::ffff:127.0.0.1
+02-07-2018 21:15 +00:00: - REQ_CREDENTIAL_VALIDATION >> REQUESTING FTP CALL ::ffff:127.0.0.1
+02-07-2018 21:15 +00:00: - TCP >> makeHttpsRequest
+02-07-2018 21:15 +00:00: - TCP >> Waiting for Data
+02-07-2018 21:15 +00:00:  - TCP CALL REQUESTED >> ::ffff:127.0.0.1
+02-07-2018 21:15 +00:00:  - End
+02-07-2018 21:15 +00:00: - TCP >> Connected
+02-07-2018 21:15 +00:00: - TCP >> Connection closed
+02-07-2018 21:15 +00:00: [0mPOST /REQ_CREDENTIAL_VALIDATION [32m200 [0m1006.663 ms - 5[0m
+02-07-2018 21:21 +00:00: UserSession >> Reading Session File
+02-07-2018 21:21 +00:00: out loop
+02-07-2018 21:21 +00:00: finished
+02-07-2018 21:21 +00:00: instantitating UserSession
+02-07-2018 21:21 +00:00: { wiki: 
+   { url: 'https://35.196.211.59:4000/STORAGE-BENEFITS-TOOL',
+     port: 4000 },
+  api: { hostname: '35.196.211.59', port: 3333 },
+  datafiles: 
+   { path: '/opt/slt_data',
+     inpath: '/home/gonzales1609/IRENA/SLTview' } }
+02-07-2018 21:22 +00:00: UserSession >> Reading Session File
+02-07-2018 21:22 +00:00: out loop
+02-07-2018 21:22 +00:00: finished
+02-07-2018 21:22 +00:00: instantitating UserSession
+02-07-2018 21:22 +00:00: { wiki: 
+   { url: 'https://35.196.211.59:4000/STORAGE-BENEFITS-TOOL',
+     port: 4000 },
+  api: { hostname: '35.196.211.59', port: 3333 },
+  datafiles: 
+   { path: '/opt/slt_data',
+     inpath: '/home/gonzales1609/IRENA/SLTview' } }
+02-07-2018 21:22 +00:00: [0mGET / [36m304 [0m677.583 ms - -[0m
+02-07-2018 21:22 +00:00: [0mGET /stylesheets/layout-newLook.css [36m304 [0m11.613 ms - -[0m
+02-07-2018 21:22 +00:00: [0mGET /stylesheets/circle-timer/circle.css [36m304 [0m11.306 ms - -[0m
+02-07-2018 21:22 +00:00: [0mGET /stylesheets/welcome-page/welcome-page.css [36m304 [0m9.780 ms - -[0m
+02-07-2018 21:22 +00:00: [0mGET /stylesheets/pop-up-boxes/pop-up-box-list.css [36m304 [0m2.214 ms - -[0m
+02-07-2018 21:22 +00:00: [0mGET /js/pop-up-boxes/error-message-pop-up.js [36m304 [0m0.330 ms - -[0m
+02-07-2018 21:22 +00:00: [0mGET /js/pop-up-boxes/log-in-pop-up.js [36m304 [0m0.334 ms - -[0m
+02-07-2018 21:22 +00:00: [0mGET /js/circle-timer/circle-timer.js [36m304 [0m0.326 ms - -[0m
+02-07-2018 21:22 +00:00: [0mGET /js/log-in/log-in.js [36m304 [0m0.309 ms - -[0m
+02-07-2018 21:22 +00:00: [0mGET /images/acelerex-logo.png [36m304 [0m0.466 ms - -[0m
+02-07-2018 21:22 +00:00: [0mGET /images/_wind.PNG [36m304 [0m2.831 ms - -[0m
+02-07-2018 21:22 +00:00: - REQ_CREDENTIAL_VALIDATION ::ffff:127.0.0.1
+02-07-2018 21:22 +00:00: >> ProcessRequest  ::ffff:127.0.0.1
+02-07-2018 21:22 +00:00: - REQ_CREDENTIAL_VALIDATION >> REQUESTING FTP CALL ::ffff:127.0.0.1
+02-07-2018 21:22 +00:00: - TCP >> makeHttpsRequest
+02-07-2018 21:22 +00:00: - TCP >> Waiting for Data
+02-07-2018 21:22 +00:00:  - TCP CALL REQUESTED >> ::ffff:127.0.0.1
+02-07-2018 21:22 +00:00:  - End
+02-07-2018 21:22 +00:00: - TCP >> Connected
+02-07-2018 21:22 +00:00: - TCP >> Connection closed
+02-07-2018 21:22 +00:00: - Process response for ::ffff:127.0.0.1
+- Accepted >> a
+UserSession >> findUserName
+- Reactivating Session for username >> a
+UserSession >> ReactivateSession
+UserSession >> Reading Session File
+out loop
+finished
+UserSession >> findUserName
+B)%N7Ah*s3CxHCHvY(vy
+{"username":"a","token":"vZ3jUy*qQDnVVaQzUz0W","userIp":"::ffff:70.181.34.211","timeStamp":1518068387,"port":8000}
+UserSession >> Writting To Session File
+02-07-2018 21:22 +00:00: wrote the file successfully
+02-07-2018 21:22 +00:00: [0mPOST /REQ_CREDENTIAL_VALIDATION [32m200 [0m255.561 ms - 73[0m
+02-07-2018 21:23 +00:00: [0mGET / [36m304 [0m211.767 ms - -[0m
+02-07-2018 21:23 +00:00: [0mGET /stylesheets/layout-newLook.css [36m304 [0m0.445 ms - -[0m
+02-07-2018 21:23 +00:00: [0mGET /stylesheets/circle-timer/circle.css [36m304 [0m0.363 ms - -[0m
+02-07-2018 21:23 +00:00: [0mGET /images/acelerex-logo.png [36m304 [0m0.502 ms - -[0m
+02-07-2018 21:23 +00:00: [0mGET /stylesheets/welcome-page/welcome-page.css [36m304 [0m0.498 ms - -[0m
+02-07-2018 21:23 +00:00: [0mGET /images/_wind.PNG [36m304 [0m0.575 ms - -[0m
+02-07-2018 21:23 +00:00: [0mGET /stylesheets/pop-up-boxes/pop-up-box-list.css [36m304 [0m4.705 ms - -[0m
+02-07-2018 21:23 +00:00: [0mGET /js/pop-up-boxes/error-message-pop-up.js [36m304 [0m0.680 ms - -[0m
+02-07-2018 21:23 +00:00: [0mGET /js/pop-up-boxes/log-in-pop-up.js [36m304 [0m0.348 ms - -[0m
+02-07-2018 21:23 +00:00: [0mGET /js/circle-timer/circle-timer.js [36m304 [0m0.313 ms - -[0m
+02-07-2018 21:23 +00:00: [0mGET /js/log-in/log-in.js [36m304 [0m4.599 ms - -[0m
+02-07-2018 21:23 +00:00: - REQ_CREDENTIAL_VALIDATION ::ffff:127.0.0.1
+02-07-2018 21:23 +00:00: >> ProcessRequest  ::ffff:127.0.0.1
+02-07-2018 21:23 +00:00: - REQ_CREDENTIAL_VALIDATION >> REQUESTING FTP CALL ::ffff:127.0.0.1
+02-07-2018 21:23 +00:00: - TCP >> makeHttpsRequest
+02-07-2018 21:23 +00:00: - TCP >> Waiting for Data
+02-07-2018 21:23 +00:00:  - TCP CALL REQUESTED >> ::ffff:127.0.0.1
+02-07-2018 21:23 +00:00:  - End
+02-07-2018 21:23 +00:00: - TCP >> Connected
+02-07-2018 21:23 +00:00: - TCP >> Connection closed
+02-07-2018 21:23 +00:00: - Process response for ::ffff:127.0.0.1
+- Accepted >> a
+UserSession >> findUserName
+- Reactivating Session for username >> a
+UserSession >> ReactivateSession
+UserSession >> Reading Session File
+out loop
+finished
+UserSession >> findUserName
+e$bnd5x3mgWuRTHo52D8
+{"username":"a","token":"B)%N7Ah*s3CxHCHvY(vy","userIp":"::ffff:127.0.0.1","timeStamp":1518081756,"port":8000}
+UserSession >> Writting To Session File
+02-07-2018 21:23 +00:00: wrote the file successfully
+02-07-2018 21:23 +00:00: [0mPOST /REQ_CREDENTIAL_VALIDATION [32m200 [0m189.200 ms - 73[0m
+02-07-2018 22:36 +00:00: [0mGET / [32m200 [0m190.342 ms - 3470[0m
+02-07-2018 23:08 +00:00: [0mGET / [36m304 [0m186.932 ms - -[0m
+02-07-2018 23:08 +00:00: [0mGET /stylesheets/layout-newLook.css [36m304 [0m0.404 ms - -[0m
+02-07-2018 23:08 +00:00: [0mGET /stylesheets/circle-timer/circle.css [36m304 [0m0.384 ms - -[0m
+02-07-2018 23:08 +00:00: [0mGET /images/acelerex-logo.png [36m304 [0m1.009 ms - -[0m
+02-07-2018 23:08 +00:00: [0mGET /stylesheets/welcome-page/welcome-page.css [36m304 [0m0.873 ms - -[0m
+02-07-2018 23:08 +00:00: [0mGET /images/_wind.PNG [36m304 [0m2.196 ms - -[0m
+02-07-2018 23:08 +00:00: [0mGET /stylesheets/pop-up-boxes/pop-up-box-list.css [36m304 [0m1.751 ms - -[0m
+02-07-2018 23:08 +00:00: [0mGET /js/pop-up-boxes/error-message-pop-up.js [36m304 [0m0.907 ms - -[0m
+02-07-2018 23:08 +00:00: [0mGET /js/pop-up-boxes/log-in-pop-up.js [36m304 [0m0.800 ms - -[0m
+02-07-2018 23:08 +00:00: [0mGET /js/circle-timer/circle-timer.js [36m304 [0m0.858 ms - -[0m
+02-07-2018 23:08 +00:00: [0mGET /js/log-in/log-in.js [36m304 [0m0.692 ms - -[0m
+02-07-2018 23:08 +00:00: - REQ_CREDENTIAL_VALIDATION ::ffff:127.0.0.1
+02-07-2018 23:08 +00:00: >> ProcessRequest  ::ffff:127.0.0.1
+02-07-2018 23:08 +00:00: - REQ_CREDENTIAL_VALIDATION >> REQUESTING FTP CALL ::ffff:127.0.0.1
+02-07-2018 23:08 +00:00: - TCP >> makeHttpsRequest
+02-07-2018 23:08 +00:00: - TCP >> Waiting for Data
+ - TCP CALL REQUESTED >> ::ffff:127.0.0.1
+ - End
+02-07-2018 23:08 +00:00: - TCP >> Connected
+02-07-2018 23:08 +00:00: - TCP >> Connection closed
+02-07-2018 23:08 +00:00: - Process response for ::ffff:127.0.0.1
+- Accepted >> a
+UserSession >> findUserName
+- Reactivating Session for username >> a
+UserSession >> ReactivateSession
+UserSession >> Reading Session File
+out loop
+finished
+UserSession >> findUserName
+T2qwXx*Foy*xeDE#GpBe
+{"username":"a","token":"e$bnd5x3mgWuRTHo52D8","userIp":"::ffff:127.0.0.1","timeStamp":1518081827,"port":8000}
+UserSession >> Writting To Session File
+02-07-2018 23:08 +00:00: wrote the file successfully
+02-07-2018 23:08 +00:00: [0mPOST /REQ_CREDENTIAL_VALIDATION [32m200 [0m198.654 ms - 73[0m
+>>>>>>> 98ecc7b6bf4c940879d2c8835ea4945c8033a6c3

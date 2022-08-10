@@ -1,0 +1,95 @@
+body {
+  padding: 5px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+.title-SLT{
+	text-align: center;
+}
+
+.profile-graph{
+	width: 100% !important;
+}
+
+a {
+  color: #00B7FF;
+}
+
+#blankSpace {
+    height: 50px
+}
+
+.alevoLogo {
+    max-width: auto;
+    height: 50px;
+
+}
+
+.error {
+  color: #FF0000;
+}
+
+.table tbody tr th {
+    vertical-align: middle;
+    
+}
+
+thead th{
+	text-align: center;
+}
+
+#page-wrapper{
+	padding-top: 5px;
+}
+
+.navbar > span, .col-lg-4, h3{
+  display: inline-block;
+  vertical-align: middle;
+  margin-top: 5px;
+  margin-left: 5px;
+  
+}
+
+.out-graph{
+ width: 100% !important;
+} 
+
+
+/*style the selects on the edit bar*/
+ .select-editable {
+     position:relative;
+     background-color:white;
+     border:solid grey 1px;
+     width:120px;
+     height:36px;
+ }
+ .select-editable select {
+     position:absolute;
+     top:0px;
+     left:0px;
+     font-size:14px;
+     border:none;
+     width:120px;
+     margin:0;
+ }
+ .select-editable input {
+     position:absolute;
+     top:0px;
+     left:0px;
+     width:100px;
+     padding:0px;
+     font-size:12px;
+     border:none;
+     height:36px;
+     text-align: center;
+     vertical-align: middle;
+     font-weight:bold;
+    
+ }
+ .select-editable select:focus, .select-editable input:focus {
+     outline:none;
+ }
+
+ .input-group{
+   margin-top:5px;
+ }

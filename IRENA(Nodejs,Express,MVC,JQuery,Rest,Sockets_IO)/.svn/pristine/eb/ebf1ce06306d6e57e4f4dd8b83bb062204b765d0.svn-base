@@ -1,0 +1,471 @@
+$(document).ready(function () {
+
+	//$(':input').val('');
+
+	var project
+	var run
+
+	var reqProject = {
+		"action": "RETRIEVE_PROJECTS",
+
+	};
+
+	var reqRun = {
+		"action": "RETRIEVE_RUNS",
+
+	};
+
+	var reqInputs = {
+		"action": "RETRIEVE_INPUTS"
+	};
+
+	var reqOutputs = {
+		"action": "RETRIEVE_RESULTS",
+		"type": "DETAIL"
+	};
+
+
+	var $projects = $("#project-select");
+	var $runs = $('#run-select');
+
+	//Load list of projects to options when page is loaded
+	//console.log('Calling SLT API')
+	$.post('get-info', reqProject,
+		function (msg) {
+			res = $.parseJSON(msg);
+			updateSelection1($projects, res['projects'], 'Project');
+
+		})
+
+	$projects.change(function () {
+		//define the project 
+		project = $(this).val();
+		reqRun['project'] = project;
+		reqInputs['project'] = project;
+
+		//Update the run options	
+		//console.log('Calling SLT backend');
+		if (typeof reqRun['project'] == 'undefined') {
+			//console.log('project is undefined')
+		}
+		else {
+			$.post('get-info', reqRun,
+				function (msg) {
+					res = $.parseJSON(msg);
+					updateSelection1($runs, res['runs'], 'Run');
+
+				})
+		}
+
+
+	});
+
+
+	$runs.on('focus', function () {
+		//console.log('Calling SLT backend')
+		if (typeof reqRun['project'] == 'undefined') {
+			//console.log('project is undefined')
+		}
+	})
+		.change(function () {
+
+			reqInputs['run'] = $(this).val();
+
+			//console.log('Calling SLT backend');
+			if (typeof reqInputs['run'] == 'undefined') {
+				//console.log('Run is undefined')
+			}
+			else {
+				//get inputs
+				$.post('get-info', reqInputs,
+					function (msg) {
+						var res = $.parseJSON(msg);
+						updateInputs(res.inputs);
+						////console.log(res.inputs)
+
+					});
+
+				//get outputs
+				reqOutputs['project'] = reqInputs['project'];
+				reqOutputs['run'] = reqInputs['run'];
+				$.post('get-info', reqOutputs,
+					function (msg) {
+						var res = $.parseJSON(msg);
+						//console.log('updating outputs: ')
+						//update the status
+						var status = 'Not Started';
+						console.log(res)
+						if (res['success'] == true) {
+							status = res.output['status']
+							// var statusTimer = setInterval(function () {
+							// }, 1000)
+							$('#status-label').html(status);
+							console.log(status)
+							if (status == "COMPLETE") {
+
+								updateOutputs(res.output);
+								clearInterval(statusTimer);
+
+							}
+
+
+						}
+
+					});
+
+
+
+			}
+		});
+
+	//TEST
+	//console.log('TESTING OUTPUT UPDATE');
+	//console.log(myOutputtest);
+	//updateOutputs(myOutputtest.output);
+
+})
+
+
+function updateSelection1(element, opts, type) {
+	var list = '<option value=add>Add ' + type + '</option>';
+	//console.log(element);
+	//console.log(opts);
+	for (var k = 0; k < opts.length; k++) {
+		list += '<option value=' + opts[k] + '>' + opts[k] + '</option>';
+	}
+	element.html(list);
+	element.trigger("chosen:updated");
+}
+
+function updateInputs(inputs) {
+	console.log('updating inputs')
+	console.log(inputs)
+
+	for (var key in inputs) {
+		if (inputs.hasOwnProperty(key)) {
+			$('#' + key).val(inputs[key]);
+		}
+	}
+	//get hydro reserve
+	for (var k = 0; k < inputs['hydrores'].length; k++) {
+		element = '#' + 'hydrores' + (k + 1);
+		$(element).val(inputs['hydrores'][k]);
+	}
+
+	//get yearly results
+	var yearly = inputs['yearly'];
+	for (var k = 0; k < yearly.length; k++) {
+		var yearN = yearly[k];
+
+		for (var key in yearN) {
+			if (yearN.hasOwnProperty(key)) {
+				element = '#' + key + yearN['year'];
+				$(element).val(yearN[key]);
+
+			}
+		}
+		//get hydro profile
+		for (var y = 0; y < yearN['hydroEng'].length; y++) {
+			element = '#' + 'hydroEng' + (k + 1) + '_' + (y + 1);
+			$(element).val(yearN['hydroEng'][y]);
+		}
+	}
+
+	//update the conventional generation
+	var conGen = inputs['slt_conventional_generation'];
+	var $capByFuel = $('#cap-by-fuel-dynamic>tbody')
+
+	$capByFuel.find('tr:has(.btn-remove)').remove();
+
+	for (var k = 0; k < conGen.length; k++) {
+		var Gen = conGen[k];//generator
+		$capByFuel.find('.carbon_rate:eq(' + k + ')').val(Gen['carbon_rate']);
+		$capByFuel.find('.heatrate:eq(' + k + ')').val(Gen['heatrate']);
+		$capByFuel.find('.vom:eq(' + k + ')').val(Gen['vom']);
+		$capByFuel.find('.p_reserve:eq(' + k + ')').val(Gen['p_reserve']);
+		$capByFuel.find('.s_reserve:eq(' + k + ')').val(Gen['s_reserve']);
+		$capByFuel.find('.t_reserve:eq(' + k + ')').val(Gen['t_reserve']);
+
+
+		var yearly = Gen['yearly'];
+		for (var y = 0; y < yearly.length; y++) {
+			$capByFuel.find('.pconcap' + (y + 1) + ':eq(' + k + ')').val(yearly[y]['pconcap']);
+			$capByFuel.find('.fuelprice' + (y + 1) + ':eq(' + k + ')').val(yearly[y]['fuelprice']);
+		}
+
+		if (k > 2) {
+			$capByFuel.find('.fuel-options:last').val(Gen['gen_type']);
+			//console.log('addign new conventional Gen');
+			addConventionalGen($('#cap-by-fuel-dynamic .btn-add:first'));
+		}
+
+		updateCapbyFuelChart();
+		updateHydroGraph();
+	}
+
+}
+
+//Update the Outputs
+function updateOutputs(outputs) {
+	console.log('The outputs are: ')
+	console.log(outputs)
+
+
+
+	var yearly = outputs['yearly'];
+	for (var y = 0; y < yearly.length; y++) {
+
+		//update storage benefit buckets for each year
+		var bucket = yearly[y]['storageBenefitBuckets'];
+		var data = [];
+		//console.log(bucket)
+		for (var key in bucket) {
+			if (bucket.hasOwnProperty(key)) {
+				$('.' + key + ':eq(' + y + ')').html(bucket[key]);
+				data.push([key, bucket[key]]);
+				table2BarChart($('#total-sys-benefits' + (y + 1)).get(0), data, '')
+			}
+		}
+
+		//update energy storage size for each year
+		var energySize = yearly[y]['energyStorageSize']['energy'];
+		data = [];
+		for (var key in energySize) {
+			if (energySize.hasOwnProperty(key)) {
+				id = 'E_cap_es_' + key.replace(/[.]/g, '');
+				$('.' + id + ':eq(' + y + ')').html(energySize[key]);
+
+				data.push([key, energySize[key]]);
+				table2PieChart($('#piechart_MWh' + (y + 1)).get(0), data, 'Energy');
+
+			}
+		}
+
+		//update power of energy storage for each year
+		var powerSize = yearly[y]['energyStorageSize']['power'];
+		data = [];
+		for (var key in powerSize) {
+			if (powerSize.hasOwnProperty(key)) {
+				id = 'P_cap_es_' + key.replace(/[.]/g, '');
+				$('.' + id + ':eq(' + y + ')').html(powerSize[key]);
+
+				data.push([key, powerSize[key]]);
+				table2PieChart($('#piechart_MW' + (y + 1)).get(0), data, 'Power');
+
+			}
+		}
+
+
+
+
+		//update graphs
+
+		for (var year = 1; year <= 2; year++) {
+			updateOutputProfiles('#energy_price' + year, year, 0);
+			updateOutputProfiles('#primary_price' + year, year, 1);
+			updateOutputProfiles('#secondary_price' + year, year, 2);
+			updateOutputProfiles('#tertiary_price' + year, year, 3);
+		}
+
+
+
+
+	}
+}
+var myOutputtest =
+	{
+		"action": "RETRIEVE_RESULTS",
+		"output": {
+			"username": "alevo",
+			"project": "irena",
+			"run": "3",
+			"yearly": [
+				{
+					"year": 1,
+					"energyStorageSize": {
+						"power": {
+							"0.25C": null,
+							"0.5C": null,
+							"1C": null,
+							"2C": null
+						},
+						"energy": {
+							"0.25C": null,
+							"0.5C": null,
+							"1C": null,
+							"2C": null
+						}
+					},
+					"storageBenefitBuckets": {
+						"fuelcost": 115027703871296,
+						"vomcost": 247287725592896,
+						"primaryreservecost": 0,
+						"secondreservecost": 0,
+						"freqresponse": 3490857793,
+						"tertiaryreservecost": 0,
+						"reactive": 8938560,
+						"blackstart": 10149952,
+						"TnD": 2160071745,
+						"peakcapital": 949783617,
+						"energyarbitrage": 0,
+						"forecastsavings": 7478987294896839000
+					},
+					"base": {
+						"p_con_year_base": "/opt/slt_data/alevo/irena/3/yr1/base/energy_price.csv",
+						"primary_con_year_base": "/opt/slt_data/alevo/irena/3/yr1/base/primary_price.csv",
+						"second_con_year_base": "/opt/slt_data/alevo/irena/3/yr1/base/secondary_price.csv",
+						"tertiary_con_year_base": "/opt/slt_data/alevo/irena/3/yr1/base/tertiary_price.csv",
+						"p_hydro_year_base": "/opt/slt_data/alevo/irena/3/yr1/base/energy_price_hydro.csv",
+						"primary_hydro_year_base": "/opt/slt_data/alevo/irena/3/yr1/base/primary_price_hydro.csv",
+						"second_hydro_year_base": "/opt/slt_data/alevo/irena/3/yr1/base/secondary_price_hydro.csv",
+						"tertiary_hydro_year_base": "/opt/slt_data/alevo/irena/3/yr1/base/tertiary_price_hydro.csv",
+						"ES_results": "/opt/slt_data/alevo/irena/3/yr1/base/es_results.csv",
+						"Price_year_base": "/opt/slt_data/alevo/irena/3/yr1/base/price_year.csv"
+					},
+					"es": {
+						"p_con_year": "/opt/slt_data/alevo/irena/3/yr1/es/energy_price.csv",
+						"primary_con_year": "/opt/slt_data/alevo/irena/3/yr1/es/primary_price.csv",
+						"second_con_year": "/opt/slt_data/alevo/irena/3/yr1/es/secondary_price.csv",
+						"tertiary_con_year": "/opt/slt_data/alevo/irena/3/yr1/es/tertiary_price.csv",
+						"p_hydro_year": "/opt/slt_data/alevo/irena/3/yr1/es/energy_price_hydro.csv",
+						"primary_hydro_year": "/opt/slt_data/alevo/irena/3/yr1/es/primary_price_hydro.csv",
+						"second_hydro_year": "/opt/slt_data/alevo/irena/3/yr1/es/secondary_price_hydro.csv",
+						"tertiary_hydro_year": "/opt/slt_data/alevo/irena/3/yr1/es/tertiary_price_hydro.csv",
+						"ES_results": "/opt/slt_data/alevo/irena/3/yr1/es/es_results.csv",
+						"Price_year": "/opt/slt_data/alevo/irena/3/yr1/es/price_year.csv"
+					}
+				}
+			],
+			"status": "COMPLETE"
+		},
+		"success": true,
+		"message": ""
+	};
+// var myOutputtest =
+// 	{
+// 		"action": "RETRIEVE_RESULTS",
+// 		"success": true,
+// 		"message": "",
+// 		"output": {
+// 			"username": "alevo",
+// 			"project": "irena",
+// 			"run": "12",
+// 			"yearly": [
+// 				{
+// 					"year": 1,
+// 					"energyStorageSize": {
+// 						"power": {
+// 							"0.25C": 1,
+// 							"0.5C": 1,
+// 							"1C": 1,
+// 							"2C": 4
+// 						},
+// 						"energy": {
+// 							"0.25C": 1,
+// 							"0.5C": 1,
+// 							"1C": 4,
+// 							"2C": 1
+// 						}
+// 					},
+// 					"storageBenefitBuckets": {
+// 						"fuelcost": 1,
+// 						"vomcost": 3,
+// 						"primary": 4,
+// 						"primaryreservecost": 5,
+// 						"secondreservecost": 6,
+// 						"freqresponse": 7,
+// 						"tertiaryreservecost": 8,
+// 						"reactive": 9,
+// 						"blackstart": 10,
+// 						"TnD": 11,
+// 						"peakcapital": 12,
+// 						"energyarbitrage": 13,
+// 						"forecastsavings": 14
+// 					},
+// 					"base": {
+// 						"p_con_year_base": "path1.csv",
+// 						"primary_con_year_base": "/opt/SLT_data/alevo/proj_irena/run_1/year_1/base/primary_reserve_price.csv",
+// 						"second_con_year_base": "/opt/SLT_data/alevo/proj_irena/run_1/year_1/base/secondary_reserve_price.csv",
+// 						"tertiary_con_year_base": "/opt/SLT_data/alevo/proj_irena/run_1/year_1/base/tertiary_reserve_price.csv",
+// 						"p_hydro_year_base": "path5.csv",
+// 						"primary_hydro_year_base": "path6.csv",
+// 						"second_hydro_year_base": "path7.csv",
+// 						"tertiary_hydro_year_base": "path8.csv",
+// 						"ES_results": "path9.csv",
+// 						"Price_year_base": "/opt/SLT_data/alevo/proj_irena/run_1/year_1/base/energy_price.csv"
+// 					},
+// 					"es": {
+// 						"p_con_year": "path1.csv",
+// 						"primary_con_year": "/opt/SLT_data/alevo/proj_irena/run_1/year_1/es/primary_reserve_price.csv",
+// 						"second_con_year": "/opt/SLT_data/alevo/proj_irena/run_1/year_1/es/secondary_reserve_price.csv",
+// 						"tertiary_con_year": "/opt/SLT_data/alevo/proj_irena/run_1/year_1/es/tertiary_reserve_price.csv",
+// 						"p_hydro_year": "path5.csv",
+// 						"primary_hydro_year": "path6.csv",
+// 						"second_hydro_year": "path7.csv",
+// 						"tertiary_hydro_year": "path8.csv",
+// 						"ES_results": "path9.csv",
+// 						"Price_year": "/opt/SLT_data/alevo/proj_irena/run_1/year_1/es/energy_price.csv"
+// 					}
+
+
+// 				},
+// 				{
+// 					"year": 2,
+// 					"energyStorageSize": {
+// 						"power": {
+// 							"0.25C": 4,
+// 							"0.5C": 1,
+// 							"1C": 1,
+// 							"2C": 1
+// 						},
+// 						"energy": {
+// 							"0.25C": 1,
+// 							"0.5C": 4,
+// 							"1C": 1,
+// 							"2C": 1
+// 						}
+// 					},
+// 					"storageBenefitBuckets": {
+// 						"fuelcost": 123.4,
+// 						"vomcost": 55.93,
+// 						"primary": 938,
+// 						"primaryreservecost": 33,
+// 						"secondreservecost": 88,
+// 						"freqresponse": 14,
+// 						"tertiaryreservecost": 78,
+// 						"reactive": 55.8,
+// 						"blackstart": 89.22,
+// 						"TnD": 13,
+// 						"peakcapital": 888.24,
+// 						"energyarbitrage": 32,
+// 						"forecastsavings": 44
+// 					},
+// 					"base": {
+// 						"p_con_year_base": "path1.csv",
+// 						"primary_con_year_base": "/opt/SLT_data/alevo/proj_irena/run_1/year_2/base/primary_reserve_price.csv",
+// 						"second_con_year_base": "/opt/SLT_data/alevo/proj_irena/run_1/year_2/base/secondary_reserve_price.csv",
+// 						"tertiary_con_year_base": "/opt/SLT_data/alevo/proj_irena/run_1/year_2/base/tertiary_reserve_price.csv",
+// 						"p_hydro_year_base": "path5.csv",
+// 						"primary_hydro_year_base": "path6.csv",
+// 						"second_hydro_year_base": "path7.csv",
+// 						"tertiary_hydro_year_base": "path8.csv",
+// 						"ES_results": "path9.csv",
+// 						"Price_year_base": "/opt/SLT_data/alevo/proj_irena/run_1/year_2/base/energy_price.csv"
+// 					},
+// 					"es": {
+// 						"p_con_year": "path1.csv",
+// 						"primary_con_year": "/opt/SLT_data/alevo/proj_irena/run_1/year_2/es/primary_reserve_price_price.csv",
+// 						"second_con_year": "/opt/SLT_data/alevo/proj_irena/run_1/year_2/es/secondary_reserve_price_price.csv",
+// 						"tertiary_con_year": "/opt/SLT_data/alevo/proj_irena/run_1/year_2/es/tertiary_reserve_price_price.csv",
+// 						"p_hydro_year": "path5.csv",
+// 						"primary_hydro_year": "path6.csv",
+// 						"second_hydro_year": "path7.csv",
+// 						"tertiary_hydro_year": "path8.csv",
+// 						"ES_results": "path9.csv",
+// 						"Price_year": "/opt/SLT_data/alevo/proj_irena/run_1/year_2/es/energy_price.csv"
+// 					}
+
+// 				}
+// 			]
+// 		}
+// 	}

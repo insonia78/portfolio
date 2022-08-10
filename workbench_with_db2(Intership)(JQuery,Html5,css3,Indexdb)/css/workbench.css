@@ -1,0 +1,218 @@
+/**
+ IGT server field sets 
+ */
+ 
+l  #sortable.ui-selecting { background: #FECA40; } 
+#sortablelink .ui-selecting { background: #FECA40; }
+  #sortable.ui-selected { background: #F39814; color: white; }
+  #sortablelink .ui-selected { background: #F39814; color: white; }
+.container-document
+ {
+    z-index:1;
+    position:absolute;
+	width:1500px;
+	height:100%;
+    top:450px;
+
+ 
+ 
+ } 
+ .container-document>.expandAccordion
+ {
+    z-index:2;
+    position:absolute;
+	width:1380px;
+	height:100%;
+    top:20px; 
+	
+ 
+ }
+ .container-document>.allAccordions
+ {
+ z-index:1;
+  position:absolute;
+  top: 20px;  
+  margin-top: 1em; 
+  width: 800px;
+  
+ 
+ 
+ 
+ }
+ 
+ 
+ 
+ 
+ .link_container
+{
+
+  position: absolute;
+  top: 30px;
+  left:10px;
+  width : 100%;
+  height : 300px;
+  border: 2px solid black;
+  float:left;
+} 
+.link_container>.column
+ {
+   width :100%;
+  height :100%;
+  float:left;
+ }
+
+ .link_container>.column>.portlet
+ {
+   position: relative;
+   width:170px;
+   float:left;
+ }
+ 
+
+ .allAccordions>#tabs 
+ {
+     width:100%;
+	 height:100%;
+    
+ }
+ .close_position
+ {
+      position:relative;
+	  left:95%;
+      top:-28px;
+ 
+ 
+ }
+  #tabs li .ui-icon-close { float: left; margin: 0.4em 0.2em 0 0; cursor: pointer; }
+  #radioset 
+  {
+   position:absolute;
+   top:380px;
+   cursor: pointer; 
+  
+  }
+ #tabs > .size
+  {
+   
+   width : 100%;
+   height : 100%;
+   float:left;
+  
+  }
+ 
+ 
+  .size>.column
+ {
+   
+   width : 100%;
+   height : 100%;
+   float:left ;
+ 
+ }
+ .column>.portlet
+ {
+   
+   position: relative;
+   width:170px;
+   float:left;
+   cursor:pointer;
+ }
+  #tabs-1>.column>#portlet_test
+ {
+   position: relative;
+   width:170px;
+   float:left;
+ }
+ 
+ 
+ #portlet_dialog_container
+ {
+    height:300px; 
+ }
+ 
+ 
+ 
+
+.quickView
+ {
+    
+    background-color: white;	
+    z-index:1;
+    position: absolute;
+    top: 5px;
+	left: 850px;
+	width:750px;
+	height:1500px;
+}
+.quickView{
+ 
+  -ms-zoom: 0.2; 
+  -moz-transform: scale(0.7); 
+  -moz-transform-origin: 0px 0; 
+  -o-transform: scale(0.7); 
+  -o-transform-origin: 0 0; 
+  -webkit-transform: scale(0.7); 
+  -webkit-transform-origin: 0 0; 
+  
+  }
+ .highlight
+ {
+   background-color:blue;
+ 
+ }
+.selected
+ {
+   background-color:red;
+ 
+ }
+
+
+
+ /*
+   Documents container
+ 
+ .document_container
+{
+  position: absolute;
+  top: 600px;
+  left:30px;
+  width : 1000px;
+  height : 500px;
+  border: 2px solid black;
+  float:left;
+} 
+ .document_container>.column
+ {
+   width : 1000px;
+   height : 500px;
+ 
+ }
+ .document_container>.column>.portlet
+ {
+   position: relative;
+   width:170px;
+   float:left;
+ }
+ */
+  /*
+    Ul tag
+	*/
+	
+ #sortable,#sortablelink
+ { 
+	list-style-type: none; 
+	margin: 0; 
+	float: center; 
+	margin-right: 2px; 
+	background: #eee; 
+	padding: 5px; 
+	width:autosize;
+ }
+ #sortable li, #sortablelink li 
+  { 
+    margin: 5px; 
+	padding: 5px; 
+	font-size: 15px; 
+	width: auto; 
+  }
+  

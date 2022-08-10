@@ -1,0 +1,361 @@
+/*
+   file: .................."business.css" 
+   Custom "css" used to design the particual parts not supported by boostrap   
+
+*/
+
+section
+{
+background-color:white;
+margin-left:auto;
+margin-right:auto;
+position:relative;
+width:1080px;
+height:2000px;
+  
+ }
+ .btn-primary
+ {
+    background-color:black;
+ 
+ }
+
+
+#container1
+{
+  
+   position:absolute;
+   height:700px;
+   width:980px;
+   
+   left:26px;
+   top:200px;
+    
+}
+ .pq
+{
+    position:absolute;
+   height:700px;
+   width:980px;
+   color:black;
+   font-size:20px;
+   left:26px;
+   top:230px;
+   text-align:center;
+
+}
+
+.paperQuality
+{
+  
+   z-index:0; 
+   position:absolute;
+   height:700px;
+   width:980px;
+   background-color: #e7e7de;
+   opacity:0.6;
+   left:26px;
+   top:200px;
+   box-shadow: 10px 10px 5px #888888;
+
+
+} 
+/*********************************
+
+  Standard  Card
+  
+  ********************************/
+
+
+.paperQuality>.standardBusinessCard
+{
+    z-index:2; 
+    position:absolute;
+	height:530px;
+	width:250px;
+	left:68px;
+	top:80px;
+    background-color:white;
+	box-shadow: 10px 10px 5px #888888;
+
+}
+#container1>.standardImage
+{
+    z-index:2;
+	position:absolute;
+	top:320px;
+	left:97.5px;
+	border:2px solid black;
+
+
+}
+#container1>.standardBusinessCard_ul
+{
+    z-index:2;
+    position:absolute;
+	top:580px; 
+	left:120px;
+    
+
+}
+#container1>#button1
+{
+    
+    z-index:2;
+	position:absolute;
+	top:685px;
+	left:170px;
+	
+	
+
+}
+
+ /********************************
+ 
+ signature Business Card
+ 
+ ***************************************/
+ 
+ 
+ .paperQuality>.signatureBusinessCard
+{
+    z-index:2;
+    position:absolute;
+	height:530px;
+	width:250px;
+	left:363px;
+	top:80px;
+    background-color:white;
+	box-shadow: 10px 10px 5px #888888;
+
+}
+#container1>.signatureImage
+{
+    z-index:2;
+	position:absolute;
+	top:320px;
+	left:391.5px;
+	border:2px solid black;
+
+}
+#container1>.signatureBusinessCard_ul
+{
+    z-index:2;
+    position:absolute;
+	top:580px;
+	left:420px;
+
+
+}
+#container1>#button2
+{
+    z-index:2;
+    position:absolute;
+	top:685px;
+	left:460px;
+	
+
+}
+/**************************************
+
+    Ultra Thick 
+
+
+
+
+**********************************************/
+
+
+
+
+
+.paperQuality>.ultra_Thick
+{
+    z-index:2;
+    position:absolute;
+	height:530px;
+	width:250px;
+	left:658px;
+	top:80px;
+    background-color:white;
+	box-shadow: 10px 10px 5px #888888;
+
+}
+#container1>.ultraImage
+{
+    z-index:2;
+	position:absolute;
+	top:320px;
+	left:687.5px;
+	border:2px solid black;
+
+}
+#container1>.ultra_Thick_ul
+{
+    z-index:2;
+    position:absolute;
+	top:580px;
+	left:720px;
+
+
+}
+#container1>#button3
+{
+    z-index:2;
+    position:absolute;
+	top:685px;
+	left:765px;
+	
+
+}
+/*****************************************************************************
+Container 2
+
+**************************************************/
+
+#container2
+{
+   z-index:1;
+   position:absolute;
+   height:480px;
+   width:980px;
+   
+   left:26px;
+   top:580px;
+    
+}
+ .p
+{
+    position:absolute;
+   height:300px;
+   width:980px;
+   color:black;
+   font-size:20px;
+   left:26px;
+   top:610px;
+   text-align:center;
+
+}
+
+#container2>.specialCard
+{
+  
+   z-index:0;
+   position:absolute;
+   height:300px;
+   width:980px;
+   background-color: #e7e7de;
+   opacity:0.6;
+   left:26px;
+   top:580px;
+   box-shadow: 10px 10px 5px #888888;
+}
+/****************************************************
+
+Raised Paint
+
+*****************************************************/
+
+
+
+.specialCard>.raisedPrint
+{
+    z-index:2;
+    position:absolute;
+	height:200px;
+	width:250px;
+	left:68px;
+	top:70px;
+    background-color:white;
+	box-shadow: 10px 10px 5px #888888;
+
+}
+#container2>.raisedPrintText
+{
+    z-index:2;
+    position:absolute;
+	top:750px;
+	left: 190px;
+
+
+}
+/**********************************
+
+SPOT GLOSS
+
+************************************/
+
+.specialCard>.spotGloss
+{
+    z-index:2;
+    position:absolute;
+	height:200px;
+	width:250px;
+	left:358px;
+	top:70px;
+    background-color:white;
+	box-shadow: 10px 10px 5px #888888;
+
+}
+#container2>.spotGlossText
+{
+    z-index:2;
+    position:absolute;
+	top:750px;
+	left: 490px;
+
+
+}
+/***************************************
+
+Metallic Finish
+
+********************************************/
+
+
+.specialCard>.metallicFinish
+{
+    z-index:2;
+    position:absolute;
+	height:200px;
+	width:250px;
+	left:658px;
+	top:70px;
+    background-color:white;
+	box-shadow: 10px 10px 5px #888888;
+
+}
+#container2>.metallicFinishText
+{
+    z-index:2;
+    position:absolute;
+	top:750px;
+	left: 790px;
+
+
+}
+/**********************
+dialog
+
+************************/
+
+
+#dialog1>#image_container
+{
+  
+  position:relative;
+  top:30px;
+  left:20px;
+   
+}
+#dialog1>.popImage
+{
+
+   margin:2px;
+   overflow:hidden;
+
+
+}
+
+
+

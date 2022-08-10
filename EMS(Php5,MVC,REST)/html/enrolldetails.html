@@ -1,0 +1,308 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Axon-Details Screen</title>
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+<script src="js/jquery.js"></script>
+<script>
+$(document).ready(function(){
+	$(".tab_tit").click(function(){		
+		$(".tab_tit").removeClass('active_state');
+		$(this).addClass('active_state');
+		});
+		
+		$(".enroll_text table tr").hover(function () {
+			$(this).addClass('selected_row');
+		 }, 
+		  function () {
+			$(".enroll_text table tr").removeClass('selected_row');
+		  }
+		  );
+		
+		/*$(".enroll_text_left th").click(function(){		
+		$(".enroll_text_left th").removeClass('active_title');
+		$(this).addClass('active_title');
+		});*/
+	});
+</script>
+</head>
+
+<body>
+<div id="main_wrapper">
+	<div class="main_content">
+        <div class="header">
+            <h1>Information Updated</h1>
+            <img src="images/logo_small.png" />
+        </div><!--header-->
+        <div class="enroll_content">
+        	<div class="tab_conatiner">
+                <div class="tab_tit" id="tab1">Up coming </div>
+                <div class="tab_tit" id="tab2">Postponed / Cancelled </div>
+                <div class="tab_tit" id="tab3">Filmed</div>
+                <div class="tab_tit" id="tab4">Videographers</div>
+            </div><!--tab container-->
+          
+            <div class="enroll_text">
+            	<div class="screen_details">
+            	<div class="screen_detail_top">
+               			 <div class="screen_top">
+                           <div class="tlcon"><h3>Status</h3> </div>
+                                <div class="rlcon">
+                                    <select>
+                                    <option>Upcoming</option>
+                                    <option>Upcoming1</option>
+                                    <option>Upcoming2</option>
+                                    </select>
+                                    
+                               </div><!--rlcon-->
+                           </div><!--screen top-->
+                	<div class="screen_top_left">
+                    	   <ul>
+                            <li>
+                                <div class="tlcon">&nbsp;</div>
+                                <div class="rlcon"><h3>Representative Information</h3></div><!--rlcon-->                             
+                           </li>
+                           <li>
+                                <div class="tlcon">name</div>
+                                <div class="rlcon">name</div><!--rlcon-->                             
+                           </li>
+                           <li>
+                                <div class="tlcon">territory</div>
+                                <div class="rlcon">territory</div><!--rlcon-->                             
+                           </li>
+                           <li>
+                                <div class="tlcon">cell</div>
+                                <div class="rlcon">cell</div><!--rlcon-->                             
+                           </li>
+                           <li>
+                                <div class="tlcon">Email</div>
+                                <div class="rlcon">Email</div><!--rlcon-->                             
+                           </li>
+                          
+                        </ul>
+                        
+                        <ul>
+                            
+                            <li>
+                                <div class="tlcon">&nbsp;</div>
+                                <div class="rlcon"><h3>Practice Information</h3></div><!--rlcon-->                             
+                           </li>
+                           <li>
+                                <div class="tlcon">Practice name</div>
+                                <div class="rlcon">Practice name</div><!--rlcon-->                             
+                           </li>
+                           <li>
+                                <div class="tlcon">Physician name</div>
+                                <div class="rlcon">Physician name</div><!--rlcon-->                             
+                           </li>
+                           <li>
+                                <div class="tlcon">Street</div>
+                                <div class="rlcon">Street</div><!--rlcon-->                             
+                           </li>
+                           <li>
+                                <div class="tlcon">City</div>
+                                <div class="rlcon">City</div><!--rlcon-->                             
+                           </li>
+                           <li>
+                                <div class="tlcon">State</div>
+                                <div class="rlcon">State</div><!--rlcon-->                             
+                           </li>
+                           <li>
+                                <div class="tlcon">Zipcode</div>
+                                <div class="rlcon">Zipcode</div><!--rlcon-->                             
+                           </li>
+                           <li>
+                                <div class="tlcon">Practice phone</div>
+                                <div class="rlcon">Practice phone</div><!--rlcon-->                             
+                           </li>
+                        </ul>
+                        
+                        <ul>
+                            
+                            <li>
+                                <div class="tlcon">&nbsp;</div>
+                                <div class="rlcon"><h3>Key Contact person</h3></div><!--rlcon-->                             
+                           </li>
+                           <li>
+                                <div class="tlcon">Name Email</div>
+                                <div class="rlcon">Name Email</div><!--rlcon-->                             
+                           </li>
+                           <li>
+                                <div class="tlcon">Phone</div>
+                                <div class="rlcon">Phone</div><!--rlcon-->                             
+                           </li>
+                        </ul>
+                    </div><!--screen_top_left-->
+                    <div class="screen_top_left">
+                    <ul>
+                           
+                            <li>
+                                <div class="tlcon">&nbsp;</div>
+                                <div class="rlcon"><h3>Main Participant</h3></div><!--rlcon-->                             
+                           </li>
+                           <li>
+                                <div class="tlcon">name</div>
+                                <div class="rlcon">name</div><!--rlcon-->                             
+                           </li>
+                           <li>
+                                <div class="tlcon">Credentials</div>
+                                <div class="rlcon">Credentials</div><!--rlcon-->                             
+                           </li>
+                         
+                        </ul>
+                        
+                        <ul>
+                            
+                            <li>
+                                <div class="tlcon">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                                <div class="rlcon"><h3>Additional Participants</h3></div><!--rlcon-->                             
+                           </li>
+                            <li>
+                                <div class="tlcon">name</div>
+                                <div class="rlcon">name</div><!--rlcon-->                             
+                           </li>
+                           <li>
+                                <div class="tlcon">Credentials</div>
+                                <div class="rlcon">Credentials</div><!--rlcon-->                             
+                           </li>
+                            <li>
+                                <div class="tlcon">name</div>
+                                <div class="rlcon">name</div><!--rlcon-->                             
+                           </li>
+                           <li>
+                                <div class="tlcon">Credentials</div>
+                                <div class="rlcon">Credentials</div><!--rlcon-->                             
+                           </li>
+                            <li>
+                                <div class="tlcon">name</div>
+                                <div class="rlcon">name</div><!--rlcon-->                             
+                           </li>
+                           <li>
+                                <div class="tlcon">Credentials</div>
+                                <div class="rlcon">Credentials</div><!--rlcon-->                             
+                           </li>
+                        </ul>
+                        
+                        <ul>
+                            
+                            <li>
+                                <div class="tlcon">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                                <div class="rlcon"><h3>shooting information</h3></div><!--rlcon-->                             
+                           </li>
+                           <li>
+                                <div class="tlcon">Shoot Time</div>
+                                <div class="rlcon">Shoot Time</div><!--rlcon-->                             
+                           </li>
+                           <li>
+                                <div class="tlcon">Shoot Date</div>
+                                <div class="rlcon">Shoot Date</div><!--rlcon-->                             
+                           </li>
+                           <li>
+                                <div class="tlcon">Street</div>
+                                <div class="rlcon">Street</div><!--rlcon-->                             
+                           </li>
+                           <li>
+                                <div class="tlcon">City</div>
+                                <div class="rlcon">City</div><!--rlcon-->                             
+                           </li>
+                           <li>
+                                <div class="tlcon">State</div>
+                                <div class="rlcon">State</div><!--rlcon-->                             
+                           </li>
+                           <li>
+                                <div class="tlcon">Zipcode</div>
+                                <div class="rlcon">Zipcode</div><!--rlcon-->                             
+                           </li>
+                           <li>
+                                <div class="tlcon">Shoot phone</div>
+                                <div class="rlcon">Shoot phone</div><!--rlcon-->                             
+                           </li>
+                       </ul>
+                   </div><!--screen_top_left-->
+                    
+                </div><!--screen_detail_top-->
+                <div class="screen_detail_btm">
+                	<div class="screen_btm_left">
+                    	<ul>
+                            <li>
+                                <div class="btm_left">Videographer name</div>
+                                <div class="btm_right">Videographer name</div>
+                            </li>
+                            <li>
+                                <div class="btm_left">Company name</div>
+                                <div class="btm_right">Company name</div>
+                            </li>
+                            <li>
+                                <div class="btm_left">Videographer phone</div>
+                                <div class="btm_right">Videographer phone</div>
+                            </li>
+                            <li>
+                                <div class="btm_left">Videographer cell</div>
+                                <div class="btm_right">Videographer cell</div>
+                            </li>
+                            <li>
+                                <div class="btm_left">Videographer alternate</div>
+                                <div class="btm_right">Videographer alternate</div>
+                            </li>
+                            <li>
+                                <div class="btm_left">Videographer email</div>
+                                <div class="btm_right">Videographer email</div>
+                            </li>
+                            
+                        </ul>
+                    </div><!--screen_btm_left-->
+                   <div class="screen_btm_left">
+                    	<ul>
+                            <li>
+                                <div class="btm_left">Teleprompter no.</div>
+                                <div class="btm_right">Teleprompter no.</div>
+                            </li>
+                            <li>
+                                <div class="btm_left">Ship out</div>
+                                <div class="btm_right">Ship out</div>
+                            </li>
+                            <li>
+                                <div class="btm_left">(Out track)</div>
+                                <div class="btm_right">(Out track)</div>
+                            </li>
+                            <li>
+                                <div class="btm_left">Ship in</div>
+                                <div class="btm_right">Ship in</div>
+                            </li>
+                            <li>
+                                <div class="btm_left">(In Track)</div>
+                                <div class="btm_right">Expected Tape in</div>
+                            </li>
+                            <li>
+                                <div class="btm_left">(Tape in)</div>
+                                <div class="btm_right">(Tape in)</div>
+                            </li>
+                            
+                        </ul>
+                    </div><!--screen_btm_left-->
+                    
+                
+                </div><!--screen_detail_btm-->
+                </div><!--screen details-->
+                <div class="actions_list detail_action">
+                <ul class="action_video">
+                    <li><input type="image" src="images/back.png"  onmouseover="this.src='images/back_hover.png';"
+      onmouseout="this.src='images/back.png';" />                                       
+                    </li>
+                    <li><input type="image" src="images/cancel.png"  onmouseover="this.src='images/cancel_hover.png';"
+      onmouseout="this.src='images/cancel.png';" /></li>
+                    <li><input type="image" src="images/submit_hover.png"  onmouseover="this.src='images/submit.png';"
+      onmouseout="this.src='images/submit_hover.png';" /></li>
+                </ul><!--action video-->
+                </div>
+                	
+                
+  			</div><!--enroll text-->
+        </div><!--enroll content-->
+      <!--<p class="copy">© 2015 Axon communications, Inc.</p>-->
+    </div><!--main_content-->
+
+</div><!--main wrapper-->
+</body>
+</html>

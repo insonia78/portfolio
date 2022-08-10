@@ -1,0 +1,96 @@
+
+$(document).ready(function() {
+    
+
+ //Initial Set-up
+ getData($('#demand-profile-graph').get(0),"../data/Demand/North.csv",'MW')
+ getData($('#wind-profile-graph').get(0),"../data/Generation/Wind/High.csv",'')
+ getData($('#solar-profile-graph').get(0),"../data/Generation/Solar/High.csv",'')
+ 
+
+  //plot DEMAND profile depending of user selection
+  $('#input-demand-profile select').change(function(){
+    
+    var opt=$(this).val();
+    var allOpt=['North','Equator','South'];
+    if (allOpt.includes(opt)){
+      var path = '../data/Demand/'+opt+'.csv';
+    }
+
+    getData($('#demand-profile-graph').get(0),path,'MW')
+    console.log('Val changed to:' + opt);
+    
+  });
+
+  //plot WIND profile depending of user selection
+  $('#input-wind-profile select').change(function(){
+    
+    var opt=$(this).val();
+    var allOpt=['High','Median','Low'];
+    if (allOpt.includes(opt)){
+      var path = '../data/Generation/Wind/'+opt+'.csv';
+    }
+
+    getData($('#wind-profile-graph').get(0),path,'')
+    console.log('Wind Option changed to:' + opt);
+    
+  });
+
+  //plot SOLAr profile depending of user selection
+  $('#input-solar-profile select').change(function(){
+    
+    var opt=$(this).val();
+    var allOpt=['High','Median','Low'];
+    if (allOpt.includes(opt)){
+      var path = '../data/Generation/Solar/'+opt+'.csv';
+    }
+
+    getData($('#solar-profile-graph').get(0),path,'')
+    console.log('Solar Option changed to:' + opt);
+    
+  });
+
+
+//Bind this call to a RETRIEVE output API call
+  getData($('#energy_price1').get(0),"../data/Price/Energy_Price.csv",'$/MWh');
+  getData($('#energy_price2').get(0),"../data/Price/Energy_Price.csv",'$/MWh');
+  
+  getData($('#primary_price1').get(0),"../data/Price/Primary_reserve_price.csv",'$/MW');
+  getData($('#primary_price2').get(0),"../data/Price/Primary_reserve_price.csv",'$/MW');
+
+  getData($('#secondary_price1').get(0),"../data/Price/Secondary_reserve_price.csv",'$/MW');
+  getData($('#secondary_price2').get(0),"../data/Price/Secondary_reserve_price.csv",'$/MW');
+
+  getData($('#tertiary_price1').get(0),"../data/Price/Tertiary_reserve_price.csv",'$/MW');
+  getData($('#tertiary_price2').get(0),"../data/Price/Tertiary_reserve_price.csv",'$/MW');
+});
+
+function getData(element,filepath,myYlabel='Value'){
+      $.ajax({
+        // type: "GET",
+        url: filepath,
+
+        success: function(data) {
+          //get data consistency
+          data[0][1]='V'
+          var g = new Dygraph(element,data,{
+          // options go here. See http://dygraphs.com/options.html
+          legend: 'always',
+          animatedZooms: true,
+          ylabel: myYlabel
+          });
+        }
+     });
+}
+
+
+// function processData(element,csv) {
+  
+//   var g = new Dygraph(element,csv,{
+//       // options go here. See http://dygraphs.com/options.html
+//       legend: 'always',
+//       animatedZooms: true
+//     });
+
+// }
+

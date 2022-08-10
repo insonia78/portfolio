@@ -1,0 +1,2622 @@
+<!DOCTYPE html>
+<html xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
+
+  <head>
+    <title>WorkBench with Db</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	
+	
+	
+	
+	<!-- java script --> 
+	
+	
+	
+	
+	<!-- jQuery  -->
+	
+	<link href="css/jquery-ui.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/style.css">
+    
+	
+	
+	<script src="js/jquery.js"></script>
+    <script src="js/jquery-ui.js"></script>	
+	
+	
+	<script src ="js/sortablel.js"></script>
+	<script src ="js/sortable_ul.js"></script>
+	<!--<script src ="js/iframe_prevew.js"></script>-->
+	<script src ="js/expanding_accordion.js"></script>
+	<script src ="js/slidx.js"></script>
+	
+	<link  rel ="stylesheet"  href = "functionality.css" >
+	<link  rel ="stylesheet"  href = "workbench.css" >
+    <script src = 'js/functional_button_JI.js'></script>
+	<script src = 'js/addTabClass.js'></script>
+	<script src ="js/IndexedDB.js"></script>
+	
+	<!-- style for sortable ui jquery -->
+	 <style>
+  
+  <!------------------------------------ for vertical Tab ----------------------------------------------->
+  .ui-tabs-vertical { width: 100px; }
+  .ui-tabs-vertical .ui-tabs-nav { padding: .2em .1em .2em .2em; float: left; width: 5em; }
+  .ui-tabs-vertical .ui-tabs-nav li { clear: left; width: 100%; border-bottom-width: 1px !important; border-right-width: 0 !important; margin: 0 -1px .2em 0; }
+  .ui-tabs-vertical .ui-tabs-nav li a { display:block; }
+  .ui-tabs-vertical .ui-tabs-nav li.ui-tabs-active { padding-bottom: 0; padding-right: .1em; border-right-width: 1px; }
+  .ui-tabs-vertical .ui-tabs-panel {z-index:-1;position:absolute;left:110px; padding: 1em; float: right; background-color:white; width: 300px;}
+   .hidden
+   {
+   
+     display: none ;
+   
+   }
+  
+  </style>
+  <style>
+	 
+
+	  
+	  
+  body {
+    min-width: 520px;
+  }
+  .column {
+    width: 170px;
+    float: left;
+    padding-bottom: 100px;
+  }
+  .portlet {
+    margin: 0 1em 1em 0;
+    padding: 0.3em;
+  }
+  .portlet-header {    
+	
+    padding: 0.2em 0.3em;
+    margin-bottom: 0.5em;
+    position: relative;
+  }
+  .portlet-toggle {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    margin-top: -8px;
+  }
+  .portlet-content {
+    padding: 0.4em;
+  }
+  .portlet-placeholder {
+    border: 1px dotted black;
+    margin: 0 1em 1em 0;
+    height: 50px;
+  }
+  
+
+  </style>
+
+  
+  <!------------------external plug-ins-------------------------------------------------------->
+  <style>
+        .slidx-menu {
+            background-color: #f9f9f9;
+        }
+        
+        .slidx-menu li {
+            padding: 20px 0px 20px 15px;
+            list-style: none;
+        }
+        
+        .slidx-menu li:hover {
+            background-color: #eeeeee;
+            cursor: pointer;
+        }
+        
+        #slidx-button {
+            background-color: #dddddd;
+            padding: 10px 30px;
+            border-radius: 3px;
+            margin: 20px 20px 0px 0px;
+
+        }
+        
+        #slidx-button:hover {
+            background-color: #cccccc;
+            cursor: pointer;
+        }
+    </style>
+	<style>
+.shutter {
+  background: #F23F5B;
+  padding: 20px;
+  color:#fff;
+  max-width: 350px;
+  width: 100%;
+ 
+}
+.shutter a {
+color:#fff;
+text-decoration:none;
+}
+
+#shutter-cover:before {
+  content: '';
+  display: inline-block;
+  vertical-align: middle;
+  height: 100%;
+}
+
+#shutter-cover { text-align: center; }
+
+#shutter-cover .shutter {
+  display: inline-block!important;
+  vertical-align: middle;
+  text-align: left;
+}
+</style>
+
+
+ <script>
+       
+		$(function(){
+			$('.show-shutter').on('click', function(e){
+				e.preventDefault();
+				$('#modal-content').shutterModal();
+			})
+			
+		})
+	</script>
+ <script type="text/javascript">
+        $("document").ready(function() {
+		 $( "#add_db" )
+      .button()
+      .click(function() { 	  
+	 window.location.href= "dataBase_dialog.html";
+	 db.close();
+  });
+  
+   $( "#show_database" )
+      .button()
+      .click(function() { 	  
+	 $(".container-document").addClass("hidden");
+     $("#functionality_workbenck").removeClass("hidden");
+window.location.href = "jira internship guide test with dataBase.html?=J";	 
+	 
+  });
+  
+		    
+            $('#fire').load();
+        });
+    </script>
+<script>
+
+var button_name = "";
+
+var buttonobject = "";
+
+var windowsProperty = "";
+
+var left ;
+
+var atop ;
+
+
+var aHref = "";
+var B = false;
+
+/******************
+
+db variables
+*******************/
+
+var idbSupported = false;
+var db;
+var db_name = "functunality_buttons";
+var db_table;
+var openRequest ;
+var e ;
+var thisDB ;
+var database;
+var version ;
+var anotesArray = [];
+
+var body = $( "html" ) ;
+
+var apush = 0 ;
+
+
+var add_data = "" ;
+
+
+var screen_s = [] ;
+
+var side_bar_array ;
+
+var files = [];
+
+var isNew ;
+
+var i = 0;
+var g = 0;
+var z = 0;
+
+
+var yindex = 0;
+ 
+document.addEventListener("DOMContentLoaded", function(){
+	
+if(document.location.href[document.location.href.length - 1] == 'J')
+{	
+    
+
+	 
+    if("indexedDB" in window) {
+        idbSupported = true;
+    }
+	
+	
+	
+		
+	 
+    if(idbSupported) 
+	{
+		
+	    	
+		     
+			 openRequest = indexedDB.open(db_name);	 
+            
+		 
+		  
+        openRequest.onupgradeneeded = function(e) {
+			
+            alert("Upgrading...");
+		    thisDB = e.target.result;	
+ 
+        }
+       
+        openRequest.onsuccess = function(e) 
+		{
+			
+              alert("Success! Connected to IndexedDb ");
+			  
+			
+			db = e.target.result;
+			
+			var version = db.version;
+			//getPerson(2);
+			for(var i = 0 ; i < db.objectStoreNames.length ; i++)
+			{		
+                   
+				
+			      addButtons(db.objectStoreNames.item(i),i);
+				 
+				  
+			}
+			
+				
+				
+							
+			
+			
+        }
+ 
+        openRequest.onerror = function(e) 
+		{
+            alert("Error! Not Connected to IndexedDb ");
+            console.dir(e);
+        }
+ 
+    }
+	
+	
+	
+	
+	function addButtons( abutton_name , y )
+	{
+		
+		 var transaction = db.transaction([abutton_name] , "readwrite" );
+         
+		 var store = transaction.objectStore(abutton_name);
+		 
+		 var index = store.index("name");
+	
+	    var checkKey =  index.getKey(abutton_name);
+	
+	    checkKey.onsuccess = function()
+	    {
+		
+		  key = checkKey.result;
+	
+	
+	    
+	     
+	
+	
+	
+	
+	     var request = store.get(Number(key));
+	  
+          request.onsuccess = function(event) {
+       
+	      var result = event.target.result;
+		  
+		  var name = result.button_setUp.name ;
+          
+		  var description = result.button_setUp.description ;		  
+		  
+		  var notes = result.button_setUp.notes ;
+          
+		  var bar = result.button_setUp.bar ;
+          
+		  var a_property = result.aproperty ;
+		  
+          var notesArray = result.button_setUp.notes_array ;
+		  
+		  side_bar_array = result.button_setUp.side_bar_array ;
+		  
+		  var popUpWindows = result.popUpWindowsProperty ;
+
+          try
+		  {
+		  
+		   		  
+		    var aname = name.split(' ') ;
+		 
+		       
+		    
+			for(var i = 0 ; i < aname.length ; i++)
+			{
+			
+			       if( i == 0 )
+				   {
+				   
+				       name = aname[i];
+				   
+				   
+				   }
+				   else
+				   {
+				   
+				       name += aname[i];
+				     
+				   
+				   }
+			
+			
+			
+			
+			}
+		 }
+		 catch(e)
+		 {
+		 
+		 
+		 
+		 }		  
+		  createTheButton( name, description, notes, bar, a_property, popUpWindows, y , notesArray , side_bar_array)
+		
+		
+	   }
+   }
+ 
+ }
+ 
+}// end of if
+
+/*****************
+
+manually removing a button
+
+
+******************/
+
+
+
+function getPerson(y) {
+
+
+
+	var key = 47 ;
+
+	var aname = "thomas" ;
+
+	if(key === "" || isNaN(key)) return;
+
+	var transaction = db.transaction([aname] ,"readonly");
+    
+	
+	
+	var store = transaction.objectStore( aname );
+
+	var index = store.index( "name" );
+
+	var checkKey =  index.getKey( aname );
+
+	
+
+	checkKey.onsuccess = function()
+	    {
+		
+		  key = checkKey.result;
+		 
+		  
+		
+		 
+	 
+	var request = store.get(Number(47));
+	
+	request.onsuccess = function(e) {
+	
+	var result = e.target.result;
+
+	console.dir(result);
+
+	if(result) {
+	
+			var result = event.target.result;
+		  
+		  var name = result.button_setUp.name = "a";
+        
+		  var description = result.button_setUp.description  = 'bla';		  
+		  
+		  var notes = result.button_setUp.notes  = true;
+          
+		  var bar = result.button_setUp.bar = true;
+          
+		  var a_property = result.aproperty;
+          
+		  var popUpWindows = result.popUpWindowsProperty ;		  
+		
+   		  var aname = name.split(' ');
+		 
+		    
+			for(var i = 0 ; i < aname.length ; i++)
+			{
+			
+			       if( i == 0 )
+				   {
+				   
+				       name = aname[i];
+				   
+				   
+				   }
+				   else
+				   {
+				   
+				       name += aname[i];
+				     
+				   
+				   }
+			
+			
+			
+			
+			}
+			
+	    
+	
+	// It has only spaces, or is empty
+       
+		  
+		  
+		 
+		  
+		  
+		  
+		  
+		  createTheButton(name, description, notes, bar, a_property, popUpWindows, y )
+		 }
+		}	
+	}	
+}
+
+function createTheButton(name, description, notes, bar, a_property, popUpWindows, y , notes_array , side_bar_array )
+{
+	
+	var document = [] ;
+	var a_document = [] ;
+	
+	 left = ( ( 330 *  apush ) + 5);
+   
+	
+	if( y % 4 == 0)
+	{
+	   atop =  65 * apush ; 
+	   alert( left + " top " + atop );
+	   apush = 0;
+	   left = ( ( 330 *  apush ) + 5);
+	
+	}
+	
+	
+	
+	   var buttonTemplate = '<button class ="button_container" style =" box-shadow: 10px 10px 5px #888888; background-color:##bbcbce; width:310px; border:1px solid black; position:absolute; top:'+ atop +'px; left:'+left+'px;" id="button#{button_name}">'	
+	                        
+	                      + '<input type ="button" value ="#{button_name}" id ="#{button_name}"><input type ="button" value ="Close!" id ="close#{button_name}"><input type ="button" value ="Video!" id ="video#{button_name}" class = "hidden" ><br><br>'
+						  + '<textarea rows ="5" cols ="20">#{description}</textarea><br><br>'
+						  + '<input type ="button"  id ="add#{button_name}" value ="change configuration"><input type ="button" value ="Delete!" id ="delete#{button_name}">'
+						  +'<br><br>'
+						  +'</button>';
+	   
+	  
+	   
+	 var aButton =  buttonTemplate.replace( /#\{button_name\}/g, name).replace( /#\{description\}/g, description);
+	 
+	 
+	 
+	
+	
+	 
+	 
+	 $( "#functionality_workbenck" ).find( "#fun_container" ).append( aButton );
+	 
+	 apush++;
+	  
+	 
+	 
+	 $( "#functionality_workbenck" ).find( "#close" + name ).button().click(function(){
+	  
+	  
+	  
+	   $( "#functionality_workbenck" ).find( "#button" + name ).css( "background-color" , "#050505" );
+	  
+	   
+	   
+	   var transaction = db.transaction([ name ] , "readwrite" );
+         
+		 var store = transaction.objectStore( name );
+		 
+		 var index = store.index("name");
+	
+	    var checkKey =  index.getKey( name );
+	
+	    checkKey.onsuccess = function()
+	    {
+		
+		  key = checkKey.result;	
+		  
+	
+	     var request = store.get(Number(key));
+	  
+          request.onsuccess = function(event) {
+		  
+		   
+		     var aresult = event.target.result ;
+			 
+			 aresult.button_setUp.notes_array = anotesArray ;
+			 
+		     aresult.button_setUp.side_bar_array = side_bar_array ;
+		     
+			 var onerror = store.put( aresult , key );
+			 
+			 onerror.onerror = function(e)
+			 {
+			 
+			 
+			     alert("the notes and side bar was not updated");
+			 
+			 
+			 }
+			 
+		  
+		   }
+		  }
+	   
+	   for(var i = 0 ; i < anotesArray.length; i++)
+	   {
+	   
+	        try
+			{
+			
+			   body.find( "#" + i ).remove();
+			
+			
+			}
+			catch(e)
+			{
+			
+			    continue ;
+			
+			}
+	   
+	        
+	   
+	   
+	   
+	   
+	   }
+	   
+	   
+	   
+	   $( "#vtab_pop" ).addClass( "hidden" ) ; 
+	  
+	  
+	  
+	  
+	  
+	  for(var i = 0; i < a_document.length; i++)
+	  {
+	     try
+		 {
+	        
+			   a_document[i].close();
+			
+			
+		 }
+		 catch(e)
+		 {
+		 
+		    //alert( "error closing an application" )
+		 }
+	  
+	  }
+	  
+	  
+	  
+	  for(var i = 0; i < document.length; i++)
+	  {
+	  
+		try
+		{	
+		
+			   document[ i ].close() ;
+			   
+		}	
+		catch( e )
+        {
+		
+		    alert( " error closing a pop up window " );
+		
+         }		
+	  
+	   }
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 });
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 $( "#functionality_workbenck" ).find( "#add" + name ).button().click(function(){
+	 
+	 $( "#functionality_workbenck" ).find( "#button" + name ).css("background-color","#e59a6c");
+      
+	 
+	  
+	  window.location.href = "functionality_button.html?button_name=" + name + "&F";
+	 
+	 });
+	 
+	 
+	 
+	 
+	 $( "#functionality_workbenck" ).find( "#delete" + name ).button().click(function(){
+	 
+	 
+	
+	 
+	  if(db_name)
+      { 
+        
+        
+        database = db;
+        version =  parseInt( database.version );
+	
+		version += 1;
+		
+        database.close();
+		
+	    
+		
+		if(version)
+		{
+		
+           secondRequest = indexedDB.open( db_name,version );
+	         
+         
+		}
+		
+       secondRequest.onupgradeneeded = function(e) {
+		   
+       alert("Upgrading...");
+	   
+       var thisDB = e.target.result;
+			var location = document.referrer;
+			
+		    thisDB.deleteObjectStore(name);
+		    
+			alert("dataBase " + name + "Deleted!\nPlease Refresh!!!!!!!!!!!");
+			
+		
+		}
+	 
+	 
+	 }
+	 
+	 
+	    	
+	 });
+	 
+	 
+	 
+	 $( "#functionality_workbenck" ).find( "#video" + name ).button().click(function(){
+	 
+	 
+	 
+	 
+	 
+	 });
+	 
+	 
+	  
+	 
+		
+	 
+	 
+	 $( "#functionality_workbenck" ).find( "#" + name ).button().click(function(){
+	 
+	
+	    var sticky_notes_number = new stickyNotes() ;
+	 
+	 
+	 
+	 
+	 $( "#functionality_workbenck" ).find( "#button" + name ).css( "background-color" , "#e0dc85" );
+		 
+	    
+		  
+		  if( notes == true)
+	     {		
+             
+              var add_note_obj ;
+			  
+		    
+			  
+			  if( 1 <= notes_array.length )
+			  {
+			      var i = 0 ;
+				 
+			      for( var g = 0 ;  g < notes_array.length ; g++ )
+				  {
+				    try
+					{
+		            
+					  if(notes_array[ g ] == "" )
+					  {
+					     continue;
+					  
+					  }
+					  else
+					  {
+					  
+					  
+					    
+					    anotesArray[ i ] = notes_array[ g ];
+					     
+					    
+						var notes_templets = '<div class = "anotes" id = "'+ i +'" style = "background-color:#f0af38;position:absolute; top:40px ; left:' + notes_array[i].X + 'px; z-index:'+ (i + 3)  +';" ><div style = "position:relative; left:0px;"><span style="border:1px solid black;position:relative; top:2px; left:123px;" height = "5px" class="ui-icon ui-icon-document hidden"></span><span id ="'+ i +'"style ="border:1px solid black; position:relative; top:-16px ; left:145px; " class="ui-icon ui-icon-closethick hidden"></span></div> <textarea style = "background-color:#e8eb99;" rows = "20" cols = "20"  >'+ notes_array[g].text + '</textarea></div>';
+				       
+					   
+					     body.append( notes_templets ).focus();
+					 
+					     var obj = body.find( "#" + i ) ;
+					 
+					     obj.draggable();
+						 
+						 i++;
+						 obj.mouseover(function(){		                     
+		       
+				
+		                   $( this ).find( ".ui-icon-document" ).toggleClass( 'hidden' );
+			  
+			               $( this ).find( ".ui-icon-closethick" ).toggleClass( 'hidden' );
+						   
+						    $( this ).find( ".ui-icon-closethick" ).click(function(){
+					 
+					          var index = Number( $( this ).attr( "id" ) );
+							 
+							  
+							   anotesArray[ index ] = "" ;
+							  
+							  body.find( "#" + index ).remove()
+					 
+					       });
+						 
+						  
+						 });
+						 
+						 
+						  obj.mouseout(function(e)
+						  {
+		                     
+		                     var index = Number( obj.attr( "id" ) );			
+			                 
+							 
+							 
+		                    $( this ).find( ".ui-icon-document" ).toggleClass( 'hidden' );
+			  
+			               $( this ).find( ".ui-icon-closethick" ).toggleClass( 'hidden' );
+			                
+			                anotesArray[ index ].X = e.clientX;
+				  
+				            anotesArray[ index ].Y = e.clientY;
+				  
+				          anotesArray[ index ].text = obj.find( 'textarea' ).val();                
+		                    
+							
+							});
+		 
+		 
+					 
+					      					 
+					 obj.find( ".ui-icon-document" ).click(function(){
+					 
+					 
+					 
+					sticky_notes_number.y = sticky_notes_number.y + 1 ;
+					 
+					 add_first_note( sticky_notes_number.y ) ;
+					 
+					 
+					 });			 
+					 
+					}
+					
+				  }
+				  catch(e)
+				  {
+				  
+				  
+				  }
+				 
+				 
+				 
+				 
+				 sticky_notes_number.y = i ;
+				 
+				}
+				 
+			  }
+			  else
+			  {	
+			  
+			      y = sticky_notes_number.y ;
+				  
+				  add_first_note( y );		  
+			  
+			  }
+               				 
+		 
+		 
+	     }
+		 ///////////////////////////////////////////
+		 /******************************
+		 
+		 inserting sticky notes
+		 
+		 
+		 
+		 ***********************************/
+		 ///////////////////////////////////////////
+		 
+		
+		 
+		
+		
+		
+		
+		
+		
+		 
+		 
+		 function add_first_note( y )
+		 {
+		 
+		      
+		     
+			  
+		      var notes_templets = '<div class = "anotes" id = "'+ y +'" style = "background-color:#f0af38;position:absolute; top:30px ; left:90'+ (y + 3) +'px; z-index:'+ (y + 1) +';"><div style = "position:relative; left:0px;"><span  style="border:1px solid black;position:relative; top:2px; left:123px;" height = "5px" class="ui-icon ui-icon-document hidden"></span><span id = "'+ y +'" style ="border:1px solid black; position:relative; top:-16px ; left:145px; " class="ui-icon ui-icon-closethick hidden"></span></div> <textarea style = "background-color:#e8eb99;" rows = "20" cols = "20"  >welcome</textarea></div>';
+				        
+			
+			
+			body.append( notes_templets );
+			
+			
+			var obj = body.find( "#" + y );
+			
+			obj.draggable();
+			
+			$( this ).find( ".ui-icon-document" ).toggleClass( 'hidden' );
+			  
+			$( this ).find( ".ui-icon-closethick" ).toggleClass( 'hidden' );
+			
+			
+			
+			obj.mouseover(function(){                  
+		       
+				
+		      $( this ).find( ".ui-icon-document" ).toggleClass( 'hidden' );
+			  
+			   $( this ).find( ".ui-icon-closethick" ).toggleClass( 'hidden' );
+		 
+		 
+		 });
+		 
+		 
+		 
+		  obj.mouseout(function(e){
+		 
+		      var index = Number( obj.attr( "id" ) );
+		        
+			
+		      $( this ).find( ".ui-icon-document" ).toggleClass( 'hidden' );
+			  
+			   $( this ).find( ".ui-icon-closethick" ).toggleClass( 'hidden' );
+			   
+			    var value = new stickyNotes();
+				  
+				  value.X = e.clientX;
+				  
+				  value.Y = e.clientY;
+				  
+				  value.text = obj.find( 'textarea' ).val();
+				  
+			   	anotesArray[ index ] = value ;
+                       
+					   
+					
+		 
+		 
+		 });
+			
+			
+			obj.find( ".ui-icon-closethick" ).click( function(){
+					  
+				         var id	=  Number( obj.attr( "id" ) );
+						 
+						 anotesArray [ id ] = "" ;
+			
+                          $( "#" + id ).remove();
+						  
+				      	  
+					  					 
+					  
+			});
+					 
+					 
+			obj.find( ".ui-icon-document" ).click(function(){   			 
+			  
+			sticky_notes_number.y  = sticky_notes_number.y + 1 ;
+			  		
+				
+				
+			    add_first_note( sticky_notes_number.y  ) ;
+									 
+					    
+		   });
+			
+			
+			
+					   
+		 
+		 }
+		  
+		 
+		 
+		  
+		  
+		  
+		  
+		   if( bar == true )
+	       {
+		   
+		    
+		 $("#vtab_pop").toggleClass("hidden");
+  
+ 
+       $( "#vtabs" ).tabs().addClass( "ui-tabs-vertical ui-helper-clearfix" );
+       $( "#vtabs li" ).removeClass( "ui-corner-top" ).addClass( "ui-corner-left" );
+	  
+	   $("#vtab_pop").draggable();
+
+
+	   $("#vtab_pop").button().dblclick(function(){
+	   
+	   
+	      for( var i = 0 ; i < side_bar_array.length ; i++ )
+          {
+		  
+		  
+		         add_Tab_to_vTab( i );
+		  
+		  
+		  }		  
+	   
+	   
+	   
+	   
+		
+		$("#vtab_add").toggleClass("hidden");
+		
+		
+	    
+
+		$("#vtab_pop").find("#vtab_add").button().click(function(){
+		      
+		      for(var i = 0 ; i < files.length; i++)
+			  {
+			     files[ i ] = ""
+			     $("#file_container").find("#the_screen" + i ).remove();
+			  
+			  }
+			
+			  for(var i = 0 ; i < screen_s.length; i++)
+			  {
+			    screen_s[ i ] = "" ;
+			     $("#screen_container").find( "#the_screen" + i ).remove();   
+			  }
+			  
+			 
+			  
+			  if(anotes == true)
+			  {
+			    $("#notes_container").find( "#the_screen" + 0).remove();
+			  
+			  }
+			   window.i = 0;
+               window.g = 0;
+               window.z = 0;
+			  
+			  dialog.dialog( "open" );
+			  
+			  isNew = true;
+			  
+		 });	
+		  
+	       $("#vtabs").toggleClass("hidden")
+		   .mouseout(function()
+		   {
+		      $(this).addClass("opacity");
+			  
+		   }).mouseover(function()
+		   {
+		   
+		      $(this).removeClass("opacity");
+
+		       
+		   });
+		   
+		   
+	  });
+	  
+	  
+	  
+	  var dialog = $( "#vdialog" ).dialog({
+      autoOpen: false,
+      modal: true,
+	  width: 1070,
+	  height:1200,
+      buttons: {
+        Add: function() {
+			 addData();
+			 add_to_v_tab();
+          
+          $( this ).dialog( "close" );
+        },
+        Cancel: function() {
+          $( this ).dialog( "close" );
+        }
+      },
+      close: function() {
+        form[ 0 ].reset();
+      }
+    });
+ 
+    // addTab form: calls addTab function on submit and closes the dialog
+    var form = dialog.find( "form" ).submit(function( event ) {
+      
+      dialog.dialog( "close" );
+      event.preventDefault();
+	  
+	  
+    });
+	
+	
+	 
+	  
+ 
+  
+ 
+   
+ 
+		 
+		 
+		 
+}
+
+
+var side_bar_length = "" ;
+
+
+function addData()
+{
+
+  add_data = new side_array();
+  
+   
+  
+  add_data.tab_name = $( "#vdialog" ).find( "#vtab_title" ).val();
+  
+  add_data.description = $( "#vdialog" ).find("#vtab_content").val();
+  
+ 
+ 
+
+  
+  add_data.screen_s = screen_s ;
+  
+ 
+  
+  add_data.files = files ;
+  
+  
+  
+  
+  add_data.notes = anotes ;
+  
+  if( side_bar_array.length == 0)
+  {
+     side_bar_length = 0 ;
+  
+  }
+  else
+  {
+    side_bar_length = side_bar_array.length;
+  
+  }
+
+  
+side_bar_array[side_bar_length] = add_data;
+
+}
+	
+function add_to_v_tab(isNew)
+{
+
+
+ var index = side_bar_array.length ;
+ 
+ 
+ 
+ if(isNew == false)
+ {
+     var t = 0;
+	 var v = 0;
+	 var j = 0;
+     for (var  i = 0 ; i < side_bar_array.length ; i++)
+	 {
+	   
+	     if(side_bar_array[i] == "")
+		 {
+		       continue ;
+		 
+		 }
+		 else
+		 {
+		 
+	      var vtab_name = side_bar_array[i].tab_name ;
+		  
+		  if( vtab_name == "" )
+		  {
+		  
+		     vtab_name += "tabs" + t ;
+		  
+		  }
+		   
+	    
+	       var li = vtab_template.replace( /#\{ref\}/g, '#vtab-' + t ).replace( /#\{title\}/g, vtab_name )
+	       
+		   var div = vr_container_template.replace( /#\{ref\}/g, 'vtab-' + t ); 
+		   
+		   
+		   vtab_name = "" ;
+	        
+			$( "#vtabs" ).find( "#sortable").append(li);
+			
+			$( "#vtabs" ).find("#v_container").append(div);
+			
+			$("#v_container").append(screen_s_container);
+			
+			vtab_name = "" ;
+			
+		  	var screen_s  = side_bar_array[i].screen_s ;
+			
+			var top = 0 ;
+			
+			var left = 0 ;
+			
+			for( var y = 0 ; y < screen_s.length ; y++)
+			 {
+			     var w = 20;
+                  var h = 30;
+
+                   left = ((left * v) + 21);
+                  
+                   if(v % 5 == 0)
+                   {
+				      top = (top + 35);
+					  left = 0 ;
+				   }				   
+				  
+			     var img_template = '<div style ="position:realtive;top:'+ top +'px; left:' + left + 'px;" id = "#{id}" title ="#{description}"><text>#{name}<text><br><br><img src ="#{srcUrl}"></div>';
+			    
+                 if(screen_s[y] == "")
+				 {
+				     continue;
+					 
+				 }
+				 else
+				 {
+				 				
+				     var im = img_template.replace( /#\{id\}/g, 'im' + v ).replace( /#\{description\}/g, screen_s[v].description ).replace( /#\{name\}/g, screen_s[v].name ).replace( /#\{srcUrl\}/g, screen_s[v].srcUrl)
+			      
+				     $("#v_container").find("#screen_s_container").append( im );
+				  
+				 }
+			 
+			 
+			 }
+	     
+
+		 }
+	 
+	 
+	 }
+
+
+}
+else
+{
+  
+  
+  var v = 0;
+  var t = 0;
+  
+  var vtab_template = '<li class ="ui-state-default ui-corner-top ui-tabs-active ui-state-active"><a class = "ui-tabs-anchor" href ="#{ref}">#{title}</a><span class="ui-icon ui-icon-close" role="presentation">Remove Tab</span></li>';
+  
+  var  vr_container_template = '<div width ="1000px"  class = "ui-tabs-panel ui-widget-content ui-corner-bottom" role="tabpanel" heigth ="100%" style = " background-color: white; "  id = "#{ref}"></div>';
+ 
+ var screen_s_container = '<ul width ="1000px" heigth ="100%" id="screen_s_container" ><legend>Screen Shoots!</legend></ul>';
+
+ 
+  var files_container = '<ul width ="100%" heigth ="100%" id="files_container"><legend>Files/links!</legend></ul>';
+
+   var textarea = '<fieldset width ="100%" heigth = "100%" id = "anotes_container"><legend>Notes</legend><textarea id = "notes"></textarea></fieldset>';
+ 
+ var vtab_obj = $( "#vtab_pop" ).find( "#vtabs" ).tabs();
+ 
+
+
+ var vtab_name = "";
+
+var vtab_name = side_bar_array[side_bar_length ].tab_name ;
+
+var vtab_id = String( "vtab-" + side_bar_length) ;	  
+
+		  if( vtab_name == "" )
+		  {
+		  
+		     vtab_name += "tabs" + side_bar_length ;
+		  
+		  }
+		   alert( vtab_id );
+	   
+	       var li = vtab_template.replace( /#\{ref\}/g, '#'+ vtab_id ).replace( /#\{title\}/g, vtab_name )
+	       
+		   var div = vr_container_template.replace( /#\{ref\}/g, vtab_id ); 
+		   
+		   
+		 
+	        
+			vtab_obj.find( ".ui-tabs-nav").append( li );
+			
+			var div_container = vtab_obj.find( "#v_container" );
+			
+            div_container.append(div);			
+			
+			
+			
+			var vtab_id_obj = div_container.find("#" + vtab_id ) ;
+			  
+			  
+			vtab_id_obj.append( screen_s_container );
+			
+		
+			
+			vtab_name = "" ;
+			
+		  	var screen_s  = side_bar_array[side_bar_length].screen_s ;
+			
+			
+			var img_template ;
+			vtab_screen_obj = vtab_id_obj.find("#screen_s_container") ;
+			var id ;
+			var count = 0;
+			 
+			 for( var y = 0 ; y < screen_s.length ; y++)
+			 {	 
+				 if( screen_s[ y ] == "" )
+				 {
+				 
+				     continue;
+				 }
+				 else
+				 {
+				    
+                       img_template = '<li id = "#{id}" title ="#{description}">&nbsp;<img  style ="width:68px; height:88px;" src ="#{srcUrl}"></li>';
+			      				  
+				  }
+				  
+				 				
+				  var im = img_template.replace( /#\{id\}/g, 'im' + v ).replace( /#\{description\}/g, screen_s[y].name + "\n\n" + screen_s[y].description).replace( /#\{srcUrl\}/g, screen_s[y].srcUrl)
+			      
+				 
+				 vtab_screen_obj.append( im );
+				 
+				  v++;
+				
+				  
+			 
+			 
+			 }
+			 
+			 count = 0 ;
+			 
+			 var t = 0;
+			 
+			 var file_template ;
+			 
+			 vtab_id_obj.append( files_container );
+			 
+			 vtab_file_obj = vtab_id_obj.find( "#files_container" );
+			 
+			 
+			 
+			 
+			 for(var z = 0 ; z < files.length ; z++)
+			 {                
+                   
+				   if(files[ z ] == "")
+                   {
+				   
+				       continue ;
+                   }				   
+                   else
+				   {
+				   
+                       var tip = files[ z ].name + "\n\n" + files[ z ].description ;
+					   
+					   file_template = '<li id = "#{id}" title ="#{description}">&nbsp;<a href ="#{urlUrl}" target = "_blank" ><img  style = "width:58px; height:88px;" src ="#{image}"></a></div>';
+			     
+					   
+			           var fi = file_template.replace( /#\{id\}/g, 'fi' + t ).replace( /#\{description\}/g, tip ).replace( /#\{urlUrl\}/g, files[ z ].urlUrl).replace( /#\{image\}/g, files[ z ].image );
+			          
+					  vtab_file_obj.append( fi );
+				  
+				     t++;
+					 
+				     
+				  
+				    }
+			 
+			 
+			 }
+			 if(anotes == true)
+			 {
+			 
+			 
+			  vtab_id_obj.append( textarea );
+			
+			 
+			 
+			 }
+			 
+			 
+			 
+			 vtab_obj.tabs( "refresh" );
+			 
+
+
+}
+   
+
+
+
+
+
+
+
+
+
+
+
+}
+
+function add_Tab_to_vTab( i )
+{
+
+
+  var v = 0;
+  var t = 0;
+  
+  var vtab_template = '<li class ="ui-state-default ui-corner-top ui-tabs-active ui-state-active"><a class = "ui-tabs-anchor" href ="#{ref}">#{title}</a><span class="ui-icon ui-icon-close" role="presentation">Remove Tab</span></li>';
+  
+  var  vr_container_template = '<div width ="1000px"  class = "ui-tabs-panel ui-widget-content ui-corner-bottom" role="tabpanel" heigth ="100%" style = " background-color: white; "  id = "#{ref}"></div>';
+ 
+ var screen_s_container = '<ul width ="1000px" heigth ="100%" id="screen_s_container" ><legend>Screen Shoots!</legend></ul>';
+
+ 
+  var files_container = '<ul width ="100%" heigth ="100%" id="files_container"><legend>Files/links!</legend></ul>';
+
+   var textarea = '<fieldset width ="100%" heigth = "100%" id = "anotes_container"><legend>Notes</legend><textarea id = "notes"></textarea></fieldset>';
+ 
+ var vtab_obj = $( "#vtab_pop" ).find( "#vtabs" ).tabs();
+ 
+
+
+ var vtab_name = "";
+
+ var vtab_name = side_bar_array[ i ].tab_name ;
+
+ var vtab_id = String( "vtab-" + side_bar_length) ;	  
+
+		  if( vtab_name == "" )
+		  {
+		  
+		     vtab_name += "tabs" + side_bar_length ;
+		  
+		  }
+		   alert( vtab_id );
+	   
+	       var li = vtab_template.replace( /#\{ref\}/g, '#'+ vtab_id ).replace( /#\{title\}/g, vtab_name )
+	       
+		   var div = vr_container_template.replace( /#\{ref\}/g, vtab_id ); 
+		   
+		   
+		 
+	        
+			vtab_obj.find( ".ui-tabs-nav" ).append( li );
+			
+			var div_container = vtab_obj.find( "#v_container" );
+			
+            div_container.append( div );			
+			
+			
+			
+			var vtab_id_obj = div_container.find("#" + vtab_id ) ;
+			  
+			  
+			vtab_id_obj.append( screen_s_container );
+			
+		
+			
+			vtab_name = "" ;
+			
+		  	var screen_s  = side_bar_array[ i ].screen_s ;
+			var files = side_bar_array[ i ].files ;
+			
+			var img_template ;
+			vtab_screen_obj = vtab_id_obj.find("#screen_s_container") ;
+			var id ;
+			var count = 0;
+			 
+			 for( var y = 0 ; y < screen_s.length ; y++)
+			 {	 
+				 if( screen_s[ y ] == "" )
+				 {
+				 
+				     continue;
+				 }
+				 else
+				 {
+				    
+                       img_template = '<li id = "#{id}" title ="#{description}">&nbsp;<img  style ="width:68px; height:88px;" src ="#{srcUrl}"></li>';
+			      				  
+				  }
+				  
+				 				
+				  var im = img_template.replace( /#\{id\}/g, 'im' + v ).replace( /#\{description\}/g, screen_s[y].name + "\n\n" + screen_s[y].description).replace( /#\{srcUrl\}/g, screen_s[y].srcUrl)
+			      
+				 
+				 vtab_screen_obj.append( im );
+				 
+				  v++;
+				
+				  
+			 
+			 
+			 }
+			 
+			 count = 0 ;
+			 
+			 var t = 0;
+			 
+			 var file_template ;
+			 
+			 vtab_id_obj.append( files_container );
+			 
+			 vtab_file_obj = vtab_id_obj.find( "#files_container" );
+			 
+			 
+			 
+			 
+			 for(var z = 0 ; z < files.length ; z++)
+			 {                
+                   
+				   if(files[ z ] == "")
+                   {
+				   
+				       continue ;
+                   }				   
+                   else
+				   {
+				   
+                       var tip = files[ z ].name + "\n\n" + files[ z ].description ;
+					   
+					   file_template = '<li id = "#{id}" title ="#{description}">&nbsp;<a href ="#{urlUrl}" target = "_blank" ><img  style = "width:58px; height:88px;" src ="#{image}"></a></div>';
+			     
+					   
+			           var fi = file_template.replace( /#\{id\}/g, 'fi' + t ).replace( /#\{description\}/g, tip ).replace( /#\{urlUrl\}/g, files[ z ].urlUrl).replace( /#\{image\}/g, files[ z ].image );
+			          
+					  vtab_file_obj.append( fi );
+				  
+				     t++;
+					 
+				     
+				  
+				    }
+			 
+			 
+			 }
+			 if(anotes == true)
+			 {
+			 
+			 
+			  vtab_id_obj.append( textarea );
+			
+			 
+			 
+			 }
+			 
+			 
+			 
+			 vtab_obj.tabs( "refresh" );
+			 
+
+
+}
+   
+
+
+
+
+	  
+		  
+		  if(a_property != null && a_property != "")
+		  {
+			
+		   for(var i = 0; i < a_property.length; i++)
+		   {
+		      if(a_property[ i ] != "" && a_property[ i ] != null)
+			  {  
+			     if(a_property[i].url != null && a_property[ i ].anewTab == false )
+		        {	
+				   
+                    a_document[ i ] = window.open(a_property[ i ].url , i  ,'width=400,height=200,toolbar=yes,'
+					+ 'location=yes,directories=yes,status=yes,menubar=yes,scrollbars=yes,copyhistory=yes,'
+                    + 'resizable=yes');
+                   				
+				  
+				  
+			     
+				 }
+				 if( a_property[i].url != null && a_property[ i ].anewTab == true )
+		        {
+				         
+				         var a = '<a href = "'+ a_property[i].url +'"><button id="'+ a_property[i].name +'">t</button></a>'
+						 
+						 $( "#button" + name ).append(a);
+						 
+						 $("#button" + name ).find("#" + a_property[i].name).focus()
+						 $("#button" + name ).find("#" + a_property[i].name).click();
+						 $("#button" + name ).find("#" + a_property[i].name).hide() ;
+						 
+						 
+				
+				}
+			  }
+			 
+			 
+			 
+		   }
+
+		}
+		$( "body" ).mouseover(function(){
+       
+	   
+	   
+   
+         });
+		
+		
+		
+		
+		if(popUpWindows != null)
+        { 
+	       for(var i = 0; i < popUpWindows.length; i++)
+		   {
+			   if(popUpWindows[i] != "" && popUpWindows[i] != null)
+			   {
+			      if(popUpWindows[i].url != null )
+				  {
+			        document[i] = window.open( popUpWindows[i].url , "" , "width = 100, height = 100,toolbar = yes,menubar = yes" 
+					                           + 'location=no,directories=yes,status=no,menubar=yes,scrollbars=yes,copyhistory=yes,'
+                                               + 'resizable=yes');
+                  									           
+	                document[i].moveTo( popUpWindows[i].x + 2250, popUpWindows[i].y);
+					
+	                document[i].resizeTo( popUpWindows[i].w , popUpWindows[i].h );
+					
+	             }
+			   
+			   
+			   }
+				 
+			 
+			 
+			 
+		   }
+		}
+
+
+
+  //window.open(popUpWindows[0].url , 'windowName', 'resizable=1, scrollbars=1, fullscreen=0, height=200, width=650, screenX=' + window.leftScreenBoundry() + ' , left=' + window.leftScreenBoundry() + ', toolbar=0, menubar=0, status=1');		
+		
+	   function FindLeftScreenBoundry()
+{
+    // Check if the window is off the primary monitor in a positive axis
+    // X,Y                  X,Y                    S = Screen, W = Window
+    // 0,0  ----------   1280,0  ----------
+    //     |          |         |  ---     |
+    //     |          |         | | W |    |
+    //     |        S |         |  ---   S |
+    //      ----------           ----------
+    if (window.leftWindowBoundry() > window.screen.width)
+    {
+        return window.leftWindowBoundry() - (window.leftWindowBoundry() - window.screen.width);
+    }
+
+    // Check if the window is off the primary monitor in a negative axis
+    // X,Y                  X,Y                    S = Screen, W = Window
+    // 0,0  ----------  -1280,0  ----------
+    //     |          |         |  ---     |
+    //     |          |         | | W |    |
+    //     |        S |         |  ---   S |
+    //      ----------           ----------
+    // This only works in Firefox at the moment due to a bug in Internet Explorer opening new windows into a negative axis
+    // However, you can move opened windows into a negative axis as a workaround
+    if (window.leftWindowBoundry() < 0 && window.leftWindowBoundry() > (window.screen.width * -1))
+    {
+        return (window.screen.width * -1);
+    }
+
+    // If neither of the above, the monitor is on the primary monitor whose's screen X should be 0
+    return 0;
+}
+
+window.leftScreenBoundry = FindLeftScreenBoundry;	 
+	 
+	 
+	 
+	 
+	 });
+     	 
+	 
+  
+	   
+	   
+   }
+			   
+   
+   
+   
+ 
+          
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+},false);
+</script>
+<style>
+ul
+{
+  position:relative;
+  top:0px;
+}
+ul#screen_s_container li {
+
+    display:inline;
+}
+
+ul#files_container li {
+
+    display:inline;
+}
+</style>
+
+
+
+
+<script>
+
+
+
+
+var name = "";
+var aname = "";
+var anotes = "";
+$(function(){
+  
+
+
+ $ ( "#v_container" ).find( ".tabs" ).sortable();
+ $ ( "#v_container" ).find( ".tabs" ).disableSelection();
+
+var holder = document.getElementById( "imHolder" );
+	
+	
+                
+				var obj ;
+				
+				  holder.ondragover = function () { this.className = 'hover'; return false; };
+                 holder.ondragend = function () { this.className = ''; return false; };
+				 holder.ondrop = function (e){
+				 i = window.i++ ;
+				 obj = new Screen_s();
+                 this.className = '';
+                 e.preventDefault();
+				
+                var blob = new Blob([e.dataTransfer.files[0]],{ type: e.dataTransfer.files[0].type}) ;
+			    
+				var file = new File([blob], e.dataTransfer.files[0].name, {type: e.dataTransfer.files[0].type } );
+				
+				obj.src = file ;
+				
+				obj.srcUrl = URL.createObjectURL(file);
+				
+			    name = e.dataTransfer.files[0].name ;
+				
+				obj.name = name ;
+				
+				
+			   
+
+
+			   
+			   
+			   if( name != "")
+			   {
+			   
+			   
+
+			  
+			    var   img_template = '<fieldset class = " screen_s" id="the_screen'+ i +'" style = " width:290px; height:150px;" >'
+		                           + '<label for="field_title">Name of the screeshot</label>'
+								   + '<br>'
+								   + '<input type="text" name="tab_title" id="src_title'+i+'"  class="ui-widget-content ui-corner-all">'
+								   + '<br>'
+								   + '<label for="field_title">Src</label>'
+								   + '<br>'
+								   + '<input id = "src'+i+'" style ="width:220px" type="url" name="url" title = "paste your url here"  class="ui-widget-content ui-corner-all">'
+								   + '<br>'
+								   + '<label for="fied_content">Url Description</label>'
+								   + '<br>'
+								   +'<textarea name="field_content" id="src_description' + i + '" class="ui-widget-content ui-corner-all">add</textarea>'
+								   + '<br>'
+								  
+								   + '</fieldset>'
+			   
+               			   
+              
+			  $( "#screen_S " ).find("#screen_container").append( img_template );
+			  
+			 
+			  $( ("#screen_container") ).find("#src_title" + i ).val(name)
+				  				
+				
+				$("#src_title" + i).prop("readonly", true);
+				
+				$( '#src_description' + i ).val( name );
+				
+				$( "#screen_container" ).find("#src" + i ).val(obj.srcUrl);
+				
+			$("#src" + i).prop("readonly", true);
+			  
+			  obj.description = "";
+			
+			
+			
+			 
+			   
+                      
+                     screen_s[ i ] = obj;  
+					 
+				
+					 
+					 
+$( "#screen_S " ).find("#screen_container").mouseover(function(){
+
+	var value =	$( this ).find(".screen_s").attr("id");			 
+		
+
+    		var i = Number( value[ value - 1 ] ); 
+			   
+			   $( "#screen_S " ).find("#screen_container").mouseout(function(){
+			   try
+			   {
+			    screen_s[i].description =  $( ("#screen_container") ).find("#src_description" + i ).val();
+			   }
+			   catch(e)
+			   {
+			   
+			   }
+			   
+			   
+			   
+			   });
+			   
+			   
+	});		   
+			  
+			   
+			   
+			   i++;
+			  
+
+			  
+			  
+			}  
+			  
+			
+			   
+			   
+			   
+}
+$("#screen_S").find("#delete").button().click(function(){
+			 
+			 
+			 $("#screen_S").find("#the_screen" + --i).remove();
+			 
+			 window.i = i ;
+			 
+			 screen_s[ i ] = "";
+			   
+			 
+			 
+			 });
+			 
+			 
+var aholder = document.getElementById( "fholder" );
+	
+                
+				
+				   var aobj ;
+				   
+				   
+				  aholder.ondragover = function () { this.className = 'hover'; return false; };
+                 aholder.ondragend = function () { this.className = ''; return false; };
+				 aholder.ondrop = function (e){
+				
+				aobj = new Files();
+				 
+                  g = window.g++ ;
+                 
+				 this.className = '';
+                
+				e.preventDefault();
+				
+                var blob = new Blob([e.dataTransfer.files[0]],{ type: e.dataTransfer.files[0].type}) ;
+			    
+				var file = new File([blob], e.dataTransfer.files[0].name, {type: e.dataTransfer.files[0].type } );
+				
+				aobj.url = file ;
+				
+				aobj.urlUrl = URL.createObjectURL(file);
+				
+			    aobj.name = aname = e.dataTransfer.files[0].name ;
+				
+				var fileType = e.dataTransfer.files[0].name.split('.');
+				
+				  if(fileType[1] == 'docx' || fileType[1] == "doc" )
+                      {
+	                      aobj.image = "images/doc.png";
+	  
+	  
+                      }
+                      else if(fileType[1] == 'xlsx' || fileType[1] == 'cvs' || fileType[1] == 'xlm' || fileType[1] == 'xls')
+                     {
+	                    aobj.image = "images/excel.png";
+	  
+                     }
+                     else if(fileType[1] == 'pdf')
+                    {
+	                    aobj.image = "images/pdf.png";
+	  
+                    }
+                    else
+                   {
+	                  aobj.image = "images/file.png";
+	  
+                    }	  
+				
+				
+			    files[ g ] = aobj; 
+
+                
+			   alert( "url " + files[ g ].urlUrl ) ;
+			   if( aname != "")
+			   {
+		 
+			 
+			
+
+var   file_template = '<fieldset id="the_screen'+ g +'" style = " width:290px; height:150px;" >'
+		                           + '<label for="field_title">Name of the screeshot</label>'
+								   + '<br>'
+								   + '<input type="text" name="tab_title" id="url_title'+ g + '"  class="ui-widget-content ui-corner-all">'
+								   + '<br>'
+								   + '<label for="field_title">Url</label>'								   
+								   + '<br>'
+								   + '<input id = "url' + g + '" style ="width:220px" type="url" name="url" title = "paste your url here"  class="ui-widget-content ui-corner-all">'
+								   + '<br>'
+								   + '<label for="fied_content">Url Description</label>'
+								   + '<br>'
+								   +'<textarea name="field_content" id="url_description' + g + '" class="ui-widget-content ui-corner-all"></textarea>'
+								   + '<br>'
+								  
+								   + '</fieldset>';
+			   
+               			   
+            
+			  $( "#files " ).find("#file_container").append( file_template );
+			  
+			  
+			   $("#file_container").find("#url_title" + g ).val(aname)
+				  				
+				
+				 $("#file_container").find("#url_title" + g).prop("readonly", true);
+				
+				$( "#file_container" ).find("#url" + g ).val(aobj.urlUrl);
+				
+			$( "#file_container" ).find("#url" + g).prop("readonly", true);
+			  
+			  
+			
+			 
+			   
+                      
+                     alert( files[ g ].urlUrl );				  
+			  
+			  
+			  
+             g++;			  
+
+
+       }
+   }
+ 
+  $("#files").find("#add").button().click(function(){
+  
+  var   file_template = '<fieldset id="the_screen'+ g +'" class ="files" style = " width:290px; height:150px;" >'
+		                           + '<label for="field_title">Name of the screeshot</label>'
+								   + '<br>'
+								   + '<input type="text" name="tab_title" id = "url_title'+ g + '" value ="" class = "name ui-widget-content ui-corner-all">'
+								   + '<br>'
+								   + '<label for="field_title">Url</label>'								   
+								   + '<br>'
+								   + '<input id = "url' + g + '" style ="width:220px" type="url" name="url" title = "paste your url here"  class="url ui-widget-content ui-corner-all">'
+								   + '<br>'
+								   + '<label for="fied_content">Url Description</label>'
+								   + '<br>'
+								   +'<textarea name="field_content" id="url_description' + g + '" class = "desc ui-widget-content ui-corner-all"></textarea>'
+								   + '<br>'
+								  
+								   + '</fieldset>';
+			   
+               			   
+              
+			  $( "#files" ).find( "#file_container" ).append( file_template );			 
+              
+              
+			  
+		 $( "#file_container" ).find( "fieldset" ).mouseenter(function(){ 
+
+               if( $( this ).find( ".url" ).val() == "" )
+               {			   
+		             var number =  $( this ).attr( "id" );
+				 
+			     var a = Number ( number[number.length - 1] );
+               				 
+			 
+			      $( "#file_container" ).find( "#the_screen" + a  ).mouseout(function(){
+			     
+				 
+				 
+				 var aobj = new Files();
+				 
+			    
+			  
+			   
+			     
+			    
+				 aobj.name = $( this ).find( '.name' ).val();
+                  
+				               
+				 
+			     aobj.urlUrl = $( this ).find( ".url" ).val();
+			     
+				 aobj.url = "";
+				 
+			     aobj.description = $( this ).find( '.desc' ).val();
+             
+               
+			       aobj.image = "images/url.png";
+			    
+			    files[ a ] = aobj ;
+			    
+				if( files[ a ].name != "")
+                {
+				 
+				  files[ a ].name = $( this).find( '.name' ).val();
+				    
+				
+				}
+                if( files[ a ].urlUrl == "")
+                {
+                    //alert("enter a Url");				
+                 }				
+				
+				    
+				
+				
+			  
+			 
+			 });
+          }			 
+			  
+		});	  
+
+	g++;
+	
+	      
+  
+  
+  
+  });
+  
+   $("#files").find("#delete").button().click(function(){
+  
+     
+    $("#files").find( "#the_screen" + --g ) .remove();
+		window.g = g ;
+		
+		files[ g ] = "";
+			  
+		 
+			 
+			 });
+			 
+			 
+			  $("#notes").find("#add").button().click(function(){		 
+			
+			  
+			  
+			    var   img_template = '<fieldset id="the_screen'+ z +'" style = "position:absolute; width:290px; height:150px;" >'
+		                           
+								   +'<textarea rows = "8" cols = "18" name= "field_content" id="url_description_portlet' + z + '" class="ui-widget-content ui-corner-all"></textarea>'
+								   + '<br>'
+								   + '</fieldset>'
+			   
+               			   
+              
+			  $( "#notes " ).find( "#notes_container" ).append( img_template );
+			  
+			   
+			     anotes = true;
+
+			  });
+			  
+			  
+			 $( "#notes" ).find( "#delete" ).button().click(function(){
+			 
+			 
+			 $( "#notes" ).find( "#the_screen" + z ).remove();
+			   
+			 
+			 
+			 });
+ 
+ 
+ 
+});
+
+
+
+
+</script>
+  
+	
+  
+<!--[if gte mso 9]><xml>
+<mso:CustomDocumentProperties>
+<mso:med9f743392a4fddbf4ccc2b27cc76de msdt:dt="string">Draft|54bb13bf-84cf-4f8f-8a1d-666b6f097094</mso:med9f743392a4fddbf4ccc2b27cc76de>
+<mso:IsMyDocuments msdt:dt="string">1</mso:IsMyDocuments>
+<mso:b165e3218c9b48188c793ea09bd74850 msdt:dt="string">Internal Use Only-Confidential|ee5e89b1-84d8-4770-b6a0-819611b62087</mso:b165e3218c9b48188c793ea09bd74850>
+<mso:TaxCatchAll msdt:dt="string">2;#Draft|54bb13bf-84cf-4f8f-8a1d-666b6f097094;#1;#Internal Use Only-Confidential|ee5e89b1-84d8-4770-b6a0-819611b62087</mso:TaxCatchAll>
+</mso:CustomDocumentProperties>
+</xml><![endif]-->
+</head>
+  
+  
+ <body>
+ <header>
+        <a id="slidx-button">Options</a>
+	</header>
+    <div class="slidx-menu">
+        <li> 
+		
+		    
+		</li>
+        <li>
+		<fieldset id ="options2" >
+	
+	          <legend>Links Bar</legend>
+		  <input id ="show_link_bar" type="checkbox" name="animal" value="" />Hide Show Links Bar<br />
+		
+		</li>
+		<li><input id ="tool_bar_menu" type="checkbox" name="animal" value="Sticky Notes" />Show tool Tip<br /></li>
+        
+    </div>
+ 
+
+  
+ 
+ <!-- Up-load file with java script --> 
+ <div id="modal-content" style="display:none">
+      <p><input type = "file" name ="file" value =" upload a file"><br> <input type = "submit" name="submit" onclick = ""></p>
+	  </div>
+
+
+<!-- outer shell for link page -->
+<div class = "link_container data_container" >
+  
+    
+<div class = "column">
+ 
+  <div class="portlet">
+    <div class="portlet-header">Axon Servers Links </div>
+    <div class="portlet-content">
+	<ul id="sortablelink" class="link">
+	 <li class="ui-state-default"><a value = "https://cp.server261.com/main.php?domain=www.axonrx.com" href = "https://cp.server261.com/main.php?domain=www.axonrx.com" target="_blank"> Axonrx(enrolmenttest) </a></li>
+	 <li class="ui-state-default"><a value = "https://cp.s418.sureserver.com/login.php?domain=understandingpsa.com" href = "https://cp.s418.sureserver.com/login.php?domain=understandingpsa.com" target="_blank"> understandingpsa.com/cp</a></li>
+	 <li class="ui-state-default"><a value = "https://cp.server274.com/login.php?domain=bewellinformed.com"href = "https://cp.server274.com/login.php?domain=bewellinformed.com" target="_blank"> bewellinformed.com/cp </a></li>
+	</ul>
+	 </div>
+  </div>
+ 
+ 
+  
+ 
+
+ 
+
+ 
+  
+ </div>
+</div>
+
+
+
+
+
+
+
+  
+
+  
+  
+</head>
+<body>
+
+<!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+<!--------------------------------------------------------------------------------------------------main page-------------------------------------------------------------------------->
+<!-- To Add a accordion -->
+<!-- To Add a accordion -->
+<div id="accordion_dialog" title="Accordion data" class ="hidden">
+  <form>
+    <fieldset class="ui-helper-reset">
+      <label for="accordion_title">Title</label>
+      <input type="text" name="accordion_title" id="accordion_title" value="Accordion Title" class="ui-widget-content ui-corner-all">
+      <label for="accordion_content">Description</label>
+	  <textarea name="accordion_content" id="accordion_content" class="ui-widget-content ui-corner-all">Tab content</textarea>
+      
+    </fieldset>
+  </form>
+</div>
+
+
+
+ <!-- To Add a tab -->
+<div id="dialog" title="Tab data" class ="hidden">
+  <form>
+    <fieldset class="ui-helper-reset">
+      <label for="tab_title">Title</label>
+	  <br>
+	  <br>
+      <input type="text" name="tab_title" id="tab_title" value="Tab Title" class="ui-widget-content ui-corner-all">
+      <br>
+	  <br>
+	  <label for="tab_content">Description</label>
+	  <br>
+	  <textarea name="tab_content" id="tab_content" class="ui-widget-content ui-corner-all">Tab content</textarea>
+      
+    </fieldset>
+  </form>
+</div>
+
+
+<div id="vdialog" title="Tab data" class ="hidden">
+  <form>
+    <fieldset  class="ui-helper-reset" style = "border: 2px solid black; width:250px; height:100%;">
+      <legend>Tab Name</legend>
+	  <label for="tab_title">Title</label>
+	  <br>
+	  <br>
+      <input type="text" name="tab_title" id="vtab_title" value="Tab Title" class="ui-widget-content ui-corner-all">
+      <br>
+	  <br>
+	  <label for="tab_content">Description</label>
+	  <br>
+	  <textarea name="tab_content" id="tab_content" class="ui-widget-content ui-corner-all">Tab content</textarea>	 
+    </fieldset>
+	
+	<fieldset class="ui-helper-reset" style = "top:9px; left:460px; position:absolute; border: 2px solid black; width:250px; height:90px;">
+	 	 
+	
+	</fieldset>
+	<div id = "screen_S" style = 'border-right: 2px solid black; position:absolute; top:230px; width:330px; height: 100%;'>
+	<text style ="position:relative; left:100px;"><u>Screen Shoots!</u></text>
+	
+	<div height = "100%" id = "screen_container" >
+	
+	
+    </div>	
+	
+	   <input type ="button" value ="Erase" id ="delete">
+		<form style ="position:relative; left:230px; top: -185px;" enctype="multipart/form-data"><div class="form-group"><text></text><br><form method="post" action="#"><input id = "myfileinput" type="file" hidden><div id="imHolder"  style="font-size:20px;color:blue;text-align:center;width:140px; height:140px; border: 10px dashed #ccc"  >Upload your Screen S.</div></form></form>
+			  
+	
+	</div>
+	</div>
+	
+	
+	<div id = "files" style = 'border-right: 2px solid black; position:absolute; left: 360px; top:230px; width:330px; height: 100%;'>
+	<text style ="position:relative; left:90px;"><u>Files/Links!</u></text>
+	
+								   
+	   <div height = "100%" id = "file_container" >
+	
+	
+    </div>
+	
+	<input type ="button" value = "new" id="add"><input type ="button" value ="Erase" id ="delete">
+	
+	<form style ="position:relative; left:70px; top:5px;" enctype="multipart/form-data"><div class="form-group"><text></text><br><form method="post" action="#"><input id = "myfileinput" type="file" hidden><div id="fholder"  style="font-size:20px;color:blue;text-align:center;width:140px; height:140px; border:10px dashed #ccc" >Upload your File</div></form></form>
+								   
+	</div>
+	</div>
+	
+	
+	
+	<div id = "notes" style = 'position:absolute; left:710px; top:230px; width:330px; height: 100%;'>
+	<text style ="position:relative; left:160px;"><u>Notes!</u></text>
+	    <div height = "100%" id = "notes_container" >
+	
+	
+    </div>	
+	<input type ="button" value = "new" id="add"><input type ="button" value ="Erase" id ="delete">
+	
+	</div>
+	
+	
+	
+  
+</div>
+  
+ 
+ 
+ 
+  <!-- portlet dialog -->
+  
+ 
+ <div id = "portlet_dialog" title="portlet data" class ="hidden">
+  <form>
+    <fieldset  id = "portlet_dialog_container" class="ui-helper-reset">
+      <label for="tab_title">Name of the Folder/Portlet</label>
+	  <br>
+      <input type="text" name="tab_title" id="tab_title_portlet" value="Tab Title" class="ui-widget-content ui-corner-all">
+       <br>
+	   <label for="tab_content">Description</label>
+	   <br>
+	  <textarea name="tab_content" id="tab_description_portlet" class="ui-widget-content ui-corner-all">Tab content</textarea>
+	  
+	   <br>
+	   <br>
+	   <div id = "url_container">
+	   
+	   <fieldset>
+	  
+	  <label for="field_title">Name of the Url</label>
+	  
+	  <br>      
+      
+	  <input type="text" name="tab_title" id="url_title0"  class="ui-widget-content ui-corner-all">
+       
+	   <br>
+	   
+	  <label for="field_title">Url</label>
+       
+	   <br>
+	  
+	  <input id = "url_portlet0" style ="width:600px" type="url" name="url" title = "paste your url here"  class="ui-widget-content ui-corner-all">
+      
+	  <br>
+	  
+	  <label for="fied_content">Url Description</label>
+	  
+	  <br>
+	  <textarea name="field_content" id="url_description_portlet0" class="ui-widget-content ui-corner-all"></textarea>
+	  
+	  <br>	 
+	  </fieldset>
+	 
+	 </div>
+	  <input type = "button" id = "new_Url" value = 'Add new Url'><input type="button" value='get Url' id ="agetUrl"/> <input type="button" id ="aupdate" name="button" value ="Clear!">
+	  
+	  <br>
+	  <br>
+	  <br>
+	  <br>
+	  <br>
+	  
+	  
+	  <div class="container" style="height:100px;">
+          <text></text>
+         <form enctype="multipart/form-data">
+        <div class="form-group">
+                  <text> Upload your File </text>
+				  <br>
+        <form method="post" action="#">
+        <input id = "myfileinput" type="file" hidden>
+       <div id="holder"  style="font-size:20px;color:blue;text-align:center;width:150px; height:150px; border: 10px dashed #ccc" id="holder" ><br><br> drag your file here</div>
+       </form>
+	
+	 </div>	
+   </form>
+  </div>
+   <style>
+  #file_names
+  {
+     position:relative;
+	 left:330px;
+	 top: -130px;
+  
+  }
+  
+ 
+ </style>   
+        
+		<div id = "file_names" class="form-group" >
+       
+        
+		</div>
+	
+
+  
+</fieldset>
+</form>
+  
+
+</div>
+
+
+
+
+
+ 
+  
+
+   
+  <!-- end of portlet dialog -->
+  <!-- start of field dialog -->
+
+<div id = "field_dialog" title= "field data" class ="hidden" >
+  
+  <form>
+    <fieldset  id = "field_dialog_container" class="ui-helper-reset">
+       <div id = "aurl_container">
+	   
+	   <fieldset>
+	  
+	  <label for="field_title">Name of the Url</label>
+	  <br>      
+      <input type="text" name="tab_title" id="field_title0"  class="ui-widget-content ui-corner-all">
+       <br>
+	  <label for="field_title">Url</label>
+       <br>
+	  <input id = "url0" style ="width:600px" type="url" name="url" title = "paste your url here"  class="ui-widget-content ui-corner-all">
+      <br>
+	  
+	  <label for="fied_content">Url Description</label>
+	  <br>
+	  <textarea name="field_content" id="field_url0" class="ui-widget-content ui-corner-all"></textarea>
+	  <br>
+	 
+	  
+	   </fieldset>
+	  </div>
+	   <input type = "button" id = "field_new_Url" value = 'Add new Url'><input type="button" value='get Url' id ="bgetUrl"/> <input type="button" id ="bupdate" name="button" value ="Clear!">
+	  <br>
+	  <br>
+	  <br>
+	  <br>
+	  <br>
+	  
+	    <div class="container" style="height:100px;">
+          <text></text>
+         <form enctype="multipart/form-data">
+        <div class="form-group">
+                  <text> Upload your File </text>
+				  <br>
+        <form method="post" action="#">
+        <input id = "myfileinput" type="file" hidden>
+       <div id="aholder"  style="font-size:20px;color:blue;text-align:center;width:150px; height:150px; border: 10px dashed #ccc" id="aholder" ><br><br> drag your file here</div>
+       </form>
+	
+	 </div>	
+   </form>
+  </div>
+   <style>
+  #afile_names
+  {
+     position:relative;
+	 left:330px;
+	 top: -130px;
+  
+  }
+  
+ 
+ </style>   
+        
+		<div id = "afile_names" class="form-group" >
+       
+        
+		</div>
+	
+
+  
+</fieldset>
+</form>
+
+<!-----------------------------------------------------------------------------functionality buttons ---------------------------------------->
+
+  
+
+</div>
+<div id = "main_buttons">
+ <input type="button" id="show_database" name="button"  value = "Go to functionality/Buttons!">
+ <input type="button" id="add_db" name="button" value="Add/Recall a Database!">
+<fieldset id ="options1" style = "position:absolute;z-index:1; top:290px; left:640px; width:280px;" >
+ <legend>Options</legend>
+	
+                        <input id ="tool_bar_menu" type="checkbox" name="animal" value="Sticky Notes" />Show tool Tip<br />
+                        <input id ="show_preview" type="checkbox" name="animal" value="Side Bar" />Show preview on documents and links<br />
+						<input id ="show_links" type="checkbox" name="animal" value="Side Bar" />Links Tool Bar!<br />
+						<input id ="workbench" type="checkbox" name="animal" value="WorkBench" />WorkBench???<br />
+	 </fieldset>
+</div>
+ 
+<div id = "functionality_workbenck">
+<input type="button" id = "add_functionality" name="button"  value = "Add a functionality button!">
+  
+  
+  <div id ="fun_container" style="position:relative; top:90px;">
+  
+  
+  
+  </div>
+  
+</div>
+<div style ="z-index:3; position:absolute; top:600px; " class ="hidden" id ="vtab_pop" title ="dbl click to active/deactivate"><image width="25" height = "25" src = "images/notes.png" >'
+ <input type="button" id="vtab_add" value="Add a Tab" class = "hidden">
+ <div id="vtabs" class = "hidden" >
+  <ul id ="sortable">
+   
+ </ul>
+ <div style ="position:relative;  left:90px;"id="v_container">
+  
+ 
+ </div>
+				   
+</div>
+</div>
+
+<!------------------------------------------------------------------------------------------------------------------------------------------------>
+<!---------------------------------------------------------------------------document database stuff container ----------------------------------------------->
+
+
+<div style =" position:absolute; top:470px;" class = "container-document data_container hidden" >
+<div id ="db_buttons">
+<form style="margin-top: 1em;">
+	<div id="radioset" style ="display: inline;">
+		<input type="button" id="add_tab" name="button"  value = "Add a TAB!">
+		<input type="button" id="add_portlet" name="button" value="Add a Folder!">
+		<input type="button" id="add_accordion" name="button" value="Add Master Folder!">
+		<input type="button" id="add_field" name="button" value="Add File/Url!">
+		<input type="button" id ="update" name="button" value ="Update!">
+     
+	
+	
+ 
+	</div>
+</form>
+</div>
+
+
+<div id="accordion" class ="allAccordions">
+
+
+</div>
+
+
+ </div>
+    
+  
+ 
+	
+	
+  </body>
+  </html>

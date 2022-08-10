@@ -1,0 +1,33 @@
+mutation(
+   $id: Int!, $name: String, $active: Boolean
+){
+  updateAuthor(id: $id, name: $name, active: $active){
+    success
+    data{
+      id
+      name
+      active
+     
+    }
+    errors
+  }
+}
+
+{
+  "id":1,
+  "name":"Ann Kane",
+  "active":false
+}
+
+
+{
+  "data": {
+    "updateAuthor": {
+      "success": false,
+      "data": null,
+      "errors": [
+        "An issue occurred while retrieving the data."
+      ]
+    }
+  }
+}

@@ -1,0 +1,994 @@
+<html xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=Generator content="Microsoft Word 15 (filtered)">
+<title>Partner JIRA</title>
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:Cambria;
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Tahoma;
+	panose-1:2 11 6 4 3 5 4 4 2 4;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:10.0pt;
+	margin-left:0in;
+	line-height:115%;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";}
+h1
+	{mso-style-link:"Heading 1 Char";
+	margin-top:24.0pt;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:0in;
+	margin-bottom:.0001pt;
+	line-height:115%;
+	page-break-after:avoid;
+	font-size:14.0pt;
+	font-family:"Cambria","serif";
+	color:#365F91;}
+h2
+	{mso-style-link:"Heading 2 Char";
+	margin-top:10.0pt;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:0in;
+	margin-bottom:.0001pt;
+	line-height:115%;
+	page-break-after:avoid;
+	font-size:13.0pt;
+	font-family:"Cambria","serif";
+	color:#4F81BD;}
+p.MsoToc1, li.MsoToc1, div.MsoToc1
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:5.0pt;
+	margin-left:0in;
+	line-height:115%;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";}
+p.MsoToc2, li.MsoToc2, div.MsoToc2
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:5.0pt;
+	margin-left:11.0pt;
+	line-height:115%;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";}
+p.MsoHeader, li.MsoHeader, div.MsoHeader
+	{mso-style-link:"Header Char";
+	margin:0in;
+	margin-bottom:.0001pt;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";}
+p.MsoFooter, li.MsoFooter, div.MsoFooter
+	{mso-style-link:"Footer Char";
+	margin:0in;
+	margin-bottom:.0001pt;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";}
+p.MsoTitle, li.MsoTitle, div.MsoTitle
+	{mso-style-link:"Title Char";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:15.0pt;
+	margin-left:0in;
+	border:none;
+	padding:0in;
+	font-size:26.0pt;
+	font-family:"Cambria","serif";
+	color:#17365D;
+	letter-spacing:.25pt;}
+p.MsoTitleCxSpFirst, li.MsoTitleCxSpFirst, div.MsoTitleCxSpFirst
+	{mso-style-link:"Title Char";
+	margin:0in;
+	margin-bottom:.0001pt;
+	border:none;
+	padding:0in;
+	font-size:26.0pt;
+	font-family:"Cambria","serif";
+	color:#17365D;
+	letter-spacing:.25pt;}
+p.MsoTitleCxSpMiddle, li.MsoTitleCxSpMiddle, div.MsoTitleCxSpMiddle
+	{mso-style-link:"Title Char";
+	margin:0in;
+	margin-bottom:.0001pt;
+	border:none;
+	padding:0in;
+	font-size:26.0pt;
+	font-family:"Cambria","serif";
+	color:#17365D;
+	letter-spacing:.25pt;}
+p.MsoTitleCxSpLast, li.MsoTitleCxSpLast, div.MsoTitleCxSpLast
+	{mso-style-link:"Title Char";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:15.0pt;
+	margin-left:0in;
+	border:none;
+	padding:0in;
+	font-size:26.0pt;
+	font-family:"Cambria","serif";
+	color:#17365D;
+	letter-spacing:.25pt;}
+p.MsoSubtitle, li.MsoSubtitle, div.MsoSubtitle
+	{mso-style-link:"Subtitle Char";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:10.0pt;
+	margin-left:0in;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Cambria","serif";
+	color:#4F81BD;
+	letter-spacing:.75pt;
+	font-style:italic;}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:purple;
+	text-decoration:underline;}
+p.MsoAcetate, li.MsoAcetate, div.MsoAcetate
+	{mso-style-link:"Balloon Text Char";
+	margin:0in;
+	margin-bottom:.0001pt;
+	font-size:8.0pt;
+	font-family:"Tahoma","sans-serif";}
+p.MsoListParagraph, li.MsoListParagraph, div.MsoListParagraph
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:10.0pt;
+	margin-left:.5in;
+	line-height:115%;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";}
+p.MsoListParagraphCxSpFirst, li.MsoListParagraphCxSpFirst, div.MsoListParagraphCxSpFirst
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	line-height:115%;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";}
+p.MsoListParagraphCxSpMiddle, li.MsoListParagraphCxSpMiddle, div.MsoListParagraphCxSpMiddle
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	line-height:115%;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";}
+p.MsoListParagraphCxSpLast, li.MsoListParagraphCxSpLast, div.MsoListParagraphCxSpLast
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:10.0pt;
+	margin-left:.5in;
+	line-height:115%;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";}
+p.MsoTocHeading, li.MsoTocHeading, div.MsoTocHeading
+	{margin-top:24.0pt;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:0in;
+	margin-bottom:.0001pt;
+	line-height:115%;
+	page-break-after:avoid;
+	font-size:14.0pt;
+	font-family:"Cambria","serif";
+	color:#365F91;
+	font-weight:bold;}
+span.HeaderChar
+	{mso-style-name:"Header Char";
+	mso-style-link:Header;}
+span.FooterChar
+	{mso-style-name:"Footer Char";
+	mso-style-link:Footer;}
+span.TitleChar
+	{mso-style-name:"Title Char";
+	mso-style-link:Title;
+	font-family:"Cambria","serif";
+	color:#17365D;
+	letter-spacing:.25pt;}
+span.SubtitleChar
+	{mso-style-name:"Subtitle Char";
+	mso-style-link:Subtitle;
+	font-family:"Cambria","serif";
+	color:#4F81BD;
+	letter-spacing:.75pt;
+	font-style:italic;}
+span.BalloonTextChar
+	{mso-style-name:"Balloon Text Char";
+	mso-style-link:"Balloon Text";
+	font-family:"Tahoma","sans-serif";}
+span.Heading1Char
+	{mso-style-name:"Heading 1 Char";
+	mso-style-link:"Heading 1";
+	font-family:"Cambria","serif";
+	color:#365F91;
+	font-weight:bold;}
+span.Heading2Char
+	{mso-style-name:"Heading 2 Char";
+	mso-style-link:"Heading 2";
+	font-family:"Cambria","serif";
+	color:#4F81BD;
+	font-weight:bold;}
+.MsoChpDefault
+	{font-family:"Calibri","sans-serif";}
+.MsoPapDefault
+	{margin-bottom:10.0pt;
+	line-height:115%;}
+ /* Page Definitions */
+ @page WordSection1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.0in 1.0in 1.0in;}
+div.WordSection1
+	{page:WordSection1;}
+@page WordSection2
+	{size:8.5in 11.0in;
+	margin:1.0in 1.0in 1.0in 1.0in;}
+div.WordSection2
+	{page:WordSection2;}
+ /* List Definitions */
+ ol
+	{margin-bottom:0in;}
+ul
+	{margin-bottom:0in;}
+-->
+</style>
+
+
+<!--[if gte mso 9]><xml>
+<mso:CustomDocumentProperties>
+<mso:med9f743392a4fddbf4ccc2b27cc76de msdt:dt="string">Draft|54bb13bf-84cf-4f8f-8a1d-666b6f097094</mso:med9f743392a4fddbf4ccc2b27cc76de>
+<mso:IsMyDocuments msdt:dt="string">1</mso:IsMyDocuments>
+<mso:b165e3218c9b48188c793ea09bd74850 msdt:dt="string">Internal Use Only-Confidential|ee5e89b1-84d8-4770-b6a0-819611b62087</mso:b165e3218c9b48188c793ea09bd74850>
+<mso:TaxCatchAll msdt:dt="string">2;#Draft;#1;#Internal Use Only-Confidential</mso:TaxCatchAll>
+</mso:CustomDocumentProperties>
+</xml><![endif]-->
+</head>
+
+<body lang=EN-US link=blue vlink=purple>
+
+<div class=WordSection1>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0 align=left
+ width="100%" style='width:100.0%;border-collapse:collapse;margin-left:7.1pt;
+ margin-right:7.1pt;margin-bottom:33.75pt'>
+ <tr>
+  <td width=1363 valign=top style='width:1022.25pt;padding:0in 5.4pt 0in 5.4pt'>
+  <div style='border:none;border-bottom:solid #4F81BD 1.0pt;padding:0in 0in 4.0pt 0in'>
+  <p class=MsoTitle><span style='font-size:70.0pt'><span style='color:windowtext'>Partner
+  JIRA</span></span></p>
+  </div>
+  </td>
+ </tr>
+ <tr>
+  <td valign=bottom style='padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoSubtitle><span style='font-size:22.0pt;line-height:115%'><span
+  style='color:windowtext'>User’s Guide</span></span></p>
+  </td>
+ </tr>
+ <tr style='height:.8in'>
+  <td valign=bottom style='padding:0in 5.4pt 0in 5.4pt;height:.8in'>
+  <p class=MsoNormal>This item is the property of GTECH Corporation, West
+  Greenwich, Rhode Island, and contains proprietary, confidential and trade
+  secret information.  It may not be transferred from the custody or control of
+  GTECH except as authorized in writing by an officer of GTECH.  Neither this
+  item nor the information it contains may be used or disclosed, in whole or in
+  part, and directly or indirectly, except as expressly authorized by an
+  officer of GTECH, pursuant to written agreement.</p>
+  <p class=MsoNormal>Copyright © 2011 GTECH Corporation.  All rights reserved. </p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span style='position:absolute;z-index:251660288;margin-left:
+0px;margin-top:0px;width:816px;height:23px'><img width=816 height=23
+src="Partner%20JIRA%20User's%20Guide_files/image001.png"></span><span
+style='position:absolute;z-index:251661288;margin-left:0px;margin-top:0px;
+width:768px;height:1050px'><img width=768 height=1050
+src="Partner%20JIRA%20User's%20Guide_files/image002.jpg"></span><img width=346
+height=166 src="..\Partner%20JIRA%20User's%20Guide_files/image003.jpg" align=left
+hspace=12 alt="gtech_logo.jpg"><span style='position:absolute;z-index:251659264;
+margin-left:0px;margin-top:0px;width:772px;height:33px'>
+
+<table cellpadding=0 cellspacing=0>
+ <tr>
+  <td width=772 height=33 style='vertical-align:top'><span style='position:
+  absolute;z-index:251659264'>
+  <table cellpadding=0 cellspacing=0 width="100%">
+   <tr>
+    <td>
+    <div style='padding:3.6pt 7.2pt 3.6pt 7.2pt'>
+    <p class=MsoSubtitle style='margin-bottom:0in;margin-bottom:.0001pt;
+    line-height:normal'>2/27/2012</p>
+    </div>
+    </td>
+   </tr>
+  </table>
+  </span>&nbsp;</td>
+ </tr>
+</table>
+
+</span><span style='position:absolute;z-index:251662336;margin-left:0px;
+margin-top:0px;width:768px;height:4px'><img width=768 height=4
+src="Partner%20JIRA%20User's%20Guide_files/image004.png"></span><br clear=all
+style='page-break-before:always'>
+</p>
+
+<p class=MsoTocHeading>Table of Contents</p>
+
+<p class=MsoToc1><a href="#_Toc311558219">Revision History<span
+style='color:windowtext;display:none;text-decoration:none'>. </span><span
+style='color:windowtext;display:none;text-decoration:none'>1</span></a></p>
+
+<p class=MsoToc1><a href="#_Toc311558220">Chapter 1: Overview<span
+style='color:windowtext;display:none;text-decoration:none'>.. </span><span
+style='color:windowtext;display:none;text-decoration:none'>2</span></a></p>
+
+<p class=MsoToc1><a href="#_Toc311558221">Chapter 2: System Requirements<span
+style='color:windowtext;display:none;text-decoration:none'>. </span><span
+style='color:windowtext;display:none;text-decoration:none'>3</span></a></p>
+
+<p class=MsoToc1><a href="#_Toc311558222">Chapter 3: Getting Started<span
+style='color:windowtext;display:none;text-decoration:none'>. </span><span
+style='color:windowtext;display:none;text-decoration:none'>4</span></a></p>
+
+<p class=MsoToc1><a href="#_Toc311558223">Chapter 4: Issue Tracking<span
+style='color:windowtext;display:none;text-decoration:none'>. </span><span
+style='color:windowtext;display:none;text-decoration:none'>6</span></a></p>
+
+<p class=MsoToc2><a href="#_Toc311558224">Create a New Issue<span
+style='color:windowtext;display:none;text-decoration:none'>. </span><span
+style='color:windowtext;display:none;text-decoration:none'>6</span></a></p>
+
+<p class=MsoToc2><a href="#_Toc311558225">Understanding Issue Workflow<span
+style='color:windowtext;display:none;text-decoration:none'>.. </span><span
+style='color:windowtext;display:none;text-decoration:none'>10</span></a></p>
+
+<p class=MsoToc1><a href="#_Toc311558226">Chapter 5: Enhancement Requests<span
+style='color:windowtext;display:none;text-decoration:none'>. </span><span
+style='color:windowtext;display:none;text-decoration:none'>17</span></a></p>
+
+<p class=MsoToc2><a href="#_Toc311558227">Understanding Enhancement Request
+Workflow<span style='color:windowtext;display:none;text-decoration:none'>.. </span><span
+style='color:windowtext;display:none;text-decoration:none'>20</span></a></p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+</div>
+
+<span style='font-size:11.0pt;line-height:115%;font-family:"Calibri","sans-serif"'><br
+clear=all style='page-break-before:always'>
+</span>
+
+<div class=WordSection2>
+
+<h1><a name="_Toc311558220">Chapter 1: Overview</a></h1>
+
+<p class=MsoNormal><strong><span style='font-family:"Calibri","sans-serif";
+font-weight:normal'>Partner JIRA</span></strong> is<strong><span
+style='font-family:"Calibri","sans-serif"'> </span></strong>GTECH’s customer
+service portal.  Partner JIRA provides web-access to real-time information
+about a customer’s existing enhancement and maintenance requests,&nbsp;as well
+as the status of customer testing issues.  This information is available
+without intervention from GTECH and allows GTECH’s customers to monitor the
+status of the issues they’ve entered independently.  As Partner JIRA data is
+tied into GTECH’s internal issue tracking system, the information reflects the
+current status&nbsp;of any customer enhancement requests or reported defects.</p>
+
+<p class=MsoNormal>Partner JIRA allows customers to enter their own requests,
+facilitating the existing communication mechanisms with GTECH.  Users can enter
+information independent from GTECH, providing details about suspected
+problems&nbsp;or enhancements.&nbsp; Allowing customers to enter their own
+requests will lessen the impact of potential problems with other communication
+mechanisms.  Entries into Partner JIRA can also include attachments and comments
+to help completely describe the request.</p>
+
+<p class=MsoNormal>Partner JIRA provides GTECH the ability to respond to
+customer requests directly through a common mechanism.  GTECH can provide
+feedback on&nbsp;<span style='color:black'>those</span><span style='font-size:
+10.0pt;line-height:115%;font-family:"Arial","sans-serif";color:black'> </span>requests&nbsp;through
+Partner JIRA allowing customers to receive GTECH feedback on potential
+enhancements through a common and consistent interface.<span style='font-size:
+10.0pt;line-height:115%;font-family:"Arial","sans-serif";color:blue'>&nbsp;</span></p>
+
+<p class=MsoNormal>Partner JIRA provides a level of collaboration and
+visibility that will enhance and extend the exceptional level of
+support&nbsp;to which GTECH customers are accustomed.</p>
+
+<p class=MsoNormal>For any issues and/or questions concerning Partner JIRA,
+please contact your GTECH Service/Project Lead.</p>
+
+<span style='font-size:11.0pt;line-height:115%;font-family:"Calibri","sans-serif"'><br
+clear=all style='page-break-before:always'>
+</span>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<h1><a name="_Toc311558221">Chapter 2: System Requirements</a></h1>
+
+<p class=MsoNormal>Partner JIRA has been successfully tested with a Windows PC
+and Firefox (8.0) and Internet Explorer (8) browsers.  These are the only two
+components necessary for use of the system.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<span style='font-size:11.0pt;line-height:115%;font-family:"Calibri","sans-serif"'><br
+clear=all style='page-break-before:always'>
+</span>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<h1><a name="_Toc311558222">Chapter 3: Getting Started</a></h1>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>Connect to <a href="http://www.gtechlottery.com">www.gtechlottery.com</a>
+and select <u>Customer Net</u> on the right of the menu bar.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><span style='position:absolute;z-index:251684864;margin-left:
+339px;margin-top:70px;width:147px;height:83px'><img width=147 height=83
+src="Partner%20JIRA%20User's%20Guide_files/image005.png"></span><img border=0
+width=624 height=497 src="Partner%20JIRA%20User's%20Guide_files/image006.jpg"></p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>Access Partner Jira via the <u>PartnerJira </u>link.  You
+will be presented with this page:</p>
+
+<p class=MsoNormal align=center style='text-align:center'><img border=0
+width=593 height=325 id="Picture 3"
+src="Partner%20JIRA%20User's%20Guide_files/image007.png"></p>
+
+<p class=MsoNormal><img width=540 height=393
+src="Partner%20JIRA%20User's%20Guide_files/image008.jpg" align=left hspace=12>Your
+GTECH Project Lead will work with you to create a login and password.  Please
+note that passwords must be at least 8 characters and include both numerical
+and alphabetical characters.  After you login, you will see a page like this
+for your project:</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>Note some key features located on the dashboard:</p>
+
+<p class=MsoNormal align=center style='text-align:center'><img border=0
+width=624 height=367 id="Picture 17"
+src="Partner%20JIRA%20User's%20Guide_files/image009.png"></p>
+
+<p class=MsoNormal align=center style='text-align:center'>&nbsp;</p>
+
+<p class=MsoNormal align=center style='text-align:center'>&nbsp;</p>
+
+<p class=MsoNormal align=center style='text-align:center'><img border=0
+width=624 height=358 src="Partner%20JIRA%20User's%20Guide_files/image010.png"></p>
+
+<p class=MsoNormal align=center style='text-align:center'>&nbsp;</p>
+
+<h1><a name="_Toc311558223">Chapter 4: Issue Tracking</a></h1>
+
+<h2><a name="_Toc311558224">Create a New Issue</a></h2>
+
+<p class=MsoNormal>There are three paths to creating an issue.  As shown below,
+click on “+ Create Issue” in the upper right hand corner of the webpage.  A
+menu will appear asking you to select the project and issue type.  </p>
+
+<p class=MsoNormal align=center style='text-align:center'><span
+style='position:absolute;z-index:251665408;left:0px;margin-left:487px;
+margin-top:46px;width:158px;height:94px'><img width=158 height=94
+src="Partner%20JIRA%20User's%20Guide_files/image011.png"></span><img border=0
+width=652 height=202 src="Partner%20JIRA%20User's%20Guide_files/image012.jpg"></p>
+
+<p class=MsoNormal>Alternatively, click on Projects and choose the project.  </p>
+
+<p class=MsoNormal align=center style='text-align:center'><img border=0
+width=363 height=251 id="Picture 21"
+src="Partner%20JIRA%20User's%20Guide_files/image013.png"></p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>Then click on the issue type you would like to create.  </p>
+
+<p class=MsoNormal align=center style='text-align:center'><span
+style='position:absolute;z-index:251664384;left:0px;margin-left:363px;
+margin-top:94px;width:258px;height:31px'><img width=258 height=31
+src="Partner%20JIRA%20User's%20Guide_files/image014.png"></span><img border=0
+width=626 height=357 src="Partner%20JIRA%20User's%20Guide_files/image015.jpg"></p>
+
+<p class=MsoNormal>Or, the third method: click on Issues, Create Issue, then
+choose the project and issue type.</p>
+
+<p class=MsoNormal align=center style='text-align:center'><img border=0
+width=626 height=266 src="Partner%20JIRA%20User's%20Guide_files/image016.jpg"></p>
+
+<p class=MsoNormal><img border=0 width=626 height=228
+src="Partner%20JIRA%20User's%20Guide_files/image017.jpg"></p>
+
+<p class=MsoNormal>In this example, we will create a TIR – Customer Test.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<span style='font-size:11.0pt;line-height:115%;font-family:"Calibri","sans-serif"'><br
+clear=all style='page-break-before:always'>
+</span>
+
+<p class=MsoNormal>All methods bring you to the following screen:</p>
+
+<p class=MsoNormal align=center style='text-align:center'><img border=0
+width=626 height=463 src="Partner%20JIRA%20User's%20Guide_files/image018.jpg"></p>
+
+<p class=MsoNormal>Required fields are represented by red asterisks and
+include:</p>
+
+<p class=MsoListParagraphCxSpFirst style='text-indent:-.25in'><span
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Summary</p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-.25in'><span
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Reporter</p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-.25in'><span
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Description</p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-.25in'><span
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Defect Symptom</p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-.25in'><span
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Product</p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-.25in'><span
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Severity</p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-.25in'><span
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Priority</p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-.25in'><span
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Reproducible</p>
+
+<p class=MsoListParagraphCxSpLast style='text-indent:-.25in'><span
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Found-In Batch</p>
+
+<p class=MsoNormal>Optional fields:</p>
+
+<p class=MsoListParagraphCxSpFirst style='text-indent:-.25in'><span
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Site-Specific Product</p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-.25in'><span
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>External ID: if you have also entered this issue in another
+system, please include that ID for reference</p>
+
+<p class=MsoListParagraphCxSpLast style='text-indent:-.25in'><span
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Attachment: these may include screenshots, supporting documentation,
+or error reports that will help explain the issue.</p>
+
+<p class=MsoNormal>We will use the following issue as an example:</p>
+
+<p class=MsoNormal><img border=0 width=682 height=411
+src="Partner%20JIRA%20User's%20Guide_files/image019.jpg"></p>
+
+<span style='font-size:11.0pt;line-height:115%;font-family:"Calibri","sans-serif"'><br
+clear=all style='page-break-before:always'>
+</span>
+
+<p class=MsoNormal><a name="_Toc311558225"><b><span style='font-size:13.0pt;
+line-height:115%;font-family:"Cambria","serif";color:#4F81BD'>&nbsp;</span></b></a></p>
+
+<h2>Understanding Issue Workflow</h2>
+
+<p class=MsoNormal>After you create the issue, you will be brought to this
+page.  Note the series of buttons highlighted in red.  </p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal style='margin-left:.25in;text-indent:-.25in'><span
+style='position:absolute;z-index:251667456;left:0px;margin-left:-16px;
+margin-top:120px;width:413px;height:33px'><img width=413 height=33
+src="Partner%20JIRA%20User's%20Guide_files/image020.png"></span><img border=0
+width=694 height=410 src="Partner%20JIRA%20User's%20Guide_files/image021.jpg"></p>
+
+<p class=MsoNormal style='margin-left:.25in;text-indent:-.25in'>You can assign
+an issue to another user or yourself in any status.<br clear=all
+style='page-break-before:always'>
+</p>
+
+<p class=MsoNormal>Prior to submission of your issue to GTECH, you can edit the
+issue as many times as you’d like – add attachments, change the description,
+increase or decrease the severity level, etc.  Click Edit and an Edit box will
+open where you can make your changes.</p>
+
+<p class=MsoNormal align=center style='text-align:center'><img border=0
+width=624 height=439 id="Picture 32"
+src="Partner%20JIRA%20User's%20Guide_files/image022.png"></p>
+
+<p class=MsoNormal>Update the issue using the Edit button at the bottom of the
+screen and the change will be reflected in your issue.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>You can also Cancel the issue prior to submission.  
+Enhancement requests will move to Closed, Won’t Implement status.   TIR-Live
+and CAT issues will move to Closed, Not A Problem status.</p>
+
+<p class=MsoNormal><img border=0 width=626 height=138
+src="Partner%20JIRA%20User's%20Guide_files/image023.jpg"></p>
+
+<span style='font-size:11.0pt;line-height:115%;font-family:"Calibri","sans-serif"'><br
+clear=all style='page-break-before:always'>
+</span>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>When all your changes have been made, click Submit to GTECH. 
+A corresponding issue will be created in the GTECH system. </p>
+
+<p class=MsoNormal align=center style='text-align:center'><img border=0
+width=626 height=287 src="Partner%20JIRA%20User's%20Guide_files/image024.jpg"></p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>From this point forward, all communication about the issue
+will occur in the Comments section.  Click Submit Comment to GTECH to write a
+comment, submit a question, or respond to a question posed by GTECH regarding
+the issue.   Comments from GTECH will also appear in the same location as your
+comments.</p>
+
+<p class=MsoNormal align=center style='text-align:center'><img border=0
+width=624 height=221 id="Picture 35"
+src="Partner%20JIRA%20User's%20Guide_files/image025.jpg"></p>
+
+<p class=MsoNormal align=center style='text-align:center'><img border=0
+width=624 height=326 id="Picture 36"
+src="Partner%20JIRA%20User's%20Guide_files/image026.jpg"></p>
+
+<p class=MsoNormal>When there a status update, your issue will reflect the
+change.  The issue can either be deferred or assigned to a developer.  If the
+issue is deferred it can later be reopened and then progress will begin.  </p>
+
+<p class=MsoNormal><span style='position:absolute;z-index:251668480;margin-left:
+232px;margin-top:153px;width:190px;height:80px'><img width=190 height=80
+src="Partner%20JIRA%20User's%20Guide_files/image027.png"></span><img border=0
+width=626 height=285 id="Picture 1"
+src="Partner%20JIRA%20User's%20Guide_files/image028.jpg">  </p>
+
+<p class=MsoNormal align=center style='text-align:center'><span
+style='position:absolute;z-index:251669504;left:0px;margin-left:224px;
+margin-top:156px;width:219px;height:72px'><img width=219 height=72
+src="Partner%20JIRA%20User's%20Guide_files/image029.png"></span><img border=0
+width=606 height=270 id="Picture 4"
+src="Partner%20JIRA%20User's%20Guide_files/image030.jpg"></p>
+
+<p class=MsoNormal>The next status change you should expect will be when the
+issue is Ready for Customer Test:</p>
+
+<p class=MsoNormal align=center style='text-align:center'><span
+style='position:absolute;z-index:251670528;left:0px;margin-left:232px;
+margin-top:142px;width:225px;height:77px'><img width=225 height=77
+src="Partner%20JIRA%20User's%20Guide_files/image031.png"></span><img border=0
+width=601 height=270 id="Picture 7"
+src="Partner%20JIRA%20User's%20Guide_files/image032.jpg"></p>
+
+<span style='font-size:11.0pt;line-height:115%;font-family:"Calibri","sans-serif"'><br
+clear=all style='page-break-before:always'>
+</span>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>When the issue has been released to you, you can begin
+Customer Testing to verify that the original issue on your system has been
+resolved.  You have the option to either Fail or Pass CAT:</p>
+
+<p class=MsoNormal align=center style='text-align:center'><span
+style='position:absolute;z-index:251672576;left:0px;margin-left:231px;
+margin-top:162px;width:199px;height:49px'><img width=199 height=49
+src="Partner%20JIRA%20User's%20Guide_files/image033.png"></span><span
+style='position:absolute;z-index:251671552;left:0px;margin-left:270px;
+margin-top:116px;width:213px;height:32px'><img width=213 height=32
+src="Partner%20JIRA%20User's%20Guide_files/image034.png"></span><img border=0
+width=611 height=271 id="Picture 10"
+src="Partner%20JIRA%20User's%20Guide_files/image035.jpg"></p>
+
+<p class=MsoNormal>If you select Fail CAT, you are required to enter a comment
+with details and then the issue is reopened:</p>
+
+<p class=MsoNormal><img border=0 width=624 height=203 id="Picture 42"
+src="Partner%20JIRA%20User's%20Guide_files/image036.jpg"></p>
+
+<p class=MsoNormal align=center style='text-align:center'><img border=0
+width=624 height=165 id="Picture 43"
+src="Partner%20JIRA%20User's%20Guide_files/image037.jpg"></p>
+
+<span style='font-size:11.0pt;line-height:115%;font-family:"Calibri","sans-serif"'><br
+clear=all style='page-break-before:always'>
+</span>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>Otherwise, if you Pass CAT, the issue is now ready for
+production. </p>
+
+<p class=MsoNormal><span style='position:absolute;z-index:251673600;margin-left:
+288px;margin-top:194px;width:260px;height:84px'><img width=260 height=84
+src="Partner%20JIRA%20User's%20Guide_files/image038.png"></span><img border=0
+width=626 height=317 id="Picture 13"
+src="Partner%20JIRA%20User's%20Guide_files/image039.jpg"></p>
+
+<p class=MsoNormal>GTECH will update the status to Closed when they make the
+release.</p>
+
+<p class=MsoNormal><span style='position:absolute;z-index:251674624;margin-left:
+231px;margin-top:156px;width:239px;height:67px'><img width=239 height=67
+src="Partner%20JIRA%20User's%20Guide_files/image040.png"></span><img border=0
+width=626 height=244 id="Picture 16"
+src="Partner%20JIRA%20User's%20Guide_files/image041.jpg"></p>
+
+<p class=MsoNormal>* <b>Note that TIR – Live uses the same workflow as TIR –
+Customer Test, which has been shown here.</b></p>
+
+<b><span style='font-size:11.0pt;line-height:115%;font-family:"Calibri","sans-serif"'><br
+clear=all style='page-break-before:always'>
+</span></b>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<h1><a name="_Toc311558226">Chapter 5: Enhancement Requests</a></h1>
+
+<p class=MsoNormal>As with TIR – Customer Test and TIR – Live, there are
+multiple ways to create an Enhancement Request.</p>
+
+<p class=MsoNormal align=center style='text-align:center'><img border=0
+width=626 height=424 id="Picture 19"
+src="Partner%20JIRA%20User's%20Guide_files/image042.jpg"></p>
+
+<p class=MsoNormal>Required fields are represented by red asterisks and
+include:</p>
+
+<p class=MsoListParagraphCxSpFirst style='text-indent:-.25in'><span
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Summary</p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-.25in'><span
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Reporter</p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-.25in'><span
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Description</p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-.25in'><span
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Requester</p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-.25in'><span
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Requesting Agency</p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-.25in'><span
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Revenue-Generating</p>
+
+<p class=MsoListParagraphCxSpLast style='text-indent:-.25in'><span
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Product</p>
+
+<p class=MsoNormal>Optional fields:</p>
+
+<p class=MsoListParagraphCxSpFirst style='text-indent:-.25in'><span
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>External ID: if you have also reported this issue in another
+system, please include that ID for reference</p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-.25in'><span
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Site-Specific Product</p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-.25in'><span
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Priority</p>
+
+<p class=MsoListParagraphCxSpLast style='text-indent:-.25in'><span
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Attachment: these may include screenshots or error reports that
+you will help explain the issue</p>
+
+<p class=MsoNormal>We will use the following issue as an example:</p>
+
+<p class=MsoNormal align=center style='text-align:center'><img border=0
+width=624 height=477 id="Picture 46"
+src="Partner%20JIRA%20User's%20Guide_files/image043.jpg"></p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<span style='font-size:11.0pt;line-height:115%;font-family:"Calibri","sans-serif"'><br
+clear=all style='page-break-before:always'>
+</span>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>After you create the issue, you will be brought to this
+page:</p>
+
+<p class=MsoNormal><img border=0 width=626 height=374
+src="Partner%20JIRA%20User's%20Guide_files/image044.jpg"></p>
+
+<h2><a name="_Toc311558227">&nbsp;</a></h2>
+
+<h2>Understanding Enhancement Request Workflow</h2>
+
+<p class=MsoNormal>As with Customer Test and TIR-Live issues, from this point forward,
+all communication about the issue will occur in the Comments section.  Click
+Submit Comment to GTECH to write a comment, submit a question, or respond to a
+question posed by GTECH regarding the issue.   Comments from GTECH will also
+appear in the same location as your comments.</p>
+
+<span style='font-size:11.0pt;line-height:115%;font-family:"Calibri","sans-serif"'><br
+clear=all style='page-break-before:always'>
+</span>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>Submit the Request to GTECH when ready.</p>
+
+<p class=MsoNormal><span style='position:absolute;z-index:251675648;margin-left:
+250px;margin-top:104px;width:87px;height:37px'><img width=87 height=37
+src="Partner%20JIRA%20User's%20Guide_files/image045.png"></span><img border=0
+width=590 height=353 id="Picture 22"
+src="Partner%20JIRA%20User's%20Guide_files/image046.jpg"></p>
+
+<p class=MsoNormal>And the issue will transition to the Open status.<span
+style='position:absolute;z-index:251676672;margin-left:281px;margin-top:190px;
+width:221px;height:85px'><img width=221 height=85
+src="Partner%20JIRA%20User's%20Guide_files/image047.png"></span><img border=0
+width=588 height=397 id="Picture 25"
+src="Partner%20JIRA%20User's%20Guide_files/image048.jpg"></p>
+
+<p class=MsoNormal>GTECH may defer the issue or close it without resolving
+after discussing with you, the customer.  Once deferred, there remains the
+option that the request can be reopened again in the future.  The request may
+also not be approved.  If that is the case, you will see this status change:</p>
+
+<p class=MsoNormal><img border=0 width=624 height=135 id="Picture 59"
+src="Partner%20JIRA%20User's%20Guide_files/image049.jpg"></p>
+
+<p class=MsoNormal>Once a developer has been assigned, progress will begin.</p>
+
+<p class=MsoNormal><span style='position:absolute;z-index:251677696;margin-left:
+302px;margin-top:201px;width:226px;height:91px'><img width=226 height=91
+src="Partner%20JIRA%20User's%20Guide_files/image050.png"></span><img border=0
+width=626 height=340 id="Picture 28"
+src="Partner%20JIRA%20User's%20Guide_files/image051.jpg"></p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<span style='font-size:11.0pt;line-height:115%;font-family:"Calibri","sans-serif"'><br
+clear=all style='page-break-before:always'>
+</span>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>Unless the issue is deferred or closed, the next status
+change you will see is when the request is Ready for Customer Test.</p>
+
+<p class=MsoNormal><span style='position:absolute;z-index:251678720;margin-left:
+322px;margin-top:217px;width:290px;height:88px'><img width=290 height=88
+src="Partner%20JIRA%20User's%20Guide_files/image052.png"></span><img border=0
+width=626 height=336 id="Picture 31"
+src="Partner%20JIRA%20User's%20Guide_files/image053.jpg"></p>
+
+<p class=MsoNormal>Once the request is released, you can begin your testing. 
+You can either Pass CAT or Fail CAT.  Fail CAT can be found by clicking the
+Workflow button.</p>
+
+<p class=MsoNormal><span style='position:absolute;z-index:251680768;margin-left:
+229px;margin-top:161px;width:196px;height:54px'><img width=196 height=54
+src="Partner%20JIRA%20User's%20Guide_files/image054.png"></span><span
+style='position:absolute;z-index:251679744;margin-left:271px;margin-top:115px;
+width:297px;height:50px'><img width=297 height=50
+src="Partner%20JIRA%20User's%20Guide_files/image055.png"></span><img border=0
+width=626 height=285 id="Picture 34"
+src="Partner%20JIRA%20User's%20Guide_files/image056.jpg"></p>
+
+<p class=MsoNormal>  If you Fail CAT, you’ll be required to enter details in
+the comment box.  Otherwise, if you Pass CAT, the issue is now Ready for
+Production. </p>
+
+<p class=MsoNormal>GTECH will update the status to Closed, Passed Verification
+when they make the release.</p>
+
+</div>
+
+</body>
+
+</html>

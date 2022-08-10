@@ -1,0 +1,444 @@
+<div class="panel panel-danger"> 
+  
+
+  <div class="panel-heading"> 
+    <div class="row"> 
+
+      <div class="col-xs-12 col-sm-6 col-md-8"> 
+        <div class="panel-title" id="alerts-title"> 
+          <h3><b id="aid'+i+'"></b>&nbsp&nbsp<span id="timestamp'+i+'"></span></h3> 
+        </div> 
+      </div> 
+
+      <div id="alerts-accordion" class="col-xs-6 col-md-4 text-right"> 
+        <button type="button" class="btn btn-danger btn-lg" data-toggle="collapse" data-target="#collapse'+i+'" >Toggle Alert</button>
+        &nbsp&nbsp
+        <button type="button" class="btn btn-success btn-lg">&nbspArchive&nbsp</button> 
+      </div> 
+
+    </div> 
+  </div> 
+
+
+  <div id="collapse_#" class="panel-collapse collapse in"> 
+    <div class="panel-body"> 
+      
+      <div class="row"> 
+
+        <div class="col-xs-6 col-md-4"> 
+          <div class="thumbnail" id="photo_id_#" style="width:230px"> 
+          </div> 
+        </div> 
+
+        <div class="col-xs-12 col-sm-6 col-md-8"> 
+          <div class="profile-user-info profile-user-info-striped"> 
+            
+            <div class="profile-info-row"> 
+              <div class="profile-info-name"> Phone Number </div> 
+              <div class="profile-info-value"> 
+                <span class="editable" id="phone_cell_#"></span> 
+              </div> 
+            </div> 
+            
+            <div class="profile-info-row"> 
+              <div class="profile-info-name"> First Name </div> 
+              <div class="profile-info-value"> 
+                <span class="editable" id="name_first_#"></span> 
+              </div> 
+            </div> 
+            
+            <div class="profile-info-row"> 
+              <div class="profile-info-name"> Last Name </div> 
+              <div class="profile-info-value"> 
+                <span class="editable" id="name_last_#"></span> 
+              </div> 
+            </div> 
+            
+            <div class="profile-info-row"> 
+              <div class="profile-info-name"> Age </div> 
+              <div class="profile-info-value"> 
+                <span class="editable" id="dob_#"></span> 
+              </div> 
+            </div> 
+            
+            <div class="profile-info-row"> 
+              <div class="profile-info-name"> Medical Issues </div> 
+              <div class="profile-info-value"> 
+                <span class="editable" id="medical_issues_#"></span> 
+              </div> 
+            </div> 
+            
+            <div class="profile-info-row"> 
+              <div class="profile-info-name"> Blood Type </div> 
+              <div class="profile-info-value"> 
+                <span class="editable" id="blood_type_#"></span> 
+              </div> 
+            </div> 
+            
+            <div class="profile-info-row"> 
+              <div class="profile-info-name"> Assigned Dorm Building </div> 
+              <div class="profile-info-value"> 
+                <span class="editable" id="dorm_building_#"></span> 
+              </div> 
+            </div> 
+            
+            <div class="profile-info-row"> 
+              <div class="profile-info-name"> Dorm Room Number </div> 
+              <div class="profile-info-value"> 
+                <span class="editable" id="dorm_roomnum_#"></span> 
+              </div> 
+            </div> 
+            
+            <div class="profile-info-row"> 
+              <div class="profile-info-name"> CWID </div> 
+              <div class="profile-info-value"> 
+                <span class="editable" id="cwid_#"></span> 
+              </div> 
+            </div> 
+            
+            <div class="profile-info-row"> 
+              <div class="profile-info-name"> Registered Email </div> 
+              <div class="profile-info-value"> 
+                <span class="editable" id="email_#"></span> 
+              </div> 
+            </div> 
+          
+          </div> 
+        </div> 
+
+      </div> 
+
+    </div> 
+  </div> 
+
+
+</div>
+
+
+
+
+
+<div class="accordion-style1 panel-group" id="accordion">
+  
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+        <i data-icon-show="ace-icon fa fa-angle-right" data-icon-hide="ace-icon fa fa-angle-down" class="bigger-110 ace-icon fa fa-angle-right"></i>
+            Group Item #1
+          </a>
+        </h4>
+      </div>
+
+      <div id="collapseOne" class="panel-collapse collapse">
+        <div class="panel-body">
+            Panel Body
+        </div>
+      </div>
+
+  </div>
+
+ <!---
+ ... other panels ... 
+ -->
+
+</div>
+
+
+
+
+
+
+
+<!-- CURRENT UPDATED ALERT FORMAT -->
+
+<!-- Alert -->
+<div class="panel panel-danger" id="object'+i+'">
+
+  <!-- Alert title -->
+  <div class="panel-heading row">
+    <!-- Alert information buttons -->
+    <div class="panel-title col-xs-6 col-md-8 text-left">
+      <div class="btn btn-danger btn-md no-border" style="margin-right:-4px">
+        Alert ID: <span id="aid'+i+'"></span>
+      </div>
+      <div class="btn btn-danger btn-md no-border" style="margin-right:-4px">
+        <span id="timestamp'+i+'"></span>
+      </div>
+      <div class="btn btn-inverse btn-md no-hover">
+        Location : <span id="initial_loc_lat'+i+'"></span>, <span id="initial_loc_long'+i+'"></span>
+      </div>
+    </div>
+    <!-- /Alert information buttons -->
+
+    <!-- Alert toggle/archive buttons -->
+    <div class="col-xs-6 col-md-4 text-right">
+      <button type="button" class="btn btn-danger btn-md" data-toggle="collapse" data-target="#collapse'+i+'">Toggle Alert</button>
+      <button type="button" class="btn btn-success btn-md">Archive Alert</button>
+    </div>
+    <!-- /Alert toggle/archive buttons -->
+  </div>
+  <!-- /Alert title -->
+
+  <!-- Alert body -->
+  <div id="collapse'+i+'" class="panel-collapse collapse">
+    <div class="panel-body">
+      <div class="row"> 
+
+        <!-- Profile user Photo. -->
+        <div class="col-xs-6 col-md-4"> 
+          <div class="thumbnail" id="photo_id'+i+'" style="width:230px"> 
+          </div> 
+        </div> 
+        <!-- /Profile user Photo. -->
+
+        <!-- Profile user Information. -->
+        <div class="col-xs-12 col-sm-6 col-md-8"> 
+          <div class="profile-user-info profile-user-info-striped"> 
+            
+            <div class="profile-info-row"> 
+              <div class="profile-info-name"> Phone Number </div> 
+              <div class="profile-info-value"> 
+                <span class="editable" id="phone_cell'+i+'"></span> 
+              </div> 
+            </div> 
+            
+            <div class="profile-info-row"> 
+              <div class="profile-info-name"> First Name </div> 
+              <div class="profile-info-value"> 
+                <span class="editable" id="name_first'+i+'"></span> 
+              </div> 
+            </div> 
+            
+            <div class="profile-info-row"> 
+              <div class="profile-info-name"> Last Name </div> 
+              <div class="profile-info-value"> 
+                <span class="editable" id="name_last'+i+'"></span> 
+              </div> 
+            </div> 
+            
+            <div class="profile-info-row"> 
+              <div class="profile-info-name"> Age </div> 
+              <div class="profile-info-value"> 
+                <span class="editable" id="dob'+i+'"></span> 
+              </div> 
+            </div> 
+            
+            <div class="profile-info-row"> 
+              <div class="profile-info-name"> Medical Issues </div> 
+              <div class="profile-info-value"> 
+                <span class="editable" id="medical_issues'+i+'"></span> 
+              </div> 
+            </div> 
+            
+            <div class="profile-info-row"> 
+              <div class="profile-info-name"> Blood Type </div> 
+              <div class="profile-info-value"> 
+                <span class="editable" id="blood_type'+i+'"></span> 
+              </div> 
+            </div> 
+            
+            <div class="profile-info-row"> 
+              <div class="profile-info-name"> Assigned Dorm Building </div> 
+              <div class="profile-info-value"> 
+                <span class="editable" id="dorm_building'+i+'"></span> 
+              </div> 
+            </div> 
+            
+            <div class="profile-info-row"> 
+              <div class="profile-info-name"> Dorm Room Number </div> 
+              <div class="profile-info-value"> 
+                <span class="editable" id="dorm_roomnum'+i+'"></span> 
+              </div> 
+            </div> 
+            
+            <div class="profile-info-row"> 
+              <div class="profile-info-name"> CWID </div> 
+              <div class="profile-info-value"> 
+                <span class="editable" id="cwid'+i+'"></span> 
+              </div> 
+            </div> 
+            
+            <div class="profile-info-row"> 
+              <div class="profile-info-name"> Registered Email </div> 
+              <div class="profile-info-value"> 
+                <span class="editable" id="email'+i+'"></span> 
+              </div> 
+            </div> 
+
+          </div> 
+        </div> 
+        <!-- /Profile user Informaiton -->
+
+      </div>
+    </div>
+  </div>
+  <!-- /Alert body -->
+
+</div>
+<!-- /Alert -->
+
+<!-- /CURRENT UPDATED ALERT FORMAT -->
+
+<!-- NO LINE BREAKS: -->
+<!-- Alert --> <div class="panel panel-danger" id="object'+i+'"> <!-- Alert title --> <div class="panel-heading row"> <!-- Alert information buttons --> <div class="panel-title col-xs-6 col-md-8 text-left"> <div class="btn btn-danger btn-md no-border" style="margin-right:-4px"> Alert ID: <span id="aid'+i+'"></span> </div> <div class="btn btn-danger btn-md no-border" style="margin-right:-4px"> <span id="timestamp'+i+'"></span> </div> <div class="btn btn-inverse btn-md no-hover"> Location : <span id="initial_loc_lat'+i+'"></span>, <span id="initial_loc_long'+i+'"></span> </div> </div> <!-- /Alert information buttons --> <!-- Alert toggle/archive buttons --> <div class="col-xs-6 col-md-4 text-right"> <button type="button" class="btn btn-danger btn-md" data-toggle="collapse" data-target="#collapse'+i+'">Toggle Alert</button> <button type="button" class="btn btn-success btn-md">Archive Alert</button> </div> <!-- /Alert toggle/archive buttons --> </div> <!-- /Alert title --> <!-- Alert body --> <div id="collapse'+i+'" class="panel-collapse collapse"> <div class="panel-body"> <div class="row"> <!-- Profile user Photo. --> <div class="col-xs-6 col-md-4"> <div class="thumbnail" id="photo_id'+i+'" style="width:230px"> </div> </div> <!-- /Profile user Photo. --> <!-- Profile user Information. --> <div class="col-xs-12 col-sm-6 col-md-8"> <div class="profile-user-info profile-user-info-striped"> <div class="profile-info-row"> <div class="profile-info-name"> Phone Number </div> <div class="profile-info-value"> <span class="editable" id="phone_cell'+i+'"></span> </div> </div> <div class="profile-info-row"> <div class="profile-info-name"> First Name </div> <div class="profile-info-value"> <span class="editable" id="name_first'+i+'"></span> </div> </div> <div class="profile-info-row"> <div class="profile-info-name"> Last Name </div> <div class="profile-info-value"> <span class="editable" id="name_last'+i+'"></span> </div> </div> <div class="profile-info-row"> <div class="profile-info-name"> Age </div> <div class="profile-info-value"> <span class="editable" id="dob'+i+'"></span> </div> </div> <div class="profile-info-row"> <div class="profile-info-name"> Medical Issues </div> <div class="profile-info-value"> <span class="editable" id="medical_issues'+i+'"></span> </div> </div> <div class="profile-info-row"> <div class="profile-info-name"> Blood Type </div> <div class="profile-info-value"> <span class="editable" id="blood_type'+i+'"></span> </div> </div> <div class="profile-info-row"> <div class="profile-info-name"> Assigned Dorm Building </div> <div class="profile-info-value"> <span class="editable" id="dorm_building'+i+'"></span> </div> </div> <div class="profile-info-row"> <div class="profile-info-name"> Dorm Room Number </div> <div class="profile-info-value"> <span class="editable" id="dorm_roomnum'+i+'"></span> </div> </div> <div class="profile-info-row"> <div class="profile-info-name"> CWID </div> <div class="profile-info-value"> <span class="editable" id="cwid'+i+'"></span> </div> </div> <div class="profile-info-row"> <div class="profile-info-name"> Registered Email </div> <div class="profile-info-value"> <span class="editable" id="email'+i+'"></span> </div> </div> </div> </div> <!-- /Profile user Informaiton --> </div> </div> </div> <!-- /Alert body --> </div> <!-- /Alert -->
+<!-- /NO LINE BREAKS: -->
+      
+
+<!-- '<tbody>
+  <tr>
+    <th>'+data[i].aid+'</th>
+    <th>'+data[i].alert_status+'</th>
+    <th>'+data[i].uid+'</th>
+    <th>'+data[i].start_time+'</th>
+    <th>'+data[i].end_time+'</th>
+    <th>'+data[i].initial_loc_lat+'</th>
+    <th>'+data[i].initial_loc_long+'</th>
+    <th>'+data[i].initial_loc+'</th>
+    <th>'+data[i].end_loc_lat+'</th>
+    <th>'+data[i].end_loc_long+'</th>
+    <th>'+data[i].end_loc+'</th>
+    <th>'+data[i].location_history+'</th>
+  </tr>
+</tbody>' -->  
+
+
+
+<!-- TEMPLATE ALERT FORMAT -->
+
+<script type="text/template" id="alert_template">
+
+  <div id="collection">
+
+    <% _.each(data, function (data) { %>
+      <!-- Alert -->
+      <div class="panel panel-danger" id="object<% data.aid %>">
+
+        <!-- Alert title -->
+        <div class="panel-heading row">
+          <!-- Alert information buttons -->
+          <div class="panel-title col-xs-6 col-md-8 text-left">
+            <div class="btn btn-danger btn-md no-border" style="margin-right:-4px">
+              Alert ID: <span id="<% data.aid %>"><% data.aid %></span>
+            </div>
+            <div class="btn btn-danger btn-md no-border" style="margin-right:-4px">
+              <span id="timestamp<% data.aid %>"><% data.timestamp %></span>
+            </div>
+            <div class="btn btn-inverse btn-md no-hover">
+              Location : <span id="initial_loc_lat<% data.aid %>"><% data.initial_loc_lat %></span>, <span id="initial_loc_long<% data.aid %>"><% data.initial_loc_long %></span>
+            </div>
+          </div>
+          <!-- /Alert information buttons -->
+
+          <!-- Alert toggle/archive buttons -->
+          <div class="col-xs-6 col-md-4 text-right">
+            <button type="button" class="btn btn-danger btn-md" data-toggle="collapse" data-target="#collapse<% data.aid %>">Toggle Alert</button>
+            <button type="button" class="btn btn-success btn-md">Archive Alert</button>
+          </div>
+          <!-- /Alert toggle/archive buttons -->
+        </div>
+        <!-- /Alert title -->
+
+        <!-- Alert body -->
+        <div id="collapse<% data.aid %>" class="panel-collapse collapse">
+          <div class="panel-body">
+            <div class="row"> 
+
+              <!-- Profile user Photo. -->
+              <div class="col-xs-6 col-md-4"> 
+                <div class="thumbnail" id="photo_id<% data.aid %>" style="width:230px"> 
+                </div> 
+              </div> 
+              <!-- /Profile user Photo. -->
+
+              <!-- Profile user Information. -->
+              <div class="col-xs-12 col-sm-6 col-md-8"> 
+                <div class="profile-user-info profile-user-info-striped"> 
+                  
+                  <div class="profile-info-row"> 
+                    <div class="profile-info-name"> Phone Number </div> 
+                    <div class="profile-info-value"> 
+                      <span class="editable" id="phone_cell<% data.aid %>"><% data.phone_cell %></span> 
+                    </div> 
+                  </div> 
+                  
+                  <div class="profile-info-row"> 
+                    <div class="profile-info-name"> First Name </div> 
+                    <div class="profile-info-value"> 
+                      <span class="editable" id="name_first<% data.aid %>"><% data.name_first %></span> 
+                    </div> 
+                  </div> 
+                  
+                  <div class="profile-info-row"> 
+                    <div class="profile-info-name"> Last Name </div> 
+                    <div class="profile-info-value"> 
+                      <span class="editable" id="name_last<% data.aid %>"><% data.name_last %></span> 
+                    </div> 
+                  </div> 
+                  
+                  <div class="profile-info-row"> 
+                    <div class="profile-info-name"> Age </div> 
+                    <div class="profile-info-value"> 
+                      <span class="editable" id="dob<% data.aid %>"><% data.dob %></span> 
+                    </div> 
+                  </div> 
+                  
+                  <div class="profile-info-row"> 
+                    <div class="profile-info-name"> Medical Issues </div> 
+                    <div class="profile-info-value"> 
+                      <span class="editable" id="medical_issues<% data.aid %>"><% data.medical_issues %></span> 
+                    </div> 
+                  </div> 
+                  
+                  <div class="profile-info-row"> 
+                    <div class="profile-info-name"> Blood Type </div> 
+                    <div class="profile-info-value"> 
+                      <span class="editable" id="blood_type<% data.aid %>"><% data.blood_type %></span> 
+                    </div> 
+                  </div> 
+                  
+                  <div class="profile-info-row"> 
+                    <div class="profile-info-name"> Assigned Dorm Building </div> 
+                    <div class="profile-info-value"> 
+                      <span class="editable" id="dorm_building<% data.aid %>"><% data.dorm_building %></span> 
+                    </div> 
+                  </div> 
+                  
+                  <div class="profile-info-row"> 
+                    <div class="profile-info-name"> Dorm Room Number </div> 
+                    <div class="profile-info-value"> 
+                      <span class="editable" id="dorm_roomnum<% data.aid %>"><% data.dorm_roomnum %></span> 
+                    </div> 
+                  </div> 
+                  
+                  <div class="profile-info-row"> 
+                    <div class="profile-info-name"> CWID </div> 
+                    <div class="profile-info-value"> 
+                      <span class="editable" id="cwid<% data.aid %>"><% data.cwid %></span> 
+                    </div> 
+                  </div> 
+                  
+                  <div class="profile-info-row"> 
+                    <div class="profile-info-name"> Registered Email </div> 
+                    <div class="profile-info-value"> 
+                      <span class="editable" id="email<% data.aid %>"><% data.email %></span> 
+                    </div> 
+                  </div> 
+
+                </div> 
+              </div> 
+              <!-- /Profile user Informaiton -->
+
+            </div>
+          </div>
+        </div>
+        <!-- /Alert body -->
+
+      </div>
+      <!-- /Alert -->
+    <% }); %>
+  </div>
+  
+</script>
+
+<!-- /TEMPLATE ALERT FORMAT --> 

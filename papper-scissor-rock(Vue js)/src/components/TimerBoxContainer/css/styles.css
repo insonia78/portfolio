@@ -1,0 +1,10 @@
+.TimerBoxContainer-pagecontainer {
+
+    background-color: black;
+    width:14em;
+    min-height:14em;
+    height:auto;
+    border-radius: 5px;
+    border: 2px solid #c4aead;
+
+}

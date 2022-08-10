@@ -1,0 +1,55 @@
+@import '~src/theme';
+
+#content_header {
+  padding: 0;
+  margin: -10px 0 0 0;
+
+  @include respond-to('desktop') {
+    padding: 0.5rem 1rem;
+    position: sticky;
+    top: 130px;
+    margin: 0;
+  }
+
+  .page-actions {
+    display: none;
+
+    &.has-actions {
+      display: block;
+      background: $color-offwhite;
+      width: 100%;
+
+      @include respond-to('desktop') {
+        background: transparent;
+        width: auto;
+      }
+
+
+      > ul {
+        list-style-type: none;
+        margin: 0.5rem 0;
+        padding: 0;
+        text-align: center;
+
+        > li.page-actions-label {
+          display: none;
+
+          @include respond-to('desktop') {
+            color: #777;
+            display: inline;
+            font-weight: bold;
+            line-height: 48px;
+            padding: 0.2rem;
+            text-transform: uppercase;
+            vertical-align: bottom;
+          }
+        }
+
+        > li {
+          display: inline;
+          padding-left: 0.5rem;
+        }
+      }
+    }
+  }
+}

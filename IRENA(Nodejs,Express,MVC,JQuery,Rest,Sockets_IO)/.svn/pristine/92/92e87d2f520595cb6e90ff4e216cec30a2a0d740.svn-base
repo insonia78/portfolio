@@ -1,0 +1,586 @@
+form.form-horizontal#valuationOfStorageForm(role='form' method='POST', action='/calculate-valuation')
+  //-h2 System
+  .row
+    .container.col-lg-10
+      .col-sm-6.col-md-6 
+        table.table.table-striped.table-bordered.table-hover.table-condensed
+          tbody
+            tr
+              th.col-lg-1 Country
+              |       
+              td.col-lg-4
+                include country-option.pug
+
+  
+  .container.col-lg-8#Programs
+  a(onClick='getModalDictionary("#Program-info")')
+    h2 Programs
+  .col-lg-8
+    include sub-forms/policies-form.pug
+
+  
+  .row#blankspace
+    .row
+    .container.col-lg-12#Demand
+      a(onClick='getModalDictionary("#Demand-info")')
+          h2 Demand 
+      .col-sm-12.col-lg-8   
+        table.table.table-striped.table-bordered.table-hover.table-condensed
+          thead
+            tr
+              th.col-lg-3
+              |
+              th.col-lg-2 Unit
+              |
+              th.col-lg-2 Year 1
+              |
+              th.col-lg-2 Year 2
+
+          tbody       
+        
+            tr
+              th Demand Profile
+              | 
+              td
+              |         
+              td
+                #demandprofile1
+                  include sub-forms/select-region.pug
+                  input.form-control#userdemandprofile1(type='hidden' name='userdemandprofile1' )
+              td
+                #demandprofile2
+                  include sub-forms/select-region.pug
+                  input.form-control#userdemandprofile2(type='hidden' name='userdemandprofile2')
+    
+            tr
+              th Peak Electricity Demand
+              |
+              td MW          
+              td
+                input.form-control#inputpeak1(type='text' name='inputpeak1' value='11229')
+              td
+                input.form-control#inputpeak2(type='text' name='inputpeak2')
+          
+            tr
+              th Annual Energy Demand
+              | 
+              td GWh
+              |         
+              td
+                // /change element ID 
+                input.form-control#inputenergy1(type='text' name='inputenergy1' value='80257')
+              td
+                // /change element ID 
+                input.form-control#inputenergy2(type='text' name='inputenergy2')
+
+            tr
+              th Peak Demand Growth Rate
+              |
+              td % (0-100)
+              |          
+              td
+                input.form-control#peakdemgrowrt1(type='text' name='peakdemgrowrt1' )
+              td
+                input.form-control#peakdemgrowrt2(disabled)
+            tr
+              th Energy Growth Rate
+              |
+              td % (0-100)
+              |          
+              td
+                input.form-control#energydemgrowrt1(type='text' name='energydemgrowrt1')
+              td
+                input.form-control#energydemgrowrt2(disabled)
+      .row      
+        .col-sm-12.col-md-6.col-lg-6
+          #demand-profile-graph1.profile-graph
+        .col-sm-12.col-md-6.col-lg-6
+          #demand-profile-graph2.profile-graph
+
+  .row#blankSpace
+  a(onClick='getModalDictionary("#Generation-info")')
+      h2 Generation 
+  .col-lg-12#Generation-Conventional
+    h3 Conventional
+    .row
+     
+      .col-sm-12.col-md-12.col-lg-12.table-responsive
+        include sub-forms/gen-by-fuel-dynamic.pug
+      .col-sm-12.col.md-8.XL.col-lg-6
+        #generation-cap-fuel(style="height: 100%;")
+        // /img(src='images/installed-capacity.png' style='width:100%')
+
+
+
+  .col-lg-12#Generation-Renewables
+    h3 Renewables
+    .row
+      .col-lg-8.col-xs-12
+        table.table.table-striped.table-bordered.table-hover.table-condensed
+          thead
+            tr
+              th.col-lg-2 
+              |
+              th Installed Capacity Year 1
+              | 
+              th Installed Capacity Year 2
+              |                   
+              th.col-lg-3 Profile (%)
+              |         
+              th Cap at Peak (%)
+            tr
+              th
+              |
+              th (MW)
+              |
+              th (MW)
+              |
+              th (0 - 100)
+              |
+              th (0 - 100)  
+
+          tbody
+          
+            tr
+              th Wind
+              |              
+              td                 
+                input.form-control#windcap1(type='text' name='windcap1' value='1300')     
+              td                 
+                input.form-control#windcap2(type='text' name='windcap2' value='1500')  
+              td 
+                #basewind
+                  include sub-forms/select-renewables.pug
+                  input.form-control#userbasewind(type='hidden' name='userbasewind' )
+              td 
+                input.form-control#windpeakcap(type='text' name='windpeakcap' value='25')
+            tr
+              th Solar
+              |              
+              td
+                input.form-control#solarcap1(type='text' name='solarcap1' value='300')
+              td
+                input.form-control#solarcap2(type='text' name='solarcap2' value='350')       
+              td
+                #basesolar
+                  include sub-forms/select-renewables.pug
+                  input.form-control#userbasesolar(type='hidden' name='userbasesolar' )
+              td 
+                input.form-control#solarpeakcap(type='text' name='solarpeakcap' value='40')
+      .row
+      .col-lg-6.col-xs-12
+        #wind-profile-graph.profile-graph
+
+      .col-lg-6.col-xs-12
+        #solar-profile-graph.profile-graph
+
+    .row
+    .col-lg-12#Generation-Hydro
+    h3 Hydro
+
+  .col-lg-6
+    table.table.table-striped.table-bordered.table-hover.table-condensed
+      thead
+        tr
+          th 
+          th Value
+      tbody
+        tr          
+          th Capacity Year 1 (MW)
+        
+          td
+            input.form-control#hypmax1(type='text' name='hypmax1' value='894')
+        tr          
+          th Capacity Year 2 (MW)
+        
+          td
+            input.form-control#hypmax2(type='text' name='hypmax2' value='950')
+        tr          
+          th 1st Reserve Cost ($/MW)
+        
+          td 
+            input.form-control#hydrores1(type='text' name='hydrores1' value='2')
+        tr          
+          th 2nd Reserve Cost ($/MW)
+        
+          td 
+            input.form-control#hydrores2(type='text' name='hydrores2' value='1')
+        tr          
+          th 3rd Reserve Cost ($/MW)
+        
+          td 
+            input.form-control#hydrores3(type='text' name='hydrores3' value='1')
+  .row     
+  .col-lg-12.col-sm-12.col-md-12
+    include sub-forms/hydro-monthly-energy.pug
+  .row
+  .col-lg-12.col-sm-12.col-md-12
+    #hydro-profile-graph
+
+
+  //- h1 Pie chart for total generation
+      //.col-lg-4.col-lg-offset-4
+        .input-group.input-group-lg
+          span.input-group-addon Total Generation Capacity (MW)
+          span#totalGenerationCapacity.input-group-addon 0
+
+      // /table.table.table-striped.table-bordered.table-hover
+        // thead
+        tbody
+          tr
+            th.col-lg-1 Total Generation Capacity (GWh)
+            |          
+            td.col-lg-1
+              p#totalGenerationCapacity(type='text' name='totalGenerationCapacity') 
+  
+  .row#blankspace
+  .col-lg-12#Reserves
+  a(onClick='getModalDictionary("#Reserve-info")')
+    h2 Reserves
+
+  .col-lg-6   
+    table#reserves-table.table.table-striped.table-bordered.table-hover.table-condensed
+      thead
+        tr
+          th.col-lg-2
+          |
+          th.col-lg-1 Provision (MW)
+          |
+          th.col-lg-1 Duration (min)       
+
+      tbody    
+        tr
+          th Primary Reserves
+          |          
+          td
+            input.form-control#p_reserves(type='text' name='p_reserves' value='450')
+          |          
+          td
+            input.form-control(type='text' disabled, placeholder="15")
+        tr
+          th Secondary Reserves
+          |          
+          td
+            input.form-control#s_reserves(type='text' name='s_reserves' value='450')
+          |          
+          td
+            input.form-control(type='text' disabled, placeholder="15")
+        tr
+          th Tertiary Reserves
+          |          
+          td
+            input.form-control#t_reserves(type='text' name='t_reserves' value='1200')
+          |          
+          td
+            input.form-control(type='text' disabled, placeholder="15")          
+
+
+  .row#blankspace
+  .row#Energystorage
+  .col-lg-12
+  h2 Existing Energy Storage
+
+  .col-lg-8   
+    include sub-forms/existing-storage-dynamic.pug
+
+
+  //- .row#blankspace
+  //- .col-lg-12
+  //- h2 Existing Energy Storage
+
+  //- .col-lg-4   
+  //-   table#existing-energy-table.table.table-striped.table-bordered.table-hover
+  //-     thead
+  //-       tr
+  //-         th.col-lg-1 Type of Storage
+  //-         |
+  //-         th.col-lg-1 Power Capacity (MW)
+  //-         |
+  //-         th.col-lg-1 Energy Capacity (MWh)
+      
+  //-     tbody    
+  //-       tr.entry
+  //-         th
+  //-           include sub-forms/select-storage.pug               
+  //-         td
+  //-           input.form-control.value(type='text' name='value' value='450')
+  //-         td
+  //-           input.form-control.value1(type='text' name='value1' value='450')                
+        
+  //-       tr.entry
+  //-         th
+  //-           include sub-forms/select-storage.pug                   
+  //-         td
+  //-           input.form-control.value(type='text' name='value' value='450')
+  //-         td
+  //-           input.form-control.value1(type='text' name='value1' value='450')                
+
+  //-       tr.entry
+  //-         th
+  //-           include sub-forms/select-storage.pug                   
+  //-         td
+  //-           input.form-control.value(type='text' name='value' value='450')
+  //-         td
+  //-           input.form-control.value1(type='text' name='value1' value='450')          
+
+  .row
+  .col-lg-8
+  a(onClick='getModalDictionary("#Storage-info")')
+    h2 Energy Storage 
+
+  .col-lg-8
+    .table-responsive
+      table#reserves-table.table.table-striped.table-bordered.table-hover.table-condensed
+        thead
+          tr
+            th.col-lg-3
+            |
+            th.col-lg-2 Unit
+            |  
+            th.col-lg-2 Short Duration
+            |
+            th.col-lg-2 Medium-Short Duration      
+            |
+            th.col-lg-2 Medium-Long Duration
+            |
+            th.col-lg-2 Long Duration
+          tr
+            th.col-lg-3
+            |
+            th.col-lg-2
+            |  
+            th.col-lg-2 (30 min) 
+            |
+            th.col-lg-2 (1 hr)       
+            |
+            th.col-lg-2 (2 hrs) 
+            |
+            th.col-lg-2 (4+ hrs)
+        tbody    
+          tr
+            th Round Trip Efficiency
+            |
+            td % (0 - 100)
+            |          
+            td
+              input.form-control#esrt2c(type='text' name='esrt2c' value='90')
+            |          
+            td
+              input.form-control#esrt1c(type='text' name='esrt1c' value='90')
+            |          
+            td
+              input.form-control#esrt5c(type='text' name='esrt5c' value='90')
+            |          
+            td
+              input.form-control#esrt25c(type='text' name='esrt25c' value='90')
+          tr
+            th Intallation Cost
+            |
+            td $/kWh
+            |          
+            td
+              input.form-control#escost2c(type='text' name='escost2c' value='1250')
+            |          
+            td
+              input.form-control#escost1c(type='text' name='escost1c' value='500')
+            |          
+            td
+              input.form-control#escost5c(type='text' name='escost5c' value='325')
+            |          
+            td
+              input.form-control#escost25c(type='text' name='escost25c' value='300')
+          tr
+            th FO&M Cost
+            |
+            td $/kWh
+            |          
+            td
+              input.form-control#esfom2c(type='text' name='esfom2c')
+            |          
+            td
+              input.form-control#esfom1c(type='text' name='esfom1c')
+            |          
+            td
+              input.form-control#esfom5c(type='text' name='esfom5c')
+            |          
+            td
+              input.form-control#esfom25c(type='text' name='esfom25c')
+          tr
+            th VO&M Cost
+            |
+            td $/kWh
+            |          
+            td
+              input.form-control#esvom2c(type='text' name='esvom2c')
+            |          
+            td
+              input.form-control#esvom1c(type='text' name='esvom1c')
+            |          
+            td
+              input.form-control#esvom5c(type='text' name='esvom5c')
+            |          
+            td
+              input.form-control#esvom25c(type='text' name='esvom25c')               
+
+    .col-lg-4.col-lg-offset-4
+      .input-group.input-group-lg
+        span.input-group-addon Blended Annual Cost ($/kWh)
+        span#blended-cost.input-group-addon 110
+
+        //table.table.table-striped.table-bordered.table-hover
+          // thead
+          tbody
+            tr
+              th Blended Cost ($/kWh)
+              |          
+              td
+                input.form-control#blended-cost(type='text' name='totalGenerationCapacity') 
+  
+  .row#blankspace
+  .row#Macroeconomics
+  .row
+    .col-lg-8
+      a(onClick='getModalDictionary("#Other-info")')
+        h2 Macro Economic
+      .col-lg-10
+        table#valuationInputTable-Cap.table.table-striped.table-bordered.table-hover.table-condensed
+          thead
+            tr
+              th.col-lg-4
+              |
+              th.col-lg-1 Unit
+              |
+              th.col-lg-1 Value
+
+          tbody
+          tr
+            th Population
+            | 
+            td 
+            td
+              input.form-control#popul(type='text' name='popul')
+            | 
+          tr
+            th Carbon Cost
+            | 
+            td $/Metric Ton
+            td
+              input.form-control#carboncost(type='text' name='carboncost')
+            |                   
+          // /tr
+          tr
+            th Length of Transmission Lines
+            | 
+            td Km         
+            td
+              input.form-control#translength(type='text' name='translength')
+            |          
+          // /tr
+          tr
+            th Length of Distribution Lines
+            |
+            td Km          
+            td
+              input.form-control#distlength(type='text' name='distlength')     
+            tr
+              th Planning Reserve Margin
+              |          
+              td % (0 - 100)
+              |
+              td
+                input.form-control#planresmargin(type='text' name='planresmargin')
+             
+            // /tr
+            tr
+              th Transmission Congestion Indicator
+              |
+              td % (0 - 100)
+              |          
+              td
+                input.form-control#transcongind(type='text' name='transcongind')
+              
+            // /tr
+            tr
+              th Demand Forecast Risk
+              |
+              td % (0 - 100)
+              |          
+              td
+                input.form-control#demforrisk(type='text' name='demforrisk')
+             
+            // /tr
+            tr
+              th Geo Diversity Indicator
+              |
+              td % (0 - 100)
+              |          
+              td
+                input.form-control#geodivind(type='text' name='geodivind')
+              
+            // /tr
+            tr
+              th Outage Indices
+              |
+              td Hours
+              |          
+              td
+                input.form-control#outageIndices(type='text' name='outageIndices')
+              
+            // /tr
+            tr
+              th Value of Loss Load
+              |
+              td $/MWh
+              |          
+              td
+                input.form-control#vallossload(type='text' name='vallossload')
+             
+            // /tr
+            tr
+              th Renewables Output Forecast Risk
+              |
+              td % (0 - 100)
+              |          
+              td
+                input.form-control#renoutforrisk(type='text' name='renoutforrisk' value='10')
+              
+            // /tr
+            tr
+              th Frequency Regulation Market Payment or Value
+              | 
+              td $/MW
+              |         
+              td
+                input.form-control#freregvalue(type='text' name='freregvalue' value='250000')
+            
+            // /tr
+            tr
+              th Value of Avoided Generation Cost
+              |
+              td $/kW
+              |          
+              td
+                input.form-control#peakcapital(type='text' name='peakcapital' value='1200')
+            tr
+              th US Dollar to Local Currency Conversion Factor
+              |
+              td N/A
+              |          
+              td
+                input.form-control#convfactor(type='text' name='convfactor' value='6.5')
+        
+
+
+append body
+
+
+  //load dygraphs
+  script(src='//cdnjs.cloudflare.com/ajax/libs/dygraph/2.0.0/dygraph.min.js')
+  //script(src='../js/read-csv.js')
+
+  //load google charts
+  script(type='text/javascript', src='https://www.gstatic.com/charts/loader.js')
+
+  //plot graphs
+  script(src='../js/graphs.js')
+  //script(src='../js/inputs.js')

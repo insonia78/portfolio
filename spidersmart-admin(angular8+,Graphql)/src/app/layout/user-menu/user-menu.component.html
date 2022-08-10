@@ -1,0 +1,12 @@
+<!-- <mat-icon fxShow fxHide.xs aria-hidden="true" [matMenuTriggerFor]="account" id="account_menu">account_box</mat-icon>
+<mat-menu #account="matMenu">
+  <img src="#" style="width: 100px; height: 100px; margin: 1rem auto; display: block; border: 1px #000 solid; background: #ddd;" />
+
+  <button mat-menu-item><mat-icon>person</mat-icon> Profile</button>
+  <button mat-menu-item><mat-icon>settings</mat-icon> Settings</button>
+  <button mat-menu-item><mat-icon>exit_to_app</mat-icon> Sign Out</button>
+</mat-menu>
+
+<!-- mobile view -->
+<!-- <button mat-icon-button id="userMenuLaunch"><mat-icon>person</mat-icon></button> -->
+<a mat-icon-button href="{{logoutUrl}}"><mat-icon id="account_menu">exit_to_app</mat-icon></a>

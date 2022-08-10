@@ -1,0 +1,206 @@
+$(
+    function()
+    {
+	console.log("loading");
+
+	$('button[type="submit"]').click(	
+	    function (e)
+	    {
+		console.log("button pressed");
+		e.preventDefault();
+
+		if (!validateFields())
+		{
+		    return;
+		}
+		
+		var valuationData = {};
+		valuationData.peakCapacity = $('#peakCapacity').val();
+		valuationData.systemType = $('#systemType').val();
+		valuationData.milesOfTransmission = $('#milesOfTransmission').val();
+		valuationData.milesOfDistribution = $('#milesOfDistribution').val();
+		valuationData.peakDemand = $('#peakDemand').val();
+		valuationData.peakDemandGrowthRate = $('#peakDemandGrowthRate').val();
+		// valuationData. = $('#').val();
+		// valuationData. = $('#').val();
+		// valuationData. = $('#').val();
+		// valuationData. = $('#').val();
+		
+		$.ajax(
+    		    {
+    			type: 'POST',
+    			url: 'calculate-valuation',
+    			data: valuationData,
+    			success: populateResponse
+    		    }
+		);
+	    }
+	);
+
+	// $('#country')[0].selectedIndex = -1;
+	
+	$('#P_cap_es_200C').html("");
+	$('#E_cap_es_200C').html("");
+	$('#P_cap_es_100C').html("");
+	$('#E_cap_es_100C').html("");
+	$('#P_cap_es_050C').html("");
+	$('#E_cap_es_050C').html("");
+	$('#P_cap_es_025C').html("");
+	$('#E_cap_es_025C').html("");
+
+	validate();
+    }
+);
+
+
+function populateResponse(response)
+{
+    console.log(response);
+
+    $('#P_cap_es_200C').html(Math.round(response.P_cap_es_200C * 100) / 100);
+    $('#E_cap_es_200C').html(Math.round(response.E_cap_es_200C * 100) / 100);
+    $('#P_cap_es_100C').html(Math.round(response.P_cap_es_100C * 100) / 100);
+    $('#E_cap_es_100C').html(Math.round(response.E_cap_es_100C * 100) / 100);
+    $('#P_cap_es_050C').html(Math.round(response.P_cap_es_050C * 100) / 100);
+    $('#E_cap_es_050C').html(Math.round(response.E_cap_es_050C * 100) / 100);
+    $('#P_cap_es_025C').html(Math.round(response.P_cap_es_025C * 100) / 100);
+    $('#E_cap_es_025C').html(Math.round(response.E_cap_es_025C * 100) / 100);
+}
+
+
+function validate()
+{
+    $.validator.addMethod(
+	"valueNotEquals",
+	function(value, element, arg)
+	{
+	    return arg != value;
+	},
+	"Value must not equal arg."
+    );
+    
+    $("#valuationOfStorageForm").validate(
+	{
+	    rules:
+	    {
+		peakCapacity:
+		{
+		    required: true,
+		    number: true,
+		    range: [0, 1000000]
+		},
+		country:
+		{
+		    valueNotEquals: "Select a country"
+		}
+	// 	milesOfTransmission:
+	// 	{
+	// 	    required : true,
+	// 	    number: true,
+	// 	    range : [1, 1000000]
+	// 	},
+	// 	milesOfDistribution:
+	// 	{
+	// 	    required : true,
+	// 	    number: true,
+	// 	    range : [1, 1000000]
+	// 	}
+	    },
+	    messages:
+	    {
+		country:
+		{
+		    valueNotEquals: "Please select a country"
+		}
+	    }
+	}
+    );
+}
+
+
+function validateFields()
+{
+    if (!$('#country').valid())
+    {
+	$('#country').focus();
+	return false;
+    }
+
+    if (!$('#peakCapacity').valid())
+    {
+	$('#peakCapacity').focus();
+	return false;
+    }
+    
+    if (!$('#milesOfTransmission').valid())
+    {
+	$('#milesOfTransmission').focus();
+	return false;
+    }
+
+    if (!$('#milesOfDistribution').valid())
+    {
+	$('#milesOfDistribution').focus();
+	return false;
+    }
+
+
+    // if (!$('#').valid())
+    // {
+    // 	$('#').focus();
+    // 	return false;
+    // }
+
+    // if (!$('#').valid())
+    // {
+    // 	$('#').focus();
+    // 	return false;
+    // }
+
+    // if (!$('#').valid())
+    // {
+    // 	$('#').focus();
+    // 	return false;
+    // }
+
+    // if (!$('#').valid())
+    // {
+    // 	$('#').focus();
+    // 	return false;
+    // }
+
+    // if (!$('#').valid())
+    // {
+    // 	$('#').focus();
+    // 	return false;
+    // }
+
+    // if (!$('#').valid())
+    // {
+    // 	$('#').focus();
+    // 	return false;
+    // }
+
+    // if (!$('#').valid())
+    // {
+    // 	$('#').focus();
+    // 	return false;
+    // }
+
+    // if (!$('#').valid())
+    // {
+    // 	$('#').focus();
+    // 	return false;
+    // }
+
+    // if (!$('#').valid())
+    // {
+    // 	$('#').focus();
+    // 	return false;
+    // }
+
+    
+    return true;
+}
+
+

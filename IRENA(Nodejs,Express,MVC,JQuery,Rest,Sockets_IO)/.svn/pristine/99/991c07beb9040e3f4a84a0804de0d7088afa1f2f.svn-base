@@ -1,0 +1,131 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    meta(name='description', content='')
+    meta(name='author', content='')
+    title System Level Tool
+    // Bootstrap Core CSS
+    link(href='../bower_components/bootstrap/dist/css/bootstrap.min.css', rel='stylesheet')
+    // MetisMenu CSS
+    link(href='../bower_components/metisMenu/dist/metisMenu.min.css', rel='stylesheet')
+    // Custom CSS
+    link(href='stylesheets/sb-admin-2.css', rel='stylesheet')
+    
+    // Custom Fonts
+    link(href='../bower_components/font-awesome/css/font-awesome.min.css', rel='stylesheet', type='text/css')
+    link(href='stylesheets/style.css', rel='stylesheet')
+    // HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
+    // WARNING: Respond.js doesn't work if you view the page via file://
+    //if lt IE 9
+      script(src='https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js')
+      script(src='https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js')
+
+    link(rel='stylesheet', href='//cdnjs.cloudflare.com/ajax/libs/dygraph/2.0.0/dygraph.min.css')
+        
+  body
+    #wrapper
+      // Navigation
+      nav.navbar.navbar-default.navbar-fixed-top(role='navigation', style='margin-bottom: 0')
+        .container-fluid.row
+            button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
+                span.sr-only Toggle navigation
+                span.icon-bar
+                span.icon-bar
+                span.icon-bar
+             
+            
+            a.navbar-left(href='#')
+              img.alevoLogo(src='images/Alevo-Analytics-Logo.png', class='img-responsive' alt='Alevo Analytics Logo' style='width:auto; max-height:45px;')
+            span.navbar-left
+                img.img-fluid.alevoLogo(src='../images/gridmaestro-logo1.png') 
+            span
+                p.navbar-text System Level Tool &trade;     
+            span
+                button.btn.btn-primary(type="submit" style='vertical-align: middle; margin-top: 5px;') Calculate
+            span
+                button#save-btn.btn.btn-primary(type="submit" style='vertical-align: middle; margin-top: 5px; margin-left: 5px;') Save 
+                    i.fa.fa-floppy-o.fa-fw
+
+            span.label.label-default Running
+                
+                  
+                  
+
+            ul.nav.navbar-nav.navbar-left
+              li.col-lg-2
+                .input-group
+                  span.input-group-addon Project
+                  select#project-options.form-control.required(name='Projects')
+                    option Select Project
+
+
+    
+              li.col-lg-2
+                .input-group
+                  span.input-group-addon Run
+                  select#run-options.form-control.required(name='Runs')
+                    option Select Run
+
+
+                    //span.badge 2
+              
+              li.dropdown
+                a.dropdown-toggle(data-toggle='dropdown', href='#')
+                  i.text-info #{username}
+                  i.fa.fa-user.fa-fw
+                  i.fa.fa-caret-down
+                ul.dropdown-menu.dropdown-user
+                  li
+                    a(href='#')
+                      i.fa.fa-user.fa-fw
+                      |  User Profile
+                  li
+                    a(href='#')
+                      i.fa.fa-gear.fa-fw
+                      |  Settings
+                  li.divider
+                  li
+                    a(href='login.html')
+                      i.fa.fa-sign-out.fa-fw
+                      |  Logout
+                  // /.dropdown-user
+              // /.navbar-top-links
+
+             
+  
+        .navbar-default.sidebar(role='navigation' style='margin-top: 0px;')
+          .sidebar-nav.navbar-collapse
+            ul#side-menu.nav              
+              li 
+                a(href='inputs')
+                  i.fa.fa-edit.fa-fw
+                  |  Inputs              
+              li
+                a(href='/data-dictionary')
+                  i.fa.fa-book.fa-fw
+                  |  Data Dictionary
+
+                // /.nav-second-level
+             
+          // /.sidebar-collapse
+        // /.navbar-static-side
+    // /#wrapper
+    // jQuery
+    script(src='../bower_components/jquery/dist/jquery.min.js')
+    // Bootstrap Core JavaScript
+    script(src='../bower_components/bootstrap/dist/js/bootstrap.min.js')
+    // Metis Menu Plugin JavaScript
+    script(src='../bower_components/metisMenu/dist/metisMenu.min.js')
+
+    // Custom Theme JavaScript
+    script(src='js/sb-admin-2.js')
+    script(src='js/layout.js')
+
+    #page-wrapper
+        block content
+
+//append body
+  //script(src='../bower_components/datatables/media/js/jquery.dataTables.min.js')

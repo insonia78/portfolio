@@ -1,0 +1,130 @@
+mutation (
+  $label: String!,
+  $name: String!,
+  $type: String!,
+  $streetAddress: String!,
+  $city: String!,
+  $state: String!,
+  $postalCode: String!,
+  $country: String!,
+  $phone: String!,
+  $email: String!,
+  $latitude: String,
+  $longitude: String,
+  $timezone: String,
+  $visible: Boolean,
+  $useInventory: Boolean,
+  $bookCheckoutLimit: Int,
+  $bookCheckoutFrequency: CenterBookCheckoutFrequency,
+  $hours: [CenterHourRangeInput]
+) {
+  createCenter(
+    label: $label,
+    name: $name,
+    type: $type,
+    streetAddress: $streetAddress,
+    city: $city,
+    state: $state,
+    postalCode: $postalCode,
+    country: $country,
+    phone: $phone,
+    email: $email,
+    latitude: $latitude,
+    longitude: $longitude,
+    timezone: $timezone,
+    visible: $visible,
+    useInventory: $useInventory,
+    bookCheckoutLimit: $bookCheckoutLimit,
+    bookCheckoutFrequency: $bookCheckoutFrequency,
+    hours: $hours
+  ) {
+    success
+    data {
+      label
+      name
+      type
+      streetAddress
+      city
+      state
+      postalCode
+      country
+      phone
+      email
+      bookCheckoutFrequency
+      hours {
+        day
+        startTime
+        endTime
+      }
+    }
+    errors
+  }
+}
+
+
+{
+    "label": "test",
+	"name": "test center",
+    "type": "online",
+    "streetAddress": "test street",
+    "city": "testcity",
+    "state": "MD",
+    "postalCode": "123456",
+    "country": "US",
+    "phone": "1234569999",
+    "email": "test@test.com",
+    "latitude": "76.44444493",
+    "longitude": "75.484832234",
+    "timezone": "America/New_York",
+    "visible": true,
+    "useInventory": true,
+    "bookCheckoutLimit": 5,
+    "bookCheckoutFrequency": "WEEKLY",
+    "hours": [
+        {
+            "day": "M",
+            "startTime": "14:00",
+            "endTime": "16:00"
+        },
+        {
+            "day": "R",
+            "startTime": "14:00",
+            "endTime": "16:00"
+        }
+    ]
+}
+
+
+
+{
+  "errors": [
+    {
+      "message": "Variable \"$couuntry\" is not defined.",
+      "extensions": {
+        "category": "graphql"
+      },
+      "locations": [
+        {
+          "line": 25,
+          "column": 14
+        },
+        {
+          "line": 1,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "message": "Variable \"$country\" is never used.",
+      "extensions": {
+        "category": "graphql"
+      },
+      "locations": [
+        {
+          "line": 10,
+          "column": 5
+        }
+      ]
+    }
+  ]
+}

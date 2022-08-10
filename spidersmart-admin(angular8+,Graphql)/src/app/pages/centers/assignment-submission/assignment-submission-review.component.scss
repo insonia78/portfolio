@@ -1,0 +1,113 @@
+@import '~@angular/material/theming';
+@import '~src/theme';
+
+.question-wrapper {
+  border-bottom: 2px #eee solid; 
+  padding: 1.5rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  align-content: flex-start;
+
+  > section {
+    width: 50%;
+    padding: 0 1rem 0.5rem;
+    
+    h2 {
+        font-size: 1rem;
+        font-weight: bold;
+
+        > span {
+            > ::ng-deep p:first-child {
+                display: inline-block;
+            }
+        }
+    }
+
+    > quill-editor {
+      display: inline-block;
+    }
+  }
+
+  .question-content {
+    .question {
+      font-weight: bold;
+    }
+  }
+
+  .question-review {
+    display: flex;
+    flex-direction: column;
+
+    .question-correct {
+      display: flex;
+      align-items: flex-start;
+
+      mat-button-toggle-group {
+        display: inline-flex;
+        margin-left: 1rem;
+
+        mat-button-toggle {
+          font-weight: bold;
+          color: $color-darkgray;
+
+          &:first-child.mat-button-toggle-checked {
+            background: $color-green;
+            color: $color-white;
+          }
+
+          &:last-child.mat-button-toggle-checked {
+            background: $color-red;
+            color: $color-white;
+          }
+        }
+      }
+    }
+
+    .question-comments {
+      margin-top: 1rem;
+
+      quill-editor {
+        height: 100px;
+        display: block;
+
+        ::ng-deep .ql-toolbar,
+        ::ng-deep .ql-editor {
+          background: white;
+        }
+
+        margin: 1rem 0 2rem;
+      }
+    }
+  }
+
+  &.editable:not(.selected) {
+    cursor: pointer;
+  
+    &:hover {
+      @include mat-elevation-transition;
+      @include mat-elevation(3);
+    }
+  }
+
+  &.selected {
+    background: rgb(252, 243, 213);
+    @include mat-elevation-transition;
+    @include mat-elevation(2);
+  }
+
+  &:last-child {
+      border-bottom: 0;
+  }
+}
+
+sm-sticky-panel {
+  .options {
+    position: absolute;
+    right: 0;
+
+    > mat-slide-toggle {
+      margin-left: 1rem;
+    }
+  }
+}

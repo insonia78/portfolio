@@ -1,0 +1,82 @@
+$(function () {
+
+    fuelOptions = ['Biomass',
+        'Compressed Natural Gas (CNG)',
+        'Liquefied Natural Gas (LNG)',
+        'Landfill Gas (LFG)',
+        'Heavy Fuel Oil (HFO)',
+        'Light Fuel Oil (LFO)',
+        'Jet Fuel',
+        'Residual Fuel Oil (RFO)',
+        'Distillate Fuel Oil (DFO)',
+        'Coal',
+        'Uranium'];
+
+
+    //include functionality to add fuel
+    $('#cap-by-fuel-dynamic').on('click', '.btn-add', function (e) {
+        e.preventDefault();
+        console.log('add Generator');
+        addConventionalGen($(this));
+
+    }).on('click', '.btn-remove', function (e) {
+        $(this).parents('.entry:first').remove();
+        e.preventDefault();
+        return false;
+    });
+
+
+
+
+
+    var $sel = $('#cap-by-fuel-dynamic .fuel-options');
+    updateSelection($sel, fuelOptions);
+    // $sel.on('focus',function(){
+
+    //    updateSelection($(this),fuelOptions);
+    // });
+
+
+    $sel.change(function () {
+        var opt = $(this).val();
+        console.log('fuel type: ' + fuelOptions[opt])
+    });
+
+
+
+
+});
+
+
+//update this logic
+function updateSelection(element, opts) {
+    var list = '';
+    //console.log(element);
+    //console.log(opts);
+    for (var k = 0; k < opts.length; k++) {
+        //list += '<option value=' + k + '>' + opts[k] + '</option>';
+        list += '<option>' + opts[k] + '</option>';
+    }
+    element.html(list);
+    element.trigger("chosen:updated");
+}
+
+function addConventionalGen(element) {
+    //var element =  $('#cap-by-fuel-dynamic');
+    var controlForm = $('#cap-by-fuel-dynamic tbody tr:first');
+    //console.log(element)
+    var currentEntry = element.parents('.entry:first');
+    var newEntry = $(currentEntry.clone()).appendTo(controlForm.parents('tbody'));
+
+    newEntry.find('input.cap').val('0');
+
+    currentEntry.find('td span .btn-add',element)
+        .removeClass('btn-add').addClass('btn-remove')
+        .removeClass('btn-primary').addClass('btn-default')
+        .html('<span class="glyphicon glyphicon-minus"></span>');
+
+    newEntry.find('.fuel-options',element).change(function () {
+        //console.log('test1111' + $(this).val());
+        console.log(fuelOptions[$(this).val()]);
+    })
+}

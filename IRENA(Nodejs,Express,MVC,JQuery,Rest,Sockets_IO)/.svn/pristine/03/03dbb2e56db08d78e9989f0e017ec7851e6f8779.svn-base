@@ -1,0 +1,70 @@
+table#storageSizeTable.table.table-striped.table-bordered.table-hover.table-condensed
+  thead
+    tr
+      th.col-lg-2 Category
+      |
+      th.col-lg-1 Power (MW)
+      |          
+      th.col-lg-2 Category
+      |          
+      th.col-lg-1 Energy (MWh)
+
+    // /tr
+  // /thead
+  tbody
+    tr
+      td Short Duration (30 min)
+      |          
+      td
+        .P_cap_es_2C(type='text' name='P_cap_es_2C' disabled)
+      |          
+      td Short Duration (30 min)
+      |          
+      td 
+        .E_cap_es_2C(type='text' name='E_cap_es_2C' disabled)
+    // /tr
+    tr
+      td Medium-Short Duration (1 hr)
+      |          
+      td
+        .P_cap_es_1C(type='text' name='P_cap_es_1C' disabled)
+      |          
+      td Medium-Short Duration (1 hr)
+      |          
+      td 
+        .E_cap_es_1C(type='text' name='E_cap_es_1C' disabled)
+    // /tr
+    tr
+      td Medium-Long Duration (2 hrs)
+      |          
+      td
+        .P_cap_es_05C(type='text' name='P_cap_es_05C' disabled)
+      |          
+      td Medium-Long Duration (2 hrs)
+      |          
+      td 
+        .E_cap_es_05C(type='text' name='E_cap_es_05C' disabled)
+    // /tr
+    tr
+      td Long Duration (4 hrs)
+      |          
+      td
+        .P_cap_es_025C(type='text' name='P_cap_es_025C' disabled)
+      |          
+      td Long Duration (4 hrs)
+      |          
+      td 
+        .E_cap_es_025C(type='text' name='E_cap_es_025C' disabled)
+    tr
+      th Total MW
+      |          
+      td
+        .P_cap_es_total(type='text' name='P_cap_es_total' disabled)
+                
+      th Total MWh
+      |          
+      td
+        .E_cap_es_total(type='text' name='E_cap_es_total' disabled) 
+    // /tr
+  // /tbody	
+// /table

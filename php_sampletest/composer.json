@@ -1,0 +1,12 @@
+{
+    "name": "tomsa/php_sampletest",
+    "authors": [
+        {
+            "name": "tomsa78",
+            "email": "tomsa78@hotmail.it"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "^7.3"
+    }
+}

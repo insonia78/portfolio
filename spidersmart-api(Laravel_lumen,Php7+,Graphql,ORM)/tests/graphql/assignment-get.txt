@@ -1,0 +1,31 @@
+{assignment(id:1){
+  id
+  title
+  description
+  level {
+    id
+    subject {
+      id
+      name
+    }
+    name
+  }
+  questions {
+    id
+    category {
+      id
+      title
+    }
+    type
+    question
+    answers {
+      answer
+      correct
+    }
+    answer
+  }
+  questionCategories {
+    id
+    title
+  }
+}}
