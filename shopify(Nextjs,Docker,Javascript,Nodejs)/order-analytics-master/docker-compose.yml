@@ -1,0 +1,16 @@
+version: "2"
+
+services:
+  postgres:
+    container_name: pg
+    image: "postgres:9.6"
+    volumes:
+      - ./docker/postgres/data:/var/lib/postgres
+    environment:
+      POSTGRES_DATABASE: order_analytics
+      POSTGRES_USER: order_analytics
+      POSTGRES_PASSWORD: MyDN6Wah9nVT5ZrR
+      PGDATA: /var/lib/postgres
+    ports:
+      - "5432:5432"
+./node_modules\.bin\sequelize-auto -o "./models" -d order_analytics -h localhost -u order_analytics -p 5432 -x MyDN6Wah9nVT5ZrR -e postgres
