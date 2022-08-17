@@ -1,0 +1,23 @@
+{
+    "development": {
+      "username": "order_analytics",
+      "password": "MyDN6Wah9nVT5ZrR",
+      "database": "order_analytics",
+      "host": "127.0.0.1",
+      "dialect": "postgres"
+    },
+    "test": {
+      "username": "root",
+      "password": null,
+      "database": "database_test",
+      "host": "127.0.0.1",
+      "dialect": "mysql"
+    },
+    "production": {
+        "username": "order_analytics",
+        "password": "MyDN6Wah9nVT5ZrR",
+        "database": "order_analytics",
+        "host": "localhost",
+        "dialect": "postgres"
+    }
+  }
