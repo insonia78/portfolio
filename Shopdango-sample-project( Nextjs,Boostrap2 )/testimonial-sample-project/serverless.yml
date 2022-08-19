@@ -1,0 +1,5 @@
+name: SHOPDANGO-TESTIMONIAL-SAMPLE-PROJECT
+
+shopDango:
+   component: "@sls-next/serverless-component"   
+  
