@@ -1,0 +1,212 @@
+<script>
+const getClosingBrancket = (type)=>{
+
+      switch(type)
+      {
+          case "{": return "}";
+          case "[": return "]";
+          case "(": return ")";
+          default: return -1;
+      }
+}
+// version 1 
+const matchingBrackets = ( value ) =>{
+
+     if(typeof value !== 'string')
+     {
+           alert("not valid value");
+           return;
+     }
+    // O(n);
+    const array = value.split("").filter((e) => e === "{" || e === "}" || e === "[" || e === "]" || e === "(" || e === ")" );
+    const sequence = [];
+    
+
+    for(let i = 0; i < array.length; i++)
+    {
+        const type = getClosingBrancket(array[i]);
+       
+        if(type !== -1 && sequence.length === 0 )
+              sequence.push(type); 
+        else if( type === -1)
+        {
+          
+             if(sequence[sequence.length -1] !== array[i])
+                   return false;
+             else
+               sequence.splice(sequence.length - 1 ,1);   // better optimizied in version 2         
+                  
+        }     
+        else
+          sequence.push(type);      
+        
+            
+        
+    }
+    return sequence.length === 0 ? true : false;     
+
+} 
+// version 2 
+const matchingBracketsV2 = ( value ) =>{
+
+if(typeof value !== 'string')
+{
+      alert("not valid value");
+      return;
+}
+// O(n);
+const array = value.split("");
+const sequence = [];
+
+
+for(let i = 0; i < array.length; i++)
+{
+      let e = array[i]
+      if( e === "{" || e === "}" || e === "[" || e === "]" || e === "(" || e === ")" )
+      {    
+            
+            const type = getClosingBrancket(array[i]);
+  
+            if(type !== -1 && sequence.length === 0 )
+                  sequence.push(type); 
+            else if( type === -1)
+            {
+                  
+                  if(sequence[sequence.length -1] !== array[i])
+                        return false;
+                  else
+                    sequence.pop();
+                              
+                        
+            }     
+            else
+               sequence.push(type);
+      }      
+   
+       
+   
+}
+
+return sequence.length === 0 ? true : false;     
+
+} 
+
+console.log('matchingBrackets("abc(}[)123}{()")', matchingBrackets("abc(}[)123}{()"),matchingBracketsV2("abc(}[)123}{()"), "===", false);
+console.log('matchingBrackets("abc()[]123{}")', matchingBrackets("abc()[]123{}"),matchingBracketsV2("abc()[]123{}"), "===", true);
+console.log('matchingBrackets("(([[(())]]))")', matchingBrackets("(([[(())]]))"),matchingBracketsV2("(([[(())]]))") , "===", true);
+console.log('matchingBrackets("(([[{(())]]))}")', matchingBrackets("(([[{(())]]))}"),matchingBracketsV2("(([[{(())]]))}"), "===", false );
+console.log('matchingBrackets("(([[(())]])aaaaa)")', matchingBrackets("(([[(())]])aaaaa)"),matchingBracketsV2("(([[(())]])aaaaa)") , "===", true );
+console.log('matchingBrackets("(([[((aaaaa))]])aaaaa)")', matchingBrackets("(([[((aaaaa))]])aaaaa)"),matchingBracketsV2("(([[((aaaaa))]])aaaaa)") , "===", true);
+console.log('matchingBrackets("(a(a[a[(a(a)a)a]a])a)")',matchingBrackets("(a(a[a[(a(a)a)a]a])a)"),matchingBracketsV2("(a(a[a[a((a)a)a]a]a)a)"), "===", true );
+console.log('matchingBrackets("(a(a[a[(a(a)a)a]a])a)")', matchingBrackets("{(a(a[a[(a(a)a)a]a])a)}"),matchingBracketsV2("{(a(a[a[a((a)a)a]a]a)a)}"), "===", true );
+
+const amstrongNumber = (value) =>{ 
+      
+      let stringNumber = value;
+     
+      if(typeof value === 'number' )
+      {       
+          if( Number.isInteger(value)) 
+             stringNumber = value.toString();
+          else{
+            alert(JSON.stringify(value) + 'Floating point , invalid value');
+             return false;   
+          }
+      }
+      else if( typeof value !== 'string')
+       {
+             alert(JSON.stringify(value) + 'invalid value');
+             return false;
+       } 
+      stringNumber = stringNumber.split("");
+      let sum = 0;
+      stringNumber.forEach(e =>{
+         sum += (parseInt(e) ** stringNumber.length); 
+
+      });
+     return sum === parseInt(value) ? true : false;
+        
+}
+console.log('amstrongNumber(153)', amstrongNumber(153), true);
+console.log('amstrongNumber(92727)', amstrongNumber(92727), true);
+console.log('amstrongNumber("92727")', amstrongNumber('92727'), true);
+console.log('amstrongNumber([92727])', amstrongNumber([92727]), false);
+console.log('amstrongNumber(92.727)', amstrongNumber(parseFloat(92.727)), false);
+
+
+const Node = function(value) {
+    
+    this.value = value;  
+    this.previous = null; 
+    this.next = null;
+    
+}
+
+Node.prototype.insertFirst = function (data){
+      
+      let check = this.getFirst();
+      while(check !== null)
+      {                
+            check =   this.getFirst().previous;
+            this.previous = check === null ? this.getFirst() : check;            
+      }
+      
+      
+      const n = new Node(data);
+      n.next = this.getFirst() === null ? this : this.getFirst();
+      this.previous = n;
+      return  this.previous;
+}
+
+Node.prototype.insertLast = function(data){
+      
+      let check = this.getLast(); 
+     while( check !== null)
+     {      
+        check = this.getLast().next;
+        this.next = check === null ? this.getLast() : check;            
+              
+     }
+      const n = new Node(data); 
+      n.previous = this.getLast() === null ? this : this.getLast();
+      this.next = n;
+     
+      return  this.next;
+
+}
+
+Node.prototype.getFirst  = function() {
+    return this.previous;
+}
+
+Node.prototype.getLast = function(){
+      return this.next;
+}
+
+const start = new Node(5);
+
+const head = start.insertFirst(7).insertFirst(1).insertFirst(3)
+const tail = start.insertLast("test").insertLast("welcome").insertLast('stop');
+               
+ let current = head;
+
+ while( current !== null)
+ {
+       console.log('start.getLast()',current.value)
+       current = current.getLast();
+ }
+ 
+ current = tail;
+ while( current !== null)
+ {
+      console.log('start.getFirst()',current.value)
+      current =  current.getFirst();
+ }
+ 
+// this is just test to see the tree structure;
+const mixedInsertions = new Node(10);
+const data = mixedInsertions.insertFirst("start").insertLast("2").insertFirst("by").insertLast("play");
+
+console.log("data", data );
+
+</script>
