@@ -20,7 +20,7 @@
             <h2  tabindex="0" class="GameHeaderDetailsConponent-game-title-text">
                 Rock<br />
                 &nbsp;&nbsp;&nbsp;Scissors<br />
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Papper<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Paper<br/>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Game<br/>
                 
 

@@ -1,7 +1,21 @@
-name: MOCAA-TEST
+# serverless.yml
 
-firstRx:
-   component: "@sls-next/serverless-component@1.17.0"   
-  
-
+service: mocaa-filter-sample-project
+provider:
+  name: aws
+  runtime: nodejs14.x
+  profile: insonia78
+  region: us-east-1
     
+functions:
+  graphql:
+    # this is formatted as <FILENAME>.<HANDLER>
+    handler: graphql.graphqlHandler
+    events:
+    - http:
+        path: api/graphql
+        method: post       
+    - http:
+        path: api/graphql
+        method: get
+        

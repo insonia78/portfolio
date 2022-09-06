@@ -11,7 +11,7 @@ plugins:
     - serverless-s3-sync
 
 custom:
-    bucketName: transformative-med-sample-project-6145
+    bucketName: sample-project-text-and-multicolor-v-1
     s3Sync:
         - bucketName: ${self:custom.bucketName}
           localDir: demo-app/build/

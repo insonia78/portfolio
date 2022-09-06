@@ -1,6 +1,5 @@
-import Image from 'next/image'
 import styles from './../../styles/Home.module.css'
-
+// import Image from 'next/image'
 export const FooterComponent: any = () => {
 
 
@@ -14,7 +13,9 @@ export const FooterComponent: any = () => {
                     Powered by{' '}
                    
                         <span className={styles.logo}>
-                            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
+                            {/* <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} /> */}
+                            <img src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
+                         
                         </span>
                     
                 </a>
