@@ -12,7 +12,7 @@ import MembersProfile from './Members/MembersProfile/MemberProfile';
 import { ApolloProvider,ApolloClient, InMemoryCache } from '@apollo/client';
 import { createUploadLink } from 'apollo-upload-client'
 const client = new ApolloClient({
-   uri: 'http://localhost:8080/graphql',
+   uri: 'http://localhost:3333/graphql',
    cache: new InMemoryCache()   
 });
 

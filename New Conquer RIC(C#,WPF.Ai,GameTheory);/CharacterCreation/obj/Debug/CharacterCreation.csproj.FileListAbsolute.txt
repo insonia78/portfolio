@@ -1,0 +1,10 @@
+C:\Users\tomsa\OneDrive\Documenti\portfolio\New Conquer RIC(C#,WPF.Ai,GameTheory);\CharacterCreation\obj\Debug\CharacterCreation.csproj.AssemblyReference.cache
+C:\Users\tomsa\OneDrive\Documenti\portfolio\New Conquer RIC(C#,WPF.Ai,GameTheory);\CharacterCreation\obj\Debug\CharacterCreation.csproj.SuggestedBindingRedirects.cache
+C:\Users\tomsa\OneDrive\Documenti\portfolio\New Conquer RIC(C#,WPF.Ai,GameTheory);\CharacterCreation\obj\Debug\CharacterCreationPage.baml
+C:\Users\tomsa\OneDrive\Documenti\portfolio\New Conquer RIC(C#,WPF.Ai,GameTheory);\CharacterCreation\obj\Debug\CharacterCreationPage.g.cs
+C:\Users\tomsa\OneDrive\Documenti\portfolio\New Conquer RIC(C#,WPF.Ai,GameTheory);\CharacterCreation\obj\Debug\App.g.cs
+C:\Users\tomsa\OneDrive\Documenti\portfolio\New Conquer RIC(C#,WPF.Ai,GameTheory);\CharacterCreation\obj\Debug\CharacterCreation_MarkupCompile.cache
+C:\Users\tomsa\OneDrive\Documenti\portfolio\New Conquer RIC(C#,WPF.Ai,GameTheory);\CharacterCreation\obj\Debug\CharacterCreation.g.resources
+C:\Users\tomsa\OneDrive\Documenti\portfolio\New Conquer RIC(C#,WPF.Ai,GameTheory);\CharacterCreation\obj\Debug\CharacterCreation.Properties.Resources.resources
+C:\Users\tomsa\OneDrive\Documenti\portfolio\New Conquer RIC(C#,WPF.Ai,GameTheory);\CharacterCreation\obj\Debug\CharacterCreation.csproj.GenerateResource.cache
+C:\Users\tomsa\OneDrive\Documenti\portfolio\New Conquer RIC(C#,WPF.Ai,GameTheory);\CharacterCreation\obj\Debug\CharacterCreation.csproj.CoreCompileInputs.cache

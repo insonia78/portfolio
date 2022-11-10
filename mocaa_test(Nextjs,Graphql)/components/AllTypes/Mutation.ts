@@ -33,7 +33,11 @@ const Sort = (sort,array) =>{
     }
     else if(sort.localeCompare('start_date') === 0)
     {
-        array.sort((a,b) => a.start_date.localeCompare(b.start_date)  )
+       
+       array.sort((a,b) => b.start_date.split("-").reverse().join("").localeCompare(a.start_date.split("-").reverse().join("")))
+       
+       
+      
     }
     else
     {

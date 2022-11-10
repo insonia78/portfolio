@@ -101,7 +101,7 @@ query findCharasteristics($email:String!){
 
 const Questionare  = () =>{    
     
-    console.log('email',document.cookie);
+   
     const { loading, error, data } = useQuery(GET_CHARACTERISTCS,{
         variables:{email: document.cookie },
        });           
@@ -314,10 +314,11 @@ const setIncomingData = (d) =>{
         
         let array = [];
         htmlImage = [];
-    setPhoto({...photos,photos:[...e.target.files]});
+        setPhoto({...photos,photos:[...e.target.files]});
         htmlImage.push(...image);
         for(let i = 0 ; i < e.target.files.length; i++)
         {
+              console.log("target",e.target.files,"=",e.target.files[i]);
               htmlImage.push(<img src = {URL.createObjectURL(e.target.files[i])}  style={{width:"80px", height:"80px"}} />)  
         }
         setImage(htmlImage);
@@ -535,6 +536,7 @@ const setIncomingData = (d) =>{
             {incomingdata?.photos.map(element => <img src={element.photos_path}  style={{width:"80px", height:"80px"}} /> )}        
             </div> 
         </div>
+        {/* <img src ={new FileReader().readAsDataURL(image) }  style={{width:"80px", height:"80px"}} /> */}
         { errors }         
             <div className="row justify-content-start">
                 <div className="col">

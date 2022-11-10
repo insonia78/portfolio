@@ -15,10 +15,17 @@ namespace Amazing_charts_sample_program
         [STAThread]
         static void Main()
         {
-            setUpDbConnection();
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new amazing_charts_sample_application());
+            try
+            {
+                setUpDbConnection();
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+                Application.Run(new amazing_charts_sample_application());
+            }
+            catch(Exception e)
+            {
+
+            }
         }
         static void setUpDbConnection()
         {

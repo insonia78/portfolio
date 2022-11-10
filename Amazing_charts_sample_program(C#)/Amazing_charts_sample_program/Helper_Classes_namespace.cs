@@ -31,13 +31,19 @@ namespace Helper_Classes_namespace
         }
         public static SqlCommand GlobalPerformQuery(string query)
         {
-            SqlCommand command = new SqlCommand(query, SqlConnectionClass.getConn());
-            SqlConnectionClass.getConn().Open();
-            System.Data.ConnectionState state = SqlConnectionClass.getConn().State;            
-            if (!(state == System.Data.ConnectionState.Open))
+            try
             {
-                MessageBox.Show(" Sorry no Db Connection !!!!!!! ");
-                return null;
+                SqlCommand command = new SqlCommand(query, SqlConnectionClass.getConn());
+                SqlConnectionClass.getConn().Open();
+                System.Data.ConnectionState state = SqlConnectionClass.getConn().State;
+                if (!(state == System.Data.ConnectionState.Open))
+                {
+                    MessageBox.Show(" Sorry no Db Connection !!!!!!! ");
+                    return null;
+                }
+            }catch( Exception e)
+            {
+
             }
 
             command.ExecuteNonQuery();

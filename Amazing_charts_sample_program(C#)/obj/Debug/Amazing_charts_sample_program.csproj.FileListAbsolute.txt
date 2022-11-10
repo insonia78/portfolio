@@ -8,3 +8,5 @@ C:\Users\tomsa\source\repos\Amazing_charts_sample_program\Amazing_charts_sample_
 C:\Users\tomsa\source\repos\Amazing_charts_sample_program\Amazing_charts_sample_program\obj\Debug\Amazing_charts_sample_program.exe
 C:\Users\tomsa\source\repos\Amazing_charts_sample_program\Amazing_charts_sample_program\obj\Debug\Amazing_charts_sample_program.pdb
 C:\Users\tomsa\source\repos\Amazing_charts_sample_program\Amazing_charts_sample_program\obj\Debug\Amazing_charts_sample_program.amazing_charts_sample_application.resources
+C:\Users\tomsa\OneDrive\Documenti\portfolio\Amazing_charts_sample_program(C#)\obj\Debug\Amazing_charts_sample_program.exe
+C:\Users\tomsa\OneDrive\Documenti\portfolio\Amazing_charts_sample_program(C#)\obj\Debug\Amazing_charts_sample_program.pdb

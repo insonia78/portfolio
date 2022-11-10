@@ -8,7 +8,7 @@ export const data = {
            email:'test@test.com',
            id:'1',
            title:'Software Engineer',
-           start_date:'12-1-2020'
+           start_date:'12-01-2020'
 
         },
         {
@@ -19,7 +19,7 @@ export const data = {
             email:'erik1@test.com',
             id:'2',
             title:'Accountated',
-            start_date:'12-5-2018'
+            start_date:'12-05-2018'
 
         },
         {
@@ -30,7 +30,7 @@ export const data = {
             email:'susan90@test.com',
             id:'3',
             title:'Post Man',
-            start_date:'9-5-2016'
+            start_date:'09-05-2016'
 
         },
         {
@@ -41,7 +41,7 @@ export const data = {
             email:'antony12@test.com',
             id:'4',
             title:'Analyst',
-            start_date:'1-10-2016'
+            start_date:'01-10-2016'
         },
         {
             first_name:'Anthony',
@@ -51,7 +51,7 @@ export const data = {
             email:'antonyMiauMiau@test.com',
             id:'5',
             title:'CFO',
-            start_date:'3-10-2016'
+            start_date:'03-10-2016'
 
         },
         {
@@ -62,7 +62,7 @@ export const data = {
             email:'antonyMiauMiau@test.com',
             id:'6',
             title:'CEO',
-            start_date:'3-10-2016'
+            start_date:'03-10-2016'
 
         },
         {
@@ -73,7 +73,7 @@ export const data = {
             email:'test1@test.com',
             id:'7',
             title:'Disk Washer',
-            start_date:'11-1-2020'
+            start_date:'11-01-2020'
  
          },
          {
@@ -84,7 +84,7 @@ export const data = {
              email:'erik12@test.com',
              id:'8',
              title:'Senior Manager',
-             start_date:'12-1-2018'
+             start_date:'12-01-2018'
  
          },
          {
@@ -95,7 +95,7 @@ export const data = {
              email:'susan70@test.com',
              id:'9',
              title:'Full Stack Developer',
-             start_date:'9-5-2016'
+             start_date:'09-05-2016'
  
          },
          {
@@ -106,7 +106,7 @@ export const data = {
              email:'antony12@test.com',
              id:'10',
              title:'Senior Software Engineer',
-             start_date:'1-10-2016'
+             start_date:'01-10-2016'
          },
          {
              first_name:'Anthony',
@@ -116,7 +116,7 @@ export const data = {
              email:'antonyMiauMiau@test.com',
              id:'11',
              title:'Q/A Tester',
-             start_date:'3-10-2016'
+             start_date:'03-10-2016'
  
          },
          {
@@ -127,7 +127,7 @@ export const data = {
              email:'antonyMiauMiau@test.com',
              id:'12',
              title:'Clerk',
-             start_date:'5-10-2016'
+             start_date:'05-10-2016'
  
          },
     ]

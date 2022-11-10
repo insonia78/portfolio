@@ -15,9 +15,18 @@
   
   <div  class="PlayButtonContainer-pagecontainer">
     <DisplayTimerBoxContainer :intervalCount="dataProps.intervalCount" />
-     <u class="PlayButtonContainer-result-text" v-if="dataProps.player1Choice > dataProps.player2Choice">Player 1 Wins!!!</u>
-      <u class="PlayButtonContainer-result-text" v-if="dataProps.player1Choice < dataProps.player2Choice">Player 2 Wins!!!</u>
-       <u class="PlayButtonContainer-result-text" v-if="dataProps.player1Choice === dataProps.player2Choice">Draw Game!!!</u>
+    <u class="PlayButtonContainer-result-text" v-if="dataProps.player1Choice === 1 && dataProps.player2Choice === 3
+                                                      ||
+                                                      dataProps.player1Choice === 2 && dataProps.player2Choice === 1
+                                                      ||
+                                                      dataProps.player1Choice === 3 && dataProps.player2Choice === 2   ">Player 1 Wins!!!</u>
+      <u class="PlayButtonContainer-result-text" v-if="dataProps.player2Choice === 1 && dataProps.player1Choice === 3
+                                                      ||
+                                                      dataProps.player2Choice === 2 && dataProps.player1Choice === 1
+                                                      ||
+                                                      dataProps.player2Choice === 3 && dataProps.player1Choice === 2   ">Player 2 Wins!!!</u>
+      <u class="PlayButtonContainer-result-text" v-if="dataProps.player1Choice === dataProps.player2Choice">Draw Game!!!</u>
+      
     <div @click="play" role="button"  tabindex="0" class="PlayButtonContainer-buttoncontainer">
      
       <u  class="PlayButtonContainer-text">

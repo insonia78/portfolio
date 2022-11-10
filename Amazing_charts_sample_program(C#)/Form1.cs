@@ -195,22 +195,29 @@ namespace Amazing_charts_sample_program
         }
         private void selectAllFromDataSet()
         {
-            string query = "SELECT * from credentials";
-            var response = Helper_Classes_namespace.DataBaseHelperClass.GlobalPerformQuery(query);
-            if (!(response == null))
+            try
             {
-                SqlDataReader reader = response.ExecuteReader();
-                string data = "";
-                while (reader.Read())
+                string query = "SELECT * from credentials";
+                var response = Helper_Classes_namespace.DataBaseHelperClass.GlobalPerformQuery(query);
+                if (!(response == null))
                 {
-                    data += reader["first_name"].ToString() + ",";
-                    data += reader["last_name"].ToString() + ",";
-                    data += reader["date_of_birth"].ToString() + ",";
-                    data += reader["phone"].ToString() + "&";
+                    SqlDataReader reader = response.ExecuteReader();
+                    string data = "";
+                    while (reader.Read())
+                    {
+                        data += reader["first_name"].ToString() + ",";
+                        data += reader["last_name"].ToString() + ",";
+                        data += reader["date_of_birth"].ToString() + ",";
+                        data += reader["phone"].ToString() + "&";
 
+                    }
+                    Helper_Classes_namespace.DataBaseHelperClass.ClosePerformQuery();
+                    createDataSet(data);
                 }
-                Helper_Classes_namespace.DataBaseHelperClass.ClosePerformQuery();
-                createDataSet(data);
+            }
+            catch(Exception e)
+            {
+
             }
         }
         private void save_Click(object sender, EventArgs e)

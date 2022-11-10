@@ -43,7 +43,7 @@ return (
    <div class="row justify-content-start">
      <div class="col-4">
      <Card style={{ width: '18rem' }}>
-              <Card.Img variant="top" src={data.findCharasteristic.photos[0].photo_path} />
+              <Card.Img variant="top" src={data.findCharasteristic.photos[0]?.photo_path} />
         <Card.Body>
         <Card.Title>{data.findCharasteristic.first_name}</Card.Title>
         <Card.Title>{data.findCharasteristic.middle_name} </Card.Title>
