@@ -1,0 +1,30 @@
+<div class="patient-component-table-container">
+    <div class="header">Data to request</div>
+     <div class="search-and-group-container">
+        <div tabindex="0" class="search-and-group-input-container">
+             <input tabindex="none" class="search-and-group-input"  placeholder="Cholesterol, Weight, Age..." />
+        </div>
+        <div class="group-by-container">
+             <div tabindex="0" class="group-by">Group by:</div>
+             <div [ngClass]="{selected: selected === 'disease'}" (click)="groupByClicked('disease')" tabindex="0" class="group-by-desease group-by-container-buttons">disease</div>
+             <div [ngClass]="{selected: selected === 'type' }" (click)="groupByClicked('type')" tabindex="0" class="group-by-type group-by-container-buttons">type</div>
+             <div [ngClass]="{ selected: selected === 'measurement'}" (click)="groupByClicked('measurement')" tabindex="0" class="group-by-measurement-unit group-by-container-buttons">measurement unit</div>     
+        </div>   
+    </div>
+    <table class="patient-component-table-container-table">
+       <thead>
+          <tr  class="patient-component-table-container-table-header">
+              <th style="width:31.738%;height:inherit" ><div  class="patient-component-table-container-table-col-1"><span tabindex="0">Biomarker name</span><span tabindex="0" class="patient-component-table-container-table-col-1-sub-title">description</span></div></th>
+              <th style="width:17.482%;height:inherit" ><div  class="patient-component-table-container-table-col-2"><span tabindex="0">units</span></div></th>
+              <th  style="width:50.780%;height:inherit"><div class="head-checkbox-container"><div tabindex="0" class="head-checkbox"><hr></div></div></th>
+          </tr>
+       </thead>
+       <tbody>
+            <tr class="patient-component-table-container-table-body" *ngFor="let biomarker of biomarkers;let i = index">
+                <td  style="width:31.738%"><span tabindex="0">{{ biomarker.biomarkerName }}</span><br /><span tabindex="0">{{ biomarker.description}}</span></td>
+                <td  style="width:17.482%"> <span tabindex="0">{{ biomarker.unit }}</span></td>
+                <td  style="width:50.780%; height:inherit"><div class="head-checkbox-container-body"><div  (click)="selectTheBiomarker(biomarker)" [ngClass]="{backgroundCheckBoxesNotSelected: selected !== getBiomarkerType(biomarker) && !biomarker.checked ,opacity: selected !== getBiomarkerType(biomarker),checkboxNotSelected:getCheckBoxBackGroundNotSelected(biomarker),checkboxSelected:getCheckBoxBackGroundSelected(biomarker) }" tabindex="0"  ><img *ngIf="getChekMarkSelected(biomarker)" src="./../../../assets/Vector.png" /></div></div></td>
+            </tr>
+       </tbody>
+    </table>
+</div>

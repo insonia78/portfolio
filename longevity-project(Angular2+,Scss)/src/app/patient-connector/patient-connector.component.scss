@@ -1,0 +1,34 @@
+.title-container{
+    width:inherit;
+    padding-left: 3.321%;
+    display:flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    height:auto;
+    margin-bottom: 4em;
+
+}
+.title{
+    
+    font-family: 'DM Sans';
+    font-style: normal;
+    font-weight: 500;
+    font-size:  3em;
+    color: #0C1E3C;
+    margin-bottom:  0.6875em;
+}
+.sub-title {
+    font-family: 'DM Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.5em;
+    display: flex;
+    align-items: center;
+    text-transform: capitalize;
+  
+
+}
+.patient-component-table {
+    padding-left: 3.321%;
+}

@@ -1,0 +1,47 @@
+.header-container {
+    width:inherit;
+    min-height:8.40375em;
+    height:auto;
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 3.321%;
+    padding-right: 3.321%;
+    margin-bottom:  4.0325em ;
+
+}
+
+.logo {
+   width: 6.9%;
+   min-height: 1.60em;
+   height: auto;
+}
+
+.name-and-photo-container {
+
+    min-width:7.396%;
+    width:fit-content;
+    min-height:1.5em;
+    display:flex;
+    justify-content: flex-start;
+    align-items: center;
+
+}
+
+.name {
+
+    font-family: 'DM Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 2em;
+    line-height: 2.625em;
+}
+.name-image{
+    width: 32%;
+    min-height: inherit;
+    height:auto;
+    margin-left: 1.5em ;
+}
+
+

@@ -1,0 +1,57 @@
+{
+
+    "biomarkers":
+    [
+      {
+        "biomarkerName":"Cholesterol HDL",
+        "unit":"mg/dL,mmol/L",
+        "description":"{short description}",
+        "expiredBy":"",
+        "deleteDataAfter":"",
+        "checked":false,
+        "biomarkerType":"disease"
+
+      },
+      {
+        "biomarkerName":"Cholesterol LDL",
+        "unit":"mg/dL,mmol/L",
+        "description":"{short description}",
+        "expiredBy":"",
+        "deleteDataAfter":"",
+        "checked":false,
+        "biomarkerType":"disease"
+        
+
+      },
+      {
+        "biomarkerName":"Weight",
+        "unit":"Kg,pounds",
+        "description":"{short description}",
+        "expiredBy":"",
+        "deleteDataAfter":"",
+        "checked":false,
+        "biomarkerType":"type"
+
+      },      
+      {
+        "biomarkerName":"Age",
+        "unit":"years",
+        "description":"{short description}",
+        "expiredBy":"",
+        "deleteDataAfter":"",
+        "checked":false,
+        "biomarkerType":"type"
+
+      },
+      {
+        "biomarkerName":"Blood pressure",
+        "unit":"mmHg",
+        "description":"{short description}",
+        "expiredBy":"",
+        "deleteDataAfter":"",
+        "checked":false,
+        "biomarkerType":"disease"
+
+      }
+    ]
+}
