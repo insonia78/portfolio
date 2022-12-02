@@ -5,7 +5,7 @@ export interface Biomarkers {
     description:string,
     expiredBy:string,
     deleteDataAfter:string,
-    checked:boolean,
+    selected:boolean,
     biomarkerType:string
  
  }
@@ -13,4 +13,8 @@ export interface Biomarkers {
 export interface PatientConnector {
     biomarkers:Biomarkers[],
     
+}
+export interface SelectedAll{
+    checked:boolean,
+    selectedType:string
 }

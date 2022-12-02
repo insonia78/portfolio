@@ -1,13 +1,7 @@
-@import '~src/themes'; 
+@import '~src/themes';
 
 
-.selected{
-    background-color: $elementSelectedBackgroundColor !important;
-    color: white;
-}
-.opacity {
-    opacity:0.18;
-}
+
 .patient-component-table-container {
     width: inherit;
     height: auto;
@@ -26,7 +20,10 @@
     margin-bottom: 1.5em;
 
 }
-
+.selected {
+    background-color: $elementSelectedBackgroundColor !important;
+    color: white;
+}
 .search-and-group-container {
     width: inherit;
     height: auto;
@@ -40,37 +37,49 @@
 .search-and-group-input-container {
     width: 24.25em;
     min-height: 2.9375em;
-    background-color:$elementBackgroundColor;
+    background-color: $elementBackgroundColor;
     border-radius: 6px;
     padding-left: 1.125em;
     display: flex;
     align-items: center;
-    &:focus{
+
+    &:focus {
         outline-color: black;
-     }
+    }
+
+    &::after {
+        content: url(./../../../assets/search.png);
+        width: 1.1em;
+        height: 1.1em;
+        margin-bottom: .4em;
+
+
+    }
+
+
+    .search-and-group-input {
+        width: 13.875em;
+        min-height: 1.9375em;
+        height: auto;
+        font-family: 'DM Sans';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 1.5em;
+        text-transform: capitalize;
+        background-color: transparent;
+        color: #909BA6;
+        border-color: transparent;
+        display: flex;
+        align-items: center;
+
+        &:focus {
+            outline: none !important;
+        }
+
+
+    }
 
 }
-
-.search-and-group-input {
-    width: 19.875em;
-    min-height: 1.9375em;
-    height: auto;
-    font-family: 'DM Sans';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 1.5em;
-    text-transform: capitalize;
-    background-color: transparent;
-    color: #909BA6;
-    border-color: transparent;
-    display: flex;
-    align-items: center;
-    &:focus{
-        outline: none !important;
-     }
-    
-}
-
 
 .group-by-container {
     display: flex;
@@ -119,24 +128,24 @@
 }
 
 .patient-component-table-container-table-header {
-    background-color:$elementBackgroundColor;
+    background-color: $elementBackgroundColor;
     height: 3.1875em;
     font-family: 'DM Sans';
     font-style: normal;
     font-weight: 400;
     font-size: 1.5em;
-    
+
 }
 
 .patient-component-table-container-table-col-1 {
-    width:100%;
-    height:inherit;
+    width: 100%;
+    height: inherit;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
     padding-top: 0.5em;
-  
+
 
 
 }
@@ -152,20 +161,21 @@
 
 .patient-component-table-container-table-col-2 {
 
-    width:100%;
-    height:inherit;
+    width: 100%;
+    height: inherit;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     align-items: baseline;
     padding-top: 0.5em;
-    
+
 
 }
 
 .patient-component-table-container-table {
     width: 76.0625em;
     border-collapse: collapse;
+
 
 }
 
@@ -175,16 +185,18 @@
     display: flex;
     justify-content: flex-end;
     align-items: baseline;
+    cursor:pointer;
 }
 
 .head-checkbox {
     width: .9em;
     height: .9em;
-    background:$elementSelectedBackgroundColor;
+    background: $elementSelectedBackgroundColor;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 3.5px;
+
     >hr {
         width: 0.425em;
         height: .06em;
@@ -195,34 +207,8 @@
 
 
 }
-.checkboxNotSelected {
-    width: .9em;
-    height: .9em;
-    background: white;
-    border:1px solid black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 3.5px;
-    cursor:pointer;
-    
 
-}
-.checkboxSelected {
-    width: .9em;
-    height: .9em;
-    background: $elementSelectedBackgroundColor;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 3.5px;
-    cursor:pointer;
-    
-}
-.backgroundCheckBoxesNotSelected{
-    background: $elementSelectedBackgroundColor;
-}
-.patient-component-table-container-table-body{
+.patient-component-table-container-table-body {
     height: 5.6875em;
     font-family: 'DM Sans';
     font-style: normal;
@@ -236,7 +222,40 @@
         justify-content: flex-end;
         align-items: center;
     }
-    
-    
-    
+
+    .checkboxNotSelected {
+        width: .9em;
+        height: .9em;
+        background: white;
+        border: 1px solid black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 3.5px;
+        cursor: pointer;
+
+
+    }
+
+    .checkboxSelected {
+        width: .9em;
+        height: .9em;
+        background: $elementSelectedBackgroundColor;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 3.5px;
+        cursor: pointer;
+
+    }
+
+    .backgroundCheckBoxesNotSelected {
+        background: $elementSelectedBackgroundColor;
+    }
+    .opacity {
+        opacity: 0.18;
+    }
+
+
+
 }
