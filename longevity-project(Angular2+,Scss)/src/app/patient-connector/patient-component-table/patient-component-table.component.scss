@@ -5,7 +5,7 @@
 .patient-component-table-container {
     width: inherit;
     height: auto;
-    padding-left: 3.321%;
+    padding-left: 4em;
     display: flex;
     flex-direction: column;
 }
@@ -33,6 +33,7 @@
     margin-bottom: 3em;
 
 }
+
 
 .search-and-group-input-container {
     width: 24.25em;
@@ -126,7 +127,25 @@
 
     }
 }
-
+@media screen and (max-width: 960px){
+    .search-and-group-container{
+        display:flex;
+        flex-direction:column;
+        align-items: flex-start;
+    }
+    .group-by-container{
+        display:flex;
+        flex-direction: column;
+        align-items:flex-start;
+    }
+    .group-by {
+        margin-top: 1em;
+        margin-left: 0px !important;
+        
+    }
+    
+    
+}
 .patient-component-table-container-table-header {
     background-color: $elementBackgroundColor;
     height: 3.1875em;
@@ -173,7 +192,7 @@
 }
 
 .patient-component-table-container-table {
-    width: 76.0625em;
+    width: 56.5625%;
     border-collapse: collapse;
 
 
@@ -255,7 +274,36 @@
     .opacity {
         opacity: 0.18;
     }
+    
+    
 
+}
+.pagination-container{
+    list-style: none;
+    display:inline-block;
+    font-size:1.5em;
+    
+    .page-text {
+      width:1.6em;
+      height:1.6em;
+      background-color:  $elementBackgroundColor;
+      display:flex;
+      align-items: center;
+      justify-content: center;
 
+      
+    }
+    .checkboxSelected {
+        width: 1.6em;
+        height: 1.6em;
+        background: $elementSelectedBackgroundColor;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 3.5px;
+        color:white;
+        cursor: pointer;
 
+    }
+    
 }

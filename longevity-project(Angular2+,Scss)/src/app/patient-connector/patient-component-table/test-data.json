@@ -8,7 +8,7 @@
         "description":"{short description}",
         "expiredBy":"",
         "deleteDataAfter":"",
-        "checked":false,
+        "selected":false,
         "biomarkerType":"disease"
 
       },
@@ -18,7 +18,7 @@
         "description":"{short description}",
         "expiredBy":"",
         "deleteDataAfter":"",
-        "checked":false,
+        "selected":false,
         "biomarkerType":"disease"
         
 
@@ -29,7 +29,7 @@
         "description":"{short description}",
         "expiredBy":"",
         "deleteDataAfter":"",
-        "checked":false,
+        "selected":false,
         "biomarkerType":"type"
 
       },      
@@ -39,7 +39,7 @@
         "description":"{short description}",
         "expiredBy":"",
         "deleteDataAfter":"",
-        "checked":false,
+        "selected":false,
         "biomarkerType":"type"
 
       },
@@ -49,7 +49,7 @@
         "description":"{short description}",
         "expiredBy":"",
         "deleteDataAfter":"",
-        "checked":false,
+        "selected":false,
         "biomarkerType":"disease"
 
       }

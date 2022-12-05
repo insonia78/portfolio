@@ -2,7 +2,12 @@
     <div class="header">Data to request</div>
      <div class="search-and-group-container">
         <div tabindex="0" class="search-and-group-input-container">
-             <input tabindex="none" class="search-and-group-input"  placeholder="Cholesterol, Weight, Age..." />
+             <input 
+             tabindex="none" 
+             class="search-and-group-input" 
+             [value]="inputValue"
+             (input)="inputValue=getValue($event)" 
+             placeholder="Cholesterol, Weight, Age..." />
              
         </div>
         <div class="group-by-container">
@@ -27,5 +32,14 @@
                 <td  style="width:50.780%; height:inherit"><div class="head-checkbox-container-body"><div  (click)="selectTheBiomarker(biomarker)" [ngClass]="{backgroundCheckBoxesNotSelected: selected !== getBiomarkerType(biomarker) && !biomarker.selected ,opacity: selected !== getBiomarkerType(biomarker),checkboxNotSelected:getCheckBoxBackGroundNotSelected(biomarker),checkboxSelected:getCheckBoxBackGroundSelected(biomarker) }" tabindex="0"  ><img *ngIf="getChekMarkSelected(biomarker)" src="./../../../assets/Vector.png" /></div></div></td>
             </tr>
        </tbody>
+       <tfoot>
+        <td  style="width:31.738%"></td>
+        <td  style="width:17.482%"></td>
+        <td  style="width:50.780%; height:inherit">
+            <ul class="pagination-container" *ngFor="let page of pages; let i = index">
+                <li class="page-text" [ngClass]="{checkboxSelected: i === pageSelected}" (click)="pageClicked(i)"><a>{{ (i + 1)  }}</a> </li>
+            </ul>
+        </td>
+       </tfoot>
     </table>
 </div>

@@ -12,14 +12,53 @@ export class PatientComponentTableComponent implements OnInit {
   clickedBiomarker: string = "";
   selectedAll: SelectedAll[] = [];
   checkedAll: boolean = false;
+  inputValue = "";
+  copyArray: Biomarkers[] = [];
+  count: number = 0;
+  pages:Array<number> =[];
+  pageSelected:number = 0; 
   constructor() { }
 
   ngOnInit(): void {
 
-    this.biomarkers = data.biomarkers.map((e: any) => e);
+    this.copyArray = data.biomarkers.sort((a: Biomarkers, b: Biomarkers) => a.biomarkerName.localeCompare(b.biomarkerName))
+    this.biomarkers = this.copyArray.slice(0,5);
+    this.pages = new Array<number>(Math.ceil(( this.copyArray.length ) / 5));
+    
+
   }
   groupByClicked(event: any): void {
     this.selected = event;
+
+  }
+  getValue(event: Event) {
+    const value = (event.target as HTMLInputElement).value
+    this.count++;
+   
+    const array = value.split(",");
+    if( array[array.length - 1] === "" )
+        array.splice(array.length - 1,1)
+       
+    let same: boolean = true;
+    let holdArray: Biomarkers[] = [];
+    for (let i = 0; i < array.length; i++) {
+     
+      const resultArray:Biomarkers[] = this.copyArray.filter((e: Biomarkers | any) => {
+        const bArray = e.biomarkerName.split("");
+        const valueA: string = array[i].toUpperCase();
+        const valueB: string = bArray.slice(0, array[i].split("").length).join("").toUpperCase();
+        if (valueA.localeCompare(valueB) === 0)
+          return e;
+      })
+      resultArray.forEach((e:Biomarkers)=>{
+        holdArray.push(e) 
+     });
+    }
+    
+    this.biomarkers = holdArray.sort((a: Biomarkers, b: Biomarkers) => a.biomarkerName.localeCompare(b.biomarkerName));
+    if(this.biomarkers.length <= 0)
+        this.biomarkers = this.copyArray.slice(0,5);
+    return value;
 
   }
   getChekMarkSelected(biomarker: Biomarkers) {
@@ -47,8 +86,8 @@ export class PatientComponentTableComponent implements OnInit {
         e.selected = !selectedAll;
       return e;
     })
-    this.selectedAll = this.selectedAll.map((e: SelectedAll,index:number) => {
-      if (this.selectedAll.find( (e:any) => e.selectedType === this.selected) === undefined) {
+    this.selectedAll = this.selectedAll.map((e: SelectedAll, index: number) => {
+      if (this.selectedAll.find((e: any) => e.selectedType === this.selected) === undefined) {
         e.selectedType = this.selected;
         e.checked = !selectedAll
         this.checkedAll = !selectedAll
@@ -76,8 +115,12 @@ export class PatientComponentTableComponent implements OnInit {
       this.checkedAll = !selectedAll;
     }
 
-    console.log(this.checkedAll);
-    console.log(this.selectedAll);
+
+  }
+  pageClicked(index:any){
+    this.biomarkers = this.copyArray.slice( (5 * index ),5);
+    this.pageSelected = index;
+    
   }
 
 }
