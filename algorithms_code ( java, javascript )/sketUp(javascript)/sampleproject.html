@@ -1,0 +1,25 @@
+<script>
+  const possibleBalance = (string, N) => {
+    const arrayOfStrings = string.split("");
+    let numnberOfPlus = 0;
+
+    for (let i = 0; i < arrayOfStrings.length; i++) {
+      if (arrayOfStrings[i].localeCompare("+") === 0) 
+          ++numnberOfPlus;
+      else 
+          --numnberOfPlus;
+    }
+    console.log("number",numnberOfPlus);
+    return N >= numnberOfPlus ?numnberOfPlus  :-1 ;
+  };
+
+  console.log(possibleBalance("++-", 2)); // should return 1
+
+  console.log(possibleBalance("+++-++-++--+-++++-+--++-++-+-++++-+++--", 12)); // 1
+  console.log(possibleBalance("+++-++-++--+-++++-+--++-++-+-++++-+++--", 13)); // 2
+  console.log(possibleBalance("+++-++-++--+-++++-+--++-++-+-++++-+++--", 14)); // -1
+  console.log(possibleBalance("+++---", 3)); // 3
+  console.log(possibleBalance("+++-+---", 3)); // 3
+  console.log(possibleBalance("----+-", -2)); // 4
+
+</script>
