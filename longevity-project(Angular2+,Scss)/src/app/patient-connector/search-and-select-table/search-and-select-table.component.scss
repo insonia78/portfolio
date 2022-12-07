@@ -1,0 +1,147 @@
+@import '~src/themes';
+
+.patient-component-table-container {
+    width: inherit;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+
+
+
+    .header {
+
+        font-family: 'DM Sans';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 2.25em;
+        color: #0C1E3C;
+        margin-bottom: 1.5em;
+
+    }
+
+    .search-and-group-container {
+        width: inherit;
+        height: auto;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-bottom: 3em;
+
+
+        .search-and-group-input-container {
+            width: 24.25em;
+            min-height: 2.9375em;
+            background-color: $elementBackgroundColor;
+            border-radius: 6px;
+            padding-left: 1.125em;
+            display: flex;
+            align-items: center;
+
+            &:focus {
+                outline-color: black;
+            }
+
+            &::after {
+                content: url(./../../../assets/search.png);
+                width: 1.1em;
+                height: 1.1em;
+                margin-bottom: .4em;
+
+
+            }
+
+
+            .search-and-group-input {
+                width: 13.875em;
+                min-height: 1.9375em;
+                height: auto;
+                font-family: 'DM Sans';
+                font-style: normal;
+                font-weight: 500;
+                font-size: 1.5em;
+                text-transform: capitalize;
+                background-color: transparent;
+                color: #909BA6;
+                border-color: transparent;
+                display: flex;
+                align-items: center;
+
+                &:focus {
+                    outline: none !important;
+                }
+
+
+            }
+
+        }
+
+        .group-by-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: 'DM Sans';
+            font-style: normal;
+            font-size: 1.5em;
+            width: 34.5625em;
+            min-height: 1.9375em;
+            height: auto;
+
+
+            .group-by {
+                margin-left: 2.25em;
+                font-weight: 400;
+            }
+
+            .group-by-container-buttons {
+                background: $elementBackgroundColor;
+                border-radius: 64px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
+
+            }
+
+            .group-by-desease {
+                width: 6.5625em;
+                height: 2em;
+
+            }
+
+            .group-by-type {
+                height: 2em;
+                width: 4.875em;
+
+            }
+
+            .group-by-measurement-unit {
+                height: 2em;
+                width: 12.4375em;
+
+            }
+        }
+
+    }
+}
+
+@media screen and (max-width: 960px) {
+    .search-and-group-container {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+    }
+
+    .group-by-container {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+    }
+
+    .group-by {
+        margin-top: 1em;
+        margin-left: 0px !important;
+
+    }
+
+
+}

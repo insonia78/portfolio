@@ -1,0 +1,57 @@
+@import '~src/themes';
+
+
+.request-id-and-qr-scanning-container {
+    width: 81.845%;
+
+    .label {
+        font-family: 'DM Sans';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 24px;
+        line-height: 31px;
+
+    }
+
+    .request-id-container {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .request-id-input-container {
+        width: 54.545%;
+        height: 2.9375em;
+        background-color: $elementBackgroundColor;
+        padding-left: 1.125em;
+        display:flex;
+        align-items: center;
+    
+
+    .request-id-input {
+        width: 86.667%;
+        min-height: 1.9375em;
+        height: auto;
+        font-family: 'DM Sans';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 1.5em;
+        text-transform: capitalize;
+        background-color: transparent;
+        color: #909BA6;
+        border-color: transparent;
+        display: flex;
+        align-items: center;
+    }
+    &::after {
+        content: url(./../../../assets/copy.png);
+        width: .1em;
+        height: .1em;
+        margin-bottom:  1.6em;
+
+
+    }
+}
+
+}

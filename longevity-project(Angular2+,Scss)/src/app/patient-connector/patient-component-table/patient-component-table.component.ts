@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { GetDataService } from 'src/services/getData/get-data.service';
+import { SearchBiomarkersService } from 'src/services/searchBiomarkers/search-biomarkers.service';
 import { Biomarkers, PatientConnector, SelectedAll } from './patient-connector-table.interface';
-import data from "./test-data.json";
+
 @Component({
   selector: 'app-patient-component-table',
   templateUrl: './patient-component-table.component.html',
@@ -8,7 +10,7 @@ import data from "./test-data.json";
 })
 export class PatientComponentTableComponent implements OnInit {
   biomarkers: Biomarkers[] = [];
-  selected: any = "disease"
+  selected: any = "disease";
   clickedBiomarker: string = "";
   selectedAll: SelectedAll[] = [];
   checkedAll: boolean = false;
@@ -17,50 +19,25 @@ export class PatientComponentTableComponent implements OnInit {
   count: number = 0;
   pages:Array<number> =[];
   pageSelected:number = 0; 
-  constructor() { }
+  constructor(private getDataService:GetDataService,
+              private searchBiomarkersService:SearchBiomarkersService,
+              
+              ) { }
 
   ngOnInit(): void {
 
-    this.copyArray = data.biomarkers.sort((a: Biomarkers, b: Biomarkers) => a.biomarkerName.localeCompare(b.biomarkerName))
+    this.copyArray = this.getDataService.getData();
     this.biomarkers = this.copyArray.slice(0,5);
     this.pages = new Array<number>(Math.ceil(( this.copyArray.length ) / 5));
-    
+    this.searchBiomarkersService.searchBiomarkers.subscribe((biomarkers:Biomarkers[]) =>{
+      this.biomarkers = biomarkers;
+    })
+    this.searchBiomarkersService.selectBiomarkers.subscribe((selected:String) =>{
 
-  }
-  groupByClicked(event: any): void {
-    this.selected = event;
+      this.selected = selected;
+    })
 
-  }
-  getValue(event: Event) {
-    const value = (event.target as HTMLInputElement).value
-    this.count++;
-   
-    const array = value.split(",");
-    if( array[array.length - 1] === "" )
-        array.splice(array.length - 1,1)
-       
-    let same: boolean = true;
-    let holdArray: Biomarkers[] = [];
-    for (let i = 0; i < array.length; i++) {
-     
-      const resultArray:Biomarkers[] = this.copyArray.filter((e: Biomarkers | any) => {
-        const bArray = e.biomarkerName.split("");
-        const valueA: string = array[i].toUpperCase();
-        const valueB: string = bArray.slice(0, array[i].split("").length).join("").toUpperCase();
-        if (valueA.localeCompare(valueB) === 0)
-          return e;
-      })
-      resultArray.forEach((e:Biomarkers)=>{
-        holdArray.push(e) 
-     });
-    }
-    
-    this.biomarkers = holdArray.sort((a: Biomarkers, b: Biomarkers) => a.biomarkerName.localeCompare(b.biomarkerName));
-    if(this.biomarkers.length <= 0)
-        this.biomarkers = this.copyArray.slice(0,5);
-    return value;
-
-  }
+  }    
   getChekMarkSelected(biomarker: Biomarkers) {
 
     return this.selected === biomarker.biomarkerType && biomarker.selected;
@@ -80,7 +57,7 @@ export class PatientComponentTableComponent implements OnInit {
     return !biomarker.selected
   }
   selectAllBiomarkersdisplay(selectedAll: boolean) {
-    this.biomarkers = data.biomarkers.map((e: any) => {
+    this.biomarkers = this.biomarkers.map((e: any) => {
 
       if (this.selected === e.biomarkerType)
         e.selected = !selectedAll;

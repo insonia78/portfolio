@@ -1,45 +1,63 @@
-<div class="patient-component-table-container">
-    <div class="header">Data to request</div>
-     <div class="search-and-group-container">
-        <div tabindex="0" class="search-and-group-input-container">
-             <input 
-             tabindex="none" 
-             class="search-and-group-input" 
-             [value]="inputValue"
-             (input)="inputValue=getValue($event)" 
-             placeholder="Cholesterol, Weight, Age..." />
-             
-        </div>
-        <div class="group-by-container">
-             <div tabindex="0" class="group-by">Group by:</div>
-             <div [ngClass]="{selected: selected === 'disease'}" (click)="groupByClicked('disease')" tabindex="0" class="group-by-desease group-by-container-buttons">disease</div>
-             <div [ngClass]="{selected: selected === 'type' }" (click)="groupByClicked('type')" tabindex="0" class="group-by-type group-by-container-buttons">type</div>
-             <div [ngClass]="{ selected: selected === 'measurement'}" (click)="groupByClicked('measurement')" tabindex="0" class="group-by-measurement-unit group-by-container-buttons">measurement unit</div>     
-        </div>   
-    </div>
-    <table class="patient-component-table-container-table">
-       <thead>
-          <tr  class="patient-component-table-container-table-header">
-              <th style="width:31.738%;height:inherit" ><div  class="patient-component-table-container-table-col-1"><span tabindex="0">Biomarker name</span><span tabindex="0" class="patient-component-table-container-table-col-1-sub-title">description</span></div></th>
-              <th style="width:17.482%;height:inherit" ><div  class="patient-component-table-container-table-col-2"><span tabindex="0">units</span></div></th>
-              <th  style="width:50.780%;height:inherit"><div class="head-checkbox-container"><div (click)="selectAllBiomarkersdisplay(checkedAll)" tabindex="0" class="head-checkbox"><hr></div></div></th>
-          </tr>
-       </thead>
-       <tbody>
-            <tr class="patient-component-table-container-table-body" *ngFor="let biomarker of biomarkers;let i = index">
-                <td  style="width:31.738%"><span tabindex="0">{{ biomarker.biomarkerName }}</span><br /><span tabindex="0">{{ biomarker.description}}</span></td>
-                <td  style="width:17.482%"> <span tabindex="0">{{ biomarker.unit }}</span></td>
-                <td  style="width:50.780%; height:inherit"><div class="head-checkbox-container-body"><div  (click)="selectTheBiomarker(biomarker)" [ngClass]="{backgroundCheckBoxesNotSelected: selected !== getBiomarkerType(biomarker) && !biomarker.selected ,opacity: selected !== getBiomarkerType(biomarker),checkboxNotSelected:getCheckBoxBackGroundNotSelected(biomarker),checkboxSelected:getCheckBoxBackGroundSelected(biomarker) }" tabindex="0"  ><img *ngIf="getChekMarkSelected(biomarker)" src="./../../../assets/Vector.png" /></div></div></td>
-            </tr>
-       </tbody>
-       <tfoot>
-        <td  style="width:31.738%"></td>
-        <td  style="width:17.482%"></td>
-        <td  style="width:50.780%; height:inherit">
-            <ul class="pagination-container" *ngFor="let page of pages; let i = index">
-                <li class="page-text" [ngClass]="{checkboxSelected: i === pageSelected}" (click)="pageClicked(i)"><a>{{ (i + 1)  }}</a> </li>
-            </ul>
+<div class="patient-component-table-and-iq-container">
+  <table class="patient-component-table-container-table">
+    <thead>
+      <tr class="patient-component-table-container-table-header">
+        <th style="width: 31.738%; height: inherit">
+          <div class="patient-component-table-container-table-col-1">
+            <span tabindex="0">Biomarker name</span><span tabindex="0"
+              class="patient-component-table-container-table-col-1-sub-title">description</span>
+          </div>
+        </th>
+        <th style="width: 17.482%; height: inherit">
+          <div class="patient-component-table-container-table-col-2">
+            <span tabindex="0">units</span>
+          </div>
+        </th>
+        <th style="width: 50.78%; height: inherit">
+          <div class="head-checkbox-container">
+            <div (click)="selectAllBiomarkersdisplay(checkedAll)" tabindex="0" class="head-checkbox">
+              <hr />
+            </div>
+          </div>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="patient-component-table-container-table-body" *ngFor="let biomarker of biomarkers; let i = index">
+        <td style="width: 31.738%">
+          <span tabindex="0">{{ biomarker.biomarkerName }}</span><br /><span tabindex="0">{{ biomarker.description
+            }}</span>
         </td>
-       </tfoot>
-    </table>
+        <td style="width: 17.482%">
+          <span tabindex="0">{{ biomarker.unit }}</span>
+        </td>
+        <td style="width: 50.78%; height: inherit">
+          <div class="head-checkbox-container-body">
+            <div (click)="selectTheBiomarker(biomarker)" [ngClass]="{
+                backgroundCheckBoxesNotSelected:
+                  selected !== getBiomarkerType(biomarker) &&
+                  !biomarker.selected,
+                opacity: selected !== getBiomarkerType(biomarker),
+                checkboxNotSelected:
+                  getCheckBoxBackGroundNotSelected(biomarker),
+                checkboxSelected: getCheckBoxBackGroundSelected(biomarker)
+              }" tabindex="0">
+              <img *ngIf="getChekMarkSelected(biomarker)" src="./../../../assets/Vector.png" />
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <td style="width: 31.738%"></td>
+      <td style="width: 17.482%"></td>
+      <td style="width: 50.78%; height: inherit">
+        <ul class="pagination-container" *ngFor="let page of pages; let i = index">
+          <li class="page-text" [ngClass]="{ checkboxSelected: i === pageSelected }" (click)="pageClicked(i)">
+            <a>{{ i + 1 }}</a>
+          </li>
+        </ul>
+      </td>
+    </tfoot>
+  </table>
 </div>
