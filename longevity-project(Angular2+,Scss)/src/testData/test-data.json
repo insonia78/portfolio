@@ -1,0 +1,111 @@
+{
+  "requestID":"00000001",
+  "expireBy":"2022/12/10",
+  "requestSavingData":true,
+  "deleteDataAfter":"2022/12/10",
+    "biomarkers":
+    [
+      {
+        "biomarkerName":"Cholesterol HDL",
+        "unit":"mg/dL,mmol/L",
+        "description":"{short description}",
+        "expiredBy":"",
+        "deleteDataAfter":"",
+        "selected":false,
+        "biomarkerType":"disease"
+
+      },
+      {
+        "biomarkerName":"Cholesterol LDL",
+        "unit":"mg/dL,mmol/L",
+        "description":"{short description}",
+        "expiredBy":"",
+        "deleteDataAfter":"",
+        "selected":false,
+        "biomarkerType":"disease"
+        
+
+      },
+      {
+        "biomarkerName":"Weight",
+        "unit":"Kg,pounds",
+        "description":"{short description}",
+        "expiredBy":"",
+        "deleteDataAfter":"",
+        "selected":false,
+        "biomarkerType":"type"
+
+      },      
+      {
+        "biomarkerName":"Age",
+        "unit":"years",
+        "description":"{short description}",
+        "expiredBy":"",
+        "deleteDataAfter":"",
+        "selected":false,
+        "biomarkerType":"type"
+
+      },
+      {
+        "biomarkerName":"Blood pressure",
+        "unit":"mmHg",
+        "description":"{short description}",
+        "expiredBy":"",
+        "deleteDataAfter":"",
+        "selected":false,
+        "biomarkerType":"disease"
+
+      },
+      {
+        "biomarkerName":"cagsdhckasghdcfa",
+        "unit":"mg/dL,mmol/L",
+        "description":"{short description}",
+        "expiredBy":"",
+        "deleteDataAfter":"",
+        "selected":false,
+        "biomarkerType":"disease"
+
+      },
+      {
+        "biomarkerName":"cvbncghkdfjgh",
+        "unit":"mg/dL,mmol/L",
+        "description":"{short description}",
+        "expiredBy":"",
+        "deleteDataAfter":"",
+        "selected":false,
+        "biomarkerType":"disease"
+        
+
+      },
+      {
+        "biomarkerName":"wertkw;erlkjtwer",
+        "unit":"Kg,pounds",
+        "description":"{short description}",
+        "expiredBy":"",
+        "deleteDataAfter":"",
+        "selected":false,
+        "biomarkerType":"type"
+
+      },      
+      {
+        "biomarkerName":"dsfgsdkfgjlskfjdgs",
+        "unit":"years",
+        "description":"{short description}",
+        "expiredBy":"",
+        "deleteDataAfter":"",
+        "selected":false,
+        "biomarkerType":"type"
+
+      },
+      {
+        "biomarkerName":"ashdjhalkjshldaf",
+        "unit":"mmHg",
+        "description":"{short description}",
+        "expiredBy":"",
+        "deleteDataAfter":"",
+        "selected":false,
+        "biomarkerType":"disease"
+
+      }
+    ]
+}

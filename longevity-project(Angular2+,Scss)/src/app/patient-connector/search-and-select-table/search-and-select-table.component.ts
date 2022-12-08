@@ -15,10 +15,10 @@ export class SearchAndSelectTableComponent implements OnInit {
   count: number = 0;
   copyArray:Biomarkers[] =[];
   biomarkers:Biomarkers[] = [];
-  constructor(private getDataService:GetDataService, private searchBiomarkersService:SearchBiomarkersService) { }
+  constructor(private getBiomarkersDataService:GetDataService, private searchBiomarkersService:SearchBiomarkersService) { }
 
   ngOnInit(): void {
-   this.copyArray = this.getDataService.getData();
+   this.copyArray = this.getBiomarkersDataService.getBiomarkersData();
 
   }
   

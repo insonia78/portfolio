@@ -4,8 +4,12 @@
       <tr class="patient-component-table-container-table-header">
         <th style="width: 31.738%; height: inherit">
           <div class="patient-component-table-container-table-col-1">
-            <span tabindex="0">Biomarker name</span><span tabindex="0"
-              class="patient-component-table-container-table-col-1-sub-title">description</span>
+            <span tabindex="0">Biomarker name</span
+            ><span
+              tabindex="0"
+              class="patient-component-table-container-table-col-1-sub-title"
+              >description</span
+            >
           </div>
         </th>
         <th style="width: 17.482%; height: inherit">
@@ -15,7 +19,11 @@
         </th>
         <th style="width: 50.78%; height: inherit">
           <div class="head-checkbox-container">
-            <div (click)="selectAllBiomarkersdisplay(checkedAll)" tabindex="0" class="head-checkbox">
+            <div
+              (click)="selectAllBiomarkersdisplay(checkedAll)"
+              tabindex="0"
+              class="head-checkbox"
+            >
               <hr />
             </div>
           </div>
@@ -23,17 +31,22 @@
       </tr>
     </thead>
     <tbody>
-      <tr class="patient-component-table-container-table-body" *ngFor="let biomarker of biomarkers; let i = index">
+      <tr
+        class="patient-component-table-container-table-body"
+        *ngFor="let biomarker of biomarkers; let i = index"
+      >
         <td style="width: 31.738%">
-          <span tabindex="0">{{ biomarker.biomarkerName }}</span><br /><span tabindex="0">{{ biomarker.description
-            }}</span>
+          <span tabindex="0">{{ biomarker.biomarkerName }}</span
+          ><br /><span tabindex="0">{{ biomarker.description }}</span>
         </td>
         <td style="width: 17.482%">
           <span tabindex="0">{{ biomarker.unit }}</span>
         </td>
         <td style="width: 50.78%; height: inherit">
           <div class="head-checkbox-container-body">
-            <div (click)="selectTheBiomarker(biomarker)" [ngClass]="{
+            <div
+              (click)="selectTheBiomarker(biomarker)"
+              [ngClass]="{
                 backgroundCheckBoxesNotSelected:
                   selected !== getBiomarkerType(biomarker) &&
                   !biomarker.selected,
@@ -41,19 +54,31 @@
                 checkboxNotSelected:
                   getCheckBoxBackGroundNotSelected(biomarker),
                 checkboxSelected: getCheckBoxBackGroundSelected(biomarker)
-              }" tabindex="0">
-              <img *ngIf="getChekMarkSelected(biomarker)" src="./../../../assets/Vector.png" />
+              }"
+              tabindex="0"
+            >
+              <img
+                *ngIf="getChekMarkSelected(biomarker)"
+                src="./../../../assets/Vector.png"
+              />
             </div>
           </div>
         </td>
       </tr>
     </tbody>
     <tfoot>
-      <td style="width: 31.738%"></td>
-      <td style="width: 17.482%"></td>
-      <td style="width: 50.78%; height: inherit">
-        <ul class="pagination-container" *ngFor="let page of pages; let i = index">
-          <li class="page-text" [ngClass]="{ checkboxSelected: i === pageSelected }" (click)="pageClicked(i)">
+      <td style="width: 0"></td>
+      <td style="width: 0"></td>
+      <td class="pagination-outer-container" style="width: 100%; height: inherit">
+        <ul
+          class="pagination-container"
+          *ngFor="let page of pages; let i = index"
+        >
+          <li
+            class="page-text"
+            [ngClass]="{ checkboxSelected: i === pageSelected }"
+            (click)="pageClicked(i)"
+          >
             <a>{{ i + 1 }}</a>
           </li>
         </ul>

@@ -1,0 +1,71 @@
+<div class="request-id-container">
+    <div tabindex="0" class="label">Request ID</div>
+    <div tabindex="0" class="request-id-input-container">
+      #<input
+        [readonly]="true"
+        [value]="patientRequestData.requestID"
+        tabindex="none"
+        class="request-id-input"
+        placeholder="0000001"
+      />
+    </div>
+  </div>
+  <div class="expired-by-container">
+    <div tabindex="0" class="label">Expire by</div>
+    <div tabindex="0" class="expired-by-input-container">
+      <input
+        [readonly]="true"
+        tabindex="none"
+        [value]="patientRequestData.expireBy"
+        class="expired-by-input"
+        placeholder="0000001"
+      />
+    </div>
+  </div>
+  <div class="request-saving-data-container">
+    <div tabindex="0" class="label">Request saving data</div>
+    <div
+      (click)="selectRequestSavingData(patientRequestData)"
+      [ngClass]="{
+        checkboxNotSelected:
+          getCheckBoxBackGroundNotSelected(patientRequestData),
+        checkboxSelected: getCheckBoxBackGroundSelected(patientRequestData)
+      }"
+      tabindex="0"
+    >
+      <img
+        *ngIf="getChekMarkSelected(patientRequestData)"
+        src="./../../../assets/Vector.png"
+      />
+    </div>
+  </div>
+  <div class="warning-message-blue-explanation-mark-outer-container">
+    <div class="vertical-line"></div>
+    <div class="warning-message-blue-explanation-mark-container">
+      <div tabindex="0" class="expired-by-input-container">
+        Ask patient for data storage permission on your organization account
+      </div>
+    </div>
+  </div>
+  <div class="delete-data-after-outer-container">
+    <div class="delete-data-after-container">
+      <div tabindex="0" class="label">Delete data after</div>
+      <div tabindex="0" class="delete-data-after-input-container">
+        <input
+          [readonly]="true"
+          tabindex="none"
+          [value]="patientRequestData.deleteDataAfter"
+          class="expired-by-input"
+          placeholder="0000001"
+        />
+      </div>
+    </div>
+    <div class="warning-message-blue-explanation-mark-outer-container">
+      <div class="vertical-line"></div>
+      <div class="warning-message-blue-explanation-mark-container">
+        <div tabindex="0" class="expired-by-input-container">
+          User must be informed and allowed to request deletion anytime
+        </div>
+      </div>
+    </div>
+  </div>

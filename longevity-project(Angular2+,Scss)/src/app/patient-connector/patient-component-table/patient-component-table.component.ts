@@ -19,14 +19,14 @@ export class PatientComponentTableComponent implements OnInit {
   count: number = 0;
   pages:Array<number> =[];
   pageSelected:number = 0; 
-  constructor(private getDataService:GetDataService,
+  constructor(private getBiomarkersDataService:GetDataService,
               private searchBiomarkersService:SearchBiomarkersService,
               
               ) { }
 
   ngOnInit(): void {
 
-    this.copyArray = this.getDataService.getData();
+    this.copyArray = this. getBiomarkersDataService.getBiomarkersData();
     this.biomarkers = this.copyArray.slice(0,5);
     this.pages = new Array<number>(Math.ceil(( this.copyArray.length ) / 5));
     this.searchBiomarkersService.searchBiomarkers.subscribe((biomarkers:Biomarkers[]) =>{
@@ -95,7 +95,9 @@ export class PatientComponentTableComponent implements OnInit {
 
   }
   pageClicked(index:any){
-    this.biomarkers = this.copyArray.slice( (5 * index ),5);
+    const start:number = 5 * index;
+    this.biomarkers = this.copyArray.slice( start, (5 + start));
+           
     this.pageSelected = index;
     
   }

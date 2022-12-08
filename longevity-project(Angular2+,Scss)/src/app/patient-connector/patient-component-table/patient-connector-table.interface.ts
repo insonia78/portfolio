@@ -11,6 +11,10 @@ export interface Biomarkers {
  }
 
 export interface PatientConnector {
+    requestID:string,
+    expireBy:string,
+    requestSavingData:boolean,
+    deleteDataAfter:string,
     biomarkers:Biomarkers[],
     
 }

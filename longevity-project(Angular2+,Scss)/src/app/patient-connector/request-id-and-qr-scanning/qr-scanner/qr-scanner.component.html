@@ -1,0 +1,28 @@
+<div class="qr-container">
+    <ngx-qrcode
+    tabindex="0"
+      [elementType]="elementType"
+      [errorCorrectionLevel]="correctionLevel"
+      [value]="value"
+      cssClass="bshadow"
+    ></ngx-qrcode>
+    <div *ngIf="copyedToClipBoard" class="copyed-to-clip-board-outer-container">
+      <div class="copyed-to-clip-board-container">
+        <div tabindex="0" class="copyed-to-clip-board">
+          Url copyed
+        </div>
+      </div>
+    </div>
+    <div tabindex="0" class="qr-information">
+        scan, share or type in your broswer:
+    </div>
+    <div tabindex="0" class="qr-sub-information">
+        or wave the phone on terminal (NFC)
+    </div>
+    <input [readonly]="true" tabindex="0" type="text" [value]="value" class="qr-input-url" />
+    <div class="qr-button-container">
+       <div tabindex="0" (click)="regenerateQr()" class="qr-regenerate-button">Regenerate</div>
+       <div tabindex="0" (click)="copyToClipBoard()" class="qr-copy-button">Copy</div>
+
+    </div> 
+  </div>

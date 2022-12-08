@@ -1,17 +1,27 @@
 @import '~src/themes';
 
-.patient-component-table-and-iq-container{
-    width:100%;
-    display:flex;
+.patient-component-table-and-iq-container {
+    width: 100%;
+    display: flex;
     justify-content: space-between;
     align-items: flex-start;
 
 }
+
 .patient-component-table-container-table {
     width: 86.5625%;
     border-collapse: collapse;
 
 
+}
+
+@media screen and (max-width: 1000px) {
+    patient-component-table-container-table {
+        width: 100%;
+        border-collapse: collapse;
+
+
+    }
 }
 
 .patient-component-table-container-table-header {
@@ -58,13 +68,14 @@
 
 
 }
+
 .head-checkbox-container {
     width: 100%;
     height: inherit;
     display: flex;
     justify-content: flex-end;
     align-items: baseline;
-    cursor:pointer;
+    cursor: pointer;
 }
 
 .head-checkbox {
@@ -131,39 +142,48 @@
     .backgroundCheckBoxesNotSelected {
         background: $elementSelectedBackgroundColor;
     }
+
     .opacity {
         opacity: 0.18;
     }
-    
-    
+
+
 
 }
-.pagination-container{
-    list-style: none;
-    display:inline-block;
-    font-size:1.5em;
-    
-    .page-text {
-      width:1.6em;
-      height:1.6em;
-      background-color:  $elementBackgroundColor;
-      display:flex;
-      align-items: center;
-      justify-content: center;
 
-      
-    }
-    .checkboxSelected {
-        width: 1.6em;
-        height: 1.6em;
-        background: $elementSelectedBackgroundColor;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border-radius: 3.5px;
-        color:white;
-        cursor: pointer;
+.pagination-outer-container {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    .pagination-container {
+        list-style: none;
+        display:flex;
+        font-size: 1.5em;
+
+        .page-text {
+            width: 1.6em;
+            height: 1.6em;
+            background-color: $elementBackgroundColor;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+
+
+        }
+
+        .checkboxSelected {
+            width: 1.6em;
+            height: 1.6em;
+            background: $elementSelectedBackgroundColor;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 3.5px;
+            color: white;
+            cursor: pointer;
+
+        }
 
     }
-    
 }
