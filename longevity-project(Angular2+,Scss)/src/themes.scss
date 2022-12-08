@@ -1,2 +1,7 @@
 $elementBackgroundColor:rgba(54, 131, 252, 0.1);
 $elementSelectedBackgroundColor:#3683FC;
+
+.selected {
+    background-color: $elementSelectedBackgroundColor !important;
+    color: white;
+}

@@ -54,10 +54,11 @@ export class SearchAndSelectTableComponent implements OnInit {
         holdArray.push(e) 
      });
     }
+        
+    this.biomarkers = holdArray.length === 0 ? [] : holdArray.sort((a: Biomarkers, b: Biomarkers) => a.biomarkerName.localeCompare(b.biomarkerName));
     
-    this.biomarkers = holdArray.sort((a: Biomarkers, b: Biomarkers) => a.biomarkerName.localeCompare(b.biomarkerName));
     if(this.biomarkers.length <= 0)
-      this.searchBiomarkersService.searchBiomarkers.next( this.copyArray.slice(0,5));
+      this.searchBiomarkersService.searchBiomarkers.next( this.copyArray);
     else
       this.searchBiomarkersService.searchBiomarkers.next( this.biomarkers );
 

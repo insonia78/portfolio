@@ -30,7 +30,11 @@ export class PatientComponentTableComponent implements OnInit {
     this.biomarkers = this.copyArray.slice(0,5);
     this.pages = new Array<number>(Math.ceil(( this.copyArray.length ) / 5));
     this.searchBiomarkersService.searchBiomarkers.subscribe((biomarkers:Biomarkers[]) =>{
-      this.biomarkers = biomarkers;
+       this.copyArray =  biomarkers.slice();
+       this.biomarkers = biomarkers.slice();
+       this.copyArray = this.biomarkers.slice();
+       this.pages = new Array<number>(Math.ceil(( biomarkers.length ) / 5));
+       this.pageClicked(0);
     })
     this.searchBiomarkersService.selectBiomarkers.subscribe((selected:String) =>{
 
@@ -94,10 +98,11 @@ export class PatientComponentTableComponent implements OnInit {
 
 
   }
+ 
   pageClicked(index:any){
     const start:number = 5 * index;
     this.biomarkers = this.copyArray.slice( start, (5 + start));
-           
+          
     this.pageSelected = index;
     
   }
