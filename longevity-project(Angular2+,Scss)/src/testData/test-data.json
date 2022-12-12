@@ -7,7 +7,7 @@
     [
       {
         "biomarkerName":"Cholesterol HDL",
-        "unit":"mg/dL,mmol/L",
+        "unit":"mg/dL, mmol/L",
         "description":"{short description}",
         "expiredBy":"",
         "deleteDataAfter":"",
@@ -17,7 +17,7 @@
       },
       {
         "biomarkerName":"Cholesterol LDL",
-        "unit":"mg/dL,mmol/L",
+        "unit":"mg/dL, mmol/L",
         "description":"{short description}",
         "expiredBy":"",
         "deleteDataAfter":"",

@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { PatientConnector } from 'src/interface/patient-connector.interface';
 import { GetDataService } from 'src/services/getData/get-data.service';
-import { PatientConnector } from '../../patient-component-table/patient-connector-table.interface';
 
 @Component({
   selector: 'app-request-id',
   templateUrl: './request-id.component.html',
-  styleUrls: ['./request-id.component.scss']
+  styleUrls: ['./request-id.component.scss','media.component.scss']
 })
 export class RequestIdComponent implements OnInit {
   patientRequestData:PatientConnector = {} as PatientConnector ;

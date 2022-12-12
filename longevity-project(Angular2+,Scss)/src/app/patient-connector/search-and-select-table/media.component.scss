@@ -1,0 +1,24 @@
+@media screen and (max-width: 960px) {
+    .search-and-group-container {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+    }
+
+    .group-by-container {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+    }
+
+    .group-by {
+        margin-top: 1em;
+        margin-left: 0px !important;
+
+    }
+    .group-by-container-buttons{
+        margin-top: .3em;
+    }
+
+
+}

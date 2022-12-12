@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Biomarkers, PatientConnector } from 'src/app/patient-connector/patient-component-table/patient-connector-table.interface';
+import { Biomarkers, PatientConnector } from 'src/interface/patient-connector.interface';
 import data from "./../../testData/test-data.json";
 
 

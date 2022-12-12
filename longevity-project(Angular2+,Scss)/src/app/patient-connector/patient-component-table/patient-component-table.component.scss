@@ -2,31 +2,24 @@
 
 .patient-component-table-and-iq-container {
     width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
+    display:grid;
+    // justify-content: space-between;
+    // align-items: flex-start;
+   
 
 }
 
 .patient-component-table-container-table {
     width: 86.5625%;
-    border-collapse: collapse;
-
-
+    display:grid;
+    grid-template-columns: 31.738% 17.482%  50.78%;
+    grid-template-rows: auto;
+    word-break: break-all;
+   
 }
-
-@media screen and (max-width: 1000px) {
-    patient-component-table-container-table {
-        width: 100%;
-        border-collapse: collapse;
-
-
-    }
-}
-
 .patient-component-table-container-table-header {
     background-color: $elementBackgroundColor;
-    height: 3.1875em;
+    height: 3.75em;
     font-family: 'DM Sans';
     font-style: normal;
     font-weight: 400;
@@ -42,6 +35,7 @@
     justify-content: flex-start;
     align-items: flex-start;
     padding-top: 0.5em;
+    grid-column:1;
 
 
 
@@ -53,7 +47,7 @@
     font-style: normal;
     font-weight: 400;
     font-size: 0.8333333333333334em;
-
+  
 }
 
 .patient-component-table-container-table-col-2 {
@@ -65,7 +59,13 @@
     justify-content: flex-start;
     align-items: baseline;
     padding-top: 0.5em;
+    grid-column:2;
 
+}
+.patient-component-table-container-table-col-3 {
+
+    grid-column:3;
+    padding-top:0.5em;
 
 }
 
@@ -79,8 +79,8 @@
 }
 
 .head-checkbox {
-    width: .9em;
-    height: .9em;
+    width: 1em;
+    height: 1em;
     background: $elementSelectedBackgroundColor;
     display: flex;
     justify-content: center;
@@ -99,12 +99,15 @@
 }
 
 .patient-component-table-container-table-body {
-    height: 5.6875em;
+    min-height: 32.625em;
+    height:auto;
+    width:100%;
     font-family: 'DM Sans';
     font-style: normal;
     font-weight: 400;
     font-size: 1.5em;
-
+    grid-column:span 3;
+      
     .head-checkbox-container-body {
         width: 100%;
         height: inherit;
@@ -155,6 +158,7 @@
     display:flex;
     justify-content: center;
     align-items: center;
+    grid-column: span 3;
     .pagination-container {
         list-style: none;
         display:flex;
@@ -183,6 +187,9 @@
             color: white;
             cursor: pointer;
 
+        }
+        > li {
+            margin-right: 1em;
         }
 
     }

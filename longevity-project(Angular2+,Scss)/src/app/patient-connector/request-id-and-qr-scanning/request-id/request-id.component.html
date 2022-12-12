@@ -1,13 +1,15 @@
 <div class="request-id-container">
     <div tabindex="0" class="label">Request ID</div>
     <div tabindex="0" class="request-id-input-container">
-      #<input
+      <div class="request-id-input-container-hashtag">#</div>
+      <input
         [readonly]="true"
         [value]="patientRequestData.requestID"
         tabindex="none"
         class="request-id-input"
         placeholder="0000001"
       />
+      <img  class="copy-image" src="./../../../../assets/copy.png" />
     </div>
   </div>
   <div class="expired-by-container">
@@ -20,6 +22,7 @@
         class="expired-by-input"
         placeholder="0000001"
       />
+      <img  class="date-image" src="./../../../../assets/date.png" />
     </div>
   </div>
   <div class="request-saving-data-container">
@@ -58,6 +61,7 @@
           class="expired-by-input"
           placeholder="0000001"
         />
+        <img  class="date-image" src="./../../../../assets/date.png" />
       </div>
     </div>
     <div class="warning-message-blue-explanation-mark-outer-container">

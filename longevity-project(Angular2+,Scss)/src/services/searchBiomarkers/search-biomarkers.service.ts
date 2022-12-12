@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
-import { Biomarkers } from 'src/app/patient-connector/patient-component-table/patient-connector-table.interface';
+import { Biomarkers } from 'src/interface/patient-connector.interface';
+
 
 @Injectable({
   providedIn: 'root'

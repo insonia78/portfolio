@@ -1,52 +1,40 @@
 <div class="patient-component-table-and-iq-container">
-  <table class="patient-component-table-container-table">
-    <thead>
-      <tr class="patient-component-table-container-table-header">
-        <th style="width: 31.738%; height: inherit">
-          <div class="patient-component-table-container-table-col-1">
-            <span tabindex="0">Biomarker name</span
-            ><span
-              tabindex="0"
-              class="patient-component-table-container-table-col-1-sub-title"
-              >description</span
-            >
-          </div>
-        </th>
-        <th style="width: 17.482%; height: inherit">
-          <div class="patient-component-table-container-table-col-2">
-            <span tabindex="0">units</span>
-          </div>
-        </th>
-        <th style="width: 50.78%; height: inherit">
-          <div class="head-checkbox-container">
-            <div
-              (click)="selectAllBiomarkersdisplay(checkedAll)"
-              tabindex="0"
-              class="head-checkbox"
-            >
-              <hr />
-            </div>
-          </div>
-        </th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr
-        class="patient-component-table-container-table-body"
-        *ngFor="let biomarker of biomarkers; let i = index"
-      >
-        <td style="width: 31.738%">
-          <span tabindex="0">{{ biomarker.biomarkerName }}</span
-          ><br /><span tabindex="0">{{ biomarker.description }}</span>
-        </td>
-        <td style="width: 17.482%">
-          <span tabindex="0">{{ biomarker.unit }}</span>
-        </td>
-        <td style="width: 50.78%; height: inherit">
-          <div class="head-checkbox-container-body">
-            <div
-              (click)="selectTheBiomarker(biomarker)"
-              [ngClass]="{
+  <div class="patient-component-table-container-table">
+
+
+    <div class="patient-component-table-container-table-header patient-component-table-container-table-col-1">
+      
+        <span tabindex="0">Biomarker name</span><span tabindex="0"
+          class="patient-component-table-container-table-col-1-sub-title">description</span>
+      
+    </div>
+    <div class="patient-component-table-container-table-header patient-component-table-container-table-col-2">
+      
+        <span tabindex="0">units</span>
+      
+    </div>
+    <div class="patient-component-table-container-table-header patient-component-table-container-table-col-3">
+      <div class="head-checkbox-container">
+        <div (click)="selectAllBiomarkersdisplay(checkedAll)" tabindex="0" class="head-checkbox">
+          <hr />
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="patient-component-table-container-table-body" >
+      <span style="border-bottom: 1px solid rgba(54, 131, 252, 0.18);
+      ; min-height:7.1875em;height:auto;display:grid; grid-template-columns: 31.738% 17.482%  50.78%; grid-template-rows: auto; align-items: center;" *ngFor="let biomarker of biomarkers; let i = index">
+      <div style="grid-column:1">
+        <span tabindex="0">{{ biomarker.biomarkerName }}</span><br /><span tabindex="0">{{ biomarker.description }}</span>
+      </div>
+      <div style="grid-column:2">
+        <span tabindex="0">{{ biomarker.unit }}</span>
+      </div>
+      <div style="grid-column:3">
+        <div class="head-checkbox-container-body">
+          <div (click)="selectTheBiomarker(biomarker)" [ngClass]="{
                 backgroundCheckBoxesNotSelected:
                   selected !== getBiomarkerType(biomarker) &&
                   !biomarker.selected,
@@ -54,35 +42,20 @@
                 checkboxNotSelected:
                   getCheckBoxBackGroundNotSelected(biomarker),
                 checkboxSelected: getCheckBoxBackGroundSelected(biomarker)
-              }"
-              tabindex="0"
-            >
-              <img
-                *ngIf="getChekMarkSelected(biomarker)"
-                src="./../../../assets/Vector.png"
-              />
-            </div>
+              }" tabindex="0">
+            <img *ngIf="getChekMarkSelected(biomarker)" src="./../../../assets/Vector.png" />
           </div>
-        </td>
-      </tr>
-    </tbody>
-    <tfoot>
-      <td style="width: 0"></td>
-      <td style="width: 0"></td>
-      <td class="pagination-outer-container" style="width: 100%; height: inherit">
-        <ul
-          class="pagination-container"
-          *ngFor="let page of pages; let i = index"
-        >
-          <li
-            class="page-text"
-            [ngClass]="{ checkboxSelected: i === pageSelected }"
-            (click)="pageClicked(i)"
-          >
-            <a>{{ i + 1 }}</a>
-          </li>
-        </ul>
-      </td>
-    </tfoot>
-  </table>
+        </div>
+      </div>
+    </span>
+  </div>
+    <div class="pagination-outer-container">
+      <ul class="pagination-container">
+        <li *ngFor="let page of pages; let i = index" class="page-text"
+          [ngClass]="{ checkboxSelected: i === pageSelected }" (click)="pageClicked(i)">
+          <a>{{ i + 1 }}</a>
+        </li>
+      </ul>
+    </div>
+  </div>
 </div>

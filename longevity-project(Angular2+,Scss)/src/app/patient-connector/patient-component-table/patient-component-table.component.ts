@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { Biomarkers, SelectedAll } from 'src/interface/patient-connector.interface';
 import { GetDataService } from 'src/services/getData/get-data.service';
 import { SearchBiomarkersService } from 'src/services/searchBiomarkers/search-biomarkers.service';
-import { Biomarkers, PatientConnector, SelectedAll } from './patient-connector-table.interface';
+
 
 @Component({
   selector: 'app-patient-component-table',
   templateUrl: './patient-component-table.component.html',
-  styleUrls: ['./patient-component-table.component.scss']
+  styleUrls: ['./patient-component-table.component.scss','./media.component.scss']
 })
 export class PatientComponentTableComponent implements OnInit {
   biomarkers: Biomarkers[] = [];

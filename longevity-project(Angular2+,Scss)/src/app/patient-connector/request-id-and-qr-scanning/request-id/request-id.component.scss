@@ -14,13 +14,18 @@
         font-size: 1.5em;
         line-height: 31px;
     }
-
+    .request-id-input-container-hashtag{
+        justify-self: flex-end;
+        grid-column: 1;
+        font-size:1.5em;
+    }
     .request-id-input-container {
         width: 54.545%;
         height: 2.9375em;
         background-color: $elementBackgroundColor;
-        padding-left: 1.125em;
-        display: flex;
+        display: grid;
+        grid-template-columns: 10% 77.667% 2.4em;
+        justify-content: center;
         align-items: center;
         font-family: "DM Sans";
         font-style: normal;
@@ -28,9 +33,10 @@
         font-size: 1em;
         text-transform: capitalize;
         color: black;
-        padding-right: 0.2em;
+       
 
         .request-id-input {
+            grid-column: 2;
             width: 83.667%;
             min-height: 1.9375em;
             height: auto;
@@ -44,13 +50,10 @@
             }
         }
 
-        &::after {
-            content: url(./../../../../assets/copy.png);
-            width: 0.1em;
-            height: 0.1em;
-            margin-bottom: 1.5em;
-            margin-right: 0.2em;
-            
+        .copy-image {
+            grid-column: 3;
+            width: 1.7em;
+            height: 1.7em;                      
         }
     }
 }
@@ -74,8 +77,8 @@
         width: 54.545%;
         height: 2.9375em;
         background-color: $elementBackgroundColor;
-        padding-left: 1.125em;
-        display: flex;
+        display: grid;
+        grid-template-columns: 6% 81.667% 2.2em;
         align-items: center;
         font-family: "DM Sans";
         font-style: normal;
@@ -83,9 +86,9 @@
         font-size: 1em;
         text-transform: capitalize;
         color: black;
-        padding-right: 0.2em;
-
+       
         .expired-by-input {
+            grid-column: 2;
             width: 86.667%;
             min-height: 1.8375em;
             height: auto;
@@ -99,17 +102,16 @@
             }
         }
 
-        &::after {
-            content: url(./../../../../assets/date.png);
-            width: 0.1em;
-            height: 0.1em;
-            margin-bottom: 1.5em;
+        .date-image {
+            grid-column: 3;
+            width: 1.7em;
+            height: 1.7em;
         }
     }
 }
 
 .request-saving-data-container {
-    width: 100%;
+    width: 98%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -133,7 +135,7 @@
         align-items: center;
         border-radius: 3.5px;
         cursor: pointer;
-        margin-right: 1em;
+        
     }
 
     .checkboxSelected {
@@ -145,7 +147,7 @@
         align-items: center;
         border-radius: 3.5px;
         cursor: pointer;
-        margin-right: 1em;
+        
     }
 }
 
@@ -198,9 +200,9 @@
     padding-left: 1.125em;
     border-left: 2px solid rgba(54, 131, 252, 0.18);
     margin-bottom: 5.875em;
-
+     
     .delete-data-after-container {
-        width: 100%;
+        width: 98%;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -215,11 +217,11 @@
         }
 
         .delete-data-after-input-container {
-            width: 50.545%;
+            width: 54.545%;
             height: 2.9375em;
             background-color: $elementBackgroundColor;
-            padding-left: 1.125em;
-            display: flex;
+            display: grid;
+            grid-template-columns: 6% 81.667% 2.2em;
             align-items: center;
             font-family: "DM Sans";
             font-style: normal;
@@ -227,11 +229,10 @@
             font-size: 1em;
             text-transform: capitalize;
             color: black;
-            padding-right: 0.2em;
-            margin-right: 1em;
 
             .expired-by-input {
-                width: 86.667%;
+                grid-column: 2;
+                width: 100%;
                 min-height: 1.8375em;
                 height: auto;
                 background-color: transparent;
@@ -244,12 +245,10 @@
                 }
             }
 
-            &::after {
-                content: url(./../../../../assets/date.png);
-                width: 0.1em;
-                height: 0.1em;
-                margin-bottom: 1.5em;
-                margin-right: 0.2em;
+            .date-image {
+                grid-column: 3;
+                width: 1.7em;
+                height: 1.7em;
             }
         }
     }

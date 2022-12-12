@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { GetDataService } from 'src/services/getData/get-data.service';
-import { Biomarkers } from '../patient-component-table/patient-connector-table.interface';
-import { Subject } from 'rxjs';
 import { SearchBiomarkersService } from 'src/services/searchBiomarkers/search-biomarkers.service';
+import { Biomarkers } from 'src/interface/patient-connector.interface';
 
 @Component({
   selector: 'app-search-and-select-table',
   templateUrl: './search-and-select-table.component.html',
-  styleUrls: ['./search-and-select-table.component.scss']
+  styleUrls: ['./search-and-select-table.component.scss','media.component.scss']
 })
 export class SearchAndSelectTableComponent implements OnInit {
   selected: any = "disease";
