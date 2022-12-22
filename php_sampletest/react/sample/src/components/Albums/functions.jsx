@@ -95,19 +95,23 @@ const getPhotosWithPArameterCall =  async (setPhotos,userId,i,setClicked,ALBUMS)
 *  first done with binary search and all the data 
 */
 
-
+let reverse = true;
 export const getPhotos = (setPhotos,allPhotos, userId,i,ALBUMS,setClicked) =>{
        let index = binarySearch(userId,allPhotos);
        index = findFirstIndex(index,allPhotos,userId);
        const array = [];
-       console.log('index',index,allPhotos,ALBUMS);
+       console.log("allPhotos", allPhotos);
        for(let i = index; i < allPhotos.length && index !== -1;i++ )
        {
            if(allPhotos[i].albumId === userId)
               array.push(allPhotos[i]);
+              
+           
        }
+       reverse = !reverse;
        setClicked(ALBUMS.map((e,index)=>{ if(index === i) return true; return false}));
-       setPhotos(array.slice());
+       console.log("reverse", reverse);
+       setPhotos( reverse ? array.reverse().slice() : array.slice());
 
 
 

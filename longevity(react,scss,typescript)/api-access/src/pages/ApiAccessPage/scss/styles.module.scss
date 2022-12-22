@@ -1,0 +1,23 @@
+@import './media.module.scss';
+.main-page-container{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 4rem;
+    padding-right: 4rem;
+}
+.graph-container{
+    width:53.333%;
+    min-height:43.3125rem;
+    height:auto;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+.main-page-container-2{
+    display:flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-left: 4rem;
+    padding-right: 4rem;
+}

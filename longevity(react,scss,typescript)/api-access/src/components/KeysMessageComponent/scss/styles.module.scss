@@ -1,0 +1,35 @@
+@import './../../../themes.scss';
+ @import './media.module.scss';
+
+.keys-message-container{
+    width:47.708%;
+    min-height:16.875rem;
+    background-color: $elementBackgroundColor;
+    padding-top: 1.5rem;
+    padding-left:2.25rem;
+    padding-right:2.25rem;
+    margin-top: 12rem;
+    border-radius: 18px;
+    .header1{
+        font-size:2.25rem;
+        font-family: 'DM Sans';
+        font-style: normal;
+        font-weight: 500;
+    }
+    .header2{
+       font-size:2.25rem; 
+       font-family: 'DM Sans';
+       font-style: normal;
+       font-weight: 500;
+       margin-bottom:2.20rem;
+    }
+    .mesage1{
+        font-size:1.25rem;
+        margin-bottom:2.20rem;
+    }
+    .message2{
+        font-size:1.25rem;
+        margin-bottom:1rem;
+
+    }
+}
