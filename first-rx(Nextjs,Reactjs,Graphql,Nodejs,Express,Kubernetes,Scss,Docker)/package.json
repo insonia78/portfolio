@@ -1,6 +1,0 @@
-{
-  "dependencies": {
-    "common": "file:common",
-    "node-nats-streaming": "^0.3.2"
-  }
-}

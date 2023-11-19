@@ -1,9 +1,0 @@
-# package directories
-node_modules
-jspm_packages
-.next
-.serverless
-.serverless_nextjs
-# Serverless directories
-.serverless
-/.env.local
