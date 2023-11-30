@@ -1,8 +1,0 @@
-select.form-control.required#region(name='scenario')
-  option(disabled) Select a region
-  option(value='High') High
-  option(value='Median') Median
-  option(value='Low') Low
-  option(value='User')
-    |  User Defined
-    input.my-file-selector(type='file',  accept=".csv", style='display:none;')

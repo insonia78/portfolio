@@ -1,9 +1,0 @@
-{
-    "api":{
-        "hostname": "10.8.26.47",
-        "port": 3333
-    },
-    "datafiles":{
-        "path":"/opt/slt_data"
-    }
-}

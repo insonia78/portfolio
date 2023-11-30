@@ -1,5 +1,0 @@
-{student(id:1){id}}
-
-
-
-no body returned response

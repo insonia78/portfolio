@@ -1,8 +1,0 @@
-select.form-control.required#country(name='Region')
-  option Select a region
-  option North Hemisphere
-  option Equator
-  option South Hemisphere
-  option User Defined
-  
-

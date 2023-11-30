@@ -1,6 +1,0 @@
-select.form-control.required#region(name='scenario')
-  option Select a region
-  option(value='High') High
-  option(value='Median') Median
-  option(value='Low') Low
-  option(value='User') User Defined

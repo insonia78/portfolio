@@ -1,5 +1,0 @@
-/home/gonzales1609/IRENA/SLTview/CMakeFiles/install/local.dir
-/home/gonzales1609/IRENA/SLTview/CMakeFiles/rebuild_cache.dir
-/home/gonzales1609/IRENA/SLTview/CMakeFiles/edit_cache.dir
-/home/gonzales1609/IRENA/SLTview/CMakeFiles/install.dir
-/home/gonzales1609/IRENA/SLTview/CMakeFiles/list_install_components.dir

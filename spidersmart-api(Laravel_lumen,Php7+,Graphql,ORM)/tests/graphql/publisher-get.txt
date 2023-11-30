@@ -1,1 +1,0 @@
-{publisher(id:1){id}}
