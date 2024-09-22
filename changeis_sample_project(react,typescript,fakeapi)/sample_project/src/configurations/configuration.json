@@ -1,0 +1,7 @@
+{
+  "api":{       
+   "name": "faker-api",
+   "uri": "https://fakerapi.it",     
+   "path": "api/v2/products?_quantity=23&_taxes=12&_categories_type=uuid"
+  }
+}
