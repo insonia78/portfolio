@@ -2,7 +2,6 @@ import { CardComponent } from 'components/CardComponent';
 import React, { useEffect, useReducer, useState } from 'react';
 import { fakeApiReducer, initialState } from 'reducers/fakeApiReducer';
 import { getDataFromFakerApi } from './functions';
-import { configurationData } from 'services/configurationFileService';
 import { PaginationComponent } from 'components/global/PaginationComponent';
 
 

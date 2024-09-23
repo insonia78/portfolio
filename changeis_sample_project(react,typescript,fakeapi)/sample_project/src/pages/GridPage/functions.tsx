@@ -2,8 +2,8 @@ import { axiosService_GET } from "services/axiosService"
 import { configurationData } from "services/configurationFileService";
 
 export const getDataFromFakerApi: any = async () => {
-    if (!await configurationData['yaml'])
-        return;
+    if (!configurationData['yaml'])
+        throw new Error(`CONFIGURATION NOT PRESENT`);;
     const request = {
         method: 'get',
         url: `${await configurationData['yaml']['api']['uri']}/${await configurationData['yaml']['api']['path']}`,       

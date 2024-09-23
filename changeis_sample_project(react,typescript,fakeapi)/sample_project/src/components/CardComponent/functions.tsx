@@ -32,6 +32,7 @@ export const setUpCards: any = ( pagination:any, _testimonials: []) => {
                                 display: "flex",
                                 justifyContent: "center",
                                 alignItems: "center",
+                                flexFlow:"wrap",
                                 width: "100%",
                                 height: "auto",
                                 backgroundColor: "white"
