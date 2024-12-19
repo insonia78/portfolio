@@ -1,0 +1,36 @@
+Senior Software Engineer Front-end Challenge 
+
+
+Frontend Vanilla JavaScript question 
+
+# Problem: Create the following UI: 
+
+- Create an empty container div in the HTML file. 
+
+- Programmatically create multiple child divs in the container, say 10. Use Javascript. 
+
+- Give all the child divs a background color. 
+
+- Lay out the child divs horizontally within the container. 
+
+- Whenever the user clicks one of the child divs, the child div should respond as follows: 
+
+- If the child div does not have a blue background: 
+
+- Give the child div a blue background. 
+
+- Print out the child div's index. If the 7th div is getting a blue background, say "Turning ON 7". 
+
+- If the child div does have a blue background: 
+
+- Give the child div its original background color. 
+
+- Print out the child div's index. If the 4th div is removing the blue background, say "Turning OFF 4". 
+
+# Requirements: 
+
+- Should work for 3, 10, 27, however many child divs. They do not all need to be on the same line, but they should still lay out horizontally (across multiple lines if necessary). 
+
+- Combine HTML, CSS, and JavaScript. 
+
+ 

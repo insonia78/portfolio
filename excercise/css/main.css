@@ -1,0 +1,24 @@
+main {
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: initial;
+    min-height: fit-content;
+    height: auto;
+    padding: 10em;
+
+}
+
+main > .display-content-container {
+    display: flex;
+    flex-wrap: wrap;
+    width: inherit;
+    height: auto;
+    margin-top: "2em";
+    padding: "1em";
+    flex-direction: row;
+    align-items: center;
+    align-content: center;
+
+}

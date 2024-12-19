@@ -1,0 +1,29 @@
+<html>
+
+ <head>
+    <link rel="stylesheet" href="./css/default.css">
+    <link rel="stylesheet" href="./css/section.css">
+    <link rel="stylesheet" href="./css/main.css">
+ </head>
+
+ <body>
+     <section id="section">
+            <h1>TYPE THE NUMBER BELLOW</h1>
+            <input  id="input-number" type="textbox" width="20em" height="2em" value="10"/>
+            <text class="text-event" id="text-event"></text>  
+     </section>
+     <main id="main">
+        <div class="display-content-container" id="display-content-container"></div>
+    </main>
+    <script>        
+        const container = document.getElementById('display-content-container');
+        const inputNumber = document.getElementById("input-number");
+        const text = document.getElementById('text-event');
+        inputNumber.addEventListener("keyup", (event) => getInput(event));
+        inputNumber.addEventListener("click",(event)=> clearGeneration() )              
+    </script>
+    <script src="./js/functions.js"></script>
+    <script> createChildDivs(inputNumber.value);</script>
+ </body>
+
+</html>

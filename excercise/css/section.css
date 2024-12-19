@@ -1,0 +1,25 @@
+section {
+    width: inherit;
+    min-height: 7em;
+    height: auto;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+section>input {
+    display: flex;
+    padding-left: 2em;
+    align-items: center;
+    justify-content: center;
+    height: 2em;
+    width: 10em;
+    font-size: 4em;
+}
+
+section>.text-event {
+    margin-top: 3em;
+    font-size: 2em;
+}
+
